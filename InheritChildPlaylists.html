@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title>Inherit Child Playlists (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, playlists, Inherit">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel="stylesheet" type="text/css" href="DownloadButton.css">
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size="+2">Inherit Child Playlists</font><br />
+Version 1.0.3<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="InheritChildPlaylists_Ext.html" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+This add-on works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v3.0-4.x (there is also <a href="https://zvezdan-d.github.io/InheritChildPlaylistsMM5.html">version</a> of the add-on that works with MM v5). It allows parent auto-playlists to optionally inherit their child playlists, which means that the parent auto-playlists will display all tracks of their child playlists, so you could get the same behavior as with iTunes and some other media players. Also, when synchronizing with a device and during other operations with playlists, such parent auto-playlists will behave as if they contain all tracks from their children.<br /><br />
+
+The inheritance could be manually turned on/off to the selected auto-playlist from the context menu of the Media Tree. When a child playlist is added or removed to/from the parent auto-playlist, which has the inheritance turned on, that parent auto-playlist will adjust its content automatically.
+<br /><br />
+
+<table bgcolor="WhiteSmoke"><tr><td width="100%">
+If you want to discus about this add-on, you could visit its related MediaMonkey <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=2&t=63962">forum thread</a>.
+<br /><br />
+
+You could also take a look on <a href="https://zvezdan-d.github.io/index.html">my other add-ons</a> for MediaMonkey.
+
+</td><td valign="middle" align="center" width="250px">
+<div class="download-box" style="float:left;"><a id="download" title="Download" class="download-link" href="https://zvezdan-d.github.io/InheritChildPlaylists-1.0.3.mmip"><span><strong><font size="+1">Download</font></strong> <em>The latest freely available<br />version of the add-on</em></span></a></div>
+</td></tr></table>
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v1.0.3 - 2020-05-04</dt><ul>
+<li>Fixed: display of inherited playlists when the inheritance is set to the basic auto-playlist (see the <a href="#limitations">Requirements and Limitations</a> section).
+</ul><br />
+
+<dt>v1.0.2 - 2015-06-22</dt><ul>
+<li>Fixed: some things.
+</ul><br />
+
+<dt>v1.0.1 - 2013-07-10</dt><ul>
+<li>Fixed: error when moving autoplaylists by drag & drop in MM 4.0.0.1345 or older.
+</ul><br />
+
+<dt>v1.0 - 2012-01-16</dt><ul>
+<li>First public version.
+</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+Just double-click on the InheritChildPlaylists-xx.mmip file; if you are on Vista or newer Windows and you got "Product installation error", make sure you have MM set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>; if you downloaded the installation package with IE7 and it changed its extension to a .zip, you should first change it back to a .mmip.<br /><br />
+
+You need to accept the license agreement if you want to use this add-on.<br /><br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+Right-click on an auto-playlist in the Playlists branch of the Media Tree panel and choose <i>Inherit Child Playlists</i> from the context menu to turn on or off its inheritance. That's it! The add-on will do the rest.<br />
+
+<p><font size="+1"><b><a id="limitations">Requirements and Limitations</a></b></font></p>
+<ul>
+<li>The inheritance could be set only to the advanced auto-playlists (created using the <i>Advanced</i> tab in the <i>AutoPlaylist criteria</i> dialog box, which you could get with the <i>Edit AutoPlaylist</i> option from the context menu). However, the parent auto-playlist could inherit any child auto-playlists (basic and advanced), as well as static playlists.</li>
+<li>The details about the inherited playlists are stored as the new criterion of the parent playlist in the form of "Playlist is xx, yy, ...". If you want to set the inheritance to auto-playlist that already has the criterion "Playlist is not ...", such criterion should be after the criterion "Playlist is xx, yy, ..." in the list of criteria.</li>
+<li>The on/off state of the inheritance of some playlist is stored in the Comment field of the Playlists table in the database. That field is unused by the program itself in MM3-4 and current version of MM5, but maybe the future version of MM5 will change that.</li>
+<li>By default, with the program older than 4.1.0.1652, the parent playlist without any child playlist will not be empty, but it will display all tracks from the Library. Such behaviour is a consequence of the fact that the auto-playlists without added any criterion display all tracks. You could get the empty parent playlist that is without any child playlist if you have the condition "Playlist is some_empty_static_playlist". This problem is fixed in 4.1.0.1652 version of the program.</li>
+<li>When you add the new child playlist to some auto-playlist with the inheritance turned on using the option New (Auto)Playlist, the content of the parent playlist would not be updated immediately in MM3, but you need to switch to some another playlist and turn back to the previously selected playlist. MM4 has not such problem.</li></ul>
+
+<p><font size="+1"><b><a id="important">Important</a></b></font></p>
+This add-on is using some dirty hacks to overcome MM API limitations. It is working fine, but you are suggested to make a backup of the database file, at least until you check if the add-on works as you expect.<br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><img src="http://s01.flagcounter.com/count/toJ5/bg_FFFFFF/txt_000000/border_CCCCCC/columns_1/maxflags_5/viewers_3/labels_1/pageviews_1/flags_0/" border="0"></center>
+
+</div>
+</body>
+</html>

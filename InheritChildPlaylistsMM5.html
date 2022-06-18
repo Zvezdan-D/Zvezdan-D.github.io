@@ -1,0 +1,81 @@
+<html>
+<head>
+    <title>Inherit Child Playlists (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, playlists, Inherit">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel="stylesheet" type="text/css" href="DownloadButton.css">
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size="+2">Inherit Child Playlists</font><br />
+Version 2.0<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="InheritChildPlaylists_Ext.html" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+This is information about the enhanced version of the Inherit Child Playlists add-on, which works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v5.x (there is also its <a href="https://zvezdan-d.github.io/InheritChildPlaylists.html">version</a> for older releases of the program). It allows parent auto-playlists to optionally inherit their child playlists, which means that the parent auto-playlists will display all tracks of their child playlists, so you could get the same behavior as with iTunes and some other media players. Also, when synchronizing with a device and during other operations with playlists, such parent auto-playlists will behave as if they contain all tracks from their children.<br /><br />
+
+The inheritance could be manually turned on/off to the selected auto-playlist from the context menu of the Media Tree. When a child playlist is added or removed to/from the parent auto-playlist, which has the inheritance turned on, that parent auto-playlist will adjust its content automatically.
+<br /><br />
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v2.0 - 2022-04-27</dt><ul>
+<li>Added: version of the add-on for MediaMonkey v5.
+</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+Start MediaMonkey, open Tools / Addons dialog box, click on the Add button and find the .mmip file.<br /><br />
+
+You need to accept the license agreement if you want to use this add-on.<br /><br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+Right-click on an auto-playlist in the Playlists branch of the Media Tree panel and choose <i>Inherit Child Playlists</i> from the context menu to turn on or off its inheritance. That's it! The add-on will do the rest.<br />
+
+<p><font size="+1"><b><a id="limitations">Requirements and Limitations</a></b></font></p>
+<ul>
+<li>The inheritance could be set only to the advanced auto-playlists (created using the <i>Advanced</i> tab in the <i>AutoPlaylist criteria</i> dialog box, which you could get with the <i>Edit AutoPlaylist</i> option from the context menu). However, the parent auto-playlist could inherit any child auto-playlists (basic and advanced), as well as static playlists.</li>
+<li>The details about the inherited playlists are stored as the new criterion of the parent playlist in the form of "Playlist is xx, yy, ...". If you want to set the inheritance to auto-playlist that already has the criterion "Playlist is not ...", such criterion should be after the criterion "Playlist is xx, yy, ..." in the list of criteria.</li>
+<li>The on/off state of the inheritance of some playlist is stored in the Comment field of the Playlists table in the database. That field is unused by the program itself, but maybe a future version of MM5 will change that.</li></ul>
+
+<p><font size="+1"><b><a id="important">Important</a></b></font></p>
+This add-on is using some dirty hacks to overcome MM API limitations. It is working fine, but you are suggested to make a backup of the database file, at least until you check if the add-on works as you expect.<br />
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+If you are interested about my other add-ons for MediaMonkey, you could visit the <a href="https://zvezdan-d.github.io/index.html">following page</a>.<br /><br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><img src="http://s01.flagcounter.com/count/toJ5/bg_FFFFFF/txt_000000/border_CCCCCC/columns_1/maxflags_5/viewers_3/labels_1/pageviews_1/flags_0/" border="0"></center>
+
+</div>
+</body>
+</html>
