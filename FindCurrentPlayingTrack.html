@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>Find Currently Playing Track (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, Find, Currentlly, Playing, Track">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel="stylesheet" type="text/css" href="DownloadButton.css">
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size="+2">Find Currently Playing Track</font><br />
+Version 1.3.2<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="FindCurrentPlayingTrack_Ext.htm" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+This add-on works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v2.x-4.x. It allows finding and selecting of the currently playing track in the Media Tree and main tracklist, i.e. it works similarly as the built-in "Find More from Same" and "Focus tracklist on currently playing item" MM options combined.<br /><br />
+
+However, when the <i>Enable automatic finding of currently playing track</i> option is turned on, the main tracklist will locate and set the keyboard focus on the currently playing track whenever any of them starts playing. Or, you could turn that option off and use a hotkey or the toolbar button to locate the playing file instead. You could use its other options in the Options dialog box to determine where in the Media Tree you want to locate the playing files.
+<br /><br />
+
+<table bgcolor="WhiteSmoke"><tr><td width="100%">
+If you want to discus about this add-on, you could visit its related MediaMonkey <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=2&t=49369">forum thread</a>.
+<br /><br />
+
+You could also take a look on <a href="https://zvezdan-d.github.io/index.html">my other add-ons</a> for MediaMonkey.
+
+</td><td valign="middle" align="center" width="250px">
+<div class="download-box" style="float:left;"><a id="download" title="Download" class="download-link" href="https://zvezdan-d.github.io/FindCurrentPlayingTrack-1.3.2.mmip"><span><strong><font size="+1">Download</font></strong> <em>The latest version of the add-on</em></span></a></div>
+</td></tr></table>
+
+<hr width="100%">
+
+<center><img src="https://c1.staticflickr.com/1/264/31772748876_e99118c056_o.png" alt="FindCurrentPlayingTrack-1.2" border="0"></center>
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v1.3.2 - 2017-10-09</dt><ul>
+<li>Fixed: finding of tracks which started playing from outside of MM.
+</ul><br />
+
+<dt>v1.3.1 - 2015-06-22</dt><ul>
+<li>Fixed: some things.
+</ul><br />
+
+<dt>v1.3 - 2013-11-09</dt><ul>
+<li>Added: Ctrl+Alt+F hotkey for manual finding of the currently playing track (could be modified in Options\General\Hotkeys - General: Execute script: Find Currently Playing Track).
+</ul><br />
+
+<dt>v1.2 - 2012-02-14</dt><ul>
+<li>Added: toolbar button for manual finding of the currently playing track;
+<li>Added: independent toolbar for buttons instead of <i>Shortcuts</i> toolbar [MM4];
+<li>Fixed: finding of tracks in FD (removable media), CD and net (mapped drives) sub-folders of Location branch.
+</ul><br />
+
+<dt>v1.1.3 - 2011-06-15</dt><ul>
+<li>Fixed: response of the program when a new track starts to play.
+</ul><br />
+
+<dt>v1.1.2 - 2010-09-20</dt><ul>
+<li>Fixed: selecting of the track in the Album Art with details view mode.
+</ul><br />
+
+<dt>v1.1.1 - 2010-05-09</dt><ul>
+<li>Fixed: error during start-up.
+</ul><br />
+
+<dt>v1.1 - 2010-05-09</dt><ul>
+<li>Added: button on the Shortcuts toolbar to toggle finding of the currently playing track;
+<li>Added: option to select track in the currently displayed tracklist without changing node;
+<li>Fixed: finding of containing folder in the Library\Location node with non-English GUI.
+</ul><br />
+
+<dt>v1.0 - 2010-05-06</dt><ul>
+<li>First public version.
+</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+<ul><li>For MediaMonkey 3.0 or higher - just double-click on the FindCurrentPlayingTrack-xx.mmip file; if you are on Vista or Win7 and you got "Product installation error", make sure you have MM3 set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>; if you downloaded the installation package with IE7 and it changed its extension to a .zip, you should first change it back to a .mmip.</li>
+<li>For MediaMonkey 2.x - rename a .mmip extension to a .zip, extract the FindCurrentPlayingTrack.vbs file to the MediaMonkey's "Scripts\Auto" folder and restart MM program.</li></ul>
+
+You need to accept the license agreement if you want to use this add-on.<br /><br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+The add-on settings are in the <i>Tools / Options</i> dialog box within the <i>General / Find Currently Playing Track</i> page: you could turn on/off the automatic finding of tracks on playback and you could choose if you want to locate folder containing the currently playing track within the Library\Location node or within the My Computer node, or if you want just to select the track in the currently displayed tracklist.<br /><br />
+
+You could also toggle automatic finding and start manual finding of tracks using buttons on the <i>Shortcuts</i> [MM2-3] / <i>Find Currently Playing Track</i> [MM4] toolbar.<br />
+
+<p><font size="+1"><b><a id="limitations">Limitations</a></b></font></p>
+<li>Selecting of the track in the main tracklist works only with the program v3.1.0.1218 or higher.
+<li>Finding of tracks in My Computer folder is not possible with the network drives (although Network works fine within the Library\Location folder); actually, even the built-in <i>Find More from Same\Folder (My Computer)</i> MM option doesn't work with the network drives.
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><img src="http://flagcounter.com/count/gCa/bg=FFFFFF/txt=000000/border=CCCCCC/columns=1/maxflags=5/viewers=3/labels=1/pageviews=1/" border="0"></center>
+
+</div>
+</body>
+</html>

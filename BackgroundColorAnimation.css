@@ -1,0 +1,22 @@
+.tbl {
+  -webkit-animation: background-gradient-change linear 12s infinite alternate;
+  -moz-animation: background-gradient-change linear 12s infinite alternate;
+  -moz-animation: background-gradient-change linear 12s infinite alternate; }
+
+  @-webkit-keyframes background-gradient-change {
+      0%   {background: #c88;}
+      33%  {background: #8c8;}
+      66%  {background: #88c;}
+      100%   {background: #c88;}}
+
+  @-moz-keyframes background-gradient-change {
+      0%   {background: #d88;}
+      33%  {background: #8d8;}
+      66%  {background: #88d;}
+      100%   {background: #d88;}}
+
+  @keyframes background-gradient-change {
+      0%   {background: #d88;}
+      33%  {background: #8d8;}
+      66%  {background: #88d;}
+      100%   {background: #d88;}}

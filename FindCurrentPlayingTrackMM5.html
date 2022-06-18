@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>Find Currently Playing Track (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, Find, Currentlly, Playing, Track">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel="stylesheet" type="text/css" href="DownloadButton.css">
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size="+2">Find Currently Playing Track</font><br />
+Version 2.0<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="FindCurrentPlayingTrack_Ext.htm" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+This is information about the enhanced version of the Find Currently Playing Track add-on, which works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v5.x (there is also its <a href="https://zvezdan-d.github.io/FindCurrentPlayingTrack.html">version</a> for older releases of the program). It allows finding and selecting of the currently playing track in the Media Tree and main tracklist, i.e. it works similarly as the built-in "Find More from Same" and "Focus tracklist on currently playing item" MM options combined.<br /><br />
+
+However, when the <i>Automatically find on play</i> option is turned on, the main tracklist will locate and set the keyboard focus on the currently playing track whenever any of them starts playing. Or, you could turn that option off and use a hotkey or the toolbar button to locate the playing file instead. You could use its toolbar menu to determine where in the Media Tree you want to locate the playing files.<br /><br />
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v2.0 - 2022-06-17</dt><ul>
+<li>Added: version of the add-on for MediaMonkey v5.
+</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+Start MediaMonkey, open Tools / Addons dialog box, click on the <i>Add</i> button and find the .mmip file.<br /><br />
+
+You need to accept the license agreement if you want to use this add-on.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/52153410276_03bbd3c1da_o.png" alt="UpdateLocationOfFiles-3.0" border="0"></center>
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+The add-on will add two toolbar buttons after its installation. The first one allows manual finding of the currently playing track (<i>Find currently playing track</i>). It is enabled only when track is playing. The second button will display a dropdown menu with the additional options.<br /><br />
+
+The main operation of this add-on is performed automatically whenever the playing track is changed. To turn that behavior on or off, you could toggle the <i>Automatically find on play</i> option from the menu. The other options in the menu determine where in the Media Tree you want to locate the playing files:<ul>
+<li><i>Selected branch</i>: the add-on will try to find the playing track within the selected branch of the Media Tree; for example, if you have selected any node in the Albums branch of Music collection, the add-on will try to find the album that contains the playing track in that collection.<br />
+The supported branches are: Albums, Artists, Album Artists, Producers, Conductors, Composers, Actors, Publishers, Directors, Genres, Years, Location and Folder. If you have selected any node from another branch, e.g. Files to Edit or Classification, the add-on will try to find the track within the Location branch of the selected collection instead; if you have selected node that is not within any collection, e.g. Playlists, Web or Pinned, the add-on will find the track within the Folders branch;</li>
+<li><i>Current tracklist</i>: the node will not be changed and the add-on will try to find the playing track in the currently displayed tracklist; if it doesn't contain the playing track, none track will be selected;</li>
+<li><i>Entire Library / All tracks</i>: the add-on will try to find the playing track in the <i>All tracks</i> node of the <i>Entire Library</i> collection; if the playing track is not already added to the Library, none track will be selected;</li>
+<li><i>Entire Library / Location</i>: the add-on will try to find the playing track within the <i>Location</i> branch of the <i>Entire Library</i> collection; if the playing track is not already added to the Library, none track will be selected;</li>
+<li><i>Folders</i>: the add-on will find the playing track within the <i>Folders</i> branch of the Media Tree.</li>
+</ul>
+
+If you prefer keyboard, you could use a hotkey for the <i>Find currently playing track</i> command. It is Ctrl+Alt+F by default, but you could change it in the Tools / Options / General / Hotkeys / Edit hotkey / Actions. The hotkey works only if you restart the program after installation.<br />
+
+<p><font size="+1"><b><a id="jsonproperties">Additional JSON properties</a></b></font></p>
+There are some properties in the "FindCurrentPlayingTrack" {} section of the persistent.json file for some less needed options:<br />
+<li>TracklistAllways - determines what happens when the located node doesn't have set the List view: 0 - do nothing (track may not be displayed and selected with some views, like Grid or Browser), 1 - change view to List temporarily (default);<br /><br />
+
+<li>FindWhenAutoSetOn - determines what happens when you turn on the <i>Automatically find on play</i> option while the track is already playing: 0 - do nothing (default), 1 - find the track.<br /><br />
+
+You could find the location of the persistent.json file depending on the version of MediaMonkey and Windows <a href="https://www.mediamonkey.com/support/knowledge-base/mediamonkey-install-config/modifying-the-mediamonkey-db-and-ini-files/">here</a>. If you want to modify anything in it using e.g. Notepad, you should do that with closed MediaMonkey application.<br />
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+If you are interested about my other add-ons for MediaMonkey, you could visit the <a href="https://zvezdan-d.github.io/index.htm">following page</a>.<br /><br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><img src="http://flagcounter.com/count/gCa/bg=FFFFFF/txt=000000/border=CCCCCC/columns=1/maxflags=5/viewers=3/labels=1/pageviews=1/" border="0"></center>
+
+</div>
+</body>
+</html>
