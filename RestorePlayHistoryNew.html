@@ -1,0 +1,201 @@
+<html>
+<head>
+    <title>Restore/Synchronize Database (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, video, Windows, software, management, organization, cataloger, Restore, Synchronize, Play History, Date Added, Playlists, Metadata, Filters, Collections">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size="+2">Restore/Synchronize Database</font><br />
+Version 4.0.1<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="RestorePlayHistory_Ext.htm" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+<p>This is information about the enhanced version of Restore/Synchronize Database add-on for <a href="http://www.mediamonkey.com/">MediaMonkey</a> v3.x-4.x. The <a href="https://zvezdan-d.github.io/RestorePlayHistory.html">freely available version</a> of this add-on is already very effective for transferring data between database files, but the enhanced version is even more powerful and it has added many very useful options; among others it allows import/export of records about unmatched files, i.e. files that are missing from the database, so you could restore data even to the empty databases.<br /><br />
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v4.0.1 - 2019-10-31</dt><ul>
+<li>Fixed: error on export/import playlists to/from MM4.1+ databases when the option <i>Clear all pls. first</i> is turned off.</ul><br />
+
+<dt>v4.0 - 2016-12-21</dt><ul>
+<li>Added: option <i>Add unmatched files</i> which allows import/export of database records about files that are missing in the current/backup database;
+<li>Added: option <i>Only if physically exist</i> that determines which records of unmatched files will be imported/exported;
+<li>Added: option <i>Copy media files</i> which allows to physically copy unmatched files from/to the specified Backup/Current location;
+<li>Added: option <i>Overwrite files</i> that determines if files with the same names will be overwritten in the target location when copying media files;
+<li>Added: option <i>Restore data only for - Unmatched files</i> that is enabled if <i>Add unmatched files</i> option is turned on, so the data in matched files will not be restored;
+<li>Added: <i>Matched criteria</i> combo box that allows choosing of criteria that was available in the previous versions only through the manual edit of MediaMonkey.ini file using the ExtraMatchTests key;
+<li>Added: criterion <i>only corresponding files at specified locations</i> to match files between backup and current database;
+<li>Added: <i>Backup/Current location of files</i> text boxes which could be used to specify source and destination base folders if they are different;
+<li>Renamed: option <i>Clear Played table & Playcount/LastTimePlayed fields first</i> to <i>Clear existing playhist. of matched files first</i>;
+<li>Added: option <i>Use Played table to get Play counter</i> which determines how the Play Counter field will be calculated when restoring play history;
+<li>Renamed: option <i>Clear Playlists & PlaylistSongs tables first</i> to <i>Clear all pls. first</i>;
+<li>Added: option <i>Replace equiv. pls.</i> that should be set if you want to replace playlists with the same names (within the same parent playlist) when restoring playlists;
+<li>Added: option <i>Only on last level</i> that should be set if you want to replace playlists with the same names only if they are on the last (rightmost) level of playlists, i.e. they don't have child playlists;
+<li>Renamed: option <i>Clear Filters table first (also Views & NodeViews for MM4 db)</i> to <i>Clear related tables first</i>;
+<li>Added: option <i>Replace equivalent collections with the same names</i> that should be set if you want to replace collections with the same names;
+<li>Added: combo box <i>All</i> which could be used to tick on/off all check boxes for metadata (Title, Artist, ...);
+<li>Added: button with combo box which allow showing/selecting of matched/unmatched files in the main filelist;
+<li>Changed: dialog box that is now resizable;
+<li>Improved: speed of many SQL operations;
+<li>Improved: restoring data of duplicate source files combining their playing history into the target files.</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+Just double-click on the RestorePlayHistory-xx.mmip file; if you are on Vista or newer Windows and you got "Product installation error", make sure you have MM set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>.<br /><br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+First of all, it is highly recommended that you periodically make a backup of the database file. You could use this add-on to make the backup or you could copy the database file by yourself - <a href="https://www.mediamonkey.com/support/knowledge-base/mediamonkey-install-config/modifying-the-mediamonkey-db-and-ini-files/">here</a> you could find its location depending of the version of MediaMonkey and Windows.<br /><br />
+
+The next important thing with this add-on is that it could restore data from/to the backup (external) database file, but it cannot restore the current (active) database with itself. However, if you have corrupted current database and you don't have any backup file, with this enhanced version of the add-on you could do this:<br />
+- open the program and turn off the <i>Folder Monitoring</i> continuous scan option for all folders (<i>Tools &gt; Options &gt; File Monitor</i> button on the <i>Library</i> sheet</i>);<br />
+- exit the program;<br />
+- make a copy of your current database file to some temporary folder and delete it from the <a href="https://www.mediamonkey.com/support/knowledge-base/mediamonkey-install-config/modifying-the-mediamonkey-db-and-ini-files/">MM folder where it is stored</a> or just rename it;<br />
+- start the program and, since the current database is missing now, the program will create a new empty one;<br />
+- open the add-on's dialog box using <i>Tools &gt; Scripts &gt; Restore/Synchronize Database</i> menu item;<br />
+- enter the path of file that you have copied to the temporary folder into the <i>Backup database file</i> text box;<br />
+- choose <i>Add unmatched files</i>;<br />
+- set other data that you want to restore;<br />
+- click on the Import button;<br />
+- if everything is fine, resume your settings of the <i>Folder Monitoring</i>.
+<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/412/30974596333_113dc70e05_o.png" alt="RestorePlayHistory-4.0-01b" border="0"></center>
+<br />
+
+The <i>Restore/Synchronize Database</i> dialog box can be opened using its corresponding item in the <i>Tools / Scripts</i> menu. The backup (external) database file should be specified first in the <i>Backup database file</i> text box. The data will be transferred (restored) from that file to the current database if you choose <i>Import</i> or they will be transferred from the current database to the specified backup file if you choose <i>Export</i>. The backup database file should be different than the current database file, i.e. you cannot specify the current database file in this text box.<br /><br />
+
+Immediately after you specify the backup file, the add-on will start comparing the backup with the current database and that process could be very slow, especially with the higher <i>Matching criteria</i> (more about it latter). So, if you have a large database with too many records, it is recommended that you choose lower <i>Matching criteria</i> before you specify the backup database file. The remaining options in the dialog box determine which data will be restored and for which files.<br /><br />
+
+<b>File restrictions</b><br />
+You could choose which files should be restored using several <i>Restore data only for</i> options. If you turn on the <i>Selected file(s)</i> option, data will be restored only for matched and/or unmatched files that belong to the group of files that are selected in the main filelist. You cannot import data for unmatched files if you turn on the <i>Selected file(s)</i> option, since you can select only files in the filelist that belong to the current database, but you could import data for matched files. The export of data is possible using this option both for matched and unmatched files. If you want to restore data for unmatched files, you need to turn on the <i>Add unmatched files</i> option as well, which will be mentioned in details latter.<br /><br />
+
+With the <i>Files in collection</i> option (<i>Filtered files</i> in MM3) you could choose to restore data only for matched and/or unmatched files in the specified collection. This option is mutually exclusive with the previous <i>Selected file(s)</i> option, i.e. you could use one of them, but not both. Similarly with the previous option, you could export data both for matched and unmatched files from the specified collection without a problem, also you could import data for matched files just fine.<br /><br />
+
+It is very important to know that the import of unmatched files using some specified collection could result with faulty data in some cases! It shouldn't be a problem if you have selected collection with a criteria having simple fields that are stored only in the Songs table, e.g. Type, Extension, Bitrate, Comment, Grouping, Custom 1-5... The native collections, like Music or Video, are based on the Type field and they are generally safe.<br /><br />
+
+However, there could be a problem if you use some field whose data are stored in several tables, e.g. Artist, Album Artist, Album, Genre, Tempo, Mood, Occasion, Quality, Composer, Conductor, Lyricist, Producer, Actor or Playlist, while using conditions where you could choose one or more values from the table with check boxes (conditions like "contains/starts with" are safe). If you are not sure what kind of collection is that you want to use to import unmatched files, just send me an e-mail with the screenshot of the collection's settings and I will tell you if it is safe for use.<br /><br />
+
+The last option from the <i>Restore data only for</i> group is <i>Unmatched files</i> and it should be turned on if you want to restore data only for such files; the matched files will not be restored in that case even if you have them. This option is enabled only if you turn on the <i>Add unmatched files</i> option first.<br /><br />
+
+The <i>Matching criteria</i> combo box determines which criteria will be used to match files between the backup and current databases. These criteria are cumulative, e.g. if you choose the 4-th one, all previous testing will be executed before that one:<br />
+0. <i>only corresponding files at specified locations</i><br />
+1. <i>previous criterion OR equal full paths (folders\filename.extension)</i><br />
+2. <i>all prior criteria OR equal checksums</i><br />
+3. <i>all prior OR equal filename.ext AND FileLength AND Album AND Year AND Track#</i><br />
+4. <i>all prior OR equal paths w/o drive letter, first folder & ext. AND SongLength</i><br />
+5. <i>all prior OR equal filename w/o ext. AND SongLength AND AlbumArtist AND Album AND Year AND Track#"</i>
+<br /><br />
+
+These criteria are already known from the previous versions of the add-on, excluding the first one in the list (0.). The 2-5. criteria cover situations with modified file locations after backup. The 4-5. criteria further cover situations with different media formats in the backup and current databases, e.g. if the backup database contains .flac tracks and the current one contains .mp3 tracks instead, but with the same filename, song length and other mentioned tags. The data for tracks that are not matched between the current and backup database files would not be restored, unless you choose the <i>Add unmatched files</i> option.<br /><br />
+
+The old version of the add-on allowed matching only one-to-one file, so duplicates was not all restored. However, the new version allows duplicates in matched files (duplicates in the backup file on the import, or duplicates in the current database on the export), in which case their data (particularly the play history) will be merged into the target files. The second criteria is default in the new version because each additional level of matching could slow down the add-on and could even result with the false duplicates.<br /><br />
+
+<b>Locations of files</b><br />
+If you want to use the first option from the <i>Matching criteria</i> list, you need to have specified locations of files that are stored in the backup and current databases using the <i>Backup/Current location of files</i> text boxes. This is useful if you have the same hierarchy of folders in both backup and current databases differing only in their base folders. For example, I could have the same structure of folders within the c:\Users\Zvezdan\My Music\ folder in the backup database and e:\Media\Music\ in the current database.<br /><br />
+
+You could specify <i>Backup/Current location of files</i> even if you choose some another criteria from the <i>Matching criteria</i> list, but in that case the matching will be first tested for the first criterion, i.e. for the specified locations, and after that for another criteria. If you leave these location text boxes empty, the matching will not be performed using the first option from the <i>Matching criteria</i> list, so you need to specify some another criteria or you will get zero matched files.<br /><br />
+
+The <i>Backup/Current location of files</i> text boxes could be used not only to specify locations for matching criteria, but also for specifying the source and destination locations when adding unmatched files and copying of media files if the corresponding options are turned on.<br /><br />
+
+<b>Unmatched files (missing in database)</b><br />
+The <i>Add unmatched files</i> option allows adding records of files that are missing in the current database if you choose Import, or you could use it to add files that are missing in the backup database file on Export. For example, if you have one old backup database file on the shared NAS, and if you have added some media files to the current database in the meantime, you could choose that option to export records about those files to the backup database.<br /><br />
+
+If you turn on the <i>Add unmatched files</i> option, all fields of unmatched files from the Songs table will be copied and also data from other tables related to the metadata (Artists, Genres, ...), even if you have turned off the <i>Restore metadata in related tables</i> option. However, if you want to restore play history for unmatched files, you need to turn on the <i>Restore playhistory</i> option as well. The records about unmatched files could be restored only for files that physically exist at the source location if you choose the <i>Only if physically exist</i> option.<br /><br />
+
+When using the <i>Add unmatched files</i> option, only records about files are transferred to the target database, but not media files themselves, unless you turn on the <i>Copy media files</i> option as well. The <i>Copy media files</i> option is enabled only if you have specified <i>Backup/Current location of files</i>. This option is not as sophisticated as the native <i>Add/Rescan files to the Library</i> option of the program, e.g. it cannot copy other files from the folder that are related to the copied media files (e.g. .txt or .html), so if you want such thing you better use the MM option to add missing files instead. If you choose to copy media files, you could determine what will happen if you have copied files with the same names as the ones at the target locations using the <i>Overwrite files</i> option.<br /><br />
+
+<b>Play history</b><br />
+The <i>Restore playhistory</i> option should be turned on if you want to restore the playing data in the Played table and the PlayCounter/LastPlayedDate fields in the Songs table for matched and/or unmatched files. If you run this add-on twice with the same backup file, and if you choose this option again, it will not add the play history twice - the add-on will compare those data from the backup and current database files and if they are same it will skip them, i.e. it will add (merge) only the new playing data.<br /><br />
+
+However, if you turn on the option <i>Clear existing playhist. of matched files first</i>, the add-on will remove all playing data from the Played table for matched files from the target database before restoring them from the source database. Also, the PlayCounter/LastPlayedDate fields in the target Songs table will be based only on the data from the source database in that case. So, be careful when using this option.<br /><br />
+
+The option <i>Use Played table to get Play counter</i> should be turned on if you want to calculate the value that will be stored to the target PlayCounter field based only on the restored playing data from the source Played table; otherwise this add-on will calculate that value using the PlayCounter field from the source database. If you play your media files only on the computer, these two values should be the same. However, if you play your files on some portable player, the PlayCounter field could contain value that is different (greater) than the number of playing data in the Played table. So, you should choose which kind of calculation you want to use for that field.<br /><br />
+
+<b>Playlists</b><br />
+You could restore both <i>Static playlists</i> and/or <i>AutoPlaylists</i> using the corresponding Restore options. However, some type of playlists will be restored even if you do not select them if they are parents of the playlists of the chosen type. For example, if you have some auto-playlist that has the child static playlists, that auto-playlist will be restored if you select <i>Static playlists</i> even if the <i>AutoPlaylists</i> is turned off.<br /><br />
+
+The option <i>Clear all pls. first</i> is enabled only if you have turned on both <i>Static playlists</i> and <i>AutoPlaylists</i> check boxes. If you have that option turned on, the add-on will clear the Playlists and PlaylistSongs tables in the target database completely before restoring playlists from the source database. Please be very careful when using that option! If you turn it off, the add-on will merge the playlists from the source database with the existing ones in the target database. This option is mutually exclusive with the next <i>Replace equiv. pls.</i> option.<br /><br />
+
+The option <i>Replace equiv. pls.</i> should be turned on if you want to replace the content of playlists in the target database with the content of playlists from the source database which have the same names (within the same parent playlist). That option is enabled if you have either <i>Static playlists</i> or <i>AutoPlaylists</i> check box turned on and it is mutually exclusive with the previous <i>Clear all pls. first</i> option, i.e. you cannot replace playlists with the same names if you choose to clear all playlists in the target database first.<br /><br />
+
+The option <i>Only on last level</i> should be turned on if you want to replace playlists with the same names only if they are on the last (rightmost) level of playlists, i.e. they don't have child playlists. Otherwise, the content of all equivalent playlists will be replaced, even if they have child playlists.<br /><br />
+
+<b>Collections/Views (Filters in MM3)</b><br />
+The option <i>Restore collections/views</i> should be turned on if you want to restore collections and views in MM4, or filters in MM3. If you turn on the <i>Clear related tables first</i> option as well, the collections/views will be completely cleared in the target database before restoring the collections/views from the source database. Please be very careful when using that option! If you turn it off, the add-on will merge the collections/views from the source database with the existing ones in the target database.<br /><br />
+
+The option <i>Replace equivalent collections with the same names</i> should be turned on if you want to replace collections in the target database with the collections from the source database which have the same names. Similarly to the playlists, the <i>Replace ...</i> option cannot be used if the previous <i>Clear ...</i> option is turned on.<br /><br />
+
+<b>Metadata</b><br />
+You could restore the selected metadata for matched files if you turn on the option <i>Restore metadata in related tables</i>, in which case the add-on will update Songs table and other tables that are connected to it by related fields, e.g. Artists or Genres. All metadata will be automatically restored for unmatched files if you turn on the <i>Add unmatched files</i> option, even if the <i>Restore metadata in related tables</i> option or some particular metadata below that option is turned off.<br /><br />
+
+The <i>All</i> check box doesn't represent any new option; it is actually added to allow a quick way to toggle on/off all check boxes for particular metadata below it.<br /><br />
+
+The option <i>Update tags in files too (only on Import)</i> allows updating of tags in media files for the corresponding metadata in database on Import. If you forget to turn on that option, but you want to have updated tags in files as well, after restoring of metadata in the database, you could choose the <i>Synchronize Tags</i> option of the program.<br /><br />
+
+The remaining check boxes on the bottom of the dialog box allow you to choose which particular metadata you want to restore, e.g. Date Added, Artist...<br /><br />
+
+<b>Info line and commands</b><br />
+The information line on the bottom of the dialog box displays the total number of files in the backup (external) and current databases, as well as the number of matched, unmatched and existing files both for the backup and current databases. If you don't have duplicates, the number of matched files for the backup and current databases should be equal (the numbers inside parentheses are the number of matched files for each matching criterion).<br /><br />
+
+The leftmost button on the bottom of the dialog box allows showing/selecting of matched/unmatched files in the main filelist of the program, with the particular action that could be chosen from the following dropdown list (<i>Keep matched</i>, ...). The next combo box determines which chosen files will be showed/selected - only those from the current filelist or those from the entire Library.<br /><br />
+
+You could click the <i>Backup</i> button if you want to make a copy of your current database file using the destination path specified in the <i>Backup database file</i> text box.<br /><br />
+
+After you have adequately set all previously mentioned options, you could click the <i>Export</i> button if you want to transfer data from the current database to the specified backup file, or you could click the <i>Import</i> button if you want to transfer data from the specified backup file to the current database. Then just wait for the add-on to finish, it could be rather slow and maybe will need several minutes with larger databases.<br /><br />
+
+<p><font size="+1"><b><a id="inikeys">Additional INI keys</a></b></font></p>
+The [RestorePlayHistory] section of the MediaMonkey.ini file contains one less used option that is not represented with GUI:<br />
+<li>PlistAltMethod - determines the restoring method of static playlists in MM3: slower, but more reliable method = 0 (default), faster method = 1. The default method is very slow, but it is more reliable when the backup file contains corrupted database. The another method could cause the missing tracks from playlists, but it is a way faster. For example, with one test database the faster method lasted approx. 150 seconds instead of 1600 with the default method.<br /><br />
+
+The MediaMonkey.ini file is stored in the c:\Documents and Settings\User_Name\Application Data\MediaMonkey\ folder for MM4 and Win7. You could find the location of the .ini file depending of the version of MediaMonkey and Windows <a href="https://www.mediamonkey.com/support/knowledge-base/mediamonkey-install-config/modifying-the-mediamonkey-db-and-ini-files/">here</a>. If you want to modify the mentioned key in it using e.g. Notepad, you should do that with closed MediaMonkey application.<br /><br />
+
+<p><font size="+1"><b><a id="important">Important</b></font></p>
+This add-on is relatively dangerous and could cause some corrupted data in the current database, especially if you forcibly terminate the program during its execution! Please make one more backup of the current database before you apply this add-on. Well, maybe you should make a copy of the backup file itself, because  this add-on could modify the backup file as well when you choose the <i>Export</i> command (which could be done mistakenly).<br /><br />
+
+If you have upgraded computer or changed hard disk and if you copied all media files to it keeping the same folder structure, then you could first try to transfer MM database to it and update it using the <a href="https://zvezdan-d.github.io/UpdateLocationOfFiles.html">Update Location of Files in Database</a> add-on instead since it is a way faster and simpler to use.<br /><br />
+
+If you choose any of the <i>Clear ...</i> options, the related tables in the target database will be deleted first after applying the <i>Export/Import</i> command, as it is mentioned in the Usage section! If you want to merge data, you should leave those options unchecked.<br /><br />
+
+<p><font size="+1"><b>Disclaimer</b></font></p>
+This software is provided 'as-is', without any express or implied warranty. In no event will the author be held liable for any damages arising from the use of this software.<br /><br />
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+This add-on is a false positive reported as a worm by F-Secure. The author of F-Secure promised me that will update its database and put the add-on on white-list, but still didn't. If you go to the <a href="https://www.virustotal.com/en/file/17a99c86d3056a903bb16ba52fc6193b6bc56545b4322a8c90244dade4d792d6/analysis/1475443255/">www.virustotal.com/en/</a> site, you will see that it is safe tested by 54 popular anti-virus engines; the only one reporting a worm in it is F-Secure. By the way, the F-Secure was constantly having the largest number of false positives in last few years according to the <a href="https://www.av-comparatives.org/real-world-protection-tests/">Real-World Protection Test</a> by AV-Comparatives.<br /><br />
+
+If you are interested about my other add-ons for MediaMonkey, you could visit the <a href="https://zvezdan-d.github.io/MediaMonkeyAddons.html">following page</a>.<br /><br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+</div>
+
+</body>
+</html>

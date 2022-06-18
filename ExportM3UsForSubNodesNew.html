@@ -1,0 +1,576 @@
+<html>
+<head>
+    <title>Export/Import Playlists (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, Export, Import, M3U, ASX, XSPF, Playlist, Child, Nodes">
+    <link href='BackgroundColorAnimation.css' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size="+2">Export/Import Playlists</font><br />
+Version 6.0<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="ExportM3UsForSubNodes_Ext.htm" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+<p>This is information about the enhanced version of Export/Import Playlists add-on for <a href="http://www.mediamonkey.com/">MediaMonkey</a> v2.x-4.x. The <a href="https://zvezdan-d.github.io/ExportM3UsForSubNodes.html">freely available version</a> of this add-on is already one of the largest MediaMonkeys add-ons that is the most flexible for exporting playlist files and creating playlists. However, the enhanced version is two times larger and it has added many very useful options; among others it allows import of M3U playlist files to MediaMonkey playlists with searching for similar media files already added to the Library, which enables <a href="#transferpls">transfer of playlists</a> to another computer.<br /><br /></p>
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v6.0 - 2021-02-16</dt><ul>
+<li>Added: import of ASX and XSPF files; import of M3U and M3U8 files doesn't require M3U node from the My Computer branch to be selected with the new "Import Playlist File(s) *" commands;
+<li>Added: command <i>Export Playlists Node to Playlist Files</i> for saving the whole Playlists branch from the Media Tree panel as playlist files without need for Playlists node to be selected;
+<li>Renamed: command <i>Export to M3U/ASX/XSPF Playlist</i> to <i>Export Selected Node as Playlist File</i>;
+<li>Renamed: command <i>Export As Playlist File to Selected Folder</i> to <i>Export Selected Node to Same Folder</i>;
+<li>Renamed: command <i>Export to Playlist File &amp; Copy Media Files</i> to <i>Export Selected Node &amp; Copy Media Files</i>;
+<li>Renamed: command <i>Export Child Nodes As Playlist Files to Same Folders</i> to <i>Export Child Nodes to Same Folders</i>;
+<li>Renamed: command <i>Export Child Nodes to Playlist Files &amp; Copy Media Files</i> to <i>Export Child Nodes &amp; Copy Media Files</i>;
+<li>Renamed: command <i>Export M3U Playlists in Child Nodes to Same Folders</i> to <i>Export M3U Playlists to Same Folders</i>;
+<li>Added: command <i>Import Playlist Files to Playlists Node</i> for importing playlist files (M3U, M3U8, ASX or XSPF) from the specified base folder to the Playlists branch in the Media Tree panel;
+<li>Added: command <i>Import Playlist File to Selected Playlist</i> for importing a specified playlist file (M3U, M3U8, ASX or XSPF) to the playlist selected in the Media Tree panel;
+<li>Added: command <i>Import Playlist File to Playlist</i> for importing a specified playlist file (M3U, M3U8, ASX or XSPF) to the playlist selected in menu;
+<li>Added: command <i>Import Playlist Files in Child Folders</i> for importing the playlist files (M3U, M3U8, ASX or XSPF) from a specified folder (and its sub-folders) to the base playlist selected in the Media Tree panel;
+<li>Added: command <i>Import Playlist Files to Playlists</i> for importing the playlist files (M3U, M3U8, ASX or XSPF) from a specified folder (and its sub-folders) to the base playlist selected in menu;
+<li>Renamed: command <i>Import to Playlist</i> to <i>Import Selected Node to Playlist</i>;
+<li>Added: <i>Customize</i> dialog box for visibility settings of the menu commands;
+<li>Renamed: option <i>Parent level</i> to <i>Into parent level</i>, and inverted its old effect on export;
+<li>Added: <a href="#inikeys">the additional .ini keys</a> <i>RemoveChildPlistsMode, UseAutoPlistsSameNameMode</i> and <i>OverUnmodifiedPlsFiles</i>;
+<li>Fixed: error on import of too many files in some occasions;
+<li>Fixed: extension of exported M3U files in UTF-8 format to the .M3U8;
+<li>Fixed: resizing of the Options dialog box with the skinned version of the program on Windows Vista and later;
+<li>Improved: all "* M3U Playlists *" commands from the menu are now always enabled and don't require a node from the My Computer branch to be selected; however, these commands are inferior to the newly added "* Playlist File(s) *" commands and they are kept only if a newly added command fails from an unknown reason.</ul><br />
+
+<dt>v5.4.1 - 2019-11-22</dt><ul>
+<li>Fixed: removal of the old playlist files on export of the corresponding empty playlists when the option <i>Skip export/import of - Empty playlists</i> is turned on;
+<li>Fixed: missing Export/Import Playlists item from the tree pop-up menu in some rare cases.</ul><br />
+
+<dt>v5.4 - 2018-06-11</dt><ul>
+<li>Added: command <i>Export to Playlist File & Copy Media Files</i> to all relevant menus (the tree and filelist pop-ups, File menu, ...), which is similar to the existing <i>Export Child Nodes to Playlist Files & Copy Media Files</i>, but it is applied only on the selected node/files;
+<li>Added: ability to use <i>Replace/With</i> settings from the <i>Options</i> dialog box to set mappings between media files and copied ones when using commands from the menu that have "Copy Media Files" in their name (until now it was possible to set mappings only with the option <i>Use mask for specifying paths</i>);
+<li>Added: ability to copy Album Art in external files together with the corresponding media files if they are in the same folders (which could be disabled using <a href="#inikeys">the additional .ini key</a> <i>CopyAlbumArtFiles</i>);
+<li>Added: confirmation before applying any "Copy Media Files" command (which could be disabled using <a href="#inikeys">the additional .ini key</a> <i>CopyMediaFilesConfirmed</i>);
+<li>Added: message when it is not possible to copy media file when using a "* Copy Media Files" command for whatever reason, e.g. wrong <i>Replace/With</i> strings (which could be disabled with IgnoreFileErrors key);
+<li>Fixed: coping of media files with the option <i>Use masks</i> when the target folders don't exist;
+<li>Added: ability to use <i>Replace</i> and <i>Relative</i> options at the same time, but the path replaced by <i>Replace</i> option should be appropriate for getting its relative form;
+<li>Fixed: <i>URL</i> and <i>Unix</i> options used together with the <i>Replace</i> option in some specific cases;
+<li>Improved: speed of import when using the <i>Replace</i> option in some cases.</ul><br />
+
+<dt>v5.3.6 - 2017-02-22</dt><ul>
+<li>Fixed: 100% CPU and program crash with <i>When any playlist is added or modified</i> option with some auto-playlists;
+<li>Improved: automatic export with <i>When any playlist...</i> option, e.g. all playlists are not auto-exported after first modification of some playlist after startup, but only that modified playlist.</ul><br />
+
+<dt>v5.3.5 - 2017-01-24</dt><ul>
+<li>Fixed: <i>Replace - Paths in playlist files</i> option to allow multiple replacements per file, e.g. if you specify L:\Music\".flac in the <i>Replace</i> text box and ..\Music\".mp3 in the <i>With</i> text box, you will get replaced L:\Music\ with ..\Music\ and/or .flac with .mp3, even for the same files;
+<li>Fixed: error which sometimes happens when trying to import .m3u files while automatic export every x minutes is already enabled (manual import or export is still not recommended at the same time with automatic export every x minutes, especially because they share many of their settings).</ul><br />
+
+<dt>v5.3.4 - 2016-10-02</dt><ul>
+<li>Fixed: error when trying to replace paths in playlist files with empty string (broken in v5.1).</ul><br />
+
+<dt>v5.3.3 - 2016-04-21</dt><ul>
+<li>Fixed: export of playlists with the same names within the same parent playlist when modifying them if the automatic export is set with the <i>When any playlist is added or modified</i> option;
+<li>Fixed: error on replacing multiple paths in playlist files (broken in v5.3).</ul><br />
+
+<dt>v5.3.2 - 2015-11-11</dt><ul>
+<li>Fixed/Improved: automatic export with <i>When any playlist is added or modified</i> option.</ul><br />
+
+<dt>v5.3.1 - 2015-10-31</dt><ul>
+<li>Fixed: error with <i>Import Child Nodes to Playlists</i> and <i>Import M3U Playlists from Child Nodes</i> commands (broken in v5.3).</ul><br />
+
+<dt>v5.3 - 2015-10-08</dt><ul>
+<li>Added: <i>Skip export/import of - Empty playlists</i> option which allows export of empty playlist files (even if the source folders don't contain any available file) or import of empty folders into the Playlists branch creating empty playlists;
+<li>Added: <i>Delete all playlist files in target folder(s) before each export</i> option which removes all playlist files from the specified target folder and/or its sub-folders recursively (depending of your settings in the add-on's Options dialog box). If this option is turned on, the playlists files will be removed on each export, automatic or manual, so please be extremely careful when using it!<br />
+The new control for this option has taken place instead of the <i>Exclude files - With extension</i> text box because of the lack in space in the already overcrowded Options dialog box; it seems that nobody used that option anyway, but if you really need a possibility to exclude some extensions from export, then you could create some collection with excluded such files to get the same effect. Of course, the related Ini keys are still in effect (<i>SkipExportExtensions</i> and <i>SkipListExtensions</i>) so you will be able to use it by manual editing of the Ini file, like many other Ini keys of this add-on that don't have corresponding GUI options (more about them in the <a href="#inikeys">Additional INI keys</a> section).
+<li>Added: a hot-key for <i>Export to M3U/ASX/XSPF Playlist</i> commands which is Shift+Ctrl+E by default, but you may modify it using the <i>ExportFilesToM3UHotkey</i> key in the ExportM3UsForChildNodes section of the MediaMonkey.ini file;
+<li>Added: ability to import files/nodes to static playlists that are children of auto-playlists;
+<li>Fixed: settings of playlist for automatic export with non-skinned program (broken in 4.0).</ul><br />
+
+<dt>v5.2 - 2015-06-06</dt><ul>
+<li>Added: <i>Join folder levels</i> option which allows export to the single folder using only captions of the corresponding nodes; if that option is turned on, the behavior would be as before using captions of all parent nodes as well. For example, if I have the following tree branch:<br />
+<ul><li>Rock
+    <ul><li>Pink Floyd
+        <ul><li>Dark Side of the Moon</li>
+            <li>Wish You Were Here</li>
+        </ul></li>
+    </ul></li>
+</ul>
+
+with the mentioned option turned off I would get: "Dark Side of the Moon.m3u" and "Wish You Were Here.m3u" files, but if I turn it on I would get "Rock - Pink Floyd - Dark Side of the Moon.m3u" and "Rock - Pink Floyd - Wish You Were Here.m3u" files.
+
+<li>Renamed: <i>Split</i> check box to <i>Split folder levels</i> that is enabled when <i>To nested folders/playlists</i> is selected; the same check box is using for <i>Join folder levels</i> option if <i>To single folder/playlist</i> is selected.</ul><br />
+
+<dt>v5.1 - 2015-01-21</dt><ul>
+<li>Added: possibility to replace two or more paths with the same number of another paths using " (double quote) as a separator between paths (only when the <i>Use mask for specifying paths</i> option is turned off), applicable both for export and import.<br /><br />
+
+For example, if you enter <i>Replace:</i> i:\music\artists\"i:\music\soundtrack\ and <i>With:</i> TF1:\music\"TF2:\music\ then you will get replaced i:\music\artists\ with TF1:\music\ and i:\music\soundtrack\ will be replaced with TF2:\music\ (although you could write it as <i>Replace:</i> "i:\music\artists\", "i:\music\soundtrack\" and <i>With:</i> "TF1:\music\", "TF2:\music\").<br /><br />
+
+If you want to replace two or more paths with single path then use the | separator in the <i>Replace</i> string as it was the case with the previous versions of the add-on, e.g. if you enter <i>Replace:</i> i:\music\artists\"i:\music\soundtrack\|I:\Music\Genre\ and <i>With:</i> TF1:\music\"TF2:\music\ then you will get replaced both i:\music\soundtrack\ and I:\Music\Genre\ paths with TF2:\music\.</ul><br />
+
+<dt>v5.0 - 2014-05-14</dt><ul>
+<li>Improved: <i>Import Playlists for Child Nodes</i> command (instead of the old <i>Create Playlists for Child Nodes</i> one) which allows adding the media files specified in M3U playlist files from the selected My Computer folder and/or its sub-folders (depending of the settings in the Options dialog box) to the Library, even if the referenced media files don't exist physically on the disk;
+<li>Added: <i>Import to Playlist</i> command for importing a single folder (if the command is selected in the tree's context menu) or importing of selected files (if it is selected in the filelist's context menu) to the specified MM playlist;
+<li>Added: <i>Import M3U Playlists from Child Nodes</i> command for importing only M3U files from My Computer branch to the specified MM playlist;
+<li>Improved: <i>Replace - Paths in playlist files</i> option could be used on import of files as well, not only on export (actually, paths are not directly replaced in playlist files themselves, but the media files are importing from the paths in playlists files that are replaced, which is useful if paths in playlist files don't point to the exact drives/folders);
+<li>Added: option to use MM masks for replacing paths in playlist files, both for export and import (requires MM v4.1.0.1662 or higher);
+<li>Added: option for automatic export of MM playlists when they are modified, renamed, moved or added to the Playlists branch (requires MM v4.1.0.1648 or higher);
+<li>Added: option for automatic removal of exported playlist files when corresponding MM playlists are removed from the Playlists branch (requires MM v4.1.0.1648 or higher);
+<li>Added: <i>Split</i> option that allows export/import with captions of M3U nodes in My Computer parsed into corresponding nested levels of folders/playlists using specified <i>Level separator</i> (which is kind of opposite to saving playlists to the single folder using the same separator);
+<li>Changed: <i>To parent folders</i> and <i>To child folders</i> options are replaced with <i>To nested folders/playlists</i> option and <i>Parent level</i> check box.</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+<ul><li>For MediaMonkey 3.0 or higher - just double-click on the ExportM3UsForSubNodes-xx.mmip file; if you are on Vista or newer Windows and you got "Product installation error", make sure you have MM3 set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>; if you downloaded the installation package with IE7 and it changed its extension to a .zip, you should first change it back to a .mmip.</li>
+<li>For MediaMonkey 2.x - rename a .mmip extension to a .zip, extract the ExportM3UsForSubNodes.vbs file to the MediaMonkey's "Scripts\Auto" folder and restart MM program.</li></ul><br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+Using this add-on is quite similar to the older <a href="https://zvezdan-d.github.io/ExportM3UsForSubNodes.html">Export/Create Playlists</a> version. This add-on has three main modes of work: manual and automatic export and manual import. The manual operations could be started from the menu, while the automatic mode is working in the background on a timely basis that is set in the Options dialog box.<br /><br />
+
+<b>Menu</b><br />
+The commands of this add-on are located in the <i>Export/Import Playlists</i> sub-menu in the File menu and the context menus of the Media Tree, the main filelist and Now Playing panel.<br /><br />
+
+<table bgcolor="WhiteSmoke" width="100%"><tr><td align="center"><img src="https://live.staticflickr.com/65535/51047266722_a4001b95e4_o.png" alt="ExportM3UsForSubNodes-6.0-Menu_1" border="0"></td><td align="center"><img src="https://live.staticflickr.com/65535/51047266727_b258c67332_o.png" alt="ExportM3UsForSubNodes-6.0-Customize" border="0"></td></tr></table><br />
+
+First of all, you need to understand the difference between the playlist files and the MediaMonkey playlists (or shorter "playlists"): the playlist files are the lists of media files stored in M3U, ASX or XSPF files, while the playlists are the lists of media files stored in the MediaMonkey database and visually represented inside of the Playlists folder of the Media Tree panel.<br /><br />
+
+The Export/Import Playlists add-on could export list of media files to the playlist file(s) using some of the <i>Export</i> commands from its menu, or it could import list of media files to the MM playlist(s) using some of the <i>Import</i> commands from the menu. The <i>Export</i> commands could be seen as an extension to the built-in <i>Send to / M3U/XSPF playlist</i> menu command, while the <i>Import</i> commands could be seen as some kind of extension to the built-in <i>Send to / Playlist</i> menu command. The main advantage of this add-on over the mentioned built-in commands is that it allows export/import of all child nodes of the selected node.<br /><br />
+
+The commands in the File menu and the context menu of the Media Tree are mostly applicable on the node selected in the tree panel, e.g. you could get exported/imported all media files of the selected node and/or its sub-nodes (depending of your settings in the add-on's Options dialog box). The following commands are available:
+<li><i>Export Playlists Node to Playlist Files...</i> - export the whole Playlists branch from the Media Tree panel as playlist files without need for Playlists node to be selected; after choosing this command, you should specify the base target folder on the disk;<br /><br />
+
+<li><i>Export Selected Node as Playlist File...</i> - export playlist file that will reference all media files displayed in the main filelist for the selected node; after choosing this command, you should specify the target playlist file on the disk;<br /><br />
+
+<li><i>Export Selected Node to Same Folder</i> - export playlist file, which will reference all media files displayed in the filelist for the selected folder, to the same folder containing media files; this command is enabled only for nodes within Location and My Computer branches of the Media Tree;<br /><br />
+
+<li><i>Export Selected Node &amp; Copy Media Files...</i> - export playlist file, which will reference all media files displayed in the filelist for the selected node, and copy these media files; after choosing this command, you should specify the target playlist file on the disk, while the target folder(s) for media files depends on the previously set the <i>Replace/With</i> options in the Options dialog box (if you don't use these options, the media files will be copied to the same folder with the playlist file); the path references in the exported playlist files will be for the copied media files, unlike the other non-Copy commands in the menu which export the playlist files containing paths to the media files as they are displayed in the filelist (unless you use <i>Replace/With</i> options);<br /><br />
+
+<li><i>Export Child Nodes as Playlist Files...</i> - export playlist files for the selected node and/or its sub-nodes (depending on the Options settings); after choosing this command, you should specify the base target folder on the disk;<br /><br />
+
+<li><i>Export Child Nodes to Same Folders</i> - export playlist files for the selected node and/or its sub-nodes (depending on the Options settings) to the same folders containing media files; this command is enabled only for nodes within Location and My Computer branches of the Media Tree;<br /><br />
+
+<li><i>Export Child Nodes &amp; Copy Media Files...</i> - export playlist files and copy media files for the selected node and/or its sub-nodes (depending on the Options settings); after choosing this command, you should specify the base target folder for playlist files, while the target folders for media files depend on the previously set <i>Replace/With</i> options in the Options dialog box (if you don't use these options, the media files will be copied to the same folders with the corresponding playlist files); the path references in the exported playlist files will be for the copied media files, similarly to the <i>Export Selected Node &amp; Copy Media Files...</i> command;<br /><br />
+
+<li><i>Export M3U Playlists from Child Nodes...</i> - export M3U files from some or all sub-folders of the selected folder (depending on the Options settings); after choosing this command, you should specify the base source folder with M3U files if you haven't already selected the source folder in My Computer branch of the Media Tree, and then you should specify the base target folder on the disk; you need to have turned on the option <i>Show M3U playlists in My Computer nodes</i> on the <i>Library / Appearance</i> page of the <i>Options</i> dialog box from the <i>Tools</i> menu; the difference between this command and the <i>Export Child Nodes as Playlist Files...</i> is that with this one you will get exported only M3U sub-nodes of the selected source folder, while with the second one you will get exported all sub-nodes, either M3U nodes and standard folder nodes;<br /><br />
+
+<li><i>Export M3U Playlists to Same Folders</i> - export M3U files from some or all sub-nodes of the selected node (depending on the Options settings) to the same folders with these M3U files, e.g. if you want to save the existing M3U files as ASX or XSPF, or if you want to convert M3U files from the simple format to the extended one (or vice versa); after choosing this command, you should specify the base source folder with M3U files if you haven't already selected the same source folder in the My Computer branch of the Media Tree; you need to have turned on the mentioned option <i>Show M3U playlists in My Computer nodes</i>; the difference with this command and <i>Export Child Nodes to Same Folders</i> is similar as with the previous command, i.e. with this command you will get exported only M3U sub-nodes of the selected folder, while with the second one you will get exported all sub-nodes, either M3U nodes and standard folder nodes; unfortunately, MediaMonkey doesn't display ASX and XSPF files as nodes inside of the My Computer branch, so it is not possible to convert from ASX or XSPF format to the other one;<br /><br />
+
+<li><i>Import Playlist Files to Playlists Node</i> - import playlist files (M3U, M3U8, ASX or XSPF) from the specified base folder and its sub-folders to the Playlists branch in the Media Tree panel;<br /><br />
+
+<li><i>Import Playlist File to Selected Playlist</i> - import a specified playlist file (M3U, M3U8, ASX or XSPF) to the playlist selected in the Media Tree panel; this command is enabled only for nodes within the Playlists branch;<br /><br />
+
+<li><i>Import Playlist File to Playlist</i> - import a specified playlist file (M3U, M3U8, ASX or XSPF) to the playlist selected in menu;<br /><br />
+
+<li><i>Import Playlist Files in Child Folders</i> - import the playlist files (M3U, M3U8, ASX or XSPF) from a specified folder (and its sub-folders) to the base playlist selected in the Media Tree panel; this command is enabled only for nodes within the Playlists branch;<br /><br />
+
+<li><i>Import Playlist Files to Playlists</i> - import the playlist files (M3U, M3U8, ASX or XSPF) from a specified folder (and its sub-folders) to the base playlist selected in menu;<br /><br />
+
+<li><i>Import Selected Node to Playlist</i> - import all media files displayed in the main filelist for the selected node to the playlist selected in menu; you could import any node from the Media Tree, e.g. Artists, <a href="https://zvezdan-d.github.io/MagicNodes.html">Magic Nodes</a>, My Computer, ..., to the target playlist in the Playlists branch of the Media Tree;<br /><br />
+
+<li><i>Import Child Nodes to Playlists</i> - import media files of the selected node and/or its sub-nodes (depending of the Options settings) into the selected or newly created base target playlist that will be located in the Playlists branch of the Media Tree; don't use this command if you want to import just M3U files, but use the next command instead;<br /><br />
+
+<li><i>Import M3U Playlists from Child Nodes</i> - import media files from some or all M3U sub-nodes of the selected node (depending on the Options settings) into the selected or newly created base target playlist that would be stored in the Playlists branch of the Media Tree; after choosing this command, you should specify the base source folder with M3U files, if you haven't already selected the same source folder in the My Computer branch of the Media Tree; you need to have turned on the mentioned option <i>Show M3U playlists in My Computer nodes</i>; the difference with this command and the previous <i>Import Child Nodes to Playlists</i> is that with this command you will get imported only M3U sub-nodes of the selected folder, while with the second one you will get imported all sub-nodes, either M3U nodes and standard folder nodes, which is most probably something that you don't need if you want to import just M3U files;<br /><br />
+
+<li><i>Customize...</i> - open the <i>Customize Export/Import Playlists</i> dialog box for visibility settings of the menu commands;<br /><br />
+
+<li><i>Options...</i> - open the <i>Export/Import Playlists Options</i> dialog box, which contains some options that affect the behavior of the add-on.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51047266667_41e8a66c18_o.png" alt="ExportM3UsForSubNodes-6.0-Menu_2" border="0"></center><br />
+
+The context menu of the main filelist and Now Playing panel contains a reduced set of commands from the File menu / the context menu of the Media Tree, and these commands could export/import only files selected in the filelist/Now Playing panel. The following commands are available:
+<li><i>Export Selected Files to Playlist File...</i> - export playlist file that will reference media files selected in the main filelist or Now Playing panel; after choosing this command, you should specify the target playlist file on the disk;<br /><br />
+
+<li><i>Export to Playlist File &amp; Copy Media Files...</i> - export playlist file that will reference media files selected in the main filelist or Now Playing panel and copy these media files; it has the similar use as the command <i>Export Selected Node &amp; Copy Media Files...</i>;<br /><br />
+
+<li><i>Import Selected Files to Playlist</i> - import media files selected in the main filelist or Now Playing panel into the selected or newly created playlist that will be located in the Playlists branch of the Media Tree; similar to the command <i>Import Selected Node to Playlist</i>;<br /><br />
+
+<li><i>Customize...</i> - open the <i>Customize Export/Import Playlists</i>dialog box for visibility settings of the menu commands;<br /><br />
+
+<li><i>Options...</i> - open the <i>Export/Import Playlists Options</i> dialog box, which contains some options that affect the behavior of the add-on.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51046454083_83109bec46_o.png" alt="ExportM3UsForSubNodes-6.0-Options" border="0"></center><br />
+
+<b>Export/Import Playlists for Child Nodes Options</b><br />
+The add-on settings are located in the <i>Options</i> dialog box which you could get: 1) if you choose any of the mentioned <i>Options</i> commands in the <i>Export/Import Playlists</i> sub-menu of the File menu and the context menus of the Media Tree, the main filelist and Now Playing panel, or 2) if you select <i>Export/Import Playlists</i> add-on in the <i>Tools / Extensions</i> dialog box and click on the <i>Options</i> button, or 3) if you select the <i>General / Export/Import Playlists</i> sheet in the <i>Tools / Options</i> dialog box.<br /><br />
+
+Many of the settings in the Options dialog box are common for all three main modes of work: manual and automatic export and manual import. It will be noted if an option is applicable only for one specific mode.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51046454028_c8f553cbe3_o.png" alt="ExportM3UsForSubNodes-6.0-Options_1" border="0"></center><br />
+
+<b>Export/Import Source</b><br />
+In the first group of controls on that dialog we could specify what we want to export/import if we choose any command from the menu that affects the sub-nodes, e.g. <i>Export Child Nodes as Playlist Files...</i> or any other command that contains "Child Nodes" in its name. If the <i>Selected node</i> option is turned off then only sub-nodes of the selected node would be exported/imported, while if it is turned on the selected node would be exported/imported as well. With the next 3 options we could choose which levels of sub-nodes we want to export/import: the first level, the last level or all levels.<br /><br />
+
+Let say, for example, that I have the following tree branch and that I have selected the Rock node:
+<ul><li>Rock</li>
+    <ul><li>Pink Floyd</li>
+        <ul><li>Dark Side of the Moon</li>
+            <li>Wish You Were Here</li>
+        </ul>
+    </ul>
+</ul>
+
+If I have ticked <i>First level of sub-nodes</i> I will get exported only the "Pink Floyd" playlist file. If I have ticked <i>Last level of sub-nodes</i> I will get only "Dark Side of the Moon" and "Wish You Were Here" playlist files. Finally, if I have ticked <i>All levels of sub-nodes</i> I will get "Pink Floyd", "Dark Side of the Moon" and "Wish You Were Here" playlist files. Of course, if I have ticked  <i>Selected node</i> then I will get the "Rock" playlist file as well, together with the previously mentioned playlist files. The previous examples are about export, but the very same principle is applied on import.<br /><br />
+
+<b>Export/Import Destination</b><br />
+With the second group of options we could specify where and how we want to store the playlist files/playlists: to the nested folders/playlists (hierarchically structured) or to the single folder/playlist. If we select nested folders/playlists we could also choose if we want to store playlist files/playlists to the folders/playlists with the same names as the source folders or to their parent folders/playlists.<br /><br />
+
+The settings in this group have only effect with the "Child Nodes" commands with the "..." on the end of a name, e.g. <i>Export Child Nodes as Playlist Files...</i>, i.e. the commands that allow us to specify some arbitrary target folder (on export). However, those settings are ignored with the "Child Nodes" commands with the "to Same Folders" text on the end of a name, e.g. <i>Export Child Nodes to Same Folders</i>, since in that case the playlist files are always stored to the same folders with the media files.<br /><br />
+
+Here is the same example of the "Rock" branch with the previously ticked <i>All levels of sub-nodes</i> option. If I have <i>To nested folders/plists</i> turned on and <i>Into parent level</i> turned off, I will get "Pink Floyd" playlist file in the specified target folder and "Dark Side of the Moon" and "Wish You Were Here" playlist files in the "Pink Floyd" sub-folder of that specified folder. If I have <i>Into parent level</i> turned on, I will get "Pink Floyd" playlist file in the "Pink Floyd" sub-folder of the specified folder, "Dark Side of the Moon" playlist file in the "Dark Side of the Moon" sub-folder of the "Pink Floyd" folder and "Wish You Were Here" playlist file in the "Wish You Were Here" sub-folder of the "Pink Floyd" folder.<br /><br />
+
+Finally, If I have <i>To single folder/playlist</i> and <i>Join folder levels</i> turned on with the " - " specified as a separator, I will get all files in the specified folder, i.e. I will get "Pink Floyd", "Pink Floyd - Dark Side of the Moon" and "Pink Floyd - Wish You Were Here" playlist files in the same folder.<br /><br />
+
+The next command in this group has two meanings depending of the previous ones. If we choose <i>To nested folders/plists</i>, it will be named as <i>Split folder levels</i> which allows export/import with captions of M3U nodes in My Computer branch parsed into corresponding nested levels of folders/playlists using specified separator (which is kind of opposite to saving playlists to the single folder using the same separator); the <i>Split folder levels</i> option doesn't parse captions of regular folders, but only captions of M3U nodes.<br /><br />
+
+If we choose <i>To single folder/playlist</i>, the same command will be named as <i>Join folder levels</i> which allows export to the single folder using captions of the current node and all its parent nodes. However, if it is turned off, only captions of the corresponding nodes will be used. For example, if I have the previously mentioned tree branch and if I choose <i>To single folder/playlist</i>, with the <i>Join folder levels</i> option turned off I will get: "Dark Side of the Moon.m3u" and "Wish You Were Here.m3u" files, but if I turn it on I will get "Pink Floyd - Dark Side of the Moon.m3u" and "Pink Floyd - Wish You Were Here.m3u" files.<br /><br />
+
+Those last examples are such that if I have the <i>Selected node</i> option turned off. However, if I turn that option on, I will get one additional, "Rock" sub-folder in the specified folder and inside of it there will be created folders mentioned in the previous two examples with <i>To nested folders/plists</i> option. If I choose <i>To single folder/playlist</i> with the <i>Selected node</i> option turned on, then I will get "Rock - Pink Floyd", "Rock - Pink Floyd - Dark Side of the Moon" and "Rock - Pink Floyd - Wish You Were Here" playlist files in the specified folder (the "Rock - " is added on the beginning of the previous <i>To single folder/playlist</i> examples).<br /><br />
+
+<b>Export File Format</b><br />
+Many commands from the Options dialog box are common both for export and import, but the next two group of commands are applicable only on export. With the third group of options we could specify the format of the exported playlist files: .m3u/.m3u8, .asx or .xspf. If we choose export to the M3U format, with the <i>#EXT</i> option we could further specify the format of the exported .m3u files. If that option is turned off, we will get the so-called Simple M3U format, i.e. .m3u files will have only list of paths to the media files, e.g.:<br /><br />
+c:\My Music\Rock\Pink Floyd\Dark Side of the Moon\01 - Speak to Me; Breathe in the Air.mp3<br />
+c:\My Music\Rock\Pink Floyd\Dark Side of the Moon\02 - On the Run.mp3<br /><br />
+
+However, if the <i>#EXT</i> option is turned on, we will get the Extended M3U format, with the additional information about each included media file, which helps faster display of the added/opened playlists in many players, but some another players don't support such extended M3U format:<br /><br />
+#EXTM3U<br />
+#EXTINF:240,Pink Floyd - Speak to Me; Breathe in the Air<br />
+c:\My Music\Rock\Pink Floyd\Dark Side of the Moon\01 - Speak to Me; Breathe in the Air.mp3<br />
+#EXTINF:213,Pink Floyd - On the Run<br />
+c:\My Music\Rock\Pink Floyd\Dark Side of the Moon\02 - On the Run.mp3<br /><br />
+
+The fourth group of options determines encoding format of the exported playlist files: ANSI, UTF-8 and Unicode (UTF-16). You should choose UTF-8 or Unicode if you have non-ANSI characters in your paths of audio files, e.g. Cyrillic, but you should first check if such files are supported with your media player. If you choose UTF-8 format you could specify if playlist files should have BOM characters. A byte-order mark (BOM) is the invisible Unicode character placed at the begin of the file, it is used as a marker to indicate that text is encoded in UTF-8; you should uncheck this option if you have a player that cannot read files with a BOM. By the way, if you modify some playlist file in UTF-8 format using Notepad, it will save that file with added BOM always. M3U files saved in UTF-8 will have the .m3u8 extension.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51046453918_f71e6e6352_o.png" alt="ExportM3UsForSubNodes-6.0-Options_2" border="0"></center><br />
+
+<b>Skip/Exclude/Remove</b><br />
+The next group of options determines what we want to skip/exclude from the export/import. We could skip: empty playlists (when the source folders don't contain any available media file), M3U nodes from My Computer branch of the Media Tree, "All" nodes from My Computer, Location and <a href="https://zvezdan-d.github.io/MagicNodes.html">Magic Nodes</a> branches, Autoplaylists from the Playlists branch and nodes/folders with the specified name(s). The names of folders could be specified using regular expressions if that option is turned on, but even if we don't use regular expressions we could specify several names of nodes/folders for skipping using the vertical line "|" as a separator.<br /><br />
+
+If a named folder is skipped during the export, then all its sub-folders would be skipped as well. The sub-nodes of "All" nodes from the Location branch are skipped by design even if you turn off skipping of "All" nodes. The M3U and "All" nodes from My Computer branch don't have sub-nodes anyway. The <i>Skip export/import of - M3U nodes</i> option is ignored if we choose <i>Export M3U Playlists from Child Nodes</i>, <i>Export M3U Playlists to Same Folders</i> or <i>Import M3U Playlists from Child Nodes</i> command from the menu. The last (rightmost) level of "All" nodes in My Computer branch could be skipped using the SkipLastAllNodes INI key to get consistent behavior with the "All" nodes from the Location branch, which will be explained later in the <a href="#inikeys">Additional INI keys</a> section. Also, the export of sub-nodes of Autoplaylists depends of the SkipAutoPlsSubNodes INI key which will be explained later.<br /><br />
+
+The exported playlist files and imported playlists could contain only the media files that are displayed in the filelist for each corresponding source node. However, sometimes those displayed media files could be unavailable or inaccessible, e.g. after upgrading the hard disk. With the <i>Exclude unavailable files</i> option we could specify that such media files should be omitted from the playlists during the export/import. However, if we turn this option off, the unavailable files will be exported/imported with the same paths and other metadata that are visible in the filelist of their source nodes (if the source nodes are M3U playlists, the unavailable imported files will contain only Path and Title, and probably Artist, but nothing more, not even File Length).<br /><br />
+
+The last option in this group is <i>Delete all playlist files in target folder(s) before each export</i> and it could be used to remove all playlist files from the specified target folder and/or its sub-folders recursively (depending of the other settings in the Options dialog box). If you choose <i>To nested folders/plists</i>, the playlist files from the specified target folder and all its sub-folders will be removed recursively, but if you choose <i>To single folder/playlist</i> only the playlist files in the specified target folder will be removed. If this option is turned on, the playlists files will be removed on each export, automatic or manual, so please be extremely careful when using it!<br /><br />
+
+This option has the similar effect as the option <i>Delete exported file if its playlist is deleted</i> (more about it later), but there are several important differences: this one deletes absolutely all playlist files, it works on each type of export, manual or automatic (excluding automatic export using <i>When any playlist is added or modified</i>), and it works with all versions of MediaMonkey, while the latter option deletes only playlist file which has the corresponding playlist just deleted from the Media Tree, also that one works only if the option <i>When any playlist is added or modified</i> is turned on and it is limited on the 4.1.0.1648 version of MediaMonkey or newer.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51047180531_70b0f7cf40_o.png" alt="ExportM3UsForSubNodes-6.0-Options_3" border="0"></center><br />
+
+<b>Format of Paths in Playlist Files (and Destination for Copied Media Files)</b><br />
+The next group of options determines how the paths of media files will be stored in the playlist files on the export, but some of them are applicable during import as well. Also, some options could be used to set the mapping of the media files to the copied files when using the "... Copy Media Files" commands from the menu, i.e. to set the destination folders for copied media files.<br /><br />
+
+With the <i>Relative</i> option we could choose if we want paths in playlist files in relative or absolute format. The absolute paths represents the full paths to the media files as you could see from the previous examples for the Extended .m3u format. The relative paths represents paths of the media files relative to the path of the playlist file. For example, if I choose export to the parent level of folders, I would get "Dark Side of the Moon" playlist file with relative paths as:<br />
+Dark Side of the Moon\01 - Speak to Me; Breathe in the Air.mp3<br />
+Dark Side of the Moon\02 - On the Run.mp3<br /><br />
+
+The relative paths could help if you have different paths on the source and destination computers/players (e.g. different absolute paths c:\My Music\Rock\Pink Floyd\Dark Side of the Moon\02 - On the Run.mp3 on the computer and e:\Music\Rock\Pink Floyd\Dark Side of the Moon\02 - On the Run.mp3 on the player have the same relative path Dark Side of the Moon\02 - On the Run.mp3), but some players don't support them, so you should check on first if you could use that option. You should export playlist files to the same drive with media files, otherwise the relative paths cannot be determined and the absolute paths will be exported instead.<br /><br />
+
+With the <i>URL (file://)</i> option we could choose another format for paths in playlist files. If I turn that option on, with the previous example I will get:<br /><br />
+file:///c:/My%20Music/Rock/Pink%20Floyd/Dark%20Side%20of%20the%20Moon/01%20-%20Speak%20to%20Me%3B%20Breathe%20in%20the%20Air.mp3<br />
+file:///c:/My%20Music/Rock/Pink%20Floyd/Dark%20Side%20of%20the%20Moon/02%20-%20On%20the%20Run.mp3<br /><br />
+
+There is a small number of players that require playlist files with such paths, so most probably you will not need that option.<br /><br />
+
+With the <i>Short (8.3)</i> option we could get paths in the old DOS format that are required on some players. That option works only with the existing files, so the <i>Exclude unavailable files</i> option should be turned on for it. Also, it is not possible to use URL and Short paths at the same time. If this option is turned on, then all parts of the path will be stored using such short form, i.e. each folder and filename. For example, with the following full path:<br />
+D:\Music FLAC\Kurt Masur; New York Philharmonic Orchestra\Dvo&rcaron;&aacute;k; Symphony #9, Slavonic Dances\01 Dvo&rcaron;&aacute;k_ Symphony #9 In E Minor, O.flac<br /><br />
+
+we will get:<br />
+D:\MUSICF~1\KURTMA~1\DVOK_S~1\01DVOK~1.FLA<br /><br />
+
+However, some players like Logitech Media Server (LMS) require short form only for folders/filenames with non-ANSI characters, like this:<br />
+D:\Music FLAC\Kurt Masur; New York Philharmonic Orchestra\DVOK_S~1\01DVOK~1.FLA<br /><br />
+
+So, in that case to get such paths you should turn on <i>ANSI</i> file format and turn off <i>Short (8.3)</i> paths.<br /><br />
+
+With the <i>Unix ("/", LF)</i> option we could also specify format for paths in the playlist files. If your media player has some Unix variation as Linux for its OS, you should turn that option on. In that case the paths of media files will have the "/" separator between folders instead of "\", and the new lines will be represented with the LF character instead of CR+LF as it is in Windows.<br /><br />
+
+With the <i>Replace</i> and <i>With</i> options we could replace parts of paths with another string in almost same way as we could do it in e.g. Notepad using its Replace option (well, maybe as with EditPad or similar advanced text editor which also supports Regular expressions). Within the <i>Replace</i> text box you could specify string which you want to replace and with the second, <i>With</i> text box you could specify string for replacement. You could also use the "..." buttons to specify paths, but only if you want to replace one folder with some another. For example, "c:\Documents and Settings\My Name\My Music\" could be replaced with "e:\Multimedia\Music\".<br /><br />
+
+You could use the "..." buttons on the right side of the <i>Replace</i> and <i>With</i> combo boxes to select the wanted folders, but you could also type paths or their patterns manually. In that case it is possible to specify two or more paths that will be replaced with the same number of another paths using " (double quote) as a separator between paths (only when the <i>Use mask for specifying paths</i> option is turned off), which is applicable both for export and import.<br /><br />
+
+For example, if you enter <i>Replace:</i> i:\music\artists\"i:\music\soundtrack\ and <i>With:</i> TF1:\music\"TF2:\music\ then you will get replaced i:\music\artists\ with TF1:\music\ and i:\music\soundtrack\ will be replaced with TF2:\music\ (although you could write it also as <i>Replace:</i> "i:\music\artists\", "i:\music\soundtrack\" and <i>With:</i> "TF1:\music\", "TF2:\music\").<br /><br />
+
+If you want to replace two or more paths with the single path then use the | separator in the <i>Replace</i> string, e.g. if you enter <i>Replace:</i> i:\music\artists\"i:\music\soundtrack\|I:\Music\Genre\ and <i>With:</i> TF1:\music\"TF2:\music\ then you will get replaced both i:\music\soundtrack\ and I:\Music\Genre\ paths with TF2:\music\.<br /><br />
+
+With the <i>Use Regular expressions for specifying paths/folders</i> option we could specify even more complex patterns for replacement, e.g. we could replace several different paths with the single one at once. For example, the "^.+\\(?=[^\\]+\.[^\.\\]+$)" string is the expression which represents any full path, excluding the filename and the extension. So, using that expression, if you leave the <i>With</i> text box empty, all folders will be removed from the paths, saving only the filenames and extensions into the playlist files. Or, you could enter "e:\Music\" in the <i>With</i> text box, and all folders will be replaced with that single one. Although, you should turn on the Regular expressions only if you know how to use them.<br /><br />
+
+The <i>Use Regular expressions</i> option has the effect on both <i>Replace - Paths in playlist files</i> and <i>Skip export/import of - Folders</i> options, i.e. you cannot use the regular expressions for the first option and don't use them for the second option, and vice versa.<br /><br />
+
+The <i>Use mask for specifying paths</i> option allows using of MediaMonkey's masks for replacing paths in playlist files, both for export and import, but it requires MM v4.1.0.1662 or higher.<br /><br />
+
+The <i>Replace</i> and <i>With</i> options could be used on import of files as well, not only on export, which is useful if the paths of media files in the imported M3U nodes don't point to the exact drives/folders (more about it in the guide <a href="#importing">How to: Import M3U files</a>).<br /><br />
+
+The <i>Replace</i> option, together with the <i>With</i>, <i>Use Regular expressions</i> and/or <i>Use mask for specifying paths</i> options, could be used to set a mapping of the media files to the copied files when using the "... Copy Media Files" commands from the menu, i.e. to set the destination folders for copied media files.<br /><br />
+
+The same destination folders for the copied files will be used in the path references in the playlist files, which is a limiting factor if you plan to copy media files to a portable media player whose internal software has a different drive letter than Windows. In that case you could try with the relative paths. The guide <a href="#importing">How to: Export playlist files and copy related media files to different folders</a> contains one example how to use the <i>Replace</i> option when copying media files.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51046453853_445cbf43fb_o.png" alt="ExportM3UsForSubNodes-6.0-Options_4" border="0"></center><br />
+
+<b>Automatic Export of Playlists</b><br />
+The next group of remaining controls on the <i>Options</i> dialog box is used only for automatic export of the specified MM playlist(s) to the playlist files. We could choose when the playlists should be exported: <i>On startup</i>, <i>On shutdown</i> and/or <i>Every</i> xx minute(s).<br /><br />
+
+With the MM v4.1.0.1648 or higher it is also possible to automatically export MM playlists from the Playlists branch whenever they are added, renamed, moved or modified (e.g. any file is added/removed to/from the playlist or you changed order of files within playlist) using the <i>When any playlist is added or modified</i> option. If that option is turned on, then it is possible to use the next <i>Delete exported file if its playlist is deleted</i> option as well. It allows automatic removal of the exported playlist files when the corresponding MM playlists are removed from the Playlists branch. <br /><br />
+
+We could choose a playlist which should be automatically exported (altogether with its sub-playlists) using the <i>From</i> dropdown list. Only playlists from the first level in the Playlists branch could be directly selected from that list, but any nested playlist could be also specified using "\" as a separator between sub-levels. It is even possible to specify the name of a nested playlist without its full path, but only if that name is unique. Within the <i>To</i> text box we should specify the folder where we want to get exported playlist file(s). Its usage is similar to the target folder specified after any "Child Nodes" command is chosen from the menu for the manual export.<br /><br />
+
+With the option <i>Create new child folder with a dated name</i> we could specify if we want automatically exported playlist files in the separated folders with dates in their names, which would be within the folder specified in the <i>To</i> text box. If the option <i>For every auto-export</i> is turned on, the dated folders with the playlist files will be created whenever the condition for automatic export is satisfied, e.g. if <i>Every xx minutes</i> is chosen then every specified minutes would be created a new folder. If the <i>Once in a day</i> option is turned on, the folders with dates in their names will be created only once each day.<br /><br />
+
+<p><font size="+1"><b><a id="exportmask">How to: Export static playlists to the custom-defined structure of folders</a></b></font></p>
+This add-on has only two possibilities for target folders of the exported playlist files: 1) it could store them all in a single folder, or 2) it could export them to the hierarchically organized folders using the same structure as the sub-nodes of the selected node. So, if you select a node for export which doesn't have sub-nodes, you will get only one playlist file corresponding to that node, even if you choose <i>To nested folders/plists</i> option.<br /><br />
+
+However, if you want to get the playlist files exported to a different folder structure than you have it with the existing nodes, there is a workaround for that using Magic Nodes add-on. Let say that you want to export one node from the Playlists branch of the Media Tree to the multiple playlist files saved in the d:\Playlists\&lt;Album Artist&gt;\&lt;Album&gt; structure of folders:<br /><br />
+
+<li>install <a href="https://zvezdan-d.github.io/MagicNodes.html">Magic Nodes</a> add-on;
+<li>open Edit / Magic Nodes / Mask Settings dialog box and click the <i>New</i> button;
+<li>type "Export Playlist|Filter:&lt;Playlist&gt; = 'Name_of_playlist'\&lt;Album artist&gt;\&lt;Album&gt;" in the <i>Mask</i> text box (without surrounding quotes, just enter the name of your playlist node that you want to export instead of Name_of_playlist);
+<li>click the <i>Add</i> button on the bottom of the dialog box &gt;&gt; you will get the new "Export Playlist" node inside the Magic Nodes branch of the Media Tree;
+<li>open the <i>File / Export/Import Playlists / Options</i> dialog box;
+<li>turn off the <i>Selected node</i> option;
+<li>select the <i>All levels of sub-nodes</i> option;
+<li>select the <i>To nested folders/plists</i> option;
+<li>confirm settings with the <i>OK</i> button;
+<li>right-click the "Export Playlist" node;
+<li>choose <i>Export Child Nodes as Playlist Files</i> from the context menu;
+<li>specify d:\Playlists as the target base folder and confirm export with the <i>OK</i> button.
+<br /><br />
+
+The references to the media files inside of the playlist files will have the same paths as you have them in your Library. However, you could use some of the <i>Replace</i> options in the Export/Import Playlists Options dialog box to change them. For example, you could turn on the option <i>Use mask for specifying paths</i> and type d:\Music\&lt;Album Artist&gt;\&lt;Album&gt;\&lt;Filename&gt;.&lt;Extension&gt; in the <i>Replace</i> text box if you have a copy of media files in the target d:\Music\* sub-folders.<br /><br />
+
+<p><font size="+1"><b><a id="copymediafiles">How to: Export playlist files and copy related media files to different folders</a></b></font></p>
+Here are the three important things that you should know about this add-on:<br /><br />
+1. you could select the target base folder for <i>playlist</i> files using the <i>Select Folder</i> dialog box that you get after you choose export with any "Child Nodes" command from the menu;<br /><br />
+
+2. you could set the structure of the target sub-folder(s) for <i>playlist</i> files that will be inside the selected base folder using the <i>To nested folders</i> and </i>To single folder</i> options in the Options dialog box;<br /><br />
+
+3. if you use any "Copy Media Files" command from the menu, you could set the the target base folder and structure of its sub-folders for copies of the <i>media</i> files using the <i>Replace</i> options from the Options dialog box.<br /><br />
+
+So, when you use some of the "Copy Media Files" commands from the menu, if you have the <i>Replace</i> option turned off in the Options dialog box, the media files will be copied to the same folder(s) with the exported playlist file(s).<br /><br />
+
+However, if you want to copy media files to the deferent folders than playlist files, you could use the <i>Replace</i> option, together with the <i>With</i>, <i>Use Regular expressions</i> and/or <i>Use mask for specifying paths</i> options, to set a mapping of the media files to the copied files, i.e. to set the destination folders for copied media files. Let say that you want to copy all media files contained in one node of the Media Tree to the d:\Music\&lt;Album Artist&gt;\&lt;Album&gt; folders:<br /><br />
+
+<li>open the <i>File / Export/Import Playlists / Options</i> dialog box;
+<li>turn on the <i>Replace</i> option;
+<li>turn on the <i>Use mask for specifying paths</i> option;
+<li>type d:\Music\&lt;Album Artist&gt;\&lt;Album&gt;\&lt;Filename&gt;.&lt;Extension&gt; in the <i>Replace</i> text box;
+<li>confirm settings with the <i>OK</i> button;
+<li>right-click a node in the Media Tree which you want to export;
+<li>choose <i>Export Selected Node &amp; Copy Media Files</i> from the context menu;
+<li>click the <i>Yes</i> button if you get the confirmation dialog box;
+<li>specify d:\Playlists\whatever.m3u as the target playlist file and confirm export with the <i>OK</i> button.
+<br /><br />
+
+After that, you will get the playlist file in the d:\Playlists folder and copied media files in the sub-folders of d:\Music. The references to the media files inside the playlist file will have the same d:\Music base folder. However, if you copied the media files to a portable media player whose internal software has a different drive letter than d:, you could try the same process but with the enabled relative paths using the <i>Relative</i> option. <br /><br />
+
+<p><font size="+1"><b><a id="updateloc">How to: Update location of media files in M3U playlist files</a></b></font></p>
+When you upgrade your hard disk and/or transfer your media and playlist files to the new disk, if you decide to use different drive letter and/or base folder, you will get the playlist files with wrong references to the media files and those playlist files will be unplayable. However, you could update location of media files in these playlist files if they are in M3U format using this add-on:<br /><br />
+
+<li>turn on the <i>Show M3U playlists in My Computer nodes</i> option on the <i>Library / Appearance</i> sheet in the <i>Tools / Options</i> dialog box and confirm setting with <i>OK</i> button;
+<li>open the <i>File / Export/Import Playlists / Options</i> dialog box;
+<li>select the <i>All levels of sub-nodes</i> option;
+<li>select <i>M3U</i> option;
+<li>turn on/off <i>#EXT</i> and select <i>ANSI, UTF-8</i> or <i>Unicode</i> option, depending of the format of playlist files that you prefer, e.g. they could be set as they were before;
+<li>turn on the <i>Replace</i> option and specify the base folder that contains media files on your old disk, e.g. c:\Documents and Settings\My Name\My Music\;
+<li>specify the base folder having media files on your new disk in the <i>With</i> combo box, e.g. e:\Multimedia\Music\;
+<li>confirm settings with <i>OK</i> button;
+<li>select the base folder that contains playlist files on your new disk within My Computer branch of the Media Tree;
+<li>choose <i>Export M3U Playlists to Same Folders</i> from the context menu.
+<br /><br />
+
+<p><font size="+1"><b><a id="changeform">How to: Change format of M3U playlist files</a></b></font></p>
+If you want to save existing M3U files as ASX or XSPF, or if you want to convert M3U files from the simple format to the extended one (or vice versa), or if you want to change the relative paths of media files referenced in M3U files to the absolute ones (or vice versa), or if you want any other kind of conversion, you could use the similar approach as in the previous section:<br /><br />
+
+<li>turn on the <i>Show M3U playlists in My Computer nodes</i> option on the <i>Library / Appearance</i> sheet in the <i>Tools / Options</i> dialog box and confirm setting with <i>OK</i> button;
+<li>open the <i>File / Export/Import Playlists / Options</i> dialog box;
+<li>select the <i>All levels of sub-nodes</i> option;
+<li>select <i>M3U, ASX</i> or <i>XSPF</i> option, turn on/off <i>#EXT</i> and select <i>ANSI, UTF-8</i> or <i>Unicode</i> option, depending of the format of playlist files that you want to get;
+<li>turn on/off <i>Relative, URL, Short</i> or <i>Unix</i> option, depending of the format of paths in playlist files that you want to get;
+<li>confirm settings with <i>OK</i> button;
+<li>select the base folder that contains playlist files on your disk within My Computer branch of the Media Tree;
+<li>choose <i>Export M3U Playlists to Same Folders</i> from the popup menu.
+<br /><br />
+
+<p><font size="+1"><b><a id="transferpls">How to: Transfer playlists to another computer</a></b></font></p>
+Here is the short guide how to transfer MediaMonkey's playlists from one to another computer. Firstly, you should know that you could use this add-on to transfer only static playlists, as it is mentioned in the <a href="#limitations">Limitations</a> section. Secondly, you need to have MediaMonkey and this add-on installed on both computers. Thirdly, the media files on both computers should be within the similar folder structure, only their base folders could be different (e.g. files could be stored on the first computer in "c:\Documents and Settings\My Name\My Music\" and on the second "e:\Music\").<br /><br />
+
+<li>Open the Options dialog box using <i>File / Export/Import Playlists</i> menu on the first, source computer;
+<li>turn off <i>Selected node</i>, select <i>All levels of sub-nodes</i> and <i>To nested folders/plists</i>, turn off <i>Into parent level</i>, select <i>M3U</i>, turn off <i>Empty playlists</i>, turn on <i>Autoplaylists</i> and confirm settings with OK button;
+<li>if you want to:<ul>
+<li style="list-style-type:circle">export only particular playlist (and its sub-playlists): select that playlist in the Playlists branch of the Media Tree (if you select the Playlists node, you will get exported all sub-playlists) and choose <i>Export Child Nodes as Playlists</i> from the context menu;
+<li style="list-style-type:circle">export all playlists from the Playlists branch: just choose <i>Export Playlists Node to Playlist Files</i> from the menu, it doesn't matter what node is selected;</ul>
+<li>select an empty temporary folder on the removable drive;
+<li>confirm choice with OK button and wait the add-on to finish the export;
+<li>detach the removable drive from the first computer and attach it on the second one;
+<li>open the Options dialog box using <i>File / Export/Import Playlists</i> menu on the second, target computer;
+<li>turn off <i>Selected node</i>, select <i>All levels of sub-nodes</i> and <i>To nested folders/plists</i>, turn off <i>Into parent level</i>, turn off <i>Split folder levels</i>, turn off <i>Empty playlists</i>;
+<li>turn on <i>Replace</i> if your base folders with media files are different between computers, then in the next combo box specify the base folder with media files on the first computer and in the <i>With</i> combo box specify the base folder on the second computer;
+<li>confirm settings with OK button;
+<li>if you want to:<ul>
+<li style="list-style-type:circle">import playlist files to a particular playlist in the Playlists branch: choose <i>Import Playlist Files to Playlists</i> and select target playlist in the menu, or select that playlist in the Media Tree and choose <i>Import Playlist Files in Child Folders</i> from the context menu;
+<li style="list-style-type:circle">import playlist files as direct children of the Playlists branch in the Media Tree panel: just choose <i>Import Playlist Files to Playlists Node</i> from the menu, it doesn't matter what node is selected;</ul>
+<li>select the previously specified temporary folder on the removable drive.<br /><br />
+
+As you could see, the most settings in the Options dialog box are (and should be) similar on both computers.<br /><br />
+
+<p><font size="+1"><b><a id="importing">How to: import playlist files</a></b></font></p>
+Here is a more detailed explanation how you could use this version of the add-on to import playlist files into MediaMonkey playlists.<br /><br />
+
+First of all, for many import menu commands you need to have the Media Tree displayed (set in View menu). Then you should set accordingly the related options on the Export/Import Playlists page in the Options dialog box. For example, you should choose the <i>All level of sub-nodes</i> option if you want to import M3U files that are located in the nested folders, also turn on the option <i>To nested folders/playlists</i> for the same reason.<br /><br />
+
+You should turn on the <i>Into parent level</i> option ONLY if you want to store media files referenced in your playlist files to the parent playlists of the corresponding playlist files (having the same names). However, if you want to get the same structure and the content of the playlists as they are in the corresponding playlist files, then you should have that option turned off. Let say, for example, that I have the following structure on disk and that I have selected the Rock folder:<br />
+<ul><li>Rock
+    <ul><li>Pink Floyd
+        <ul><li>Dark Side of the Moon.m3u</li>
+            <li>Wish You Were Here.m3u</li>
+        </ul></li>
+    </ul></li>
+</ul>
+
+If I have ticked on the <i>Into parent level</i> check box, after choosing the command <i>Import Playlist Files to Playlists</i> from <i>Export/Import Playlists</i> menu and selecting the target playlist, e.g. "Test", I will get this structure inside of that playlist:<br />
+<ul><li>Test
+    <ul><li>Rock
+        <ul><li>Pink Floyd</li>
+        </ul></li>
+    </ul></li>
+</ul>
+The Pink Floyd playlist will contain all media files referenced in both the "Dark Side of the Moon.m3u" and "Wish You Were Here.m3u" files.<br /><br />
+
+However, if I turn off the option <i>Into parent level</i> and choose the same menu command, I will get this structure in the Playlists branch:<br />
+<ul><li>Test
+    <ul><li>Rock
+        <ul><li>Pink Floyd
+            <ul><li>Dark Side of the Moon</li>
+                <li>Wish You Were Here</li>
+            </ul></li>
+        </ul></li>
+    </ul></li>
+</ul>
+Here, the "Dark Side of the Moon" playlist will contain the media files referenced in the "Dark Side of the Moon.m3u" file and "Wish You Were Here" playlist will contain files from the "Wish You Were Here.m3u" file. Such behaviour is something that is mostly expected and wanted, so in most cases you should have the <i>Into parent level</i> check box turned off.<br /><br />
+
+If you have all playlist files stored in a single folder with the playlist levels represented in names of playlist files separated with the specified separator, then you should turn on the <i>Split folder levels</i> option as well. For example, the name of the "Rock - Pink Floyd - Dark Side of the Moon.m3u" playlist file could be parsed using " - " separator to "Rock" playlist with "Pink Floyd" sub-playlist and "Dark Side of the Moon" sub-sub-playlist.<br /><br />
+
+If you have moved all media files from one location to another, so that their references in playlist files are incorrect, then you could try <i>Replace</i> - <i>Paths in playlist files</i> option in the Options dialog box. For example, if your old paths have this base folder:<br />
+c:\My Music\<br />
+and you have moved files to the next base folder:<br />
+f:\Music\<br />
+then you should specify these two paths in the <i>Replace:</i> and <i>With:</i> text boxes correspondingly. If the files physically exist at the newly specified location, then their tags will be entered correctly to the Library after import; otherwise, you could get the empty records with the Path information only, unless the Library already contains the matching files, which depends on the <a href="#inikeys">AddFileIfIsntInDBMode</a> key in the Ini file. Although the option is called <i>Replace</i> - <i>Paths in playlist files</i>, the referenced paths are not directly replaced in the playlist files themselves, but they are replaced virtually in the memory instead, to be able to find the moved referenced media files when importing those playlists.<br /><br />
+
+Of course, this add-on is not limited only on import of playlist files. It allows import of any nodes from the Media Tree, in which case you should use the option <i>Import Child Nodes to Playlists</i> instead. For example, you could use it to create playlist(s) based on the node selected in My Computer branch which contain media files that you want to add to Library. Or you could use it to create playlist(s) based on the selected Magic node (although the <a href="https://zvezdan-d.github.io/MagicNodes.html">Magic Nodes</a> add-on allows such thing by itself). Or you could select Artist node in Music collection and choose it to import all artists (with their sub-nodes) into the Playlist branch...<br /><br />
+
+<p><font size="+1"><b><a id="inikeys">Additional INI keys</a></b></font></p>
+There are some new keys in the [ExportM3UsForChildNodes] section of the MediaMonkey.ini file for some less used options that are not represented with the GUI of the enhanced version of the add-on:<br />
+<li>AddFileIfIsntInDBMode - when importing playlists, e.g. from the M3U playlist files, the media files from the source nodes could be added to the Library if the Library doesn't contain the matching files, which depends on this key: 0 = don't add missing (unmatched) files; 1 (default) = add missing files, unless there are files in the Library with the same paths, which will be added to the playlists; 2 = add missing files, unless there are files in the Library with the same path or with the same filename & extension and file length, which will be added to the playlists; 3 = add missing files, unless there are files in the Library with the same path or with the same filename & extension and file length or with the same filename and Title and song length, which will be added to the playlists;<br /><br />
+
+<li>UseAutoPlistsSameNameMode - this key determines what will happen if you try to import nodes, e.g. M3U playlist files, with the same names with the existing auto-playlists that are inside the same target parent playlist: 0 = create a new static playlist with the same name as the existing auto-playlist; 1 = use the exiting auto-playlist as the target, although it cannot contain the imported media files; 2 = ask what to do in every such situation; default value is 2;<br /><br />
+
+<li>RemoveChildPlistsMode - on the start of every import, the add-on could remove all static child playlists (and all their sub-playlists) of the specified target playlist, which depends on this key: 0 = don't remove child playlists; 1 = remove child playlists; 2 (default) = ask for confirmation;<br /><br />
+
+<li>PlsFilesWithSameNameMode - this key determines what will happen if you try to export two or more playlists with the same names that are inside the same target parent folder: 0 = overwrite previous file; 1 = append playlist files; 2 (default) = ask if you want to rename the second playlist;<br /><br />
+
+<li>RemovePListFilesMode - if you already have exported the playlist files using automatic mode, when you modify any settings for that mode in the Options dialog box, such files could be automatically removed depending on this key: 0 = don't remove playlist files, 1 = remove playlist files, 2 (default) = ask for confirmation;<br /><br />
+
+<li>DeleteEmptiedFolders - delete emptied folders from disk after removal of playlist files if any of the related options is turned on (<i>Delete all playlist files...</i> or <i>Delete exported file...</i>); default value is the same as that that is specified in the Auto-organize dialog box;<br /><br />
+
+<li>CopyMediaFilesConfirmed - it should be = 1 if you don't want the confirmation dialog box every time before applying any "Copy Media Files" command; default value is 0;<br /><br />
+
+<li>CopyAlbumArtFiles - it should be = 0 if you don't want to copy Album Art in external files together with media files when using commands from the menu that have "Copy Media Files" in their name; default value is 1;<br /><br />
+
+<li>IgnoreFileErrors - it should be = 1 if you want to skip display of error messages when it is not possible to export a playlist file or to copy a media file (when using a "Copy Media Files" command) for any reason;<br /><br />
+
+<li>ExportAsxAndXspfAsXml - it should be = 1 if you want ASX and XSPF files to be XML compliant; however, you should know that MM doesn't recognize such files, nor some another players (WinAmp, KMPlayer, VLC); even XSPF files made by MM are not XML compliant (&#39; &quot; &amp; &lt; &gt; are not encoded); because of that; default value is 0;<br /><br />
+
+<li>UseM3U8ExtensForUTF8 - this value determines the file extensions on M3U export: 0 = you will always get the .m3u extensions; 1 (default) = if you want the .m3u8 extensions when UTF-8 encoding is selected;<br /><br />
+
+<li>RemoveChildPlistsMode - if you want to remove existing static child playlists from the target playlist before import; 0 = don't remove child playlists, 1 = remove child playlists, 2 (default) = ask for confirmation;<br /><br />
+
+<li>UseAutoPlistsSameNameMode - if you already have auto-playlists with the same names as imported playlist files; 0 = don't use existing auto-playlists, create new static playlists with the same names as auto-playlists instead, 1 = use existing auto-playlists, but the media files in the corresponding playlist files will not be imported, 2 (default) = ask for confirmation;<br /><br />
+
+<li>OverUnmodifiedPlsFiles - it should be = 1 (default) if you want to always overwrite the existing playlist files having the same names as the exported nodes, even if they have the same contents, i.e. to have their file timestamp updated;<br /><br />
+
+<li>ExportFilesToM3UHotkey - the hotkey for the <i>Export to M3U/ASX/XSPF Playlist</i> menu item; default is Shift+Ctrl+E;<br /><br />
+
+<li>LogExportedFiles - default value is 1; it should be = 0 if you don't want to log every file that is referenced inside exported playlist files since these logged lines could be numerous; this key should be used only with the Event Logger add-on and EventLoggerMode key that will be mentioned latter.<br /><br />
+
+The keys that was in use with the older <a href="https://zvezdan-d.github.io/ExportM3UsForSubNodes.html">Export/Create Playlists</a> version of the add-on are still effective:<br />
+<li>SkipExportExtensions - if it is = 1, the media files with the extension(s) specified with the next key will be excluded from the playlists files during the export; default value is 0, i.e. don't exclude any extension;<br /><br />
+
+<li>SkipListExtensions - this key contains the list of extensions, separated with the "|" character, that should be excluded from the export if the previous key is = 1; default is ogg|aac|mp4|flac|ape;<br /><br />
+
+<li>ExportOnStartupDelayMs - a delay for automatic export on startup, in milliseconds; default value is 2000, i.e. 2 seconds delay, but if you have media files on some slow network drive maybe you could try with a larger value;<br /><br />
+
+<li>DontUseSQLForTracklist - the export of nodes from the Library and <a href="https://zvezdan-d.github.io/MagicNodes.html">Magic Nodes</a> (and collections in MM4) is much faster if this option is = 0 (default value) because it doesn't need to wait for the filelist to be refreshed for each exported node; however, if you notice some problems with SQL generated playlists then you could write = 1; the media files referenced in playlist files generated using SQL have fixed (default) order, so you should set this ini key to 1 if you want to get them sorted as they appear in the filelist respecting your manual settings of the file order for corresponding nodes;<br /><br />
+
+<li>PathsWithFullMNCaptions - if this key is = 0 (default) then playlists exported from Magic nodes will not have Statistic addition to the node's caption in their names; however, if you want that part of caption in the playlist names, then you should write = 1;<br /><br />
+
+<li>AllNodesMode - this value determines export of the "All" nodes and names of exported playlists:<br />
+-- AllNodesMode = 0 - "All" nodes are exported instead of their parents, i.e. the playlist files would contain paths to files in corresponding nodes and all their sub-nodes (the default behavior of the add-on versions before v4.0);<br />
+-- AllNodesMode = 1 - "All" nodes are exported with parent node names, the result could be very similar to the previous mode;<br />
+-- AllNodesMode = 2 - "All" nodes are exported with "[All]" playlist names, should be avoided with <i>To parent folder</i> option;<br />
+-- AllNodesMode = 3 - "All" nodes are exported as "Parent_Name [All]" playlist names (default mode);<br /><br />
+
+<li>SkipLastAllNodes - it should be = 1 if you want skipped the "All" nodes that are sub-nodes of the rightmost (deepest) disk folders, i.e. disk folders that don't have any other sub-node beside of "All" node, in Location and My Computer branches (default is = 0);<br /><br />
+
+<li>SkipAutoPlsSubNodes - when you choose option to <i>Skip export of - Autoplaylists</i>, if this key is = 1 the export will be omitted for their sub-nodes as well; however, autoplaylists could have static playlists as sub-nodes, so you may want to leave this at = 0 (default);<br /><br />
+
+<li>UseLastExportM3UsDir - when you choose a "Child Nodes" command from the menu you would get the dialog box for specifying the destination folder; if this option is = 0 (default) you will get displayed folder depending of the selected node/file in the tracklist; however, if you write = 1 the last destination folder that you have selected for export would be retrieved from the .ini file;<br /><br />
+
+<li>DontShowInfoBoxOnExportEnd - if this is = 0 (default) you would get displayed the message box showing the number of exported playlists and elapsed time on each finished export using some "Child Nodes" command from the menu;<br /><br />
+
+<li>ClearSameNamePlsMode - when importing playlists, if the target playlists already contain some files: 0 = keep those files, 1 = remove them from playlists, 2 = ask what to do; default value is 2;<br /><br />
+
+<li>EventLoggerMode - if you have installed the <a href="https://zvezdan-d.github.io/EventLogger.html">Event Logger</a> add-on, you could get displayed some additional information about the work of this add-on in the Event Viewer panel; the values could be from = 0 (default, without any information) to = 3 (most displayed information); e.g. the value = 1 will display every exported playlist file and the number of the included (referenced) media files; the negative values from = -1 to = -3 will cause logging of those information to the log file as well.<br /><br />
+
+The MediaMonkey.ini file is stored in the c:\Documents and Settings\User_Name\Application Data\MediaMonkey\ folder for MM4 and Win7. You could find the location of the .ini file depending of the version of MediaMonkey and Windows <a href="https://www.mediamonkey.com/support/knowledge-base/mediamonkey-install-config/modifying-the-mediamonkey-db-and-ini-files/">here</a>. If you want to modify any key in it using e.g. Notepad, you should do that with closed MediaMonkey application.<br /><br />
+
+<p><font size="+1"><b><a id="requirements">Requirements</a></b></font></p>
+To be able to use many commands of this add-on, you need to have the Media Tree displayed (set in the View menu). Additionally, if you want to use <i>Export M3U Playlists *</i> commands, you need to have the My Computer branch visible (set in the Manage Collections dialog box) and you should have turned on the option <i>Show M3U playlists in My Computer nodes</i> on the Library / Appearance page of the Options dialog box from the Tools menu.<br /><br />
+
+You should not change the nodes in the Media Tree while the add-in is running! In fact, it is highly recommended that you do not use the program until the add-on finishes its work. If it takes to long and you want to abort it, you could choose the Terminate option from the context menu of the progress bar.<br /><br />
+
+<p><font size="+1"><b><a id="limitations">Limitations</a></b></font></p>
+This version of the add-on has the same limitations as the older <a href="https://zvezdan-d.github.io/ExportM3UsForSubNodes.html">Export/Create Playlists</a> version:<br />
+Exported playlists from the Playlists branch are all saved as playlist files with fixed content, even auto-playlists. If you import such playlist files on another computer you will get only static playlists, even with files that was exported from auto-playlists. So, this add-on cannot be used to transfer auto-playlists from one computer to another in their native form. If you want such possibility, you could use the <a href="https://zvezdan-d.github.io/RestorePlayHistory.html">Restore/Synchronize Database</a> add-on instead, but it allows export/import only for the whole Playlists branch, while this add-on could export/import just the selected playlist and its sub-playlists.<br /><br />
+
+Windows has the limitation on the path length of 260 characters; the files with longer path will not be created/copied on export, which applies both to playlist and media files (if you use any "... Copy Media Files" command from the menu). If you want to find out if any file is skipped on export, you could install the <a href="https://zvezdan-d.github.io/EventLogger.html">Event Logger</a> add-on with the added EventLoggerMode key to the Ini file as it is mentioned in the <a href="#inikeys">Additional INI keys</a> section.<br /><br />
+
+When you open the sub-menu of any <i>Import</i> command for the first time, if it  contains too many menu items, it could be truncated on the bottom of the screen. To get the same sub-menu with all items displayed correctly, you need to collapse/hide that sub-menu and open it again.<br /><br />
+
+You could directly select a playlist for automatic export in the <i>From</i> combo box in the Options dialog box only for playlists on the first level, i.e. a playlist which is a child of the Playlists node. If you want to auto-export a nested playlist, you could do that if you manually enter a full path to that playlist using "\" as a separator between nested levels, e.g. Genres\Rock\Pink Floyd. This also means that you cannot use the "\" character in the playlist names specified in that combo box. However, this limitation has only the playlist specified in the <i>From</i> path for the automatic export - other exported playlists has not that limitation, even the child playlists of that playlist could have "\" in their names. It is even possible to specify the name of some nested playlist without its full path, but only if that name is unique.<br /><br />
+
+Refreshing of the tracklist works very strange in MediaMonkey 2.x and because of that you need to click on the confirmation dialog after every generated playlist, i.e. for every sub-node. This confirmation dialog is not needed with MM 3.x and higher, and the speed and reliability are much better if you have installed MM 3.1.0.1218 or newer. Nodes within the Playlist branch don't have such limitation, only regular nodes. Also, almost all sub-nodes of the Library node [MM2-3] and collections (Entire Library, Music, ...) [MM4] are exported using SQL without the mentioned limitation.<br /><br />
+
+If you use <i>When any playlist is added or modified</i> option, there are some situations when the automatic export doesn't work always when playlists are renamed or moved, even with MM v4.1.0.1648 or higher, but only after their parent node is collapsed/expanded. However, the automatic export is working always correctly using the mentioned option when MM playlists are added or modified.<br /><br />
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+This add-on is a false positive reported as a worm by F-Secure. The author of F-Secure promised me that will update its database and put the add-on on the white-list, but still didn't. If you go to the <a href="https://www.virustotal.com/en/file/357110f3bacf7fe4b1a4241dcb884d1ad4b7af706c776a81385453e67dabb823/analysis/1475442674/">www.virustotal.com/en/</a> site, you will see that the add-on is safe tested by 54 popular anti-virus engines; the only one reporting a worm in it is F-Secure. By the way, the F-Secure was constantly having the largest number of false positives in last few years according to the <a href="https://www.av-comparatives.org/real-world-protection-tests/">Real-World Protection Test</a> by AV-Comparatives.<br /><br />
+
+If you are interested about my other add-ons for MediaMonkey, you could visit the <a href="https://zvezdan-d.github.io/MediaMonkeyAddons.html">following page</a>.<br /><br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+</div>
+
+</body>
+</html>

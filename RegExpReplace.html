@@ -1,0 +1,732 @@
+<html>
+<head>
+    <title>RegExp Find and Replace (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, RegExp, regular expressions, Find, Replace, tag, m3u">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel="stylesheet" type="text/css" href="DownloadButton.css">
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size="+2">RegExp Find and Replace</font><br />
+Version 4.4.9<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="RegExpReplace_Ext.htm" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+This add-on works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v2.x-4.x. It allows powerful finding and replacing of strings inside of selected/visible tracks in the main tracklist or the Now Playing panel. The matching criteria and the replacement string can be created using Regular expressions or VBScript expressions which provide very flexible transformations of data. It has support for custom presets with 253 already predefined: clear field, copy conditionally full or part of one field to another, swap the first and the last name of Artist, ... Almost all MM fields are supported!<br /><br />
+
+Although this add-on is so flexible and powerful, using the predefined presets is almost trivial: just select the tracks that you want to modify, choose the needed preset from the <i>Edit &gt; RegExp Find & Replace &gt; Tags Manipulation Presets</i> menu and adjust the fields/values if that is necessary. Just take a look at how simple it could be:<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/255/32008436562_219f8b596e_o.png" alt="RegExpPresetDialog" border="0"></center>
+<br />
+
+There is even a simpler way to apply that preset to the selected tracks with just a single click on the new toolbar button, instead of digging for it in the overcrowded <i>Tags Manipulation Presets</i> menu to open its dialog box. In that case, you should turn on the <i>Toolbar button</i> check box for the needed preset using the <i>Preset Settings</i> dialog box and click on the <i>Update</i> button. Or, if you prefer the keyboard, you could specify a hotkey for the needed preset using the <i>Shortcut</i> command, e.g. Ctrl+T and you will get modified tracks by pressing on that keyboard hotkey.<br /><br />
+
+<table bgcolor="WhiteSmoke"><tr><td width="100%">
+If you want to discus about this add-on, you could visit its MediaMonkey <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=2&t=28510">forum thread</a>. If you are using a skin that is not supported by default, you could take a look at skin styles for this add-on made by <i>nynaevelan</i> at the next <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=9&t=39768">forum thread</a>.
+<br /><br />
+
+You could also take a look at <a href="https://zvezdan-d.github.io/MediaMonkeyAddons.html">my other add-ons</a> for MediaMonkey.
+
+</td><td valign="middle" align="center" width="250px">
+<div class="download-box" style="float:left;"><a id="download" title="Download" class="download-link" href="http://solair.eunet.rs/~zvezdand/RegExpReplace-4.4.9.mmip"><span><strong><font size="+1">Download</font></strong> <em>The latest freely available<br />version of the add-on</em></span></a></div>
+</td></tr></table>
+
+<p><font size="+1"><b><a id="issues">Windows Defender Issue</a></b></font></p>
+There are reports that MediaMonkey with the freely available version of this add-on has very slow startup on Windows 10 after its April 2018 Update when Windows Defender has Real-Time Protection enabled. This is not caused by a bug in this add-on, but in Windows Defender, which I already reported on <a href="https://answers.microsoft.com/en-us/protect/forum/protect_defender-protect_scanning-windows_10/last-update-of-windows-defender-causes-terribly/c71cc133-5c5f-447e-95fb-e2641085836d?tm=1527000700529&lc=1033">Microsoft site</a>, but MS don't care about it. You could do any of the next things:<ul>
+<li>leave your complain to Microsoft, because every new report will increase the chance that the folks at Microsoft will do something about the problem; or</li>
+<li>turn off Real-Time Protection of Windows Defender (Control Panel / Windows Defender / Tools / Options / Real-time protection) and use some another anti-malware instead; or</li>
+<li>keep installed as few RegExp F&R presets as possible since this slow down is related to the number of installed presets:</li><ul>
+    <li>during installation of the add-on, skip installation of all predefined presets; or</li></li>
+    <li>after installation, remove presets that you don't need using the <i>Manage RegExp Presets</i> dialog box.</li></ul>
+</ul>
+
+The <a href="https://zvezdan-d.github.io/RegExpReplaceNew.html">enhanced version</a> of this add-on do not have this problem.<br />
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v4.4.9 - 2018-10-03</dt><ul>
+<li>Added: info about slow startup;
+<li>Fixed: Ignore To All option when there is an error on replacing.</ul><br />
+
+<dt>v4.4.8 - 2017-02-05</dt><ul>
+<li>Fixed: update of the Date Modified property of file when changing the Timestamp feld;
+</ul><br />
+
+<dt>v4.4.7 - 2017-01-07</dt><ul>
+<li>Fixed: unneeded update of the timestamp when modifying non-tag fields (e.g. Added);
+<li>Fixed: <i>Delete emptied folders</i> option after moving files, all empty parent folders are now removed (until now only empty folder that contained moved media file(s) was removed, but not its empty parent folders).
+</ul><br />
+
+<dt>v4.4.6 - 2016-04-22</dt><ul>
+<li>Fixed: typing numerical values on keyboard in SpinEdit controls on the adjustment and <i>Preset Settings</i> dialog boxes (functional only in MM v3.1.2.1289 or higher);
+<li>Fixed: unnecessary display of dialog box on start-up asking if you want to install new presets after automatic adjustment of clock caused by switch in daylight saving time;
+<li>Fixed: Date and Original Date fields, now they display dates using ISO format and accept empty string for resetting the field;
+<li>Fixed: display of source/destination field in the adjustment dialog box for renamed Custom fields;
+<li>Fixed: <i>Replace All</i> button in the <i>Preset Settings</i> dialog box for presets that use bReplacing variable (e.g. the "Swap fields" preset).
+</ul><br />
+
+<dt>v4.4.1 - 2015-08-26</dt><ul>
+<li>Added: possibility to specify &lt;Into Field&gt; tag in the <i>Replace with</i> string which would be replaced with the field specified in the dropdown list next to the &lt;&lt; button when the <i>VBScript expression</i> is turned on (this allows more generic presets that could be used with any selected field instead of hard-coded ones in the <i>Replace with</i> string);
+<li>Fixed: incorrect modification of tags and presets when using the Tag Manipulation Presets menu (broken in 4.4).
+</ul><br />
+
+<dt>v4.4 - 2015-06-22</dt><ul>
+<li>Added: pop-up menu items to the tracklist and Now Playing panel;
+<li>Fixed: many things.
+</ul><br />
+
+<dt>v4.3 - 2011-07-06</dt><ul>
+<li>Added: independent toolbar for RegExp buttons instead of Search toolbar [MM4];
+<li>Fixed: assigning numerical values to textual fields, e.g. Track# (broken in v4.2).</ul><br />
+
+<dt>v4.2.1 - 2011-06-22</dt><ul>
+<li>Fixed: error when replacing <i>Type</i> field [MM4].</ul><br />
+
+<dt>v4.2 - 2011-06-21</dt><ul>
+<li>Added: <i>All Text Fields</i> item to <i>Into</i> and <i>From</i> dropdown lists which allows assigning the same value to the several fields at once (with MM 3.1 or higher it could be specified which fields you want to modify using settings in the Search sheet of the Options dialog box; please be careful with that option, especialy with the specified Path field!);
+<li>Added: possibility to specify &lt;From Field&gt; tag in the <i>Replace with</i> string which would be replaced with the field specified in the dropdown list next to the &lt;&lt; button when the <i>VBScript expression</i> is turned on (this allows more generic presets that could be used with any selected field instead of hard-coded ones in the <i>Replace with</i> string);
+<li>Added: <i>Series, Director, Producer, Actor, Parental Rating, Episode #, Season #</i> and <i>Type</i> (new) fields [MM4];
+<li>Changed: old <i>Type</i> field to <i>Extension</i>, <i>Original Album Title</i> to <i>Original Title</i>, <i>Skip Counter</i> to <i>Skipped #</i> (please update your own presets that contain these fields);
+<li>Added: 36 new presets, most of them using the new possibility with the &lt;From Field&gt; tag; the most important new preset is "Swap &lt;From Field&gt; and &lt;Into Field&gt;" which shows how it is possible to use single preset to modify two or more fields at once; some old presets fixed;
+<li>Fixed: case modification of Path/Folder.</ul><br />
+
+<dt>v4.1 - 2011-03-03</dt><ul>
+<li>Added: <i>Start Time, Stop Time</i> and <i>Skip Counter</i> fields (<i>Start Time</i> and <i>Stop Time</i> values in milliseconds) [MM4];
+<li>Added: <i>MapChrCase</i> and <i>MapArrayCase</i> custom functions, modified <i>MapChr</i> and <i>MapArray</i> functions (<i>MapChrCase</i> has same behavior as old <i>MapChr</i> and <i>MapArrayCase</i> has same behavior as old <i>MapArray</i>, <i>MapArrayCase</i> is similar to <i>MapArray</i>, but the replaced string would be capitalized if the first character of the original string is in upper case. Preset example: "Remove diacritical marks...");
+<li>Improved: import/export of presets with the same name, but different contents;
+<li>Fixed: install of sample presets when add-on is installed in local folder [MM4];
+<li>Fixed: skin styles path [MM4];
+<li>Fixed: error with some fields (Filename, Date, ...) when <i>Regular expression 2</i> is turned on.</ul><br />
+
+<dt>v4.0.4 - 2010-12-02</dt><ul>
+<li>Added: 10 new presets, some old updated;
+<li>Fixed: RegExp-ID3_Genres.ini file with presets for ID3 genres, so the same genres could not be assigned twice to the same tracks;
+<li>Fixed: problem with SQLQuery function in some cases.</ul><br />
+
+<dt>v4.0.3 - 2010-05-21</dt><ul>
+<li>Added: 13 new presets;
+<li>Fixed: error when "Trim toolbar button's caption" value is changed.</ul><br />
+
+<dt>v4.0.2 - 2010-05-10</dt><ul>
+<li>Fixed: &lt;Number&gt; tag with MinValue and MaxValue arguments.</ul><br />
+
+<dt>v4.0.1 - 2010-04-14</dt><ul>
+<li>Changed: preset captions in the menu/toolbar when "Show dialog box for adjusting of the preset..." is checked on.</ul><br />
+
+<dt>v4.0 - 2010-04-10</dt><ul>
+<li>Added: possibility to specify custom arguments inside of the <i>Find what</i> and <i>Replace with</i> strings using &lt;String&gt; and &lt;Number&gt; tags, e.g. instead of 1 in some preset you could write &lt;Number Caption="Increment" Value="1"&gt; and when you choose that preset from menu or toolbar you would get dialog box which allows adjusting of that value; for description about this functionality please take a look at the <a href="#adjustment">Adjustment</a> section;
+<li>Added: possibility to adjust source and destination fields inside of mentioned dialog box for preset, if you specify &lt;Into Field&gt; or &lt;From Field&gt; in the preset name;
+<li>Added: option "Show dialog box for adjusting of the preset selected in the menu or toolbar" (you could turn off display of the mentioned dialog box, even if you have presets with custom arguments);
+<li>Added: option "Modeless Find & Replace dialog box (allowed access to other parts of the program)" (now you could use F&R dialog without ever closing it);
+<li>Added: option "Display of tracks in Find & Replace dialog box synchronized with main window" (when you change node or selected tracks, this is automatically reflected in the F&R dialog; fully functional with MM 3.1.0.1218 or up);
+<li>Added: option "Show the toolbar button for the Find & Replace dialog box"
+<li>Added: option "Show the toolbar button for the Presets dropdown list"
+<li>Added: option "Show toolbar buttons for presets with enabled button in Find & Replace dialog box" (you could turn off all preset buttons, even if they have Toolbar button option checked on in the F&R dialog);
+<li>Added: <i>Folder, Filename</i> and <i>Type</i> fields (Path = Folder \ Filename . Type);
+<li>Added: <i>Bookmark</i> and <i>Playback %</i> fields (the playback position for audiobooks, the first field is in <i>ms</i> and the second one is in percents);
+<li>Added: <i>DateISO, SetVar</i> and <i>GetVar</i> custom functions;
+<li>Added: many new presets, some old improved;
+<li>Changed: <i>Save</i> button now have 3 possible states depending of modifications in the F&R dialog - <i>Rename, Update</i> and <i>Add</i> (it is now much easier to create new preset based on some existing one).</ul><br />
+
+<dt>v3.6 - 2009-07-02</dt><ul>
+<li>Added: <a href="http://www.mediamonkey.com/forum/viewtopic.php?p=212293#p212293">MapArrayEx</a> and <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=4&t=37913">DateTimeISO</a> custom functions.</ul><br />
+
+<dt>v3.5.1 - 2009-06-18</dt><ul>
+<li>Fixed: error during start-up if none preset exists.</ul><br />
+
+<dt>v3.5 - 2009-05-14</dt><ul>
+<li>Improved: skin styles;
+<li>Fixed: load of empty and duplicated presets.</ul><br />
+
+<dt>v3.4.3 - 2009-05-10</dt><ul>
+<li>Fixed: modifications of the Date and the Original Date fields.</ul><br />
+
+<dt>v3.4.2 - 2009-04-14</dt><ul>
+<li>Fixed: saving of presets with localized versions of Windows.</ul><br />
+
+<dt>v3.4.1 - 2009-02-25</dt><ul>
+<li>Fixed: <i>Replace/Replace All</i> for some presets (a bug introduced with the last update).</ul><br />
+
+<dt>v3.4 - 2009-02-21</dt><ul>
+<li>Added: possibility to cancel <i>Find Next/Replace All</i> operations;
+<li>Added: insert of the field name on the cursor position in the <i>Replace with</i> edit box (MM 3.1.0.1222 or up);
+<li>Added: some new presets;
+<li>Improved (bug): speed of the <i>Replace All</i> (drastically) when there are many unmatched tracks (bug).</ul><br />
+
+<dt>v3.3 - 2009-02-02</dt><ul>
+<li>Added: auto-repeat for Up/Down buttons in the Export/Import dialog box with MM 3.1.0.1220 or up;
+<li>Added: word-wrap option for display of presets in the Export/Import dialog box;
+<li>Added: alphabetical sort of presets in the Export/Import dialog box by click on the table header.</ul><br />
+
+<dt>v3.2 - 2009-01-20</dt><ul>
+<li>Improved: look of dialog boxes with some skins (custom configurable with CSS files);
+<li>Improved: speed of selecting tracks for main tracklist (drastically) and Now Playing panel with MM 3.1.0.1214 and up;
+<li>Added: some new presets (some old improved).</ul><br />
+
+<dt>v3.1 - 2009-01-10</dt><ul>
+<li>Added: option to enable/disable display of the toolbar button for the last executed preset;
+<li>Added: option to keep display of the toolbar button for the last executed preset after restart;
+<li>Added: some new presets (some old improved);
+<li>Fixed: detection when the Now Playing panel has a focus, even with MM3 older that 3.1.0.1210;
+<li>Fixed: <i>Select un/matched/Select to replace</i>.</ul><br />
+
+<dt>v3.0 - 2009-01-02</dt><ul>
+<li>Added: export/import/batch delete of presets;
+<li>Added: option to display every checked preset as the toolbar button;
+<li>Added: option to asign an icon to the preset item in the menu/toolbar (could be from external .ico file);
+<li>Added: option for backward direction when finding matched tracks;
+<li>Added: possibility to find/replace data in tracks from the Now Playing panel [MM3];
+<li>Added: <i>Day, Month, Date, Original Day, Original Month</i> and <i>Original Date</i> fields (the old <i>Date</i> renamed to <i>Year</i>, the old <i>Original Date</i> renamed to <i>Original Year</i>; the new <i>Date/Original Date</i> accepts full date format YYYY-MM-DD) [MM3];
+<li>Added: option to delete emptied folders when moving files as a result of the <i>Path</i> modification;
+<li>Added/improved: the <i>New</i> button (old behavior when creating new presets is abandoned);
+<li>Added: many new presets (many old improved);
+<li>Improved: speed of <i>Replace</i> and <i>Replace All</i> when only few songs from a large list of songs should be updated;
+<li>Fixed/improved: <i>Select un/matched/Select to replace</i> with large number of selected/visible tracks;
+<li>Fixed: reading/writing presets from the .ini file with MM 3.1.0.1198 and newer (actually, the format of presets in .ini file is changed);
+<li>Fixed: truncated bottom buttons with some skins.</ul><br />
+
+<dt>v2.2.2 - 2008-06-20</dt><ul>
+<li>Fixed: error "file not found".</ul><br />
+
+<dt>v2.2.1 - 2008-06-19</dt><ul>
+<li>Added: synchronous display of current track in the table during navigation;
+<li>Added: possibility for jump to current track by click on the coresponding row number in the table;
+<li>Fixed: reset of the table after Replace command;
+<li>Fixed: checked state of rows in the table after toggle with the "?" button;
+<li>Fixed: merging new presets with old ones after installation for multi-user accounts.</ul><br />
+
+<dt>v2.2 - 2008-06-14</dt><ul>
+<li>Added: possibility to check which tracks from the table should be replaced;
+<li>Added: <i>IfNull</i> custom function for use with <i>VBScript expressions</i>;
+<li>Added: many new presets (some old improved);
+<li>Fixed: moving to the previous/next group of tracks (buttons |&lt; and &gt;|).</ul><br />
+
+<dt>v2.1.2 - 2008-06-11</dt><ul>
+<li>Fixed: display of the new line characters in the string when used with the VBScript expression.</ul><br />
+
+<dt>v2.1.1 - 2008-06-10</dt><ul>
+<li>Fixed: display and replacement of the new line characters in the string (Lyrics, Comment).</ul><br />
+
+<dt>v2.1 - 2008-05-27</dt><ul>
+<li>Added: options to select all un/matched tracks in the tracklist (<i>Sel. matched</i> and <i>Sel. unmatch.</i>) [MM3];
+<li>Added: options to keep only un/matched tracks, other tracks are removed from the tracklist (<i>Keep matched</i> and <i>Keep unmatch.</i>);
+<li>Added: option to select all tracks that could be modified, i.e. old content is different than replacement (<i>Sel. replace</i>) [MM3];
+<li>Added: option to keep only tracks that could be modified (<i>Keep replace</i>);
+<li>Added: option to toggle between selected/visible tracks;
+<li>Added: different highlight colors for matched tracks and for tracks that could be modified;
+<li>Added: <i>SQLQuery</i> custom function for use with VBScript expressions;
+<li>Added: many new presets (some old improved);
+<li>Improved: response during a table refresh with time consuming expressions;
+<li>Fixed: table with old/new content not updated after <i>Replace All</i>.</ul><br />
+
+<dt>v2.0.1 - 2008-05-19</dt><ul>
+<li>Fixed: INI file with presets;
+<li>Fixed: the ordinal number of tracks displayed in the table.</ul><br />
+
+<dt>v2.0 - 2008-05-19</dt><ul>
+<li>Added: support for presets (Save, Delete, Move Up/Down) with more than 30 already predefined;
+<li>Added: support for VBScript expressions for replacement;
+<li>Added: the table with old/new display for defined number of selected/visible tracks;
+<li>Added: highlighted display of matches;
+<li>Added: <i>Find what/Replace with</i> dropdown lists with recently entered strings;
+<li>Added: support for the progress bar and many other improvements.</ul><br />
+
+<dt>v1.0.2 - 2008-05-07</dt><ul>
+<li>Fixed: updating tags into files.</ul><br />
+
+<dt>v1.0.1 - 2008-04-25</dt><ul>
+<li>Fixed: error which is manifesting with double apostrophes inside of the field text.</ul><br />
+
+<dt>v1.0 - 2008-04-19</dt><ul>
+<li>First public version.</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+<ul><li>For MediaMonkey 3.0 or higher - just double-click on the RegExpReplace-xx.mmip file; if you are on Vista or newer Windows and you get "Product installation error", make sure you have MM3 set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>; if you downloaded the installation package with IE7 and it changed its extension to a .zip, you should first change it back to a .mmip.</li>
+<li>For MediaMonkey 2.x - rename a .mmip extension to a .zip, extract RegExpReplace.vbs and RegExpReplace.ini files to the MediaMonkey's "Scripts\Auto" folder and restart MM program.</li></ul></p>
+
+Note: The RegExpReplace.ini file in Auto folder is used only after installation. During its work, the RegExp Find & Replace add-on stores presets in the MediaMonkey.ini file.
+<br /><br />
+
+If you are upgrading this add-on from some old version, especially if there is updated syntax of presets, it is strongly recommended to follow these steps:<br />
+1. make a backup of your own created presets using the <i>Edit &gt; RegExp Export/Import</i> dialog box (pre-v4.4), or <i>Edit &gt; RegExp Find and Replace &gt; Maintain Presets</i> dialog box (v4.4 or higher);<br />
+2. uninstall the old version of the add-on and choose Yes when you are asked if you want to remove add-on settings;<br />
+3. install the new version of the add-on;<br />
+4. import your own created presets using the <i>Edit &gt; RegExp Find and Replace &gt; Maintain Presets</i> dialog box.
+<br /><br />
+
+This way, you will always have the latest and updated presets. If you don't remove the old settings (together with presets), during installation this add-on will check the preset's names and if they are the same as the old ones they will be skipped (even if they were updated).<br /><br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+The RegExp Find and Replace add-on could be used by beginners as well as very advanced users:<br />
+
+1. Beginners could use the add-on by just applying the presets from the menu. You will find 250+ predefined presets for different tasks that are useful without any additional adjustment, e.g. you could clear field, copy conditionally full or part of one field to another, swap the first and last name of an Artist, etc. However, many of these presets can be adjusted in a dialog box that contains one or more different controls depending on the tag(s) used in the selected preset. For example, with the preset "Swap nn-th and mm-th words of &lt;Into Field&gt;" you could set 3 parameters: <i>Destination field</i>, <i>First word</i> and <i>After words</i>.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/430/31347038243_03f460cea6_o.png" alt="RegExpPresetDialog-2" border="0"></center><br />
+
+If you modify some parameter in the adjustment dialog box and confirm execution of the preset with the OK button, that modification will be remembered in the corresponding preset.<br /><br />
+
+2. More experienced users could create their own presets to do some frequent data manipulations that are different than those that are included with the add-on. You could use the <i>Edit &gt; RegExp Find and Replace &gt; Preset Settings</i> dialog box to find/replace data in files as you could do in any text editor, but you could also use the same dialog box to create/edit presets. Such presets could be applied from the mentioned dialog box, but they are also directly accessible using the corresponding menus, hotkeys and/or toolbar buttons.<br /><br />
+
+The replacing presets that are started by menu/hotkey/toolbar will be applied to the files selected in the main filelist or Now playing panel, depending on which panel is active.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/732/32154329626_e355fec1b3_o.png" alt="RegExpReplace-4.4.7 - Menu" border="0"></center><br />
+
+<b>Menu</b><br />
+You could open the add-on's dialog boxes and apply its presets using the <i>RegExp Find and Replace</i> menu items located in the main <i>Edit</i> menu and popup menus of the main filelist and Now playing panel. You could also get the same menu if you click on the <i>RegExp Tagging Presets</i> toolbar button (light bulb) located on the <i>Search</i> toolbar [MM2-3] or <i>RegExp Find and Replace</i> toolbar [MM4] if the <i>Show the toolbar button for the Presets dropdown list</i> option is turned on in the <i>Options</i> dialog box.<br /><br />
+
+The following items are available in menus:
+<li><i>Preset Settings</i> - use this command if you want to open the <i>RegExp Find and Replace / Preset Settings</i> dialog box that allows creating/editing presets and finding/replacing metadata in files/database. This command is always visible in the Edit menu and popup menus of the filelist/Now playing panel; it is also visible in the <i>RegExp Tagging Presets</i> toolbar menu (light bulb) if the <i>Show the toolbar button for the Find & Replace dialog box</i> option is turned off in the <i>Options</i> dialog box, i.e. when its toolbar button is hidden.<br /><br />
+
+<li><i>Manage Presets</i> - this command opens the <i>Manage RegExp Presets</i> dialog box that contains a table with all available presets and it allows batch operations on several presets at the same time, e.g. <i>Del, Export</i> or <i>Import</i>. It also has some other commands that are better used when the presets are displayed in the tabular form, e.g. <i>Up</i> or <i>Down</i> for moving a preset inside the list.<br /><br />
+
+<li><i>Options</i> - when you choose this command, it will open the <i>RegExp Find and Replace Options</i> dialog box that contains less important options that affect behavior of the add-on and/or all presets in general.<br /><br />
+
+<li>The next item in the menu displays the last applied preset and it is visible only if the <i>Show the toolbar button for the last executed preset from the menu list</i> option is turned on in the <i>Options</i> dialog box.<br /><br />
+
+<li><i>Tags Manipulation Presets</i> - this sub-menu contains all presets that are stored in the MediaMonkey.ini file, if you choose an item from that menu it will start execution of the corresponding preset.<br /><br />
+
+<center><img src="https://c2.staticflickr.com/6/5606/31000817753_37bc05bc02_o.png" alt="RegExpReplace-4.0" border="0"></center><br />
+
+<b>RegExp Find and Replace / Preset Settings</b><br />
+The <i>Preset Settings</i> dialog box can be used for creating/editing presets and finding/replacing metadata in a file(s) and/or the database. This dialog box is resizable, so it can be enlarged if the content of a control is not fully visible.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/619/31437920660_b2bb48107d_o.png" alt="RegExpReplace-4.0-1" border="0"></center><br />
+
+The first group of controls, at the top of the <i>Preset Settings</i> dialog box, is mainly about setting how the selected preset is seen and accessed within the program (user interface). Firstly, we have the <i>Preset</i> label showing the number of the selected preset and total number of presets and next to is a combo box containing a list of all stored presets. You could select a preset from that list, then apply it to the selected files or modify its settings to suit your needs. That control also allows you to enter a name for the new preset (just keep in mind that all presets should have unique names).<br /><br />
+
+Next to the <i>Preset</i> combo box we have <i>Move</i> up/down buttons which allow us to move a selected preset up or down in the list. Then we have 3 buttons for manipulation of presets: <i>New, Rename/Update/Add</i> and <i>Del</i>. The <i>New</i> button resets all controls in the dialog box to their initial (blank) states, which could be used when we want to create a new preset from scratch. The following button should be used if we want to save the currently selected preset and it has 3 states/captions depending on modifications of the preset's settings:<br />
+1. <i>Rename</i> - if you only change a preset's name and leave its parameters unchanged;<br />
+2. <i>Update</i> - if you only change any preset parameter (e.g. <i>Description</i>) and leave its name unchanged;<br />
+3. <i>Add</i> - if you change both a preset's name and parameter(s).<br />
+The last button in this row is <i>Del</i> which could be used when we want to remove the selected preset from the list permanently.<br /><br />
+
+The first control in the next row is the <i>Description</i> text box which could be used to enter some information about the selected preset, e.g. to describe its effect with some examples. The description will also be displayed as a hint if you hover a mouse over the corresponding menu item or toolbar button of the preset.<br /><br />
+
+If you want to apply a preset without searching for it in the <i>Tags Manipulation Presets</i> menu, you could assign a hotkey to the selected preset by using the <i>Shortcut</i> text box, e.g. you could specify Shift+Ctrl+T, and you could apply such preset to the selected files by pressing on that hotkey.<br /><br />
+
+If you prefer the mouse over the keyboard, you could assign a toolbar button to the selected preset by ticking the <i>Toolbar button</i> check box, so you could just click on that button to start its execution. The toolbar buttons for the RegExp presets are displayed on the <i>Search</i> toolbar in MM2-3 or <i>RegExp Find and Replace</i> toolbar in MM4. By the way, you need to click on the <i>Update</i> button to confirm any modification of the preset's settings, even if you just toggle the state of the <i>Toolbar</i> check box.<br /><br />
+
+The toolbar buttons of presets could display a textual caption with the name of preset or an icon. Since the preset names are very long, their captions could be trimmed to the specified number of characters using the <i>Trim toolbar button's caption (maximal number of characters)</i> option in the <i>Options</i> dialog box.<br /><br />
+
+If you want to pack even more buttons on the toolbar, you could use the icons instead of the textual captions. You could assign the icon to the selected preset by choosing it from the <i>Icon</i> dropdown list and that icon will be displayed in the presets menu and on the corresponding toolbar button. The icon could be loaded from an external .ico file or you could choose a MM's internal icon represented by its number (the built-in icons for the Glided skin with their numbers could be downloaded from <a href="http://www.mediamonkey.com/contrib/artwork/icons.zip">here</a>). The external .ico file could be specified after clicking on the same <i>Icon</i> combo box when the mouse pointer looks like a pointing hand. If you want to remove an icon from a preset, i.e. to get the textual caption back on the toolbar button, you should choose the first (empty) item from the <i>Icon</i> dropdown list.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/590/31000817433_4ca815be5a_o.png" alt="RegExpReplace-4.0-2" border="0"></center><br />
+
+The remaining controls in the <i>Preset Settings</i> dialog box mainly describe how the selected preset should perform. The first control in the so-called <i>finding</i> group is the <i>Find what</i> combo box, which is used to specify the string that we want to search for and/or to replace in the destination field. The <i>Find what</i> combo box has a dropdown list with the history of the last 5 applied search strings.<br /><br />
+
+The next control is the <i>Into</i> combo box and with it we could specify the destination field that will be searched (and/or modified). The items in the <i>Into/From</i> dropdown lists represent the MediaMonkey fields that are available for searching/modification with this add-on and many of them have corresponding tags that are stored inside media files.<br /><br />
+
+In general, the presets of the freely available version of the add-on could be applied only on one destination field at once. However, the first item in the <i>Into</i> list (<i>All Text Fields</i>) is specific and it allows modification of several textual fields at once using the same replacement. You could specify which text fields you want to modify using settings in the <i>Search</i> sheet of the <i>Options</i> dialog box [MM3.1+], but please be careful with that option, especially with the specified Path field!<br /><br />
+
+Copying a (part of a) string from a source to destination field modifies only destination field, so it could be done using a single (preset's) settings. However, moving a (part of a) string from a source to destination field requires modification of both fields, source and destination, which is not directly supported by this add-on using a single (preset's) settings.<br /><br />
+
+If you want to modify several fields, you could do that most easily with several appropriate presets applied in sequence. It is also possible to write a single preset that could modify two or more fields at once, but you need to have a good VBScript knowledge to do that (please take a look at the "Swap &lt;From Field&gt; and &lt;Into Field&gt;" preset as an example).<br /><br />
+
+The <i>Original</i> info box is below the <i>Find what</i> control and it displays the old content of the destination field specified with the <i>Into</i> combo box, i.e. the content before the applied replacement.<br /><br />
+
+The <i>Regular expression 1</i> check box should be ticked on if we want to use regular expressions in the <i>Find what</i> string. The next <i>Full</i> button is enabled only if the <i>Regular expression 1</i> is ticked on; it could be used to insert the "^.*" string into the <i>Find what</i> combo box, which is the Regex replacement for the full content of the field, not matter what the selected field contains (this feature does not work correctly with the multi-line Comment and Lyrics fields).<br /><br />
+
+The <i>Find whole words only</i> check box should be ticked on only if we want to search for whole words (otherwise, any field text that contains the specified <i>Find what</i> string would be matched). It could be used only when the <i>Regular expression 1</i> is ticked off since the regular expressions have their own way of finding whole words.<br /><br />
+
+<center><img src="https://c2.staticflickr.com/6/5552/31437920590_c01b93a871_o.png" alt="RegExpReplace-4.0-3" border="0"></center><br />
+
+The first control in the so-called <i>replacing</i> group is the <i>Replace with</i> combo box, which could be used for specifying a string that we want to use for the replacement. Similarly to the <i>Find what</i> combo box, this control has a dropdown list with the history of the last 5 applied replacement strings.<br /><br />
+
+The next control is the <i>From</i> combo box which is enabled only if the <i>Regular expression 2</i> or <i>VBScript expression</i> is ticked on. If the <i>Regular expression 2</i> is ticked on, then you could use the <i>From</i> dropdown list to specify the source field for the replacement. However, if the <i>VBScript expression</i> is ticked on, then you could use the <i>From</i> list to select some field which you want to insert into the <i>Replace with</i> string using the newly displayed &lt;&lt; button (it is visible only if <i>VBScript</i> is ticked on). Or, you could choose a field which would be substituted instead of the &lt;From Field&gt; tag that you could have specified inside of the <i>Replace with</i> string (please read the <a href="#adjustment">Adjustment</a> section regarding the &lt;From Field&gt; tag).<br /><br />
+
+You should tick on the <i>Regular expression 2</i> or <i>VBScript expression</i> check boxes if you want to use the corresponding expressions in the <i>Replace with</i> string. The <i>Full</i> button next to the <i>Regular expression 2</i> check box could be used to insert "^.$" into the <i>Replace with</i> string if <i>Regular expression 2</i> is ticked on, which is similar in purpose to the <i>Full</i> button next to the <i>Regular expression 1</i> check box.<br /><br />
+
+Similarly to the <i>Original</i> info box in the finding group, the <i>Replacement</i> text box that is below the <i>Replace with</i> combo box serves only to display the current content of the source field specified in the <i>From</i> list, but only if you have <i>Regular expression 2</i> ticked on.<br /><br />
+
+The <i>Result</i> info box displays what would be the new content of the destination field specified with the <i>Into</i> combo box, i.e. the content after the applied replacement.<br /><br />
+
+The last control, which defines a preset's settings, is the <i>Match case</i> check box. It should be ticked on if you want to search and/or replace only parts of the string with the exact same case, e.g. if you want to find "i" but not "I". It determines behavior of both <i>Find what</i> and <i>Replace with</i> strings.<br /><br />
+
+The <i>Backward search direction</i> check box that is located in the same group as the previous controls is not, technically speaking, a part of the preset settings, but it is only temporarily located there because of a lack of space in the dialog box - if it is ticked on, the <i>Find Next</i> button becomes <i>Find Prev</i> and allows searching for the specified string backward in the range of selected files, starting with the current file whose number is displayed in the left-bottom corner of the dialog box.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/574/31000817213_5125d087a9_o.png" alt="RegExpReplace-4.0-4" border="0"></center><br />
+
+The table below the replacing group of controls shows 25 files surrounding the current file. It displays the old and new content of the chosen destination field in these files. The number of files shown in the table could be adjusted in the <i>Options</i> dialog box using the <i>Maximal number of table rows in the Find & Replace dialog box</i> option. Each row in the table has a check box in the first column; if that check box is ticked on, the corresponding file will be modified when using the <i>Replace</i> or <i>Replace All</i> button. With the check box on the left side of the table header you could tick on/off all files in the table.<br /><br />
+
+If you click on the leftmost "?" button from the bottom row of controls you would get the short reference for the Regular expressions and custom VBScript functions used in this add-on, which will be displayed in place of the mentioned table with files; if you click on the same button again, that file table will return.<br /><br />
+
+The number of the current file (on which you could apply the <i>Replace</i> option) is displayed in the text box in the left-bottom corner of the dialog box and the field's content of that file is displayed in the previously mentioned info boxes (<i>Original, Replacement, Result</i>). The up/down buttons next to that text box serve to change the current file by an increment of one step, while |&lt; and &gt;| buttons on the left side of that text box change it by 25 steps, i.e. one page up or down in the table.<br /><br />
+
+The next button (which looks more like a text box) displays the total number of files that are selected/visible in the main filelists. If you click on that button you would toggle between selected and visible files. That means that you could apply the preset on all visible files without selecting them all in the filelist.<br /><br />
+
+The <i>Find Next</i> button could be used to locate the next file that matches criteria specified with the controls in the finding group and that file would become the current one. If the <i>Backward search direction</i> check box is ticked on, that button will become <i>Find Prev</i> and with it you could search for the previous file which matches the specified criteria.<br /><br />
+
+The <i>Replace</i> button can be used to apply the selected preset to the current file; after that, the next/previous file that matches the specified criteria becomes the current file. The <i>Replace All</i> button could be used to apply the selected preset to all files that are selected/visible in the main filelist (be very careful when doing that).<br /><br />
+
+The last button at the bottom row, before the <i>Close</i> button, has several possible actions that could be chosen from the list after clicking on the part of button with the down arrow: <i>Keep Matched, Keep Unmatched, Keep to Replace, Select Matched, Select Unmatched</i> and <i>Select to Replace</i>. None of those options modify fields/tags in files, but they could show which files have fields that could/couldn't be found/modified using the selected preset.<br /><br />
+
+If you choose any of the "<i>Keep ...</i>" options it will remove all files from the main filelist that don't satisfy the selected option (they will only be removed from the display). For example, when you choose the <i>Keep to Replace</i> option, it will display only files that could be surely modified if you apply the Replace All option when using the selected preset. Similarly, if you choose any of the "<i>Select ...</i>" options you would get files appropriately selected in the main filelist without removing other files.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/442/32154329816_bd65b51c02_o.png" alt="RegExpReplace-4.4.7 - Manage Presets" border="0"></center><br />
+
+<b>Manage RegExp Presets</b><br />
+The <i>Manage RegExp Presets</i> dialog box contains a table with all available presets that allows batch operations on several presets at the same time. There are two radio buttons on the top of the dialog box: <i>MediaMonkey.ini</i> and <i>File</i>. If you select the <i>MediaMonkey.ini</i> option, it will display all RegExp presets that are stored in the main MediaMonkey INI file, i.e. the presets that are displayed in the RegExp menus. You will be able to export such presets, as well as to delete or move them.<br /><br />
+
+If you choose the <i>File</i> option, you could get presets displayed from an external INI file which could contain e.g. your previously exported presets. You could type its path in the following text box or you could click on the "..." button and find that INI file in the new <i>Open File</i> dialog box. You will be able to import such presets, as well as to delete or move them (if the loaded INI file is not ticked to open as read-only).<br /><br />
+
+Presets could be alphabetically sorted if you click on the table header that displays information about the loaded presets. This operation is not reversible, so be careful using this option and make a backup of your presets first.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/732/32154330136_1a4e0c3c92_o.png" alt="RegExpReplace-4.4.7 - Edit Preset" border="0"></center><br />
+
+You could open the <i>Edit RegExp Preset</i> dialog box to edit a preset if you click its serial number displayed in the "#" column of the table for that preset in the <i>Manage RegExp Presets</i> dialog box; in that case, all controls in the <i>Edit RegExp Preset</i> dialog box (that is very similar to the <i>Preset Settings</i> dialog box) will be set accordingly to the chosen preset, which means that you could modify the existing presets from the <i>Manage RegExp Presets</i> dialog box.<br /><br />
+
+Selecting/checking of the preset(s) in the table of the <i>Manage RegExp Presets</i> dialog box on which you want to implement some operation could be done in two ways: you could use the check boxes located on the left side of the table or you could select the wanted preset directly in the table. Using the second way you could select only one preset at a time and that way has precedence over those two ways of selecting, i.e. even if you have some or all presets checked in the table, if you choose some operation as <i>Del</i> it  will be applied only on the selected preset, not on the checked presets. If you want to deselect the currently selected preset, e.g. if you want to do an operation on the checked presets, then you should click on the already selected preset again.<br /><br />
+
+The <i>Up/Down</i> operations could be done only on one preset at a time that is selected in the table. Using the <i>Up</i> and <i>Down</i> buttons you could move the selected preset in the appropriate direction in the list of presets. Those two buttons are capable of auto-repeat; click and hold either one and the selected preset will move continuously.<br /><br />
+
+The <i>Word wrap</i> check box could be used to toggle how the presets are displayed in the table.<br /><br />
+
+You could use the <i>Del</i> button if you want to remove the selected/checked preset(s) permanently, so be careful using it. The enabled state of the next two buttons, <i>Export</i> and <i>Import</i>, depends on the selected option at the top of the dialog box: as it is already explained, you could export the selected/checked presets from the MediaMonkey.ini file or you could import the selected/checked presets from the specified external INI file.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/393/32192423775_167f3fe650_o.png" alt="RegExpReplace-4.4.7 - Options" border="0"></center><br />
+
+<b>Options</b><br />
+The <i>RegExp Find and Replace Options</i> dialog box contains less important options that affect behavior of the add-on and/or all presets in general. You could open this dialog box more than one way:<br />
+1) if you choose any of the mentioned <i>Options</i> commands in the <i>RegExp Find and Replace</i> sub-menus of the <i>Edit</i> menu, the <i>RegExp Tagging Presets</i> toolbar menu (light bulb) and the context menus of the main filelist and Now Playing panel, or<br />
+2) if you select <i>RegExp Find and Replace</i> add-on in the <i>Tools &gt; Extensions</i> dialog box and click on the <i>Options</i> button.<br />
+The same options could be found on the <i>General &gt; RegExp Find and Replace</i> page in the <i>Tools &gt; Options</i> dialog box.<br /><br />
+
+<li><i>Confirm update/delete of the preset selected in the Find & Replace dialog box</i>: if you turn off this option you will not be asked if you want to update or delete presets in the <i>Preset Settings</i> dialog box.<br /><br />
+
+<li><i>Confirm execution of the preset selected in the menu or toolbar</i>: if you turn off this option you will not be asked if you want to apply the preset that you have started by toolbar/hotkey/menu.<br /><br />
+
+<li><i>Show dialog box for adjusting of the preset selected in the menu or toolbar</i>: if you turn off this option the adjustment dialog box will not be displayed for the preset that you have started by toolbar/hotkey/menu.<br /><br />
+
+<li><i>Delete emptied folders when moving files as a result of the Path modification</i>: you should turn on this option if you want to delete folders that are left empty after moving files as a result of the applied presets that modify the Path field.<br /><br />
+
+<li><i>Maximal number of table rows in the Find & Replace dialog box</i>: you could set the maximum number of rows in the table of files in the <i>Preset Settings</i> dialog box using this option.<br /><br />
+
+<li><i>Trim toolbar button's caption (maximal number of characters)</i>: you could set the maximum number of characters that should be displayed on the toolbar buttons of presets.<br /><br />
+
+<li><i>Show the toolbar button for the Find & Replace dialog box</i>: if you turn off this option the toolbar button that opens the <i>Preset Settings</i> dialog box will not be displayed.<br /><br />
+
+<li><i>Show the toolbar button for the Presets dropdown list</i>: if you turn off this option the toolbar button that shows the <i>RegExp Find and Replace</i> sub-menu in the toolbar will not be displayed.<br /><br />
+
+<li><i>Show the toolbar button for the last executed preset from the menu list</i>: if you turn off this option the toolbar button that starts execution of the last used preset will not be displayed.<br /><ul>
+
+<li style="list-style-type:circle"><i>Keep the toolbar button for the last executed preset after restart</i>: you should turn on this option if you want to display the toolbar button for the last executed preset after restarting the program; this option is enabled when the previous option is turned on.</ul>
+
+<li><i>Show toolbar buttons for presets with enabled button in Find & Replace dialog box</i>: if you turn off this option you will not get displayed the toolbar buttons for any preset, even if some of them have the <i>Toolbar button</i> options turned on.<br /><br />
+
+<li><i>Modeless Find & Replace dialog box (allowed access to other parts of the program)</i>: you could turn this option on if you want to get the modeless <i>Preset Settings</i> dialog box which allows access to the other parts of the program; when that option is turned off, the mentioned dialog box will be modal and you need to close it if you want to use the other parts of the program.<br /><ul>
+
+<li style="list-style-type:circle"><i>Display of tracks in Find & Replace dialog box synchronized with main window</i>: if you turn off this option the table of files in the <i>Preset Settings</i> dialog box will not change when you change the selection of files in the main filelist; this option is enabled when the previous option is turned on (you could change selection of files in the main filelist only if the <i>Preset Settings</i> dialog box is modeless).</ul>
+
+<center><img src="https://c1.staticflickr.com/1/255/32008436562_219f8b596e_o.png" alt="RegExpPresetDialog" border="0"></center>
+
+<p><font size="+1"><b><a id="adjustment">Adjustment of presets</a></b></font></p>
+This add-on has the possibility of displaying a resizable dialog box for the adjustment of a preset, if it is properly prepared, whenever you start its execution using menu/toolbar/hotkey. Using those dialog boxes is much simpler than the <i>Preset Settings</i> dialog box which has many controls that are confusing for beginners. For example, you could choose <i>Edit &gt; RegExp Find and Replace &gt; Tag Manipulation Presets &gt; Copy &lt;From Field&gt; to &lt;Into Field&gt;...</i> and you would get the dialog box with just two dropdown lists for choosing the source and the destination fields. The number of displayed controls depends on the adjustment tags that are used in the preset.<br /><br />
+
+If the name of preset contains &lt;Into Field&gt; tag, you will get the adjustment dialog box with one dropdown list from which you could choose the destination field after you start the execution of preset. Similarly, if you specify &lt;From Field&gt; tag in the name of preset, you would get the dialog box with the dropdown list for choosing the source field. Of course, if you specify both &lt;Into Field&gt; and &lt;From Field&gt; in the name of the preset, you would get the dialog box with both dropdown lists. For example, the included preset "Copy &lt;From Field&gt; to &lt;Into Field&gt;..." displays both lists.<br /><br />
+
+If you specify custom arguments inside of the <i>Find what</i> and <i>Replace with</i> strings using the &lt;String Caption="xxx" Value="yyy"&gt; tag, you would get the adjustment dialog box with the text box in which you could write some string and that string would be entered into same place in the <i>Find what/Replace with</i> string where you have put that &lt;String&gt; tag. Also, if you specify the &lt;Number Caption="xxx" Value="yyy"&gt; tag, you would get the dialog box with the spinedit control for choosing the numeric value. For example, if you write &lt;Number Caption="Increment" Value="10"&gt; instead of 10 in some preset, you would get the dialog box which allows adjusting of that numeric value.<br /><br />
+
+The <i>Value</i> parameter is mandatory for those two tags. The <i>Caption</i> parameter allows you to specify descriptive text which would be displayed next to the control. It is not necessary to be specified, but it would be better for understanding of such preset if you use it. The &lt;Number&gt; tag additionally allows to specify two optional parameters: <i>MinValue</i> and <i>MaxValue</i>; the first one is for specifying the minimum value which could be entered with the spinedit control, and the second one is for the maximum value. If you omit those parameters, the default values are -1000 and 1000 correspondingly.<br /><br />
+
+You could specify as many &lt;String&gt; and &lt;Number&gt; tags in the <i>Find what</i> and <i>Replace with</i> string as you want, and you would get the adequate number of controls within the preset dialog box. Of course, those controls would be displayed together with the source and the destination dropdown lists if you have &lt;From Field&gt; and/or &lt;Into Field&gt; in the name of the same preset. For example, the included preset "Replace specified string with another one in &lt;Into Field&gt;..." has the adjustment dialog box with the destination dropdown list and two text box controls - the first one is for specifying the string which would be replaced and the other one is for specifying the replacement string.<br /><br />
+
+Adding any of those mentioned tags to the presets is optional. The presets with those tags are longer and somewhat harder to write, but you could do that just once and after that their adjustment using the adjustment dialog box will be child's play. Of course, many of the predefined presets are already written with such tags, so you could use them out of the box.<br /><br />
+
+If you tick on the <i>Don't show this dialog anymore</i> check box in the adjustment dialog box, after confirming execution of the preset, the subsequent presets started by menu/toolbar/hotkey will be applied without displaying of the adjustment dialog box. If you want to have the adjustment dialog box displayed again, you should turn on the <i>Show dialog box for adjusting of the preset selected in the menu or toolbar</i> option in the <i>Options</i> dialog box.<br /><br />
+
+<p><font size="+1"><b><a id="presets">Presets</a></b></font></p>
+<ol>
+<li>Replace specified string with another one in &lt;Into Field&gt;...
+<li>Replace underlines with spaces in &lt;Into Field&gt;...
+<li>Replace acute and grave accents with apostrophes in &lt;Into Field&gt;...
+<li>Remove specified string from &lt;Into Field&gt;...
+<li>Remove http:// address from &lt;Into Field&gt;...
+<li>Remove iTunes info from Comment field
+<li>Clear &lt;Into Field&gt;...
+<li>Copy &lt;From Field&gt; to &lt;Into Field&gt;...
+<li>Copy &lt;From Field&gt; to &lt;Into Field&gt; only if it is empty...
+<li>Swap &lt;From Field&gt; and &lt;Into Field&gt;...
+<li>Assign specified string to &lt;Into Field&gt;...
+<li>Assign specified string to Comment field...
+<li>Assign "Various Artists" to Album Artist field
+<li>Reset Track Volume field
+<li>Adjust maximal value of Track Volume to 1.0
+<li>Reset Peak Value field
+<li>Reset Last played field
+<li>Assign current date/time to Last played field
+<li>Increment Play counter by 1
+<li>Decrement Play counter by 1
+<li>Assign specified value to Play counter...
+<li>Assign specified value to Playback position (%)...
+<li>Increase Rating by half star
+<li>Decrease Rating by half star
+<li>Round half star Rating to full star
+<li>Remove month and day from release Date
+<li>Copy release Date to Original Date only if it is undefined
+<li>Add "The" prefix to the begin of &lt;Into Field&gt;...
+<li>Remove prefixes (The, A, An) from &lt;Into Field&gt;...
+<li>Move prefixes to the begin in &lt;Into Field&gt;...
+<li>Move prefixes to the end of &lt;Into Field&gt;...
+<li>Copy Artist name to &lt;Into Field&gt; with moved prefixes to the end...
+<li>Copy &lt;From Field&gt; to &lt;Into Field&gt; with moved prefixes to the end...
+<li>Copy &lt;From Field&gt; to &lt;Into Field&gt; with moved prefixes to the begin...
+<li>Swap first and last name of &lt;Into Field&gt; with added ", "...
+<li>Swap last and first name of &lt;Into Field&gt; with removed ", "...
+<li>Copy Artist name to &lt;Into Field&gt; with swapped first and last name and added ", "...
+<li>Copy Artist name to &lt;Into Field&gt; with swapped last and first name and removed ", "...
+<li>Copy &lt;From Field&gt; to &lt;Into Field&gt; with swapped first and last name and added ", "...
+<li>Copy &lt;From Field&gt; to &lt;Into Field&gt; with swapped last and first name and removed ", "...
+<li>Swap first two words of &lt;Into Field&gt;...
+<li>Swap nn-th and mm-th words of &lt;Into Field&gt;...
+<li>Add " (Live)" to the end of Title
+<li>Remove " (Live)" or " [Live]" from the end of Title
+<li>Add specified string to the begin of &lt;Into Field&gt; (only if not empty)...
+<li>Add specified string to the begin of &lt;Into Field&gt; separated with space if not empty...
+<li>Add specified string to the end of &lt;Into Field&gt; (only if not empty)...
+<li>Add specified string to the end of &lt;Into Field&gt; separated with space if not empty...
+<li>Remove specified string from the begin of &lt;Into Field&gt;...
+<li>Remove specified string from the end of &lt;Into Field&gt;...
+<li>Remove specified number of words from the begin of &lt;Into Field&gt;...
+<li>Remove specified number of words from the end of &lt;Into Field&gt;...
+<li>Remove timing marks from LRC Lyrics
+<li>Clear Lyrics greater than 1 line but less than 10 lines
+<li>Replace blank Lyrics with "[Instrumental]"
+<li>Replace double blank lines with single ones in Lyrics
+<li>Remove multiple blank lines from Lyrics
+<li>Remove leading and trailing blank lines from Lyrics
+<li>Remove leading and trailing spaces from each line of Lyrics
+<li>Add Artist name to special section at the begin of Lyrics
+<li>Add (Composer) to the begin of Lyrics
+<li>Remove the first line of Lyrics which already have (Composer) info
+<li>Append "Explicit" to Comment field if Lyrics contains some explicit word
+<li>Remove multiple spaces from &lt;Into Field&gt;...
+<li>Remove leading and trailing spaces from &lt;Into Field&gt;...
+<li>Add spaces between words without spaces in &lt;Into Field&gt;...
+<li>Remove specified number of characters from the begin of &lt;Into Field&gt;...
+<li>Remove all except specified number of characters from the begin of &lt;Into Field&gt;...
+<li>Remove specified number of characters from the end of &lt;Into Field&gt;...
+<li>Remove all except specified number of characters from the end of &lt;Into Field&gt;...
+<li>Remove specified number of characters in the middle of &lt;Into Field&gt;...
+<li>Assign specified number of characters from the middle of Album to &lt;Into Field&gt;...
+<li>Assign specified number of characters from the middle of &lt;From Field&gt; to &lt;Into Field&gt;...
+<li>Remove Track number from the begin of &lt;Into Field&gt;...
+<li>Remove all digits from the begin of &lt;Into Field&gt;...
+<li>Remove all digits followed with " - " or ". " from the begin of &lt;Into Field&gt;...
+<li>Add Track number to the begin of Title
+<li>Add Track number with leading zero to the begin of Title
+<li>Remove leading zeroes from Track number
+<li>Add leading zero to single-digit Track number
+<li>Add leading zeroes to get 3-digit Track number
+<li>Increase Track number by specified value...
+<li>Auto-increment Track number with specified starting value...
+<li>Auto-increment Track number with specified starting value and leading zero(es)...
+<li>Add ordinal number of current track to the begin of Title
+<li>Add ordinal number of current track with leading zero to the begin of Title
+<li>Add ordinal number of current track to the begin of Title increased by specified value...
+<li>Add leading zero to single digit number followed by " - " or ". " at the begin of Title
+<li>Replace all digits at the begin of Title with ordinal numbers with leading zero
+<li>Replace all digits followed by " - " from the begin of &lt;Into Field&gt; with Track #...
+<li>Add "/" and total number of tracks to the end of Track number
+<li>Assign total number of tracks from the end of Track number to &lt;Into Field&gt;...
+<li>Remove "/" and total number of tracks from the end of Track number
+<li>Assign Disc number from 3-digits Track number
+<li>Remove disc number from 3-digits Track number
+<li>Assign Disc number from [(Disc/CD nn)] from the end of Album name
+<li>Remove disc number from the end of Album name
+<li>Assign disc number from the end of Album name to 3-digit Track number
+<li>Add Disc number to Album name only if contains 2 or more discs
+<li>Replace (Disc x) with (CD 0x) in Album name
+<li>Add Artist name followed by " - " to the begin of &lt;Into Field&gt; (only if exists)...
+<li>Add &lt;From Field&gt; followed by " - " to the begin of &lt;Into Field&gt; (only if exists)...
+<li>Add &lt;From Field&gt; followed by specified string to the begin of &lt;Into Field&gt; (only if exists)...
+<li>Add " - " followed by &lt;From Field&gt; to the end of &lt;Into Field&gt; (only if exists)...
+<li>Add specified string followed by &lt;From Field&gt; to the end of &lt;Into Field&gt; (only if exists)...
+<li>Add (Artist name) to the end of &lt;Into Field&gt; (only if exists)...
+<li>Add (&lt;From Field&gt;) to the end of &lt;Into Field&gt; (only if exists)...
+<li>Assign the begin of &lt;From Field&gt; before " - " to &lt;Into Field&gt;...
+<li>Assign the begin of Title before " - "  to &lt;Into Field&gt; (only if exists)...
+<li>Assign the begin of &lt;From Field&gt; before " - "  to &lt;Into Field&gt; (only if exists)...
+<li>Assign the begin of &lt;From Field&gt; before specified string to &lt;Into Field&gt;...
+<li>Assign the begin of &lt;From Field&gt; before specified string to &lt;Into Field&gt; (only if exists)...
+<li>Assign the end of &lt;From Field&gt; after specified string to &lt;Into Field&gt; (only if exists)...
+<li>Assign (the end) of Title to &lt;Into Field&gt; (only if exists)...
+<li>Assign (the end) of &lt;From Field&gt; to &lt;Into Field&gt; (only if exists)...
+<li>Remove Artist name and " - " or "-" from the begin of &lt;Into Field&gt;...
+<li>Remove (Artist name) from the end of &lt;Into Field&gt;...
+<li>Remove the begin of &lt;Into Field&gt; before (and including) " - "...
+<li>Remove the begin of &lt;Into Field&gt; before (and including) "-" or " - "...
+<li>Remove the begin of &lt;Into Field&gt; before (and including) specified string...
+<li>Remove the end of &lt;Into Field&gt; after (and including) " - "...
+<li>Remove the end of &lt;Into Field&gt; after (and including) "-" or " - "...
+<li>Remove the end of &lt;Into Field&gt; after (and including) specified string...
+<li>Swap text separated by " - "  in &lt;Into Field&gt;...
+<li>Swap text separated by specified string in &lt;Into Field&gt;...
+<li>Add (Year) to the begin of Album (only if exists)...
+<li>Add (Year) to the end of Album (only if exists)...
+<li>Add (&lt;From Field&gt;) to the begin of &lt;Into Field&gt; (only if exists)...
+<li>Remove (year) or [year] from the begin of Album
+<li>Remove (year) or [year] from the end of Album
+<li>Remove (...) or [...] from the begin of &lt;Into Field&gt;...
+<li>Remove (...) or [...] from the end of &lt;Into Field&gt;...
+<li>Remove parenthesis that doesn't have pair from &lt;Into Field&gt;...
+<li>Remove bracket that doesn't have pair from &lt;Into Field&gt;...
+<li>Remove all parentheses and brackets from &lt;Into field&gt;...
+<li>Replace all [...] with (...) in &lt;Into Field&gt;...
+<li>Replace all (...) with [...] in &lt;Into Field&gt;...
+<li>Replace [...] with (...) only at the end of &lt;Into Field&gt;...
+<li>Replace (...) with [...] only at the end of &lt;Into Field&gt;...
+<li>Replace [ or { with ( and ] or } with ) in &lt;Into Field&gt;...
+<li>Replace (... remix/version/edit ...) with [ ... ] at the end of &lt;Into Field&gt;...
+<li>Replace [... remix/version/edit ...] with ( ... ) at the end of &lt;Into Field&gt;...
+<li>Assign (... remix/version/edit ...) from the end of Title to &lt;Into Field&gt;...
+<li>Assign (... remix/version/edit ...) from the end of &lt;From Field&gt; to &lt;Into Field&gt;...
+<li>Assign ( remix/version/edit ) from the end of Title to &lt;Into Field&gt; (version only)...
+<li>Assign ( remix/version/edit ) from the end of &lt;From Field&gt; to &lt;Into Field&gt; (version only)...
+<li>Remove (... remix/version/edit ...) from the end of &lt;Into Field&gt;...
+<li>Add specified string as first item to multi-item &lt;Into Field&gt;...
+<li>Add specified string as last item to multi-item &lt;Into Field&gt;...
+<li>Move specified item to the begin of multi-item &lt;Into Field&gt;...
+<li>Remove first item from multi-item &lt;Into Field&gt;...
+<li>Remove all items from multi-item &lt;Into Field&gt; except first one...
+<li>Remove last item from multi-item &lt;Into Field&gt;...
+<li>Remove item with Artist name from multi-item Genre
+<li>Remove duplicate items in multi-item &lt;Into Field&gt;...
+<li>Copy all items from multi-item Genre except the first one to &lt;Into Field&gt;...
+<li>Copy all items from multi-item &lt;From Field&gt; except the first one to &lt;Into Field&gt;...
+<li>Add Album name to the end of &lt;Into Field&gt; as last item using ";" as separator...
+<li>Add &lt;From Field&gt; to the end of &lt;Into Field&gt; as last item using ";" as separator...
+<li>Add space character after ";" separator in multi-item &lt;Into field&gt; if missing
+<li>Remove space character after ";" separator in multi-item &lt;Into field&gt;
+<li>Replace ";" in multi-item &lt;Into Field&gt; with ", " but last one with " & "...
+<li>Replace last ", " with " & " in &lt;Into Field&gt;...
+<li>Replace first ", " or " & " with " feat. " in &lt;Into Field&gt;...
+<li>Replace "&", feat./pres./vs. with "; " in &lt;Into Field&gt;...
+<li>Replace "&", feat./pres./vs. with "; " in &lt;Into Field&gt; and remove ( ) if exist...
+<li>Copy featuring artists or [(featuring artist)] from the end of Title to the end of Artist
+<li>Copy featuring artists from the end of Title to the end of Artist and put them within ( )
+<li>Copy featuring artists from the end of Title to the end of Artist and put them within [ ]
+<li>Copy featuring artists or [(featuring artists)] from the end of Artist to the end of Title
+<li>Copy featuring artists from the end of Artist to the end of Title and put them within ( )
+<li>Copy featuring artists from the end of Artist to the end of Title and put them within [ ]
+<li>Copy ft. artists or [(ft. artists)] from the end of &lt;From Field&gt; to the end of &lt;Into Field&gt;...
+<li>Copy ft. artists from the end of &lt;From Field&gt; to the end of &lt;Into Field&gt; and put them in ( )...
+<li>Copy ft. artists from the end of &lt;From Field&gt; to the end of &lt;Into Field&gt; and put them in [ ]...
+<li>Copy ft. artists from the end of Artist to the end of Title separated with " - " if () exists
+<li>Copy ft. artists from the end of &lt;From Field&gt; to the end of &lt;Into Field&gt; with " - " if () exists...
+<li>Remove featuring artists or [(featuring artists]) from the end of &lt;Into Field&gt;...
+<li>Put featuring artists from the end of &lt;Into Field&gt; into ( ) parentheses...
+<li>Put featuring artists from the end of &lt;Into Field&gt; into [ ] brackets...
+<li>Put featuring artists and remix (if exists) in separate brackets in Title
+<li>Add featuring artists from Artist to the end of Involved people as item with category
+<li>Add main artists from Artist to the end of Involved people as item with category
+<li>Remove all featuring artists from items of Involved people
+<li>Remove all main artists from items of Involved people
+<li>Assign names of contained playlists to &lt;Into Field&gt;...
+<li>Assign BPM from (nnn BPM) part of Title (not necessarily on its end)
+<li>Remove (nnn BPM) from Title (not necessarily on its end)
+<li>Assign Original Artist from (... cover) part of Title
+<li>Add Mood and Tempo to the end of &lt;Into Field&gt;...
+<li>Add track Length surrounded by ( ) to the end of Title
+<li>Append album length surrounded by ( ) to Album name
+<li>Assign total song length of all tracks from some folder to &lt;Into field&gt;
+<li>Assign date/time when file is created to Timestamp field
+<li>Assign date/time when file is created in ISO 8601 format to &lt;Into Field&gt;...
+<li>Assign Last played date/time in ISO 8601 format to &lt;Into Field&gt;...
+<li>Convert date to ISO8601 format in &lt;Into Field&gt;...
+<li>Assign Year if it is undefined with value assigned to most tracks from same album
+<li>Assign Year if it is different from value assigned to most tracks from same album
+<li>Assign Genre if it is empty with value assigned to most tracks from same album
+<li>Assign Genre if it is different from value assigned to most tracks from same album
+<li>Assign Genre if it is empty with value assigned to most tracks from same artist
+<li>Assign Genre if it is different from value assigned to most tracks from same artist
+<li>Assign weighted average Rating of album to &lt;Into Field&gt;...
+<li>Assign weighted average Track volume of album's tracks to Album volume
+<li>Assign specified folder level of Path to &lt;Into Field&gt;...
+<li>Extract Album Artist from last folder of Path (e.g. ..\Album artist - Album\Title.mp3)
+<li>Uppercase first letter of each folder/filename of Path
+<li>Lowercase extension of Path
+<li>Replace periods "." in filename of Path with spaces " "
+<li>Remove periods from the end of File name
+<li>Assign Title to filename of Path
+<li>Assign Track number - Title to filename of Path
+<li>Assign Track Number, Artist and Title to "IRC" styled File name
+<li>Add Artist name to the begin of File name if it is not already there
+<li>Append weighted average Bitrate of album to the last folder of Path
+<li>Append VBR and weighted average Bitrate of album to the last folder of Path
+<li>Append track Length surrounded by ( ) to filename of Path
+<li>Add "Disc #" as last folder only if some song from album has Disc number &gt;= 2
+<li>Add "Single", Artist or Artist\Album as last folder(s) depending of # of tracks by Artist
+<li>Remove the begin of filename before " - " in Path
+<li>Remove the begin of filename before " - " and add it as last folder of Path
+<li>Remove Artist name from the begin of filename of Path
+<li>Remove Artist name from the begin of filename and add it as last folder of Path
+<li>Remove Track number from the begin of filename of Path
+<li>Remove Artist name or Track number from the begin of filename of Path
+<li>Update filename of Path to ..\&lt;Title&gt; - &lt;Artist&gt; - &lt;Album&gt;.ext
+<li>Move files to &lt;Genre&gt;\&lt;Artist&gt;\&lt;Album&gt;\&lt;Track#&gt; - &lt;Title&gt;.ext
+<li>Move files to Temp folder
+<li>Fix common words (featuring, presents, versus) in &lt;Into Field&gt;...
+<li>Fix common words (I'm, I'll, don't, won't, ain't, isn't, can't) in &lt;Into Field&gt;...
+<li>Fix specified Artist names (10cc, AC/DC, INXS, UB40)
+<li>Fix &lt;Into Field&gt; with styles entered from All Music Guide
+<li>Fix Napster file tagging, e.g. The Way It Is (Mix) [Mix]/Mix -&gt; The Way It Is (Mix)
+<li>Capitalize &lt;Into Field&gt; (ASCII, Latin-1, Latin-2 & Cyrillic)...
+<li>Capitalize &lt;Into Field&gt; with exceptions (ASCII, Latin-1, Latin-2 & Cyrillic)...
+<li>Lowercase Single, Edit, Remix or Mix in the &lt;Into field&gt;...
+<li>Uppercase first letter of each line or sentence of Lyrics and lowercase others
+<li>Uppercase first letter of each line or sentence of Lyrics with exceptions
+<li>Uppercase English "I" and first letter of each line or sentence of Lyrics
+<li>Uppercase only first letter of each line or sentence of Lyrics, others unchanged
+<li>Remove diacritical marks from &lt;Into Field&gt; (aeiou)...
+<li>Remove diacritical marks from &lt;Into Field&gt; (cdghjklnrstywz)...
+<li>Remove diacritical marks from &lt;Into Field&gt; (aeioucdghjklnrstywz)...
+<li>Replace all Unicode non-ANSI characters with "-" in Filename
+<li>Convert Cyrillic (Windows-1251) to Unicode in &lt;Into Field&gt;...
+<li>Convert Cyrillic Unicode to Windows-1251 in &lt;Into Field&gt;...
+<li>Convert Serbian Latin to Serbian Cyrillic in &lt;Into Field&gt;...
+<li>Convert Serbian Cyrillic to Serbian Latin in &lt;Into Field&gt;...
+<li>Convert Latin to Russian Cyrillic in &lt;Into Field&gt;...
+<li>Convert Russian Cyrillic to Latin in &lt;Into Field&gt;...
+<li>Convert Latin to Greek in &lt;Into Field&gt;...
+<li>Convert Greek to Latin in &lt;Into Field&gt;...
+</ol>
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+This add-on is a false positive reported as a worm by F-Secure. The author of F-Secure promised me that will update its database and put the add-on on the white-list, but still didn't. If you go to the <a href="https://www.virustotal.com/en/file/517636b16d9f4b14aef6e2515f2bb73ead2fb0cad035fdc217ca722e55e783c6/analysis/1475443172/">www.virustotal.com/en/</a> site, you will see that it is safe tested by 54 popular anti-virus engines; the only one reporting a worm in it is F-Secure.<br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><img src="http://flagcounter.com/count/fcBSn/bg=FFFFFF/txt=000000/border=CCCCCC/columns=1/maxflags=5/viewers=3/labels=1/pageviews=1/" border="0"></center>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+<html>
+<head>
+    <title>Export/Create Playlists (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, Export, Import, M3U, ASX, XSPF, Playlist, Nodes">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel="stylesheet" type="text/css" href="DownloadButton.css">
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size="+2">Export/Create Playlists</font><br />
+Version 4.1.1<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="ExportM3UsForSubNodes_Ext.htm" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+This add-on works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v2.x-4.x. It has two operation modes, manual and automatic. In the manual mode it allows batch export of playlist files (M3U/ASX/XSPF) or creating of playlists for each child node of the node selected in the tree panel. This works with almost all nodes, even the <a href="https://zvezdan-d.github.io/MagicNodes.html">Magic Nodes</a>. For example, if you select the Playlists node, you could export playlist files for all playlists stored in the Library. In the automatic mode this add-on periodically saves specified playlist node and/or its sub-nodes from the Playlists branch.<br /><br />
+
+Playlist files/playlists could be saved in a hierarchically organized folders within the specified parent folder, using the same structure as sub-nodes of the selected node, or could be saved in a single folder using a specified string as separator. Playlist files could be saved in ANSI, UTF-8 or Unicode, while M3U files could have simple or extended format. Track paths could be URL encoded and stored absolute or relative to the playlist's path using Windows "\" or Unix "/" folder separator. If the relative path option is turned off, the paths stored in playlist files would be same as they are in the Path field of the database, but could be also replaced with the user-defined replacement, e.g. "c:\Documents and Settings\" could be replaced with "e:\My Music\". Paths that you want to replace could be specified using Regular expressions.<br /><br />
+
+This add-on also allows copying of audio files, export of M3U nodes from My Computer branch (e.g. conversion of M3U files) and export of the selected node or selected tracks only.<br /><br />
+
+<table bgcolor="WhiteSmoke"><tr><td width="100%">
+If you are interested to comment about this add-on, you could visit its related MediaMonkey <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=2&t=34512">forum thread</a>.
+<br /><br />
+
+You could also take a look on <a href="https://zvezdan-d.github.io/MediaMonkeyAddons.html">my other add-ons</a> for MediaMonkey.
+
+</td><td valign="middle" align="center" width="250px">
+<div class="download-box" style="float:left;"><a id="download" title="Download" class="download-link" href="http://solair.eunet.rs/~zvezdand/ExportM3UsForSubNodes-4.1.1.mmip"><span><strong><font size="+1">Download</font></strong> <em>The latest freely available<br />version of the add-on</em></span></a></div>
+</td></tr></table>
+
+<hr width="100%">
+
+<center><img src="https://c1.staticflickr.com/1/579/31000010003_b9547c8ab4_o.png" alt="ExportM3UsForSubNodes-4.0" border="0"></center>
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v4.1.1 - 2019-11-22</dt><ul>
+<li>Fixed: removal of the old playlist files on export of the corresponding empty playlists.</ul><br />
+
+<dt>v4.1 - 2016-04-27</dt><ul>
+<li>Added: ClearSameNamePlsMode INI key (description is in the <a href="#inikeys">Additional INI keys</a> section);
+<li>Added: confirmation dialog box for removing child playlists from the target playlist when creating playlists from child nodes.</ul><br />
+
+<dt>v4.0.6 - 2015-10-05</dt><ul>
+<li>Fixed: settings of playlist for automatic export with non-skinned program (broken in 4.0).</ul><br />
+
+<dt>v4.0.5 - 2015-06-22</dt><ul>
+<li>Fixed: some things.
+</ul><br />
+
+<dt>v4.0.4 - 2013-08-03</dt><ul>
+<li>Fixed: error with <i>Export As Playlist File to Selected Folder</i> command in some cases;
+<li>Fixed: export for some nodes from Library/collection branches using SQL.</ul><br />
+
+<dt>v4.0.3 - 2013-07-16</dt><ul>
+<li>Fixed: error when exporting playlists from the Playlists branch to parent/child folders.</ul><br />
+
+<dt>v4.0.2 - 2013-07-10</dt><ul>
+<li>Fixed: error when exporting playlists from the Playlists branch.</ul><br />
+
+<dt>v4.0.1 - 2013-07-10</dt><ul>
+<li>Fixed: error on startup.</ul><br />
+
+<dt>v4.0 - 2013-07-07</dt><ul>
+<li>Added: <i>Export M3U Playlists from Child Nodes</i> and <i>Export M3U Playlists in Child Nodes to Same Folders</i> commands to the menu which allow export of .m3u files from My Computer;
+<li>Added: export to ASX and XSPF playlist files;
+<li>Added: option to skip export of M3U nodes from My Computer branch;
+<li>Added: option to skip export of "All" nodes from My Computer, Location and Magic Nodes (until now M3U and "All" nodes was skipped automatically);
+<li>Added: option to store paths in playlist files using short DOS format (8.3);
+<li>Added: several .ini keys for some options that are not represented with GUI: ExportOnStartupDelayMs, DontUseSQLForTracklist, PathsWithFullMNCaptions, AllNodesMode, SkipLastAllNodes, SkipAutoPlsSubNodes, UseLastExportM3UsDir, DontShowInfoBoxOnExportEnd, EventLoggerMode (please read the <a href="#inikeys">Additional INI keys</a> section about them);
+<li>Improved: much faster export using SQL for almost all nodes from Library (and collections in MM4) and Magic Nodes which doesn't need to refresh tracklist for each exported node (faster export of Magic nodes requires MN version 5.0 that is not released yet);
+<li>Improved: faster creation of playlist files, especially larger ones containing  too many tracks;
+<li>Improved: updates of progress bar are now much smother;
+<li>Fixed: export of playlist files in ANSI format with paths containing non-ANSI characters using short DOS format because of Logitech Media Server (LMS) bug regarding UTF-8 files;
+<li>Fixed: when using <i>Export Child Nodes to Playlist Files & Copy Media Files</i>, the media files are not copied to the destination if there are already previously copied files with the same or newer date/time.</ul><br />
+
+<dt>v3.6.1 - 2012-01-09</dt><ul>
+<li>Fixed: <i>URL paths in .m3u files</i> option for network drives using UNC.</ul><br />
+
+<dt>v3.6 - 2011-11-21</dt><ul>
+<li>Added: <i>Export As .m3u Playlist to Selected Folder</i> and <i>Export M3Us for Child Nodes to Same Folders</i> commands to the File menu and the tree's context menu which allows export of the selected node (and its sub-nodes) to the same folder(s) with media files (only enabled for nodes within Location and My Computer branches).</ul><br />
+
+<dt>v3.5.3 - 2011-10-26</dt><ul>
+<li>Fixed: empty string specified in Options box (e.g. <i>with:</i> text box) replaced with default value after restart;
+<li>Fixed: <i>From</i> text box for auto-export in Options box now accepts manually entered nested playlists using "\" as separator.</ul><br />
+
+<dt>v3.5.2 - 2011-06-12</dt><ul>
+<li>Fixed: <i>Export M3Us & Copy Files for Child Nodes</i> command (broken in v3.4).</ul><br />
+
+<dt>v3.5.1 - 2011-04-22</dt><ul>
+<li>Fixed: the <i>From</i> field for automatic export when Playlists is specified;
+<li>Fixed: automatic export <i>Every xx minutes</i> without need to restart the program.</ul><br />
+
+<dt>v3.5 - 2011-04-17</dt><ul>
+<li>Added: <i>Export As .m3u Playlist</i> command to the File menu and the tree's context menu which allows export of the selected node (similar to the <i>Send To \ Export as .m3u playlist</i> option, but more configurable).</ul><br />
+
+<dt>v3.4.1 - 2011-03-17</dt><ul>
+<li>Fixed: error on start-up (broken in v3.3) [MM2].</ul><br />
+
+<dt>v3.4 - 2011-01-17</dt><ul>
+<li>Added: <i>Replace paths/with:</i> dropdown lists with the last 5 entered strings;
+<li>Fixed: automatic export on shutdown if automatic export on every xx minutes is not used;
+<li>Fixed: settings of playlist for automatic export with non-skinned program;
+<li>Fixed: export of .m3u files for nodes which are grandchildren of nodes without tracks;
+<li>Fixed: export of .m3u files for playlists when some of parent playlists has duplicate name on the same node level;
+<li>Fixed: restoring of expanded state of nodes after finished export.
+</ul><br />
+
+<dt>v3.3 - 2010-07-13</dt><ul>
+<li>Added: <i>Export As .m3u Playlist</i> command to the main tracklist and Now Playing context menu which allows export of selected tracks only (similar to the <i>Send To \ Export as .m3u playlist</i> option, but more configurable).</ul><br />
+
+<dt>v3.2 - 2010-07-02</dt><ul>
+<li>Changed: <i>Unix folder separator</i> option to <i>Unix .m3u file format</i>; a .m3u files would have both the "/" as a folder separator and a new line without a carriage return when this option is turned on.</ul><br />
+
+<dt>v3.1 - 2010-06-21</dt><ul>
+<li>Added: <i>Export M3Us & Copy Files for Child Nodes</i> command which allows copying of audio files beside of exported .m3u files.</ul><br />
+
+<dt>v3.0.1 - 2010-05-23</dt><ul>
+<li>Fixed: error with URL paths in .m3u files and ANSI/Unicode formats.</ul><br />
+
+<dt>v3.0 - 2010-05-22</dt><ul>
+<li>Added: option to export all .m3u files to single folder using specified string as separator between node names in .m3u filenames (e.g. e:\Playlists\Rock - Pink Floyd - Dark Side of the Moon.m3u, using " - " as separator);
+<li>Added: option to store URL encoded paths in .m3u files (e.g. file:///C:/Temp/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0%D0%BD.mp3).</ul><br />
+
+<dt>v2.9.3 - 2010-05-20</dt><ul>
+<li>Fixed: automatic export on startup, now with 1 second delay to enable loading of main window.</ul><br />
+
+<dt>v2.9.2 - 2010-04-22</dt><ul>
+<li>Fixed: export with <i>First level</i> and <i>Last level of nodes only</i> options for <i>All</i> nodes in Location and My Computer branches.</ul><br />
+
+<dt>v2.9.1 - 2010-04-20</dt><ul>
+<li>Fixed: error when the <i>Create playlists for child nodes</i> sub-menu is displayed if the last created playlist doesn't exist, e.g. if you start MM with some another database file.</ul><br />
+
+<dt>v2.9 - 2010-04-05</dt><ul>
+<li>Added: option to save .m3u files/create playlists for the last (deepest) level of nodes only;
+<li>Added: option to save paths in .m3u files using Unix separator ("/") instead of Windows ("\");
+<li>Improved: speed of displaying menu with playlists if there are many of them;
+<li>Changed: the list of playlists in the Options dialog box is now limited to playlists on the first level because the large number of nested playlists have slowed down its display; if you need to specify some nested playlist, you could still write it using "\" as a separator between nested levels.
+.</ul><br />
+
+<dt>v2.8 - 2009-08-25</dt><ul>
+<li>Added: option to save .m3u files in child folders, i.e. one level more in depth (until now they are saved to parent folders only).</ul><br />
+
+<dt>v2.7.2 - 2009-04-08</dt><ul>
+<li>Fixed: RegExp string for replacement of folders.</ul><br />
+
+<dt>v2.7.1 - 2009-04-08</dt><ul>
+<li>Fixed: error during installation.</ul><br />
+
+<dt>v2.7 - 2009-07-08</dt><ul>
+<li>Added: option to replace folders in .m3u files with specified string;
+<li>Added: option to remove Byte-order mark (BOM) from the begin of UTF-8 files.</ul><br />
+
+<dt>v2.6.1 - 2009-04-21</dt><ul>
+<li>Fixed: error with Options sheet and playlists with duplicated names.</ul><br />
+
+<dt>v2.6 - 2009-04-20</dt><ul>
+<li>Added: option to create a new dated folder once in a day.</ul><br />
+
+<dt>v2.5 - 2009-04-20</dt><ul>
+<li>Added: option for an automatic export on startup;
+<li>Added: option to create a new folder with a date/time in its name for every auto-export.</ul><br />
+
+<dt>v2.4 - 2009-04-19</dt><ul>
+<li>Added: option to automatically export specified playlists on shutdown or periodically with customizable time interval.</ul><br />
+
+<dt>v2.3 - 2009-04-17</dt><ul>
+<li>Added: option to exclude AutoPlaylists from export.</ul><br />
+
+<dt>v2.2 - 2009-04-16</dt><ul>
+<li>Added: option to save .m3u files in simple or extended format;
+<li>Improved: speed when export nodes from Playlists branch.</ul><br />
+
+<dt>v2.1 - 2009-02-25</dt><ul>
+<li>Added: option to save .m3u files as ANSI, UTF-8 or Unicode.</ul><br />
+
+<dt>v2.0 - 2009-02-12</dt><ul>
+<li>Added: possibility to create playlists in the Playlists node in similar way as export of .m3u files.</ul><br />
+
+<dt>v1.4 - 2009-01-24</dt><ul>
+<li>Improved: speed with MM 3.1.0.1218 and up, especially for empty tracklists.</ul><br />
+
+<dt>v1.3 - 2009-01-10</dt><ul>
+<li>Added: option to export the playlist for the parent (selected) node (beside of child nodes);
+<li>Added: option to exclude unavailable tracks from export;
+<li>Improved: speed and work with the All nodes from My Computer and Location branch;
+<li>Fixed: relative paths;
+<li>Fixed: playlist filenames for some Magic Nodes, e.g. Album Artist with Album (MN v2.0 or up required).</ul><br />
+
+<dt>v1.2.1 - 2008-11-29</dt><ul>
+<li>Fixed: export when turned on the Regular expressions option and turned off the Skip for folders option.</ul><br />
+
+<dt>v1.2 - 2008-11-29</dt><ul>
+<li>Added: an option to store track paths relative to the playlist path (default setting);
+<li>Added: an option to skip export of playlists for specified nodes/folders (e.g. DiscXX for multi-CD);
+<li>Added: an option to use Regular expressions for specifying nodes/folders;
+<li>Added: an option to exclude files with specified extensions from export;
+<li>Added: skipping of All node (even for Magic Nodes) and playlist files from My Computer branch from export;
+<li>Fixed: unersponsive program with 100% CPU when trying to export an empty node/folder (e.g. in My Computer node).</ul><br />
+
+<dt>v1.1 - 2008-11-28</dt><ul>
+<li>Added: an option to recursively scan all sub-levels of the selected node (default setting), playlists are stored in a hierarchically organized folder structure, same as with the selected node.</ul><br />
+
+<dt>v1.0 - 2008-11-27</dt><ul>
+<li>First public version.</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+<ul><li>For MediaMonkey 3.0 or higher - just double-click on the ExportM3UsForSubNodes-xx.mmip file; if you are on Vista or newer Windows and you got "Product installation error", make sure you have MM3 set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>; if you downloaded the installation package with IE7 and it changed its extension to a .zip, you should first change it back to a .mmip.</li>
+<li>For MediaMonkey 2.x - rename a .mmip extension to a .zip, extract the ExportM3UsForSubNodes.vbs file to the MediaMonkey's "Scripts\Auto" folder and restart MM program.</li></ul>
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+This add-on has three main modes of work: manual and automatic export of playlist files and manual creation of MM playlists. The manual operations could be started from the menu, while the automatic mode is working in the background on a timely basis that is set in the Options dialog box.<br /><br />
+
+The commands of this add-on are located in the <i>Export/Create Playlists</i> sub-menu in the File menu and the context menus of the Media Tree, the main filelist and Now Playing panel.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/481/31662342452_7983ce9420_o.png" alt="ExportM3UsForSubNodes-4.0-01" border="0"></center><br />
+
+First of all, you need to understand the difference between playlist files and MediaMonkey playlists (or shorter "playlists"): the playlist files are the lists of media files stored in M3U, ASX or XSPF files, while the playlists are the lists of media files stored in the MediaMonkey database and visually represented inside of the Playlists folder of the Media Tree.<br /><br />
+
+The Export/Create Playlists add-on could export list of media files to the playlist file(s) using some of the <i>Export</i> commands from its menu, or it could add list of media files to the MM playlist(s) using the <i>Create Playlists for Child Nodes</i> command from the menu. The <i>Export</i> commands could be seen as an extension to the built-in <i>Send to / M3U/XSPF playlist</i> menu command, while the <i>Create Playlists</i> command could be seen as some kind of extension to the built-in <i>Send to / Playlist</i> menu command.<br /><br />
+
+The commands in the File menu and the context menu of the Media Tree could be applied on the node selected in the Media Tree panel, using them you will get exported/created playlists for the selected node and/or its sub-nodes (depending of your settings in the add-on's Options dialog box). The following commands are available:
+<li><i>Export to M3U/ASX/XSPF Playlist...</i> - if you want to export a playlist file with all tracks of the selected node displayed in the tracklist, after that you should specify a destination playlist file on the disk;<br /><br />
+
+<li><i>Export As Playlist File to Selected Folder</i> - if you want to export playlist file with all tracks of the selected node displayed in the tracklist to the same folder with media files (only enabled for nodes within Location and My Computer branches);<br /><br />
+
+<li><i>Export Child Nodes to Playlists Files...</i> - if you want to export a playlist files for some or all sub-nodes of the selected node (depending of the Options settings), after that you should specify a parent destination folder on the disk;<br /><br />
+
+<li><i>Export Child Nodes As Playlist Files to Same Folders</i> - if you want to export playlist files for some or all sub-nodes of the selected node (depending of the Options settings) to the same folders with media files (only enabled for nodes within Location and My Computer branches);<br /><br />
+
+<li><i>Export Child Nodes to Playlist Files & Copy Media Files...</i> - if you want to export playlist files and to copy media files for some or all sub-nodes of the selected node (depending of the Options settings), after that you should specify a parent destination folder on the disk, paths in the playlist files will be for copied media files, instead of all other commands where the playlist files contain paths to the files as they are displayed in the tracklist;<br /><br />
+
+<li><i>Export M3U Playlists from Child Nodes...</i> - if you want to export M3U files from some or all sub-nodes of the selected node (depending of the Options settings), after that you should specify a parent destination folder on the disk (only enabled for nodes within My Computer branch);<br /><br />
+
+<li><i>Export M3U Playlists in Child Nodes to Same Folders</i> - if you want to export M3U files from some or all sub-nodes of the selected node (depending of the Options settings) to the same folders with M3U files, e.g. if you want to save M3U files to ASX or XSPF, or if you want to convert M3U files from the simple format to the extended one or vice versa (only enabled for nodes within My Computer branch, unfortunately MediaMonkey doesn't display ASX and XSPF files as nodes inside of My Computer, so it is not possible to convert from ASX or XSPF format to some another);<br /><br />
+
+<li><i>Create Playlists for Child Nodes</i> - if you want to create playlists that would be stored in the Playlists branch; after that you should specify a parent playlist node.<br /><br />
+
+If you want to export just selected tracks, choose <i>Export to M3U/ASX/XSPF Playlist...</i> from the context menu of the main tracklist or Now Playing panel.<br /><br />
+
+The add-on settings are located in the <i>Options</i> dialog which you could get if you: 1) chose the <i>Options</i> command from the <i>File | Export/Create Playlists</i> menu, or 2) select <i>Export/Create Playlists</i> add-on in the <i>Tools | Extensions</i> dialog box and click on the <i>Options</i> button, or 3) select the <i>General | Export/Create Playlists</i> sheet in the <i>Tools | Options</i> dialog box.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/647/31662342342_38c51568c4_o.png" alt="ExportM3UsForSubNodes-4.0-02" border="0"></center><br />
+
+In the first group of controls on that dialog we could specify what we want to export if we choose some command from the menu that exports sub-nodes, e.g. <i>Export Child Nodes to Playlists Files...</i> or any other command that contains "Child Nodes" in its name. If the <i>Selected node</i> option is turned off then only sub-nodes of the selected node would be exported, while if it is turned on the selected node would be exported as well. With the next 3 options we could choose which levels of sub-nodes we want to export: the first level, the last level or all levels.<br /><br />
+
+Let say, for example, that I have the following tree branch and that I have selected the Rock node:
+<ul><li>Rock</li>
+    <ul><li>Pink Floyd</li>
+        <ul><li>Dark Side of the Moon</li>
+            <li>Wish You Were Here</li>
+        </ul>
+    </ul>
+</ul>
+
+If I have ticked <i>First level of sub-nodes</i> I would get exported only the "Pink Floyd" playlist file. If I have ticked <i>Last level of sub-nodes</i> I would get only "Dark Side of the Moon" and "Wish You Were Here" playlist files. Finally, if I have ticked <i>All levels of sub-nodes</i> I would get "Pink Floyd", "Dark Side of the Moon" and "Wish You Were Here" playlist files. Of course, if I have ticked  <i>Selected node</i> then I would get the "Rock" playlist file as well, together with the previously mentioned playlist files.<br /><br />
+
+With the second group of options we have 3 choices to specify where and how we want to store playlists: to parent folders, to child folders or to a single folder. However, the settings in this group have only effect with the "Child Nodes" commands with the "..." on the end of a name, e.g. <i>Export Child Nodes to Playlists Files...</i>, i.e. the commands that allow us to specify some arbitrary destination folder. Those settings are ignored with the "Child Nodes" commands with the "to Same Folders" text on the end of a name, e.g. <i>Export Child Nodes As Playlist Files to Same Folders</i>, since in that case the playlist files are always stored to the same folders with media files.<br /><br />
+
+Here is the same example of the "Rock" branch with the previously ticked <i>All levels of sub-nodes</i> option. If I have ticked <i>To parent folders</i> I would get "Pink Floyd" playlist file in the specified destination folder and "Dark Side of the Moon" and "Wish You Were Here" playlist files in the "Pink Floyd" sub-folder of that specified folder. If I have ticked <i>To child folders</i> I would get "Pink Floyd" playlist file in the "Pink Floyd" sub-folder of the specified folder, "Dark Side of the Moon" playlist file in the "Dark Side of the Moon" sub-folder of the "Pink Floyd" folder and "Wish You Were Here" playlist file in the "Wish You Were Here" sub-folder of the "Pink Floyd" folder.<br /><br />
+
+Finally, If I have ticked <i>To single folder</i> I would get all files in the specified folder, i.e. I would get "Pink Floyd", "Pink Floyd - Dark Side of the Moon" and "Pink Floyd - Wish You Were Here" playlist files in the same folder. With the <i>Separator</i> option we could specify which string of characters we want to use as a separator between nested levels of nodes; by default it is " - "  (without the double quotes, of course), as it is in the previous example.<br /><br />
+
+Those last examples are such that if I have the <i>Selected node</i> option turned off. However, if I turn that option on, I would get one additional, "Rock" sub-folder in the specified folder and inside of it there would be created folders mentioned in the previous two examples with <i>To parent folders</i> and <i>To child folders</i> options. If I choose <i>To single folder</i> with the <i>Selected node</i> option turned on, then I would get "Rock - Pink Floyd", "Rock - Pink Floyd - Dark Side of the Moon" and "Rock - Pink Floyd - Wish You Were Here" playlist files in the specified folder.<br /><br />
+
+With the third group of options we could specify the format of the exported playlist files: .m3u, .asx or .xspf. If we choose export to the M3U format, with the <i>#EXT</i> option we could further specify the format of the exported .m3u files. If that option is turned off, we would get the so-called Simple M3U format, i.e. .m3u files will have only list of paths to the media files, e.g.:<br /><br />
+c:\My Music\Rock\Pink Floyd\Dark Side of the Moon\01 - Speak to Me; Breathe in the Air.mp3<br />
+c:\My Music\Rock\Pink Floyd\Dark Side of the Moon\02 - On the Run.mp3<br /><br />
+
+However, if the <i>#EXT</i> option is turned on, we would get the Extended M3U format, with the additional information about each included media file which helps faster display of added/opened playlists in many players, but some another players don't support such extended M3U format:<br /><br />
+#EXTM3U<br />
+#EXTINF:240,Pink Floyd - Speak to Me; Breathe in the Air<br />
+c:\My Music\Rock\Pink Floyd\Dark Side of the Moon\01 - Speak to Me; Breathe in the Air.mp3<br />
+#EXTINF:213,Pink Floyd - On the Run<br />
+c:\My Music\Rock\Pink Floyd\Dark Side of the Moon\02 - On the Run.mp3<br /><br />
+
+The fourth group of options determines encoding format of the exported playlist files: ANSI, UTF-8 and Unicode (UTF-16). You should choose UTF-8 or Unicode if you have non-ANSI characters in your paths of audio files, e.g. Cyrillic, but you should first check if such files are supported with your media player. If you choose UTF-8 format you could specify if playlist files should have BOM characters. A byte-order mark (BOM) is the invisible Unicode character placed at the begin of the file, it is used as a marker to indicate that text is encoded in UTF-8; you should uncheck this option if you have a player that cannot read files with a BOM. By the way, if you modify some playlist file in UTF-8 format using Notepad, it will save that file with added BOM always.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/273/31000009693_0e0074fae1_o.png" alt="ExportM3UsForSubNodes-4.0-03" border="0"></center><br />
+
+The next group of options determines what we want to skip/exclude from the export. We could skip M3U nodes from My Computer branch of the tree, "All" nodes from My Computer, Location and Magic Nodes branches, Autoplaylists from the Playlists branch and nodes/folders with the specified name(s). Names of folders could be specified using regular expressions if that option is turned on, but even if we don't use regular expressions we could specify several names of nodes/folders for skipping using the vertical line "|" as a separator.<br /><br />
+
+If some named folder is skipped during the export, then all its sub-folders would be skipped as well. The sub-nodes of "All" nodes from the Location branch are skipped by design even if you turn off skipping of "All" nodes. The M3U and "All" nodes from My Computer branch don't have sub-nodes anyway. The <i>Skip export of - M3U nodes</i> option is ignored if we choose <i>Export M3U Playlists from Child Nodes</i> or <i>Export M3U Playlists in Child Nodes to Same Folders</i> commands from the menu. The last (rightmost) level of "All" nodes in My Computer branch could be skipped using the SkipLastAllNodes INI key to get consistent behavior with "All" nodes from Location branch which will be explained later in the <a href="#inikeys">Additional INI keys</a> section. Also, the export of sub-nodes of Autoplaylists depends of the SkipAutoPlsSubNodes INI key which will be explained later.<br /><br />
+
+The exported playlist files and created playlists contain only the media files that are displayed in the tracklist for each corresponding source node. With the <i>Exclude files</i> options we could specify which media files should be additionally omitted from the playlists during the export: unavailable files and/or files with the specified extension(s). The several extensions could be specified using the "|" as a separator, e.g. ogg|aac|mp4.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/769/31662342202_b33684a4d0_o.png" alt="ExportM3UsForSubNodes-4.0-04" border="0"></center><br />
+
+The next group of options determines how paths of media files will be stored in playlist files. With the <i>Relative</i> option we could choose if we want paths in playlist files in relative or absolute format. Absolute paths represents full paths to the media files as you could see from the previous examples for the Extended .m3u format. Relative paths represents paths of the media files relative to the path of the playlist file. For example, if I choose export to parent folders, I would get "Dark Side of the Moon" playlist file with relative paths as:<br />
+Dark Side of the Moon\01 - Speak to Me; Breathe in the Air.mp3<br />
+Dark Side of the Moon\02 - On the Run.mp3<br /><br />
+
+Relative paths could help if you have different paths on the source and destination computers/players (e.g. different absolute paths c:\My Music\Rock\Pink Floyd\Dark Side of the Moon\02 - On the Run.mp3 on the computer and e:\Music\Rock\Pink Floyd\Dark Side of the Moon\02 - On the Run.mp3 on the player would have the same relative path Dark Side of the Moon\02 - On the Run.mp3), but some players don't support them, so you should check first if you could use that option. You should export playlist files to the same drive with media files, otherwise the relative paths cannot be determined and absolute paths would be used instead.<br /><br />
+
+With the <i>URL (file://)</i> option we could choose another format for paths in playlist files. If I turn that option on, with the previous example I would get:<br /><br />
+file:///c:/My%20Music/Rock/Pink%20Floyd/Dark%20Side%20of%20the%20Moon/01%20-%20Speak%20to%20Me%3B%20Breathe%20in%20the%20Air.mp3<br />
+file:///c:/My%20Music/Rock/Pink%20Floyd/Dark%20Side%20of%20the%20Moon/02%20-%20On%20the%20Run.mp3<br /><br />
+
+There is small number of players that require playlist files with such paths, so most probably you wouldn't need that option.<br /><br />
+
+With the <i>Short (8.3)</i> option we could get paths in old DOS format that are required on some players. That option works only with the existing files, so the <i>Exclude unavailable files</i> option should be turned on for it. Also, it is not possible to use URL and Short paths at the same time. If this option is turned on then all folders/filenames will be stored using such short form. For example, with the following full path:<br />
+D:\Music FLAC\Kurt Masur; New York Philharmonic Orchestra\Dvo&rcaron;&aacute;k; Symphony #9, Slavonic Dances\01 Dvo&rcaron;&aacute;k_ Symphony #9 In E Minor, O.flac<br /><br />
+
+we would get:<br />
+D:\MUSICF~1\KURTMA~1\DVOK_S~1\01DVOK~1.FLA<br /><br />
+
+However, some players like Logitech Media Server (LMS) require short form only for folders/filenames with non-ANSI characters, like this:<br />
+D:\Music FLAC\Kurt Masur; New York Philharmonic Orchestra\DVOK_S~1\01DVOK~1.FLA<br /><br />
+
+So, in that case to get such paths you should turn on <i>ANSI</i> file format and turn off <i>Short (8.3)</i> paths.<br /><br />
+
+With the <i>Unix ("/", LF)</i> option we could also specify format for paths in playlist files. If your media player has some Unix variation as Linux for its OS, you should turn that option on. In that case paths of media files would have the "/" separator between folders instead of "\" and the new lines would be represented with the LF character instead of CR+LF as it is in Windows.<br /><br />
+
+With the <i>Replace</i> and <i>With</i> options we could replace parts of paths with another string in almost same way as we could do it in e.g. Notepad using its Replace option (well, maybe as with EditPad or similar advanced text editor which also supports Regular expressions). Within the <i>Replace</i> text box you could specify string which you want to replace and with the second, <i>With</i> text box you could specify string for replacement. You could also use the "..." buttons to specify paths, but only if you want to replace one folder with some another. For example, "c:\Documents and Settings\My Name\My Music\" could be replaced with "e:\Music\.<br /><br />
+
+However, with the <i>Use Regular expressions for specifying paths/folders</i> option we could specify very complex patterns for replacement, e.g. we could replace several different paths with the single one at once. For example, the "^.+\\(?=[^\\]+\.[^\.\\]+$)" string is the expression which represents any full path, excluding the filename and the extension. So, using that expression, if you leave the <i>With</i> text box empty, all folders would be removed from paths, saving only filenames and extensions into playlist files, or you could enter "e:\Music\" in the <i>With</i> text box and all folders would be replaced with that single one. Although, you should turn on the Regular expressions only if you know how to use them.<br /><br />
+
+The <i>Use Regular expressions</i> option has an effect on both <i>Replace - Paths in playlist files</i> and <i>Skip export of - Folders</i> options, i.e. you cannot use the Regular expressions for the first option and not to use them for the second option, and vice versa. Also, the <i>Replace</i> option cannot be used with the <i>Relative</i> paths.<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/387/31000009433_fee969689a_o.png" alt="ExportM3UsForSubNodes-4.0-05" border="0"></center><br />
+
+The next group of remaining controls on the <i>Export/Create Playlist</i> dialog is used only for automatic export of MM playlists to the playlist files. We could choose when playlists should be exported: <i>On startup</i>, <i>On shutdown</i> and/or <i>Every</i> xx minute(s). Then we could choose the playlist which should be automatically exported (altogether with its sub-playlists) using the <i>From</i> dropdown list. Only playlists from the first level in Playlists branch could be directly selected from that list, but some nested playlist could be also specified using "\" as a separator between sub-levels. Within the <i>To</i> text box we should specify the folder where we want to get exported playlist file(s). Its usage is similar to the destination folder specified after chosen some "Child Nodes" command from the menu for the manual export. This also means that almost all previously mentioned options are shared for manual and automatic export including "Export to parent/child/single folder(s)", "Relative paths" and so on.<br /><br />
+
+With the <i>Create new child folder with a dated name</i> option we could specify if we want automatically exported playlist files in separated folders with dates in their names which would be within the folder specified in the <i>To</i> text box. If the <i>For every auto-export</i> option is turned on, dated folders with playlist files would be created whenever the condition for automatic export is satisfied, e.g. if <i>Every xx minutes</i> is chosen then every specified minutes would be created a new folder. If the <i>Once in a day</i> option is turned on, folders with dates in their names would be created only once in a day.<br />
+
+<p><font size="+1"><b><a id="inikeys">Additional INI keys</a></b></font></p>
+There are some keys in the [ExportM3UsForChildNodes] section of the MediaMonkey.ini file for some less used options that are not represented with GUI:<br />
+<li>ExportOnStartupDelayMs - delay for automatic export on startup, in milliseconds, default value is 1000, i.e. 1 second delay;<br /><br />
+
+<li>DontUseSQLForTracklist - the export of nodes from the Library (and collections in MM4) and Magic Nodes is much faster if this option is = 0 (default value) because it doesn't need to wait for the filelist to be refreshed for each exported node; however, if you notice some problems with SQL generated playlists then you could write = 1; the media files referenced in playlist files generated using SQL have fixed (default) order, so you should set this ini key to 1 if you want to get them sorted as they appear in the filelist respecting your manual settings of the file order for corresponding nodes;<br /><br />
+
+<li>PathsWithFullMNCaptions - if this key is = 0 (default) then playlists exported from Magic nodes would not have Statistic addition to the node's caption in their names, however if you want that part of caption in the playlist names then you should write = 1;<br /><br />
+
+<li>AllNodesMode - this value determines the export of "All" nodes and names of exported playlists:<br />
+-- AllNodesMode = 0 - "All" nodes are exported instead of their parents, i.e. the playlist files would contain paths to files in corresponding nodes and all their sub-nodes (the default behavior of the add-on versions before v4.0);<br />
+-- AllNodesMode = 1 - "All" nodes are exported with parent node names, the result could be very similar to the previous mode;<br />
+-- AllNodesMode = 2 - "All" nodes are exported with "[All]" playlist names, should be avoided with <i>To parent folder</i> option;<br />
+-- AllNodesMode = 3 - "All" nodes are exported as "Parent_Name [All]" playlist names (default mode);<br /><br />
+
+<li>SkipLastAllNodes - the rightmost (deepest) disk folders in My Computer branch have displayed "All" sub-nodes, which is different from  the disk folders from the Location branch (I think this is a program bug), you should write = 1 if you want skipped those "All" nodes from My Computer (default is = 0);<br /><br />
+
+<li>SkipAutoPlsSubNodes - when you choose option to <i>Skip export of - Autoplaylists</i>, if this key is = 1 export would be omitted for their sub-nodes as well, however autoplaylists could have static playlists as sub-nodes so you may want to leave this at = 0 (default);<br /><br />
+
+<li>UseLastExportM3UsDir - when you choose some "Child Nodes" command you would get the dialog box for specifying the destination folder, if this option is = 0 (default) you would get displayed folder depending of the selected node/file in the tracklist, however if you write = 1 the last destination folder that you have selected for export would be retrieved from the .ini file;<br /><br />
+
+<li>DontShowInfoBoxOnExportEnd - if this is = 0 (default) you would get displayed the message box showing the number of exported playlists and elapsed time on each finished export using some "Child Nodes" command;<br /><br />
+
+<li>ClearSameNamePlsMode - when creating playlists, if destination playlists already contain some files: 0 = keep those files, 1 = remove them from playlists, 2 = ask what to do; default value is 2;<br /><br />
+
+<li>EventLoggerMode - if you have installed the <a href="https://zvezdan-d.github.io/EventLogger.html">Event Logger</a> add-on, you could get displayed some additional information about the work of this add-on in the Event Viewer panel; the values could be from = 0 (default, without any information) to = 3 (most displayed information); e.g. the value = 1 will display every exported playlist file and the number of the included (referenced) media files; the negative values from = -1 to = -3 will cause logging of those information to the log file as well.<br /><br />
+
+The MediaMonkey.ini file is stored in the c:\Documents and Settings\User_Name\Application Data\MediaMonkey folder for MM4 and Win7. You could find the location of the .ini file depending of the version of MediaMonkey and Windows <a href="https://www.mediamonkey.com/support/knowledge-base/mediamonkey-install-config/modifying-the-mediamonkey-db-and-ini-files/">here</a>. If you want to modify any key in it using e.g. Notepad, you should do that with closed MediaMonkey application.<br />
+
+<p><font size="+1"><b><a id="requirements">Requirements</a></b></font></p>
+To be able to use this add-on, you need to have the Media Tree displayed (set in the View menu). Additionally, if you want to export the M3U playlist files, you need to have the My Computer branch visible (set in the Manage Collections dialog box) and you should have turned on the option <i>Show M3U playlists in My Computer nodes</i> on the Library / Appearance page of the Options dialog box from the Tools menu.<br /><br />
+
+You should not change the nodes in the Media Tree while the add-in is running! In fact, it is highly recommended that you do not use the program until the add-on finishes its work. If it takes to long and you want to abort it, you could choose the Terminate option from the context menu of the progress bar.<br /><br />
+
+<p><font size="+1"><b><a id="limitations">Limitations</a></b></font></p>
+Exported playlists from the Playlists branch are all saved as playlist files with fixed content, even auto-playlists. If you import such playlist files on another computer, you will get only static playlists, even with files that was exported from auto-playlists. So this add-on cannot be used to transfer auto-playlists from one computer to another in their native form. If you want such possibility, you could use <a href="https://zvezdan-d.github.io/RestorePlayHistory.html">Restore/Synchronize Database</a> add-on instead, but it allows export/import only for the whole Playlists branch, while this add-on could export/import just the selected playlist and its sub-playlists.<br /><br />
+
+Windows has the limitation on the path length of 260 characters; the files with longer path will not be created/copied on export, which applies both to playlist and media files (if you use any "... Copy Media Files" command from the menu). If you want to find out if any file is skipped on export, you could install the <a href="https://zvezdan-d.github.io/EventLogger.html">Event Logger</a> add-on with the added EventLoggerMode key to the Ini file as it is mentioned in the <a href="#inikeys">Additional INI keys</a> section.<br /><br />
+
+Refreshing of the tracklist works very strange in MediaMonkey 2.x and because of that you need to click on the confirmation dialog  after every generated playlist, i.e. for every sub-node. This confirmation dialog is not needed with MM 3.x, and the speed and reliability are much better if you have installed MM 3.1.0.1218 or higher. Nodes within the Playlist branch don't have such limitation, only regular nodes. Also, with the version 4.x of the add-on, almost all nodes from the Library [MM2-3] and collections (Entire Library, Music, ...) [MM4] are exported using SQL without the mentioned limitation.<br /><br />
+
+You could directly select a playlist for automatic export in the <i>From</i> combo box in the Options box only for playlists on the first level, i.e. a playlist which is a child of the Playlists node. If you want to auto-export a nested playlist, you could do that if you manually enter a full path to that playlist using "\" as a separator between nested levels, e.g. Genres\Rock\Pink Floyd. This also means that you cannot use the "\" character in the playlist names specified in that combo box. However, this limitation has only the playlist specified in the <i>From</i> path for the automatic export - other exported playlists has not that limitation, even the child playlists of that playlist could have "\" in their names. It is even possible to specify the name of some nested playlist without its full path, but only if that name is unique.<br />
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+This add-on is a false positive reported as a worm by F-Secure. The author of F-Secure promised me that will update its database and put the add-on on white-list, but still didn't. If you go to the <a href="https://www.virustotal.com/en/file/357110f3bacf7fe4b1a4241dcb884d1ad4b7af706c776a81385453e67dabb823/analysis/1475442674/">www.virustotal.com/en/</a> site, you will see that it is safe tested by 54 popular anti-virus engines; the only one reporting a worm in it is F-Secure.<br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><a href="http://s02.flagcounter.com/more/Wyb"><img src="http://s02.flagcounter.com/count/Wyb/bg=FFFFFF/txt=000000/border=CCCCCC/columns=1/maxflags=5/viewers=3/labels=1/pageviews=1/" border="0"></center>
+</div>
+
+</body>
+</html>

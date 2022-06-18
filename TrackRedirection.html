@@ -1,0 +1,467 @@
+<html>
+<head>
+    <title>Track Redirection & Synchronization (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, Track Redirection, Synchronization, ASX">
+    <link href='BackgroundColorAnimation.css' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="DownloadButton.css">
+</head>
+
+<body>
+<table width="100%" class="tbl">
+<td valign="Top" align="Center">
+<b><font size="+2">Track Redirection & Synchronization</font><br />
+Version 3.4.2<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</td>
+</table>
+
+<hr width="100%">
+
+This add-on works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v3.0-4.x. If you like to store and play whole albums and if you have many albums with same songs (official studio, compilation, soundtrack, ...), especially if they are in some lossless format, then this add-on is right for you. Instead of having multiple large audio files with same song for every album, you could keep just one file for one album and on another albums you could have small .asx files (1-2 KB) as redirection files.
+<br /><br />
+With this add-on you could create .asx files and use them instead of original audio files, you could play them and you could modify their metadata using Track Properties dialog box. Beside of the master audio file, the .asx file could also refers to its album cover bitmaps. There is also an option to update the playcount and the last played date of the master (referenced) file whenever you play some .asx file which refers to it. Many software and hardware players could reproduce audio files referenced by .asx files.
+<br /><br />
+This add-on is mainly intended for "one song-many albums" situations, but it could be also used for any kind of redirections, for example if you want to store metadata for some file format which doesn't support tags. Version 1.2 has added an option to create redirections between two (or more) audio files instead of .asx files (e.g. master could be a .flac and redirected file a .mp3), for users who prefer to keep duplicates on disk. Version 2.0 has added an option to synchronize specified metadata between linked tracks and version 3.0 has added an option to <a href="#copymetadata">copy tags from the one set of tracks to the another one</a> even if they are not previously linked with redirections.
+<br /><br />
+
+<table bgcolor="WhiteSmoke"><tr><td width="100%">
+If you want to discus about this add-on, you could visit its related MediaMonkey <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=2&t=39312">forum thread</a>.
+<br /><br />
+
+You could also take a look on <a href="https://zvezdan-d.github.io/MediaMonkeyAddons.html">my other add-ons</a> for MediaMonkey.
+
+</td><td valign="middle" align="center" width="250px">
+<div class="download-box" style="float:left;"><a id="download" title="Download" class="download-link" href="http://solair.eunet.rs/~zvezdand/TrackRedirection-3.4.2.mmip"><span><strong><font size="+1">Download</font></strong> <em>The latest version of the add-on</em></span></a></div>
+</td></tr></table>
+
+<p><font size="+1"><b><a id="donation">Donation</a></b></font></p>
+This add-on is donationware. I am its sole developer and I worked on it in my own free time. I am not employed by Ventis Media, the company behind MediaMonkey, nor have I been paid by them for my efforts. If you find my add-on useful and want to help its further development, it would be nice if you could send a small donation using PayPal. You could donate as much as you think that is appropriate, any amount would be really appreciated.
+<br /><br />
+
+<a href="/"></a>
+<table width="100%" class="tbl">
+<tr>
+<td valign="Top" align="Center">Euro (EUR)</td>
+<td valign="Top" align="Center">US Dollar (USD)</td>
+</tr>
+<tr>
+<td valign="Top" align="Center">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="FA58WCU6NYBA2">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+</form>
+</td>
+<td valign="Top" align="Center">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="W4W5M43JSB7LW">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+</form>
+</td>
+</tr>
+</table>
+
+<p><font size="+1"><b><a id="compatibility">Compatibility</a></b></font></p>
+This add-on doesn't work with MediaMonkey v5! No add-on made for a previous version of the program will work with MM5, either by me or any other author, since MM5 has completely different programming interface than before. Which means that all MM4 add-ons have to be rewritten for MM5 from scratch.<br /><br />
+
+If you really like my add-on and think that it is essential for your work with the program, you should stay with MM4. Or you could wait for me to port the add-on to MM5, but my interest for that depends only on donations.<br /><br />
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v3.4.1 - 2015-06-22</dt><ul>
+<li>Fixed: some things.
+</ul><br />
+
+<dt>v3.4 - 2012-10-08</dt><ul>
+<li>Added: options to find master track in the Library/Location folder or in the current tracklist (Find Referenced Master sub-menu);
+<li>Added: possibility to specify the name of some nested playlist in the Options dialog box without its full path if that name is unique;
+<li>Fixed: remembering of Copy Audio Tracks and Transfer Playstats options in the  Create Redirections for Specified Tracks dialog box;
+<li>Fixed: error when some HideMenu option is set to 1 in the .ini file.
+</ul><br />
+
+<dt>v3.3.9 - 2012-06-28</dt><ul>
+<li>Fixed: suggested redirection file in <i>Create Redirections for Specified Tracks</i> dialog box with some faulty databases and UNC paths;
+<li>Improved: speed of synchronization of album arts.
+</ul><br />
+
+<dt>v3.3.8 - 2011-06-26</dt><ul>
+<li>Fixed: references to cover arts if they are stored in tags of original audio files when creating .asx files;
+<li>Fixed: .asx files for tracks with double qoutes in tags causing some media players to refuse their reproduction;
+<li>Fixed: .asx files containing Comment/Lyrics with more then one line of text;
+<li>Fixed: error with non-numeric Track # and Disc # in Create Redirections for Specified Tracks dialog box;
+<li>Fixed: suggested redirection track in Create Redirections for Specified Tracks when Filtered is unchecked and none filter is applied;
+<li>Fixed: remembering of Filtered option in Create Redirections for Specified Tracks dialog box.
+</ul><br />
+
+<dt>v3.3.7 - 2011-06-10</dt><ul>
+<li>Fixed: AV error when turning on the <i>Update playlist</i> option in the Options dialog (and probably in some another occasions) [MM4].
+</ul><br />
+
+<dt>v3.3.6 - 2011-06-03</dt><ul>
+<li>Fixed: error with <i>Add/Rescan .asx Files to the Library</i> option [MM4].
+</ul><br />
+
+<dt>v3.3.5 - 2011-04-03</dt><ul>
+<li>Fixed: removing of tracks from playlists with "Remove Duplicates / Linked Tracks from the Tracklist / Keep Only Linked Tracks in the Tracklist" options when some playlist node is selected.
+</ul><br />
+
+<dt>v3.3.4 - 2011-01-17</dt><ul>
+<li>Fixed: specifying playlist used for updating when add/remove redirections other then "Redirected Tracks".
+</ul><br />
+
+<dt>v3.3.3 - 2011-01-15</dt><ul>
+<li>Fixed: suggested redirection file in Create Redirections for Specified Tracks dialog box in some cases;
+<li>Fixed: some bugs introduced with MediaMonkey 4.0, e.g. LastPlayed not updated for the master track when the redirected one finishes with reproduction.
+</ul><br />
+
+<dt>v3.3.2 - 2010-03-21</dt><ul>
+<li>Changed: the list of playlists in the Options dialog box is now limited to playlists on the first level because the large number of nested playlists have slowed down its display; if you need to specify some nested playlist, you could still write it using "\" as a separator between nested levels.
+</ul><br />
+
+<dt>v3.3.1 - 2009-10-03</dt><ul>
+<li>Fixed: error when checking tracks in the <i>Maintain Redirections</i> dialog box after opened <i>Create Redirections</i> dialog (bug introduced in v3.2).
+</ul><br />
+
+<dt>v3.3 - 2009-09-14</dt><ul>
+<li>Added: <i>Select Unsynchronized Master Tracks</i> option.
+</ul><br />
+
+<dt>v3.2 - 2009-08-26</dt><ul>
+<li>Added: <i>Swap</i> button to the <i>Create Redirections/Copy Metadata</i> dialog box which could swap selected masters with redirecting tracks;
+<li>Added: possibility to use the Replace with Duplicate and Replace with Linked Tracks options with multiple selected tracks;
+<li>Fixed: <i>Create Redirections / Folders</i> option.
+</ul><br />
+
+<dt>v3.1.2 - 2009-08-23</dt><ul>
+<li>Fixed: error with <i>Create Redirections for Specified Tracks</i> if <i>Filtered</i> option is turned off.
+</ul><br />
+
+<p>v3.1.1 - 2009-08-23</dt><ul>
+<li>Fixed: error on program exit if <i>Create Redirections/Copy Metadata</i> or <i>Maintain Redirections</i> are entered.
+</ul><br />
+
+<dt>v3.1 - 2009-08-17</dt><ul>
+<li>Added: <i>Filtered tracks</i> option to <i>Create Redirections</i> dialog boxes; if it is turned on, only a set of tracks limited with the active filter are used.
+</ul><br />
+
+<dt>v3.0.2 - 2009-08-15</dt><ul>
+<li>Added: LogReport key to the TrackRedirection section in the .ini file, enables logging of some events (sync, transfer) if set to = 1;
+<li>Fixed: synchronization of <i>Original Date</i> tag with month/day information.
+</ul><br />
+
+<dt>v3.0.1 - 2009-08-08</dt><ul>
+<li>Fixed: empty table in <i>Create Redirections/Copy Metadata</i> with turned on <i>only selected in main tracklist</i> and empty folder text boxes.
+</ul><br />
+
+<dt>v3.0 - 2009-08-07</dt><ul>
+<li>Added: <i>Synchronize</i> and <i>Transfer playstats</i> options to the <i>Create Redirections/Copy Metadata</i> dialog box; it is now possible to copy metadata between duplicates which are not already redirected;
+<li>Added: <i>Synchronize</i> and <i>Transfer playstats</i> options to the <i>Show and Remove Redirections</i> dialog box which is now renamed to <i>Maintain Redirections</i>;
+<li>Added: possibility to turn on/off the transfer of playstats and/or synchronization when creating redirections;
+<li>Added: <i>Select unsync</i> button to mentioned dialog boxes, after click on it you would get selected only redirections which have unsynchronized metadata;
+<li>Added: when you click on some redirections in mentioned dialog boxes which has unsynchronized metadata you would get displayed which metadata are different in the bottom of the dialog;
+<li>Added: option to display all/only selected duplicates in the <i>Create Redirections for Duplicates dialog box</i>;
+<li>Added: <i>Synchronize metadata to match masters only</i> option now works using manual synchronization, i.e. even with turned off the <i>Automatically synchronize metadata</i> option;
+<li>Added: <i>Tag</i> and <i>File</i> options for album art storage during synchronization (until now only same storage as with master was possible);
+<li>Added: selection of tracks with similar titles (e.g. Title (live)) if there is none track with exactly same title in <i>Create Redirection for Specified Tracks</i> dialog box;
+<li>Added: possibility to hide some of menu items from this add-on by modifying .ini file, e.g. you could hide .asx options if you are using only redirected audio files;
+<li>Fixed: transfer of playstats from redirected audio files to masters (until now only transfer from redirected .asx files worked correctly).
+</ul><br />
+
+<dt>v2.5.1 - 2009-07-26</dt><ul>
+<li>Fixed: very serious problem when database is not updating until restart if master track is modified during its reproduction (bug introduced in v2.1.1).
+</ul><br />
+
+<dt>v2.5 - 2009-07-25</dt><ul>
+<li>Added: option to synchronize playcounts and last play dates, it is mutually exclusive with the option to transfer playstats on track playback;
+<li>Added: option to specify main criteria for <i>Select Duplicates</i> command, beside of the existing Maximal Bitrate it is now possible to specify list of extensions.
+</ul><br />
+
+<dt>v2.4 - 2009-07-22</dt><ul>
+<li>Added: <i>Select Linked Tracks - Master/Redirected/All Linked</i> options (MM 3.1.0.1218 or up required);
+<li>Added: <i>Remove Linked Tracks from the Tracklist/Now Playing List - Master/Redirected/All Linked</i> options (MM 3.1.0.1218 or up required);
+<li>Added: <i>Keep Only Linked Tracks in the Tracklist/Now Playing List - Master/Redirected/All Linked</i> options (MM 3.1.0.1218 or up required);
+<li>Fixed: manual adjusting of columns width in the Create/Remove Redirections table (widths are automatically adjusted only on dialog resize);
+<li>Fixed: error with <i>Transfer Redirected Playstats to Master Tracks</i> option and selected tracks (<i>Yes</i> button).
+</ul><br />
+
+<dt>v2.3 - 2009-07-20</dt><ul>
+<li>Added: <i>Update (specified) playlist when add/remove redirection</i> option;
+<li>Added: <i>Synchronize metadata of linked tracks when change master only</i> option;
+<li>Fixed: playstats was not transferred to masters in some cases.
+</ul><br />
+
+<dt>v2.2 - 2009-07-11</dt><ul>
+<li>Added: <i>Create Redirections for Folders</i> option; you could specify <i>Master</i> and <i>Copy</i> folders which have tracks with similar path/filename;
+<li>Added: Album Artist field to the <i>Create Redirections for Specified Tracks</i> dialog box.
+</ul><br />
+
+<dt>v2.1.1 - 2009-07-03</dt><ul>
+<li>Fixed: error with the <i>Create Redirection for Specified Tracks</i> option;
+<li>Fixed: error with the <i>Add/Rescan .asx Files to the Library</i> option and release date containing Month/Day, also with nested folders;
+<li>Fixed: synchronization in some cases.
+</ul><br />
+
+<dt>v2.1 - 2009-07-02</dt><ul>
+<li>Added: synchronization of album arts;
+<li>Fixed: error with the <i>Add/Rescan .asx Files to the Library</i> option;
+<li>Fixed: error with the <i>Find Referenced Master Track</i> option and empty album names;
+<li>Fixed: playstats was not transferred to masters when synchronization is turned on;
+<li>Fixed: deleting of replaced audio files with <i>Create - Unselected</i> option.
+</ul><br />
+
+<dt>v2.0 - 2009-06-27</dt><ul>
+<li>Added: conditional synchronization of tags for linked tracks, with settings for individual tags that should be updated in the Option dialog box;
+<li>Added: <i>Synchronize Metadata of Redirected Tracks</i> option;
+<li>Added: <i>Replace redirected audio file with corresponding master on playback or drag & drop to NP</i> option;
+<li>Added: <i>Create Redirections for Duplicates</i> option and dialog box with a table for new redirections (MM 3.1.0.1208 or up required);
+<li>Added: support for tracks in tracklist for the Now Playing node with its context menu.
+</ul><br />
+
+<dt>v1.3.2 - 2009-06-20</dt><ul>
+<li>Fixed: error with MM versions older than 3.1.0.1218;
+<li>Fixed: occasional error with display of <i>Replace with Duplicate from Album/Linked Track</i> sub-menus.
+</ul><br />
+
+<dt>v1.3.1 - 2009-06-19</dt><ul>
+<li>Fixed: removing of redirections when redirected file is not in the Library;
+<li>Fixed: error with the <i>Create Redirection</i> option and paths containing "'" (single apostrophe).
+</ul><br />
+
+<dt>v1.3 - 2009-06-13</dt><ul>
+<li>Added: support for tracks in the Now Playing panel with its context menu;
+<li>Added: option <i>Remove Duplicates from the Tracklist/Now Playing List</i> (MM 3.1.0.1218 or up required);
+<li>Added: option <i>Replace with Duplicate from Album</i> (MM 3.1.0.1218 or up required);
+<li>Added: option <i>Replace with Linked Track</i> (MM 3.1.0.1218 or up required).
+</ul><br />
+
+<dt>v1.2.1 - 2009-05-30</dt><ul>
+<li>Fixed: redirected audio files (not .asx) was played/moved to Now Playing panel instead of master tracks (MM 3.1.0.1217 or up required).
+</ul><br />
+
+<dt>v1.2 - 2009-05-26</dt><ul>
+<li>Added: option to create redirections between two audio files instead of .asx files (e.g. a .mp3 file which redirect to a .flac file);
+<li>Added: option to copy master tracks to the specified album/folder (used only with previous option);
+<li>Added: <i>Show and Remove Redirections</i> option and dialog box with a table of redirections (MM 3.1.0.1208 or up required);
+<li>Fixed: error with paths containing "'".
+</ul><br />
+
+<dt>v1.1 - 2009-05-12</dt><ul>
+<li>Improved: automatic conversion of all duplicates to corresponding .asx files using several new options;
+<li>Added: <i>Find Duplicate Titles and Select Maximal Bitrate</i> option (MM 3.1.0.1218 or up required);
+<li>Added: <i>Select Tracks with Maximal Bitrate</i> option (MM 3.1.0.1218 or up required);
+<li>Added: <i>Replace with .asx files - Unselected tracks in tracklist</i> option;
+<li>Added: option to save .asx files with references using relative paths;
+<li>Added: <i>Synchronize .asx References</i> option;
+<li>Added: support for MM filters;
+<li>Fixed: error with <i>Create .asx File(s)</i> option.
+</ul><br />
+
+<dt>v1.0.1 - 2009-05-09</dt><ul>
+<li>Fixed: error with <i>Create .asx File(s)</i> when turned off <i>Update playstats...</i> .
+</ul><br />
+
+<dt>v1.0 - 2009-05-05</dt><ul>
+<li>First public version.
+</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+Just double click on the TrackRedirection-xx.mmip file; if you are on Vista or Win7 and you got "Product installation error", make sure you have MM3 set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>; if you downloaded the installation package with IE7 and it changed its extension to a .zip, you should first change it back to a .mmip.<br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+When you choose the <i>Track Redirection</i> from the context or the <i>Tools</i> menu, you have several options available:<br />
+<ul>
+<li><i>Find Referenced Master Track</i><br />
+You could choose this option if you want to find the master track referenced by the selected .asx or audio file in: 1) the Library/Album folder, 2) the Library/Location folder or 3) the current tracklist.</li>
+
+<li><i>Find Duplicate Titles and Select Max. Bitrate/Ext.</i> (MM 3.1.0.1218 or up required)<br />
+When you choose this option, the Library/Files To Edit/Duplicate Tracks node will be activated and tracks with maximal bitrate will be selected in the main tracklist since in most cases you want such tracks to keep as masters; alternatively, you could choose extensions which you prefer to keep as masters. This option could be used before creating of redirections for all duplicates in the library. However, this option could return tracks which you don't want to keep as masters, so it could be better if you create one playlist with masters and their duplicates which you want to replace and choose the next option. In both cases you should check the result of selection and manually adjust selected tracks with Ctrl+click, since sometimes you could want to replace tracks with higher bitrate or maybe you want to keep some specific version of track.</li>
+
+<li><i>Select Duplicates Using Specified Criteria</i> (MM 3.1.0.1218 or up required)<br />
+This option selects tracks from the current tracklist/NP list using a criteria specified in the Options dialog box (it could be a maximal Bitrate or a list of extensions); you could use this option before creating of redirection for some duplicates.</li>
+
+<li><i>Select Linked Tracks - Master/Redirected/All Linked</i> (MM 3.1.0.1218 or up required)<br />
+You could use those options if you want to select only masters, redirected tracks or both masters and redirected tracks.</li>
+
+<li><i>Select Unsynchronized Master Tracks</i> (MM 3.1.0.1218 or up required)<br />
+This option selects master tracks with metadata different from redirected ones.</li>
+
+<li><i>Remove Duplicates from the Tracklist/Now Playing List</i> (MM 3.1.0.1218 or up required)<br />
+You could choose this option if you want to remove all duplicate tracks from the main tracklist or Now Playing list, i.e. tracks with same Artist and Title, leaving only duplicates with maximal bitrate or master tracks which are already referenced.</li>
+
+<li><i>Remove Linked Tracks from the Tracklist/Now Playing List - Master/Redirected/All Linked</i> (MM 3.1.0.1218 or up required)<br />
+You could use those options if you want to remove masters, redirected tracks or both masters and redirected tracks from the main tracklist or Now Playing list.</li>
+
+<li><i>Keep Only Linked Tracks in the Tracklist/Now Playing List - Master/Redirected/All Linked</i> (MM 3.1.0.1218 or up required)<br />
+Those options are complement to previous. You could use those options if you want to keep only masters, redirected tracks or both masters and redirected tracks in the main tracklist or Now Playing list - other tracks would be removed.</li>
+
+<li><i>Replace with Duplicate from Album</i> (MM 3.1.0.1218 or up required)<br />
+If you choose this option you would get sub-menu with a list of all tracks with same Artist and Title as the currently selected one. After you select some of those tracks, it will replace the track selected in the main tracklist/Now Playing list.</li>
+
+<li><i>Replace with Linked Track</i> (MM 3.1.0.1218 or up required)<br />
+If you choose this option you would get sub-menu with a list of all tracks linked  to the currently selected one (master or redirected). After you select some of those tracks, it will replace the track selected in the main tracklist/Now Playing list.</li>
+
+<center><img src="https://farm1.staticflickr.com/586/31000959003_901d374e5d_o.png" alt="TrackRedirection-3.0-1" border="0"></center>
+
+<li><i>Create Redirections for Specified Tracks</i><br />
+This is the most important step which you should take when you want to replace your duplicated audio files with .asx files or to create links between two audio tracks. First, you should select track(s) which you want to keep as masters and after you choose this option you will get the new dialog box. In this dialog you should specify what you want to do with duplicates: to replace them with .asx files or to keep them and just to create links to master tracks. If you choose the <i>Tracks from specified Album</i> option you should specify some existing album which contains same tracks as selected ones; if you choose the <i>Unselected tracks in tracklist</i> option, the add-on will create redirections for all unselected tracks that have same Artist and Title as selected ones (it could be for all duplicates in the library); this add-on in both cases automatically determine which tracks should be redirected considering their Artist and Title. Audio track(s) replaced with .asx file(s) could be deleted from the disk if you choose the <i>Delete audio file(s)</i> option in case that you choose the option <i>Replace with .asx metafile)</i>. If you choose the <i>Create redirection link</i> option instead, you could turn on/off the <i>Copy master (selected) track to the Album folder if it doesn't contain duplicate file</i> option.</li>
+
+<center><img src="https://farm1.staticflickr.com/604/31694196601_22f9ca58e8_o.png" alt="TrackRedirection-3.0-2" border="0"></center>
+
+<li><i>Create Redirections/Copy Metadata for Duplicates/Folders</i> (MM 3.1.0.1208 or up required)<br />
+You could use this option to create redirections instead of the previous one. As with the previous option, you should first select master tracks and after choosing this option you will get a new dialog box with the table of all possible redirections. If you select <i>Duplicates</i> option you would get the list of all duplicates of selected tracks which have same Artist and Title if they are not already redirected. If you select <i>Folders</i> option you could specify [i]Master[/i] folder (e.g. Z:\My Music\) where you have stored master tracks (e.g. Artist\Album\Song.flac) and you could specify [i]Copy[/i] folder (e.g. Z:\My Music Compressed\) where you have stored linked tracks (e.g. Artist\Album\Song.mp3) and add-on would create redirections for all tracks which have similar path/filename. Check boxes next to the each redirection allow specifying which redirections you actually want to create. There are also options to choose if you want to replace duplicates with .asx files or to keep them and just to create links to master tracks. This dialog box is more descriptive and somewhat easier to use then the previous one, but it is also less flexible.</li>
+
+<li><i>Add/Rescan .asx Files to the Library</i><br />
+Scan for existing .asx files and add or update them in the library, similar as the built-in <i>Add/Rescan Tracks to the Library</i> option, but for .asx files (only one folder with its child folders could be specified).</li>
+
+<li><i>Synchronize Metadata of .asx Files</i><br />
+Update metadata of selected .asx files to match the library, similar as the built-in <i>Synchronize Tags</i> option, but for .asx files (it could be useful if you have turned off the <i>Update tags when editing properties</i> option).</li>
+
+<li><i>Synchronize References in .asx Files</i><br />
+Update paths for tracks referenced in .asx files to match the library; it could be applied for selected tracks or for all .asx files in the library and could be used after changing of the <i>Save references with relative paths</i> option.</li>
+
+<li><i>Edit .asx File with Notepad</i><br />
+Well, you could use the Track Properties dialog box to modify metadata for specified .asx file(s), but you could choose this option instead if you want to change some property which cannot be modified within Properties dialog box, e.g. a bitrate or track length, although it is not so much useful.</li>
+
+<li><i>Assign Redirection to the .asx Files</i><br />
+You could use this option if you have audio file in the Library that you want to replace with corresponding .asx file which is already created before (the Path information would be changed).</li>
+
+<li><i>Remove Redirection from the Track</i><br />
+This option is opposite to the previous, i.e. if you still have original audio file which is replaced by corresponding .asx file (but not deleted) and if it is still in the same folder with the same filename, then you could choose this option if you have changed your mind and want to return back that file to the Library (the Path information would be changed).</li>
+
+<li><i>Transfer Redirected Playstats to Master Tracks</i><br />
+You could use this command if you want to transfer play counts and play dates manually from redirected tracks (selected or all) to the masters. If you want those data to be updated automatically whenever you play some redirected .asx or audio file, you should turn on the <i>Update playcount & play dates for master track on playback</i> option in the Options dialog box. This command would be disabled if you choose the <i>Placount/lastdate</i> option for synchronization in the Options dialog box.</li>
+
+<li><i>Synchronize Metadata of Redirected Tracks</i><br />
+You could use this option if you want to synchronize tags manually, i.e. to update metadata of linked tracks to match the selected ones or to update all redirected tracks to match their corresponding masters. If you want those data to be updated automatically whenever you modify some linked track, you should turn on the <i>Automatically synchronize metadata</i> option in the Options dialog box.</li>
+
+<center><img src="https://farm1.staticflickr.com/263/31773356626_a9803e13da_o.png" alt="TrackRedirection-3.0-2" border="0"></center>
+
+<li><i>Maintain Redirections</i> (MM 3.1.0.1208 or up required)<br />
+When you choose this option you will get a new dialog box with a table of all redirections. Check boxes next to the each redirection allow specifying which redirections you want to remove. However, this dialog box could be used to see which tracks are redirected, even if you don't want to remove any redirection.</li></ul>
+
+<center><img src="https://c1.staticflickr.com/1/282/31694196411_c8fa23943a_o.png" alt="TrackRedirection-3.0-4" border="0"></center>
+
+When you choose the <i>Options</i> option from the context or <i>Tools</i> menu, you will get a new dialog box with following options:<br />
+<ul>
+<li><i>Save .asx files in ANSI / UTF-8 format</i><br />
+You could choose a format for .asx files, depending of the player support and used character code page for tags.</i>
+
+<li><i>Save references with absolute / relative paths</i><br />
+You could choose if you want to save .asx files will references to master tracks using absolute or relative paths. Absolute paths are supported with all players, but relative paths could be used even after copying to another drive. You need MediaMonkey 3.1.0.1255 or up if you want to play .asx files with relative paths, but they are recommended if you want to copy tracks to some portable player or external drive. If you change your mind, you could convert relative paths in .asx files to the absolute paths or vice versa using the <i>Synchronize .asx References</i> option.</li>
+
+<li><i>Update (specified) playlist when add/remove redirection</i><br />
+This option allows you to have one static playlist with redirected tracks automatically updated whenever you add or remove some redirection; such playlist could be used to create an auto-playlist without redireceted ones, i.e. without duplicates, using criteria Playlist is not specified_playlist.</li>
+
+<li><i>Update playcount & play dates for master track on playback of redirected .asx/audio file</i><br />
+This option is very valuable if you want to have single playstats for same tracks, without a regard on which album they reside (official, compilation, ...); if you turn on this option, the playcount and play dates of the master (referenced) tracks will be updated whenever you play some .asx or audio file that redirects to them. This option is mutually exclusive with the option for synchronization of playcount/lastdate.</li>
+
+<li><i>Synchronize metadata for all linked tracks</i><br />
+This option should be turned on if you want to synchronize any linked tracks whichever track you select or choose to modify. For example, if you change the Title in one track, all linked track would be updated with same Title.</li>
+
+<li><i>Synchronize metadata of redirected to match masters only</i><br />
+Similar as previous, but synchronization is done only if you change some master track; if you change some redirected track, other tracks linked to it will be keept unchanged.</li>
+
+<li>You could specify which tags should be updated during synchronization: <i>Title, Artist, Album, ...</i> Specified metadata could be synchronized automatically (if you turn on the next option) when some track is changed e.g. using Properties dialog box or manually using the <i>Synchronize Metadata of Redirected Tracks</i> command. The option <i>Playcount/lastdate</i> is mutually exclusive with the option <i>Update playcount & play dates for master track on playback</i>.</li>
+
+<li><i>Automatically synchronize metadata on modification of linked/master track</i><br />
+You should turn on this option if you want metadata to be updated automatically whenever you modify some linked track (master or both master and redirected, depending on the previous <i>Synchronize metadata</i> options) e.g. using Properties dialog box.
+
+<li><i>Select Duplicates' main criteria: Maximal bitrate / Extensions</i> (MM 3.1.0.1218 or up required)<br />
+You could choose which criteria should have a priority when selecting tracks using the <i>Select Duplicates Using Specified Criteria</i> command. It could be a maximal Bitrate or a list of extensions separated with the vertical line "|", e.g. if you specify mp4|ogg, such files would be selected even if you have .mp3's with a larger bitrate.</li>
+
+<li><i>Replace redirected audio file with corresponding master on playback or drag & drop to NP</i> (MM 3.1.0.1218 or up required)<br />
+If you turn on this option, redirected audio files will be replaced in the Now Playing panel with corresponding masters whenever you start playback or drag & drop them to the Now Playing panel. This option has an effect only on linked audio files, not on .asx files (when you start "playing" of some .asx file, MM will play master track anyway).</li>
+</ul>
+
+<p><font size="+1"><b><a id="copymetadata">Copy Metadata<a></b></font></p>
+With this add-on you could easily copy tags and/or play stats from the one sets of tracks to the another one (e.g. from flac files to mp3):<ol>
+<li>choose <i>Tools \ Track Redirection \ Create Redirections/Copy Metadata for Duplicates/Folders</i> option;</li>
+<li>select <i>Folders</i> radio button;</li>
+<li>specify <i>Master</i> folder (with old files);</li>
+<li>specify <i>Copy folder</i> (with new files);</li>
+<li>select tracks which you want to synchronize (if you click on the left topmost check box you would select all contained tracks);</li>
+<li>click on the <i>Synchronize</i> button if you want to copy tags or <i>Transfer ps.</i> if you want to transfer play counts and play dates.</li>
+</ol>
+
+If you want to copy tags using this method, you should specify which of them you want to copy in <i>Tools \ Track Redirection \ Options</i> dialog box before you apply the suggested steps.<br />
+
+<p>The requirements to copy metadata are that both sets of tracks (old and new) should be previously entered into the Library (e.g. using <i>Add/Rescan Tracks to the Library</i> option) and both sets of tracks should have exactly same file names, e.g. "03 - blah blah.flac" and "03 - blah blah.mp3".</p>
+
+<p>You could synchronize more than one album at once as long as you have the same folder structure with the old and new files, e.g. for the old files:<br />
+c:\My Music\Lossless\Rock\Pink Floyd\The Dark Side of the Moon\xxx.flac<br />
+c:\My Music\Lossless\Rock\Pink Floyd\Wish You Were Here\xxx.flac</p>
+
+<p>and the new files:<br />
+d:\My Music\Compressed\Rock\Pink Floyd\The Dark Side of the Moon\xxx.mp3<br />
+d:\My Music\Compressed\Rock\Pink Floyd\Wish You Were Here\xxx.mp3</p>
+
+<p>you should specify:<br />
+<i>Master</i> folder: c:\My Music\Lossless\<br />
+<i>Copy</i> folder: d:\My Music\Compressed\</p>
+
+<p><font size="+1"><b><a id="advantages">Advantages<a></b></font></p>
+<ul>
+<li>drastically reduced space for duplicated files; instead of 10-100 MB for some audio file you could have just 1-2 KB with .asx file;</li>
+<li>every .asx file could contain their own metadata (track number, album name, ...) taken from the audio file that it replaces; those metadata are different from metadata of the master (referenced) track which is on another album;</li>
+<li>play stats could be updated for referenced tracks whenever you play some .asx file;</li>
+<li>.asx files could be played with many software and hardware players without a regard on used OS or its file system.</li>
+</ul></p>
+
+<p><font size="+1"><b>List of tested software players that support .asx files:</b></font></p>
+<table width="100%"><tr><td width="50%">Program</td><td>UTF-8</td><td>OGG</td><td>MP4</td><td>relative paths</td><td>show embedded tags</td></tr>
+<tr><td><a href="http://www.bsplayer.com">BS.Player</a> 2.40.997</td><td>yes</td><td>no</td><td>no</td><td>no</td><td>none</td></tr>
+<tr><td><a href="http://www.coreplayer.com/">CorePlayer</a> for Symbian 1.2.5</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>some</td></tr>
+<tr><td><a href="http://www.gomlab.com">GOM Player</a> 2.1.17.4710</td><td>yes</td><td>yes</td><td>no</td><td>no</td><td>none</td></tr>
+<tr><td><a href="http://www.kmplayer.com">The KMPlayer</a> 2.9.4.1434</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>some</td></tr>
+<tr><td><a href="http://www.videolan.org">VLC</a> 0.9.9</td><td>yes</td><td>yes</td><td>yes</td><td>no</td><td>some</td></tr>
+<tr><td><a href="http://www.winamp.com">Winamp</a> 5.552</td><td>no</td><td>yes</td><td>yes</td><td>yes</td><td>none</td></tr>
+<tr><td><a href="http://www.microsoft.com">Windows Media Player</a> 11</td><td>yes</td><td>no</td><td>no</td><td>yes</td><td>most</td></tr></table>
+
+<p><font size="+1"><b><a id="limitations">Limitations</a></b></font></p>
+<ul>
+<li>direct playback of .asx files in MediaMonkey using this add-on is possible only with MM v3.1 or up;</li>
+<li>.asx files could be played with older MediaMonkey versions if you choose Winamp player in the Options dialog box, but in such case the playcount and play dates are not updated after reproduction;</li>
+<li>.asx files cannot contain bitmap files for covers inside of them; if you want to replace some audio file which contains covers stored in tags, when you choose the <i>Create .asx Files(s)</i> option, those covers would be saved in the same folder as .asx file and will be referenced to it;</li>
+<li>although MM from 3.1.0.1250 has a possibility to add .asx fies to the Library using the <i>Add/Rescan Tracks to the Library</i> option, this option doesn't create redirection links between tracks; you should use the <i>Add/Rescan .asx Files to the Library</i> option instead;</li>
+<li>the <i>Synchronize Tags</i> option doesn't work with .asx files; you should use the <i>Synchronize .asx Metadata</i> option instead;</li>
+<li>if you update track info using <i>Add/Rescan .asx files to the Library</i> or <i>Edit .asx File with Notepad</i>, the cover art is not automatically updated in the Album Art panel; however, you could switch to the another track or node and return back to the same track to see changes;</li>
+<li>reference paths inside of the .asx files cannot be automatically updated if you copy masters tracks and/or .asx files themselves (however, if you rename or move tracks, the paths will be updated automatically); because of that it is recommended to turn on the <i>Save references with relative paths</i> option and to update all .asx files to relative paths using the <i>Synchronize .asx References</i> option before copyng to some portable player; you could resume the previous action and convert paths to absolute form after you have copied files by turning off the <i>Save references with relative paths</i> option and updating .asx files using the <i>Synchronize .asx References</i> option again.</li>
+</ul>
+
+<p><font size="+1"><b><a id="important">Important</b></font></p>
+This add-on could be very dangerous! If you choose the "Delete audio files from the specified album" option in the <i>Create .asx File(s)</i> dialog box, all files with the same album and title names as selected file(s) will be removed! Well, the main purpose of this add-on is to replace some large audio files with much smaller redirectional files, so you should be aware of such behavior. However, it is highly  recommended to turn off the mentioned option, at least until you get comfortable using this add-on. Also, playing stats of referenced files and ones which refers to them could be messed up if something goes wrong. Because of that it would be the best if you try this add-on with some small test database and backup copies of audio files.<br />
+
+<p><font size="+1"><b>Disclaimer</b></font></p>
+This software is provided 'as-is', without any express or implied warranty. In no event will the author be held liable for any damages arising from the use of this software.<br />
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+This add-on is a false positive reported as a worm by F-Secure. The author of F-Secure promised me that will update its database and put the add-on on white-list, but still didn't. If you go to the <a href="https://www.virustotal.com/en/file/abbf2ae634c73681a0a9625fdd752e9ac0f2ea601ffb627e40f7e0ec0228579e/analysis/1475443395/">www.virustotal.com/en/</a> site, you will see that it is safe tested by 54 popular anti-virus engines; the only one reporting a worm in it is F-Secure.<br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><img src="http://s03.flagcounter.com/count/nWg/bg=FFFFFF/txt=000000/border=CCCCCC/columns=1/maxflags=5/viewers=3/labels=1/pageviews=1/" border="0"></center>
+
+</body>
+</html>

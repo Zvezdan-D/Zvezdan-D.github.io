@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Queue List (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, Queue, List, Tracks, Files">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel="stylesheet" type="text/css" href="DownloadButton.css">
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size="+2">Queue List</font><br />
+Version 3.0<br />
+- MediaMonkey v5 Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="QueueList_Ext.htm" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+This is information about the enhanced version of the Queue List add-on, which works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v5.x (there is also its <a href="https://zvezdan-d.github.io/QueueListNew.html">version</a> for older releases of the program). It is similar to the Queue option of Winamp, i.e. it allows you to create a list with files that will be played immediately after the currently playing file, no matter if Shuffle is turned on or off.<br /><br />
+
+The list of queued files is a simple playlist under the Playlists branch, which enables easy manipulation of its files (move up/down, remove) as with any other playlist. When a file from this queue list starts playback, it is automatically removed from that list. After all files from the queue list finish playback, the program continues with the reproduction of the remaining files from the Playing panel.<br /><br />
+
+When the shuffle mode is turned on and the repeat mode is turned off, the randomized playing list is kept intact after playback of queued files, so that all files from the Playing panel will be played just once.<br /><br />
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v3.0 - 2022-04-20</dt><ul>
+<li>Added: version of the add-on for MediaMonkey v5.
+</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+Start MediaMonkey, open Tools / Addons dialog box, click on the Add button and find the .mmip file.<br /><br />
+
+You need to accept the license agreement if you want to use this add-on.<br /><br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+Files that you want to play in sequence after the current one can be selected in the main filelist or in the Playing panel. Adding selected files to the Queue List can be done by press of Ctrl+Alt+Q hotkey, or it could be done by the <i>Queue Selected</i> command from the main Play menu, or by the same command in the context menu of the main filelist/Playing panel.<br /><br />
+
+The Queue List, which contains files that are waiting to be played, is a simple playlist with that name inside the Playlists branch. You could create it manually, or it will be created automatically when you apply the <i>Queue Selected</i> command. The limitation of the add-on is that you cannot have another playlist with that name. Well, you can, but it is not recommended because the result is not guarantied.<br /><br />
+
+If you apply the <i>Queue Selected</i> command on the selected files in the main filelist that don't already exist in the Playing panel, these files will be automatically added to the end of the Playing panel, otherwise they cannot be played. Also, if you apply the <i>Queue Selected</i> command on the selected files in the Playing panel that are not already added to the Library, these files will be added to it automatically. The same apply if you use drag&drop or copy/paste to add files to the Queue List playlist instead of the <i>Queue Selected</i> command.<br /><br />
+
+Since the Queue List is a regular MM playlist, you could add/remove files to it manually e.g. by drag&drop or copy/paste as with any playlist, without using the <i>Queue Selected</i> command at all. Also, you can reorder files in it as you wish. The Queue List playlist is automatically displayed in the additional panel in the main filelist of MM5 when you apply the <i>Queue Selected</i> command.<br /><br />
+
+If you have one or more files in the Queue List that are not already played and if you restart the program, that playlist will keep its content and the playback will resume with them until the Queue List finishes empty.<br /><br />
+
+When you apply the <i>Queue Selected</i> command on a file that already exists in the Queue List, what happens next depends on the DuplicatesMode <a href="#jsonproperties">JSON property</a>: such file could be skipped, it could be added again making duplicates in the list (behavior of the freely available version), or it could be removed similarly as with Winamp (default in this version of the add-on).<br /><br />
+
+After the program finishes with the reproduction of the currently playing file, it will automatically start playback of files from the Queue List. When the file from this list starts playback, it is automatically removed from it. When all files from the Queue List are played, that playlist will end up empty, and the program will continue with the reproduction of the remaining files from the Playing panel.<br /><br />
+
+This add-on allows playing files from the Playing files just once, including files added from the queue. In another words, not a single file should be skipped or played twice. Using shuffle mode, for example, if you have 5 files in the Playing panel and if you played 2 files before you added other files to the Queue List, after these files from that queue finish with playback, the program will play the remaining 3 files.<br /><br />
+
+<p><font size="+1"><b><a id="limitations">Limitations</a></b></font></p>
+The MM5 version of the add-on uses the <i>Stop After: Every File</i> option of the program by automatically turning it on to avoid sound issues when playing queued files, which sometimes appear with the older versions of MM. The current setting of that option is remembered when you add the first file to the Queue List and it is restored when all files from the queue finish playing. This also means that you should not turn this option off manually until the queue finishes playback. The add-on also turns that option on after the restart of the program if you do that with some files left in the Queue List playlist, i.e. before you finished with the playback of queue.<br /><br />
+
+<p><font size="+1"><b><a id="jsonproperties">Additional JSON properties</a></b></font></p>
+There are some properties in the "QueueList" {} section of the persistent.json file for some less needed options:<br />
+<li>DuplicatesMode - determines what happens when you apply the <i>Queue Selected</i> command or drag&drop or copy/paste with files that already exist in the Queue List playlist: 0 - do nothing, 1 - add duplicates (old behavior), 2 - remove existing (new default);<br /><br />
+
+<li>RemoveFromNPAfterPlay - determines what happens with files added to the Playing panel after applying the <i>Queue Selected</i> command or drag&drop or copy/paste with files that don't exist in the Playing panel when they finish playing: 0 - leave them in the Playing (old behavior), 1 - remove them (new default).<br /><br />
+
+You could find the location of the persistent.json file depending on the version of MediaMonkey and Windows <a href="https://www.mediamonkey.com/support/knowledge-base/mediamonkey-install-config/modifying-the-mediamonkey-db-and-ini-files/">here</a>. If you want to modify anything in it using e.g. Notepad, you should do that with closed MediaMonkey application.<br />
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+If you are interested about my other add-ons for MediaMonkey, you could visit the <a href="https://zvezdan-d.github.io/MediaMonkeyAddons.html">following page</a>.<br /><br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><img src="http://s04.flagcounter.com/count/uSgs/bg=FFFFFF/txt=000000/border=CCCCCC/columns=1/maxflags=5/viewers=3/labels=1/pageviews=1/" border="0"></center>
+
+</div>
+</body>
+</html>

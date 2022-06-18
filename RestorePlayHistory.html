@@ -1,0 +1,256 @@
+<html>
+<head>
+    <title>Restore/Synchronize Database (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, video, Windows, software, management, organization, cataloger, Restore, Synchronize, Play History, Date Added, Playlists, Metadata, Filters, Collections">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel="stylesheet" type="text/css" href="DownloadButton.css">
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size="+2">Restore/Synchronize Database</font><br />
+Version 3.1.8<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="RestorePlayHistory_Ext.htm" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+This add-on works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v3.0-4.x. It could restore or synchronize (merge) the following data from/to some external (backup) database file:<br />
+- playing history (the Played table and Playcount + LastTimePlayed fields in the Songs table),<br />
+- playlists (auto-playlists and/or static ones in Playlists and PlaylistSongs tables),<br />
+- filters [MM3 db] / collections [MM4 db] and views (Filters, Views and NodeViews tables), and/or<br />
+- specified fields from the Songs table (e.g. Artist, Title or DateAdded field, however for some fields some another tables would be updated as well, e.g. Genres and GenresSongs if you specify Genre for restore).<br /><br />
+
+This add-on could restore/synchronize data for all tracks in the current database or just filtered or selected ones. It could import/export data even from/to the backup file which is not a copy of the current database, i.e. the current database could be created from the ground after the last backup, as soon as they contain matched tracks.<br /><br />
+
+If you have an adequate backup file, this add-on could be used as Undo tool as well. Let say that you have edited some tag/field in bunch of tracks and after that you have changed your mind. Nothing to worry: just select files that are affected, specify which tags you want to restore and the add-on will import that data from the specified backup file into the current database. Also, this add-on could transfer data from corrupted databases into the new, fresh ones in most cases.<br /><br />
+
+<table bgcolor="WhiteSmoke"><tr><td width="100%">
+If you want to discus about this add-on, you could visit its related MediaMonkey <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=2&t=42085">forum thread</a>.
+<br /><br />
+
+You could also take a look on <a href="https://zvezdan-d.github.io/MediaMonkeyAddons.html">my other add-ons</a> for MediaMonkey.
+
+</td><td valign="middle" align="center" width="250px">
+<div class="download-box" style="float:left;"><a id="download" title="Download" class="download-link" href="http://solair.eunet.rs/~zvezdand/RestorePlayHistory-3.1.8.mmip"><span><strong><font size="+1">Download</font></strong> <em>The latest freely available<br />version of the add-on</em></span></a></div>
+</td></tr></table>
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v3.1.8 - 2019-11-22</dt><ul>
+<li>Fixed: error on export/import playlists to/from MM4.1+ databases when the option <i>Clear Playlists & PlaylistSongs tables first</i> is turned off.</ul><br />
+
+<dt>v3.1.7 - 2017-07-16</dt><ul>
+<li>Fixed: restore of playing history when Clear Played table is enabled.</ul><br />
+
+<dt>v3.1.6 - 2016-12-22</dt><ul>
+<li>Improved: speed of some SQL operations;
+<li>Fixed: many things.</ul><br />
+
+<dt>v3.1.3 - 2015-06-22</dt><ul>
+<li>Fixed: some things.</ul><br />
+
+<dt>v3.1.2 - 2013-08-31</dt><ul>
+<li>Fixed: error when restoring both Static and AutoPlaylists with Clear Playlists option turned on, if backup DB is from MM 4.0 and current DB is from MM 4.1 or vice versa;
+<li>Fixed: finding of matched tracks in some cases.</ul><br />
+
+<dt>v3.1.1 - 2012-05-31</dt><ul>
+<li>Fixed: error on restoring auto-playlists with the condition: Tempo/Mood/Occasion/Quality "is" ... (broken since v3.0);
+<li>Fixed: error with <i>Update tags in files too</i>.</ul><br />
+
+<dt>v3.1 - 2012-04-04</dt><ul>
+<li>Added: option <i>Clear Filters table first (also Views & NodeViews for MM4 db)</i>;
+<li>Added: option to import/export Bookmark, Start Time, Stop Time, Skipped # and Type fields [MM4];
+<li>Fixed: error with <i>Update tags in files as well</i>.</ul><br />
+
+<dt>v3.0.2 - 2012-01-25</dt><ul>
+<li>Fixed: error on import/export of filters when Filter table is empty.</ul><br />
+
+<dt>v3.0.1 - 2012-01-12</dt><ul>
+<li>Fixed: import/export of filters.</ul><br />
+
+<dt>v3.0 - 2012-01-09</dt><ul>
+<li>Added: possibility to export data to the external (backup) database file;
+<li>Added: possibility to make a backup of the current database;
+<li>Added: option which allows export/import of filters [MM3 db] / collections [MM4 db] and views;
+<li>Added: option <i>Update tags in files as well</i> which could be used only on import;
+<li>Added: new matching test for path without drive letter, first folder & extension (e.g. if the path is c:\Music\Rock\Pink Floyd\Time.mp3, then only Rock\Pink Floyd\Time would be compared) AND SongLength;
+<li>Changed: calculation of PlayCounter if <i>Clear Played table</i> option is turned off, it is now maximum of 2 values(PlayCounter before import + number of non-existent plays of matched tracks from backup, backup PlayCounter);
+<li>Improved: speed in some cases.</ul><br />
+
+<dt>v2.1.3 - 2011-12-09</dt><ul>
+<li>Fixed: restoring playlists with some corrupted databases and some MM4 "normal" (?) ones.</ul><br />
+
+<dt>v2.1.2 - 2011-11-15</dt><ul>
+<li>Fixed: auto-playlists with the condition: Album "equal/doesn't equal" ..., when backup is not a copy of the current database.</ul><br />
+
+<dt>v2.1.1 - 2011-08-04</dt><ul>
+<li>Fixed: restore of metadata stored in the Songs table only (multi-item fields linked to several tables was not affected).</ul><br />
+
+<dt>v2.1 - 2011-07-19</dt><ul>
+<li>Added: possibility to restore playlists even when <i>Restore data only for filtered/selected tracks</i> options are turned on (playlists would be restored for all tracks anyway);
+<li>Fixed: error when restoring playlists with <i>Clear Playlists table...</i> option turned on when importing data from MM3 backup into MM4 db or vice versa;
+<li>Fixed: dates when importing playhistory from MM4 backup file into MM3 database.</ul><br />
+
+<dt>v2.0 - 2011-07-17</dt><ul>
+<li>Added: possibility to restore specified fields from the Songs table (Artist, Album, Title, ...);
+<li>Added: option to restore only selected tracks;
+<li>Added: option to restore only tracks from the specified filter [MM3] / collection [MM4];
+<li>Added: option to restore auto-playlists or static playlists independently;
+<li>Added: possibility to import data from MM3 backup file into MM4 database and vice versa;
+<li>Added: more detailed information about the execution time and progress;
+<li>Improved: speed (in some cases drastically);
+<li>Fixed: error when restoring playhistory with <i>Clear Played table...</i> option turned on [MM4];
+<li>Fixed: program hangup with some filters;
+<li>Fixed: program hangup with some auto-playlists having very long tags;
+<li>Fixed: auto-playlists with the condition: Playlist "is/is not" ..., when backup is not a copy of the current database;
+<li>Fixed: static playlists with incorrectly added/missing tracks when backup is corrupted.</ul><br />
+
+<dt>v1.4.2 - 2010-09-03</dt><ul>
+<li>Fixed: problem with some auto-playlists when backup is not copy of the current database.</ul><br />
+
+<dt>v1.4.1 - 2009-11-16</dt><ul>
+<li>Fixed: error when database contains multiple playlists with same name on the same folder level.</ul><br />
+
+<dt>v1.4 - 2009-08-28</dt><ul>
+<li>Added: option to restore playlists (both auto-playlists and static ones);
+<li>Added: option to merge playlists (if <i>Clear Playlists...</i> option is turned off);
+<li>Added: extra matching test for FileName/SongLength/Artist/Album/Year/TrackNumber fields (useful if audio format of tracks is different between backup and current database).</ul><br />
+
+<dt>v1.3 - 2009-08-26</dt><ul>
+<li>Added: extra matching test for FileName.ext/FileLength/Album/Year/TrackNumber fields, i.e. track from current database is same with the track from backup database if all those fields are same, even if their paths and checksums are different.</ul><br />
+
+<dt>v1.2 - 2009-08-23</dt><ul>
+<li>Added: option to restore Date Added field;
+<li>Added: option to restore only filtered tracks;
+<li>Added: option to merge/clear playstats before restoring data;
+<li>Added: display of the number of tracks in the current database matched to backup.</ul><br />
+
+<dt>v1.1.2 - 2009-08-21</dt><ul>
+<li>Fixed: work with multiple tracks with same checksum.</ul><br />
+
+<dt>v1.1.1 - 2009-08-21</dt><ul>
+<li>Fixed: work with databases without track checksums.</ul><br />
+
+<dt>v1.1 - 2009-08-21</dt><ul>
+<li>Added: matching test for track checksums, i.e. track from current database is same with the track from backup database if checksums are same even if their paths are different;
+<li>Improved: speed drastically (~60 times faster);
+<li>Fixed: matching test for paths now use serial number of disc as well to avoid situations with tracks with same filename, but different drive (c:\track.mp3 and d:\track.mp3 was incorrectly manipulated as one track).</ul><br />
+
+<dt>v1.0 - 2009-08-19</dt><ul>
+<li>First public version.</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+Just double-click on the RestorePlayHistory-xx.mmip file; if you are on Vista or newer Windows and you got "Product installation error", make sure you have MM set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>; if you downloaded the installation package with IE and it changed its extension to a .zip, you should first change it back to a .mmip.<br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+First of all, it is highly recommended that you periodically make a backup of the database file. You could use this add-on to make the backup or you could copy the database file by yourself - <a href="https://www.mediamonkey.com/support/knowledge-base/mediamonkey-install-config/modifying-the-mediamonkey-db-and-ini-files/">here</a> you could find its location depending of the version of MediaMonkey and Windows.<br /><br />
+
+The next important thing with this add-on is that it could restore data only from/to the backup (external) database file, but it cannot restore the current (active) database with itself. Which means that you need to have the backup file before you get some problem with the current database and nothing can be done if you don't have it.<br /><br />
+
+This version of the add-on could import/export data only if there are tracks in the backup file that are matched with the tracks in the current database, i.e. if they have the same:<br />
+1. full path (folders\filename.extension) OR<br />
+2. checksum (made after click on Files To Edit / Duplicate Content) OR<br />
+3. filename with extension AND FileLength AND Album AND Year AND TrackNumber OR<br />
+4. path without drive letter, first folder & extension AND SongLength OR<br />
+5. filename without extension AND SongLength AND AlbumArtist AND Album AND Year AND TrackNumber.<br /><br />
+
+The ExtraMatchTests key in the MediaMonkey.ini file determines which criteria will be used to match files between the backup and current databases (you can find more info about that key in the <a href="#inikeys">Additional INI keys</a> section). These criteria are cumulative, e.g. if you choose the 4-th one, all previous testing will be executed before that one.<br /><br />
+
+The 2-5. criteria cover situations with modified file locations after backup. The 4-5. criteria further cover situations with different media formats in the backup and current databases, e.g. if the backup database contains .flac tracks and the current one contains .mp3 tracks instead, but with the same filename, song length and other mentioned tags. The 2-5. criteria have the true condition only if there are exactly two matched tracks - if there are three or more tracks matched with those criteria, they would return the false condition and such tracks should have the same full paths to be considered as matched.<br /><br />
+
+The data for tracks that are not matched between current and backup database files will not be restored. This version of the add-on allows matching only one-to-one file, so if you have duplicates in the database (records with the same paths), only the first one will be restored (well, you should avoid having duplicates in the database anyway).<br /><br />
+
+<center><img src="https://c1.staticflickr.com/1/412/30967717014_54abfdc137_o.png" alt="RestorePlayHistory-3.1" border="0"></center>
+<br />
+
+The <i>Restore/Synchronize Database</i> dialog box can be opened using its corresponding item in the <i>Tools / Scripts</i> menu. The backup (external) database file should be specified first in the <i>Backup database file</i> text box. The data will be transferred (restored) from that file to the current database if you choose <i>Import</i> or they will be transferred from the current database to the specified backup file if you choose <i>Export</i>. The backup database file should be different than the current database file, i.e. you cannot specify the current database file in this text box.<br /><br />
+
+Immediately after you specify the backup file, the add-on will start comparing the backup with the current database and that process could be very slow, especially with the higher values of the ExtraMatchTests key . So, if you have a large database with too many records, it is recommended that you have specified the lower ExtraMatchTests value before you start the program. The remaining options in the dialog box determine which data will be restored and for which files.<br /><br />
+
+<b>File restrictions</b><br />
+You could choose which files should be restored using two <i>Restore playhistory/metadata only for</i> options. These options are mutually exclusive, i.e. you could use one of them, but not both. With the option <i>Restore playhistory/metadata only for files in collection [MM4] (Restore playhistory/metadata only for filtered tracks [MM3])</i> you could choose to restore data only for matched files in the specified collection.<br /><br />
+
+If you turn on the option <i>Restore playhistory/metadata only for x selected file(s) [MM4] (track(s) in MM3)</i>, data will be restored only for matched files that belong to the group of files that are selected in the main filelist.<br /><br />
+
+<b>Play history</b><br />
+The <i>Restore playhistory</i> option should be turned on if you want to restore the playing data in the Played table and the PlayCounter/LastPlayedDate fields in the Songs table for matched files. If you run this add-on twice with the same backup file, and if you choose this option again, it will not add the play history twice - the add-on will compare those data from the backup and current database files and if they are same it will skip them, i.e. it will add (merge) only the new playing data.<br /><br />
+
+However, if you turn on the option <i>Clear Played table & Playcount/LastTimePlayed fields first</i>, the add-on will remove all playing data from the Played table for matched files from the target database before restoring them from the source database. Also, the PlayCounter/LastPlayedDate fields in the target Songs table will be based only on the data from the source database in that case. So, be careful when using this option.<br /><br />
+
+<b>Playlists</b><br />
+You could restore both <i>Static playlists</i> and/or <i>AutoPlaylists</i> using the corresponding Restore options. However, some type of playlists will be restored even if you do not select them if they are parents of the playlists of the chosen type. For example, if you have some auto-playlist that has the child static playlists, that auto-playlist will be restored if you select <i>Static playlists</i> even if the <i>AutoPlaylists</i> is turned off.<br /><br />
+
+The option <i>Clear Playlists & PlaylistSongs tables first</i> is enabled only if you have turned on both <i>Static playlists</i> and <i>AutoPlaylists</i> check boxes. If you have that option turned on, the add-on will clear the Playlists and PlaylistSongs tables in the target database completely before restoring playlists from the source database. Please be very careful when using that option! If you turn it off, the add-on will merge the playlists from the source database with the existing ones in the target database, i.e. it will restore only playlists that don't exist in the target database. The content of playlists in the target database which have the same names as the playlists from the source database (within the same parent playlists, i.e. in the same hierarchy) will remain unmodified.<br /><br />
+
+<b>Collections/Views (Filters in MM3)</b><br />
+The option <i>Restore collections/views</i> should be turned on if you want to restore collections and views in MM4, or filters in MM3. If you turn on the option <i>Clear Filter table first</i> as well, the collections/views will be completely cleared in the target database before restoring the collections/views from the source database. Please be very careful when using that option! If you turn it off, the add-on will merge the collections/views from the source database with the existing ones in the target database, i.e. it will restore only collections/views that don't exist in the target database.<br /><br />
+
+<b>Metadata</b><br />
+You could restore the selected metadata for matched files if you turn on the option <i>Restore metadata in Songs & other tables</i>, in which case the add-on will update Songs table and other tables that are connected to it by related fields, e.g. Artists or Genres.<br /><br />
+
+The option <i>Update tags in files too (only on Import)</i> allows updating of tags in media files for the corresponding metadata in database on Import. If you forget to turn on that option, but you want to have updated tags in files as well, after restoring of metadata in the database, you could choose the <i>Synchronize Tags</i> option of the program.<br /><br />
+
+The remaining check boxes on the bottom of the dialog box allow you to choose which particular metadata you want to restore, e.g. Date Added, Artist...<br /><br />
+
+<b>Info line and commands</b><br />
+The information line on the bottom of the dialog box displays the total number of files in the backup (external) and current databases, as well as the number of matched files (the numbers inside parentheses are the number of matched files for each matching criterion).<br /><br />
+
+You could click the <i>Backup</i> button if you want to make a copy of your current database file using the destination path specified in the <i>Backup database file</i> text box.<br /><br />
+
+After you have adequately set all previously mentioned options, you could click the <i>Export</i> button if you want to transfer data from the current database to the specified backup file, or you could click the <i>Import</i> button if you want to transfer data from the specified backup file to the current database. Then just wait for the add-on to finish, it could be rather slow and maybe will need several minutes with larger databases.<br /><br />
+
+<p><font size="+1"><b><a id="inikeys">Additional INI keys</a></b></font></p>
+The [RestorePlayHistory] section of the MediaMonkey.ini file contains some less used options that are not represented with GUI:<br />
+<li>ExtraMatchTests - it could be used to speed up the comparison of databases and can take a value from 0 to 4, which represents the number of additional tests, beside of the base one which compares full paths. Its default value is 4, so all 5 tests mentioned in the Usage section are performed;<br /><br />
+
+<li>PlistAltMethod - determines the restoring method of static playlists in MM3: slower, but more reliable method = 0 (default), faster method = 1. The default method is very slow, but it is more reliable when the backup file contains corrupted database. The another method could cause the missing tracks from playlists, but it is a way faster. For example, with one test database the faster method lasted approx. 150 seconds instead of 1600 with the default method.<br /><br />
+
+The MediaMonkey.ini file is stored in the c:\Documents and Settings\User_Name\Application Data\MediaMonkey\ folder for MM4 and Win7. You could find the location of the .ini file depending of the version of MediaMonkey and Windows <a href="https://www.mediamonkey.com/support/knowledge-base/mediamonkey-install-config/modifying-the-mediamonkey-db-and-ini-files/">here</a>. If you want to modify the mentioned keys in it using e.g. Notepad, you should do that with closed MediaMonkey application.<br /><br />
+
+<p><font size="+1"><b><a id="important">Important</b></font></p>
+This add-on is relatively dangerous and could cause some corrupted data in the current database, especially if you forcibly terminate the program during its execution! Please make one more backup of the current database before you apply this add-on. Well, maybe you should make a copy of the backup file itself, because  this add-on could modify the backup file as well when you choose the <i>Export</i> command (which could be done mistakenly).<br /><br />
+
+If you have upgraded computer or changed hard disk and if you copied all media files to it keeping the same folder structure, then you could first try to transfer MM database to it and update it using the <a href="https://zvezdan-d.github.io/UpdateLocationOfFiles.html">Update Location of Files in Database</a> add-on instead since it is a way faster and simpler to use.<br /><br />
+
+If you choose any of the <i>Clear ...</i> options, the related tables in the target database will be deleted first after applying the <i>Export/Import</i> command, as it is mentioned in the Usage section! If you want to merge data, you should leave those options unchecked.<br /><br />
+
+<p><font size="+1"><b>Disclaimer</b></font></p>
+This software is provided 'as-is', without any express or implied warranty. In no event will the author be held liable for any damages arising from the use of this software.<br />
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+This add-on is a false positive reported as a worm by F-Secure. The author of F-Secure promised me that will update its database and put the add-on on white-list, but still didn't. If you go to the <a href="https://www.virustotal.com/en/file/17a99c86d3056a903bb16ba52fc6193b6bc56545b4322a8c90244dade4d792d6/analysis/1475443255/">www.virustotal.com/en/</a> site, you will see that it is safe tested by 54 popular anti-virus engines; the only one reporting a worm in it is F-Secure.<br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><img src="http://s05.flagcounter.com/count/K4lH/bg=FFFFFF/txt=000000/border=CCCCCC/columns=1/maxflags=5/viewers=3/labels=1/pageviews=1/" border="0"></center>
+<div>
+
+</body>
+</html>

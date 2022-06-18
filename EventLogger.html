@@ -1,0 +1,194 @@
+<html>
+<head>
+    <title>Event Logger (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, Event, Logger, Viewer">
+    <link href='BackgroundColorAnimation.css' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="DownloadButton.css">
+</head>
+
+<body>
+<table width="100%" class="tbl">
+<td valign="Top" align="Center">
+<b><font size="+2">Event Logger</font><br />
+Version 2.7<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</td>
+</table>
+
+<hr width="100%">
+
+This add-on works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v2.x-4.x. It allows logging of many MM events: OnPlay, OnStop, OnPause, OnSeek, OnTrackEnd, OnTrackSkipped, OnTrackProperties, OnTrackAdded, OnTrackDeleting, OnTrackConverted, OnBeforeTracksMove, OnStartUp, OnShutdown... The next data are stored in the log file: date/time, computer/user name, name of the event and track name. The location of the log file could be specified in the Options dialog box. The log file is saved in CSV format, so it could be imported e.g. in Excel. The events could be also displayed in real-time with the Event Viewer dockable panel.
+<br /><br />
+
+<table bgcolor="WhiteSmoke"><tr><td width="100%">
+If you want to discus about this add-on, you could visit its related MediaMonkey <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=2&t=37040">forum thread</a>. If you are using some skin which is not supported by default, you could take a look of skin styles for this add-on made by <i>nynaevelan</i> at the next <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=9&t=39768">forum thread</a>.
+<br /><br />
+
+You could also take a look on <a href="https://zvezdan-d.github.io/MediaMonkeyAddons.html">my other add-ons</a> for MediaMonkey.
+
+</td><td valign="middle" align="center" width="250px">
+<div class="download-box" style="float:left;"><a id="download" title="Download" class="download-link" href="http://solair.eunet.rs/~zvezdand/EventLogger-2.7.mmip"><span><strong><font size="+1">Download</font></strong> <em>The latest version of the add-on</em></span></a></div>
+</td></tr></table>
+
+<p><font size="+1"><b><a id="donation">Donation</a></b></font></p>
+This add-on is donationware. I am its sole developer and I worked on it in my own free time. I am not employed by Ventis Media, the company behind MediaMonkey, nor have I been paid by them for my efforts. If you find my add-on useful and want to help its further development, it would be nice if you could send a small donation using PayPal. You could donate as much as you think that is appropriate, any amount would be really appreciated.
+<br /><br />
+
+<a href="/"></a>
+<table width="100%" class="tbl">
+<tr>
+<td valign="Top" align="Center">Euro (EUR)</td>
+<td valign="Top" align="Center">US Dollar (USD)</td>
+</tr>
+<tr>
+<td valign="Top" align="Center">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="FA58WCU6NYBA2">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+</form>
+</td>
+<td valign="Top" align="Center">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="W4W5M43JSB7LW">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+</form>
+</td>
+</tr>
+</table>
+
+<p><font size="+1"><b><a id="compatibility">Compatibility</a></b></font></p>
+This add-on doesn't work with MediaMonkey v5! No add-on made for a previous version of the program will work with MM5, either by me or any other author, since MM5 has completely different programming interface than before. Which means that all MM4 add-ons have to be rewritten for MM5 from scratch.<br /><br />
+
+If you really like my add-on and think that it is essential for your work with the program, you should stay with MM4. Or you could wait for me to port the add-on to MM5, but my interest for that depends only on donations.<br /><br />
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v2.7 - 2016-11-29</dt><ul>
+<li>Added: DeviceFileCopied and DeviceSyncCompleted events [MM4];
+<li>Added: LogEventToFile(sEvent, sTrack, sFileName) subroutine for logging of custom events, similar to the existing LogEvent(sEvent, sTrack) but with ability to programmatically specify log file;
+<li>Added: ClearEventViewer() subroutine for programmatic clearing of Event Viewer;
+<li>Added: ClearLogFile() subroutine for programmatic clearing of log file;
+<li>Fixed: specifying of log file in the Options dialog box and many other things.
+</ul><br />
+
+<dt>v2.6 - 2015-10-15</dt><ul>
+<li>Added: LogOnDownloadFinished, LogOnDeviceSyncCompleted and LogOnDeviceFileCopied events [MM4];
+<li>Added: Copy/Select All/Print items to the popup menu;
+<li>Fixed: error when skipping playback to the next track (broken in 2.3).
+</ul><br />
+
+<dt>v2.5 - 2015-06-20</dt><ul>
+<li>Fixed: many things.
+</ul><br />
+
+<dt>v2.4.1 - 2012-02-06</dt><ul>
+<li>Fixed: using of Event Viewer and Logger in other scripts.
+</ul><br />
+
+<dt>v2.4 - 2012-02-04</dt><ul>
+<li>Added: view of events without writing to the log file: OnChangedSelection, OnTrackListFilling, OnTrackListFilled, OnNowPlayingSelectionChanged, OnNowPlayingModified, OnTrackListSelectionChanged and OnTrackListModified [MMx];
+<li>Added: possibility for script developers to use Event Viewer and Logger for displaying/logging messages from their code (please read the Usage section).
+</ul><br />
+
+<dt>v2.3 - 2011-06-22</dt><ul>
+<li>Added: LogOnTrackSkipped and LogOnCompletePlaybackEnd events [MM4];
+<li>Fixed: skin styles path [MM4];
+<li>Fixed: visible state of Event Viewer after restart when it is closed on the [x] button from the Titlebar.
+</ul><br />
+
+<dt>v2.2.1 - 2009-06-27</dt><ul>
+<li>Fixed: <i>View Log File</i> option and display of events in Event Viewer with log files in UTF-8/Unicode format.
+</ul><br />
+
+<dt>v2.2 - 2009-05-13</dt><ul>
+<li>Added: OnPlaybackEnd event;
+<li>Improved: skin styles;
+<li>Fixed: error with Maximal log file size.
+</ul><br />
+
+<dt>v2.1 - 2009-03-04</dt><ul>
+<li>Added: possibility to open a new log file when the file size is greater then specified value;
+<li>Added: option in the context menu to open a specified log file into the Event Viewer;
+<li>Added: display of information about opened log file and events range;
+<li>Added: song position for Pause and Seek events;
+<li>Improved: Event Viewer's skin automatically updated after skin change in the Options dialog box (only for supported skins).
+</ul><br />
+
+<dt>v2.0 - 2009-03-01</dt><ul>
+<li>Added: <i>Event Viewer</i> dockable panel;
+<li>Added: possibility to toggle Event Viewer title bar from the contex menu (MM 3.1.0.1209 or up);
+<li>Added: option <i>Maximal # of rows in Event Viewer</i>;
+<li>Added: option <i>Load log file when open Event Viewer</i>;
+<li>Added: option to save log file as ANSI, UTF-8 or Unicode.
+</ul><br />
+
+<dt>v1.1.2 - 2009-02-07</dt><ul>
+<li>Fixed: deleting of tracks when enabled logging of the OnTrackDeleting event.
+</ul><br />
+
+<dt>v1.1.1 - 2009-02-06</dt><ul>
+<li>Fixed: error with OnBeforeTracksMove and OnTrackProperties events.
+</ul><br />
+
+<dt>v1.1 - 2009-02-06</dt><ul>
+<li>Added: OnBeforeTracksMove and OnTrackProperties events;
+<li>Fixed: log file name when the "Write a new log file every day" is turned on.
+</ul><br />
+
+<dt>v1.0 - 2009-02-05</dt><ul>
+<li>First public version.
+</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+<ul><li>For MediaMonkey 3.0 or higher - just double-click on the EventLogger-xx.mmip file; if you are on Vista or Win7 and you got "Product installation error", make sure you have MM3 set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>; if you downloaded the installation package with IE7 and it changed its extension to a .zip, you should first change it back to a .mmip.</li>
+<li>For MediaMonkey 2.x - rename a .mmip extension to a .zip, extract the EventLogger.vbs and EventLoggerGUI.vbs files to the MediaMonkey's "Scripts\Auto" folder and restart MM program.</li></ul>
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+Choose <i>View | Event Viewer</i> to show/hide dockable panel. The add-on settings are in the <i>Tools | Options</i> dialog box within the <i>Event Logger</i> sheet (turning on/off of events works immediately after the confirmation only with MM 3.1.0.1205 or higher).<br /><br />
+
+<center><img src="https://c2.staticflickr.com/6/5324/31169923152_738e7a4ff4_o.png" alt="EventLogger-2.7-1" border="0"></center><br />
+
+The script developers could use this add-on to display some text from their code by placing few additional lines of code on the appropriate places in the script. The scripters could use MsgBox or SDB.MessageBox instead, but they will halt the execution of the script which is not always desirable. However, Event Logger and/or Event Viewer would log/display such messages without any break of the execution.<br /><br />
+
+<center><img src="https://c2.staticflickr.com/6/5699/31169923192_67fdfb9052_o.png" alt="EventLogger-2.1-0" border="0"></center><br />
+
+Here is what you should do if you want to use Event Viewer to display messages from your script:<br />
+- install Event Logger add-on;<br />
+- add the line <i>Script.Include "Auto\EventLogger.vbs</i> to your code, e.g. on its begin or end;<br />
+- add the line <i>ViewEvent "some_text_e_g_script_name", "actual_text_e_g_some_variable"</i> anywhere where you want to get the displayed message (for example, I could put <i>ViewEvent "Magic Nodes", SDB.MainTree.CurrentNode.Caption</i> in the OnChangedSelection event handler of my script);<br />
+- restart the program or use Script.Reload.<br /><br />
+
+If you want to log messages, i.e. to get messages saved to the log file, you should use the <i>LogEvent "abc", "xyz"</i> syntax instead.
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+This add-on is a false positive reported as a worm by F-Secure. The author of F-Secure promised me that will update its database and put the add-on on white-list, but still didn't. If you go to the <a href="https://www.virustotal.com/en/file/d483924f3aeb8af63991f57bad975947b163d864400778dc91426c60c02bb449/analysis/1475442516/">www.virustotal.com/en/</a> site, you will see that it is safe tested by 54 popular anti-virus engines; the only one reporting a worm in it is F-Secure.<br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><img src="http://s03.flagcounter.com/count/QlX/bg=FFFFFF/txt=000000/border=CCCCCC/columns=1/maxflags=5/viewers=3/labels=1/pageviews=1/" border="0"></center>
+
+</body>
+</html>

@@ -1,0 +1,686 @@
+<html>
+<head>
+    <title>Magic Nodes (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, Magic, Nodes">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size=+2>Magic Nodes</font><br />
+Version 6.0<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</i>
+</div>
+
+<div id="external">
+    <iframe src="MagicNodes_Ext.htm" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+<p>This is information about the enhanced version of Magic Nodes add-on for <a href="http://www.mediamonkey.com/">MediaMonkey</a> v2.x-4.x. The <a href="https://zvezdan-d.github.io/MagicNodes.html">freely available version</a> of this add-on is already the largest and most complex MediaMonkey add-on with 600 KB of code (not to mention 100 KB+ in masks that are full of SQL queries), but the enhanced version is more than two times larger and it has added many very useful options. However, not matter how complex it is, its usage is now even more simpler.
+<br /><br /></p>
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v6.0 - 2021-02-16</dt><ul>
+<li>Added: ability for the <i>Choose Magic Node</i> dialog box to be modeless when the corresponding option is turned on in the <i>Options</i> dialog box, which allows much easier navigation;
+<li>Added: ability to insert (load/import) masks at the selected row in the table in the <i>Manage Magic Nodes</i> dialog box, which allows much easier and faster movement of multiple masks in the list than using the <i>Move Up/Down</i> buttons that are still limited on a single mask; if no row is selected, the loaded/imported masks will be added to the end of list as it was only possible in the previous versions;
+<li>Added: <i>Save/Load</i> buttons to the <i>Manage Magic Nodes</i> dialog box that behaves similarly to the Copy/Paste options by saving/loading masks to the intermediary .ini file;
+<li>Added: ability to export/import masks from/to the opened .ini file in the <i>Manage Magic Nodes</i> dialog box, i.e. to export/import masks from one external .ini file to another;
+<li>Added: combo box with options for sorting of masks in the <i>Manage Magic Nodes</i> and <i>Choose Magic Node</i> dialog boxes (previously only available in the context menu of the table);
+<li>Added: temporary sorting of rows in the <i>Manage/Choose</i> dialog boxes without changing their order in the .ini file (you could click on the table header in the <i>Manage</i> dialog if you want to save masks with the chosen order as in the previous versions);
+<li>Added: ability to check on/off multiple consequent rows in the <i>Manage</i> dialog box using the Shift key;
+<li>Added: resizing/changing of the <i>Next/Prev</i>, <i>Move Up/Down</i> and <i>Export/Import</i> buttons in the <i>Manage Magic Nodes</i> dialog box when its size is horizontally reduced too much;
+<li>Added: <i>Multi Publisher</i> field, changed <i>Publisher</i> to be multi-item field [MM4];
+<li>Added: <i>DateTime played/last played/added/modified</i> and <i>Date last played/added/modified</i> as arguments for <i>Sort by/Statistics</i> qualifiers;
+<li>Added: <i>is known/unknown</i> operators to the combo box in the <i>Filter</i> group on the <i>Mask Settings</i> dialog box (only for linked fields);
+<li>Added: <i>Min/Max/Top SQL queries mode: Limited (old) / Basic / Enhanced</i> option that determines how to construct SQL queries for masks with the <i>Min/Max</i> and <i>Top</i> qualifiers;
+<li>Fixed: <i>Top</i> qualifier (finally!);
+<li>Fixed: <i>Unknown</i> node for <i>Playlist</i> MN field;
+<li>Fixed: <i>Show ordinal numbers</i> (<i>Show rank</i> qualifier) for Magic playlists (nodes in the Playlists branch of the Media Tree) in some specific situations;
+<li>Fixed: <i>Date played</i> field used in <i>Sort by/Statistics</i> qualifiers;
+<li>Fixed: grouping of nodes with prefixes (The, ...) when the option <i>Move prefixes to the end...</i> is turned on;
+<li>Fixed: resizing of fonts of many controls in dialog boxes, which are based on web browser control, depending on the <i>Font size</i> chosen in the <i>Skin</i> sheet of the <i>Options</i> dialog box;
+<li>Fixed: resizing of dialog boxes and blank web browser controls in some events (after hibernation, switching system user/system color depth, changing skin) with the skinned version of the program on Windows Vista and later;
+<li>Removed: <i>First/Last child</i> of <i>Web</i> node, since that ability is not supported by the program;
+<li>Improved: look of the "..." and "^/_" buttons in the <i>Mask Settings</i> dialog box;
+<li>Improved: speed of many things (e.g. opening of dialog boxes, expanding of group nodes, ...);
+<li>Added/Improved: many masks.
+</ul><br />
+
+<dt>v5.2 - 2018-09-30</dt><ul>
+<li>Added: drop down Find list with the last 5 used terms in the Manage Masks/Choose dialog boxes;
+<li>Fixed: very slow startup that is caused by Windows 10 Update and its Windows Defender Real-Time Protection;
+<li>Fixed: duplicated display of files in Art with Details mode in some MM versions;
+<li>Fixed: error with Custom fields having Regex reserved characters;
+<li>Added/Improved: many masks.
+</ul><br />
+
+<dt>v5.1 - 2017-03-07</dt><ul>
+<li>Added: <i>Add</i> button to the <i>Edit Mask</i> dialog box which allows creating new masks based on existing ones from the <i>Manage Masks</i> dialog box;
+<li>Renamed: <i>OK</i> button to <i>Update/Rename</i> in the <i>Edit Mask</i> dialog box;
+<li>Added: ability to create groups with radio buttons in the adjustment dialog box using &lt;Else Caption="..."&gt; tag (the good news: groups could be nested, the bad news: groups could contain only two radio buttons);
+<li>Improved: &lt;If&gt; tag used in adjustment dialog boxes;
+<li>Added: several new ways of sorting masks in the <i>Manage Masks</i> dialog box from the table's context menu;
+<li>Improved: speed of expanding of MN groups in many cases.
+</ul><br />
+
+<dt>v5.0.8 - 2016-04-21</dt><ul>
+<li>Fixed: typing numerical values on keyboard in SpinEdit controls on adjustment and <i>Mask Settings</i> dialog boxes (functional only in MM v3.1.2.1289 or higher);
+<li>Fixed: unnecessary display of dialog box on start-up asking if you want to install new masks after automatic adjustment of clock caused by switch in daylight saving time;
+<li>Fixed: format of table on the <i>Manage Masks</i> dialog box for unskinned version and unsupported skins.</ul><br />
+
+<dt>v5.0.7 - 2015-10-15</dt><ul>
+<li>Added: opening of the add-on's Web page on click at the version number in the Options dialog box.</ul><br />
+
+<dt>v5.0.6 - 2015-07-22</dt><ul>
+<li>Improved: work with MN created playlists, fixed errors on switching tabs while creating playlists;
+<li>Fixed: <i>Refresh Magic Playlist</i> menu command (broken since 5.0.1).</ul><br />
+
+<dt>v5.0.5 - 2015-06-18</dt><ul>
+<li>Added: new fields for drag & drop operation (Title, Original Title, Comment and all fields with Multi prefix).</ul><br />
+
+<dt>v5.0.3 - 2014-10-26</dt><ul>
+<li>Fixed: error with the <i>Top</i> qualifier used on the first level of local sub-nodes;
+<li>Fixed: enabled state of the <i>Refresh Magic Playlist</i> menu option for global nodes;
+<li>Fixed/Added: some masks in the Random group.</ul><br />
+
+<dt>v5.0.1 - 2014-09-12</dt><ul>
+<li>Added: possibility to expand the [All] nodes getting the same sub-nodes as the other local nodes on the same level, e.g. with the mask Test\&lt;Artist|All:Yes&gt;\&lt;Album&gt; if I double-click the All node on the artist level I would get sub-nodes with all albums from all displayed artists (affected by Filter, Min, Max, Top, Unknown and Sort by options);
+<li>Added: possibility to open the Manage Masks dialog box while the Settings dialog box is still opened (if the corresponding Modeless option is turned on in the Options dialog);
+<li>Fixed: display of nodes on the second or greater level in depth and statistical values for such nodes containing Min, Max, Top and Unknown qualifiers;
+<li>Fixed: display of values using Sort by qualifier in MN created playlists;
+<li>Fixed: positioning of nodes in the tree when their corresponding mask are added;
+<li>Fixed: corruption of MM database with all playlists destroyed manifesting on some very specific conditions;
+<li>Added/Updated: many masks, especially those that could use the new Adjust Magic Node option, also improved all masks containing Filter for Complete Albums which allows more reliable displayed files from multi-disc albums (assuming that the Disc Number field is correctly filled).</ul><br />
+
+<dt>v5.0 - 2014-04-19</dt><ul>
+<li>Added: new MM4 fields: Actor(s), Producer, Season #, Episode #, Episode # - Title, Parental Rating, Framerate, Resolution, Video Width, Video Height, Bookmark, Start Time, Stop Time, Skipped #, Type;
+<li>Fixed: all date/time fields taking UTC in account [MM4];
+<li>Added: &lt;Multi Album Artist with Album&gt; field that is same as old &lt;Album Artist with Album&gt; field;
+<li>Changed:  &lt;Album Artist with Album&gt; field now displays as many nodes as there are album artists on each album;
+<li>Added/Changed: &lt;Multi Artist with Title&gt; and &lt;Artist with Title&gt; similarly to the previous two mentioned fields;
+<li>Added: possibility to specify custom fields as &lt;Custom X&gt; where X could be between 1 and 5, which eliminates errors after renaming some of these fields in the Options dialog (the old way for writing masks using &lt;Renamed_custom_field&gt; is still supported, but not recommended);
+<li>Added: &lt;AutoPlaylist&gt; and &lt;Any Playlist&gt; fields (old &lt;Playlist&gt; field still displays only static playlists);
+<li>Added: default order of the files with &lt;Playlist&gt; field that is same as it is in the corresponding playlist;
+<li>Added: <i>Auto-child of - Playlists</i> option to the <i>Position</i> combo box and the corresponding <i>Position:Auto child</i> qualifier construction used in combination with <i>Child of:Playlists</i>, which allows MN created playlists that are automatically refreshed whenever you select them similarly to the auto-playlists (the playlists created with the old <i>Child of - Playlists</i> option require manual use of <i>Refresh Magic Playlist</i> command when you want them updated);
+<li>Fixed: display of values using <i>Sort by</i> qualifier in MN created playlists;
+<li>Improved: <i>Sort by</i> and <i>Statistics</i> qualifiers that could have specified fields without aggregate function, e.g. Sort by: Track number;
+<li>Improved: two or more fields (with or without aggregate functions) could be displayed in the front of the main field using <i>Sort by</i> qualifier (until now it was possible to specify just one field for display using <i>Show sort key</i> qualifier);
+<li>Added: possibility to get slightly more customized node captions using the previous two improvements with <i>Sort by</i> qualifier for specifying fields that would be in the front of the main field (prefixes) and <i>Statistics</i> qualifier for specifying fields that would be after the main field (suffixes), e.g. the caption "Season#, Episode# - Title (Length)" could be get with &lt;Title|Sort by:Season number, Episode number|Statistics:Length&gt;
+<li>Added: sort of files in the filelist using <i>Sort by</i> qualifier applied to the global MN node, e.g. Test|Sort by:Album, Track Number\&lt;Artist&gt;
+<li>Added: <i>Random</i> as a quasi-sorting order when sorting files, e.g. Sort by: Genre Random, Artist, Album Random, Track Number;
+<li>Added: <i>Concat</i> aggregate function for <i>Statistics</i> qualifier, e.g. Title|Statistics:Concat(Playlist) will display concatenated all static playlists in which specified title appears;
+<li>Improved: <i>Trim</i> qualifier which could accept negative values when the <i>SubStr</i> qualifier is different than 0, allowing that the Abs(Trim) characters preceding the SubStr-th character of the field are displayed;
+<li>Added: possibility to specify <i>Filter</i> qualifier with the local MN nodes implementing HAVING part of SQL query (until now <i>Filter</i> was used only with the global nodes implementing WHERE part of SQL query);
+<li>Added: possibility to specify <i>Filter</i> qualifier to the group MN nodes, i.e. the same filter could be applied to several MN nodes belonging to the same group (the group filters are AND-ed with global filters for particular MN node);
+<li>Improved: all group nodes could display files implementing UNION query, independently of their level (until now display of files was possible only with the group nodes that are direct parents of the global nodes);
+<li>Improved: <i>Refresh Magic Playlist</i> command that could be applied to the group and local MN playlist nodes (until now that command was used only with the global MN playlist nodes);
+<li>Improved: <i>Delete Magic Node</i> command could be applied to the group MN nodes which allows batch deleting of all contained MN masks/nodes;
+<li>Improved/Fixed: renaming of the group MN nodes in the Tree;
+<li>Added: possibility to expand the [All] nodes getting the same sub-nodes as the other local nodes on the same level, e.g. with the mask Test\&lt;Artist|All:Yes&gt;\&lt;Album&gt; if I double-click the All node on the artist level I would get sub-nodes with all albums from all displayed artists (affected by <i>Filter, Min, Max, Top, Unknown</i> and <i>Sort by</i> options);
+<li>Added: option to drag&drop tracks to the [Unknown] nodes which clears the corresponding field/tag, e.g. if I have Test\&lt;Artist&gt mask and if I drag& drop tracks to its Unknown sub-node I would get cleared the Artist tag in those tracks;
+<li>Fixed: display of nodes on the second or greater level in depth and statistical values for such nodes containing <i>Min, Max, Top</i> and <i>Unknown</i> qualifiers;
+<li>Fixed: display of nodes that are now updated when related MM filters/collections are changed;
+<li>Fixed: positioning of nodes in the tree when their corresponding mask are added;
+<li>Allowed: hotkeys for any MN masks, they are not limited only to the first 100 masks anymore;
+<li>Added: option to display toolbar buttons for specified masks which allows bringing focus to the related nodes with possibility to choose display of icon or text;
+<li>Added: display of ICO files in Magic nodes and/or related toolbar buttons;
+<li>Added: <i>Select</i> button to the <i>Settings</i> dialog box which brings focus to the related node of the current mask;
+<li>Added: <i>Add</i> button to the <i>Settings</i> dialog box that is separated from the <i>Update/Rename</i> button which allows adding/having several nodes with the same <i>Caption</i> within different groups/collections;
+<li>Added: multi-line text box mode for editing MN masks in the <i>Settings</i> dialog box that is toggled with the "^" / "_" button;
+<li>Added: <i>Find</i> option with the <i>Next/Prev</i> buttons to the <i>Manage Masks</i>'s dialog box (improved old <i>Export/Import</i> dialog) which allows searching for mask that contains the specified text;
+<li>Added: <i>Match case</i> and <i>Regular expressions</i> options for use with the <i>Find</i> option;
+<li>Added: context menu to the table in the <i>Manage Masks</i> dialog box with some options usable in that dialog box (Copy, Select all, Print, Word Wrap, Match case, RegEx);
+<li>Added: <i>Add/Edit</i> button to the <i>Manage Masks</i> dialog box;
+<li>Added: possibility to open the <i>Manage Masks</i> dialog box while the <i>Settings</i> dialog box is still opened (if the corresponding Modeless option is turned on in the Options dialog);
+<li>Added: <i>Choose Magic Node</i> dialog box similar to the <i>Manage Masks</i> dialog for searching and selecting mask that is opening from the <i>Settings</i> dialog box using the "..." button;
+<li>Improved: speed of moving masks up/down in <i>Manage Masks</i> and <i>Settings</i> dialog boxes;
+<li>Added: option <i>Ignore prefixes when sorting by:</i> to the <i>Options</i> dialog box for specifying which fields should have ignored prefixes;
+<li>Added: possibility to specify MN node for Auto-DJ;
+<li>Improved: the context and main menus with better organization of the existing and new commands;
+<li>Added: <i>Adjust Magic Node</i> command to the menus that allows much easier adjustment of parameters of existing masks than modifying them in the <i>Filter</i> area of the <i>Settings</i> dialog box (more information about that option in the following sections);
+<li>Added/Updated: many masks, especially those that could use the new <i>Adjust Magic Node</i> option, also improved all masks containing Filter for Complete Albums which allows more reliable displayed files from multi-disc albums (assuming that the Disc Number field is correctly filled).
+</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+<ul><li>For MediaMonkey 3.0 or higher - just double-click on the MediaMonkey.xx.mmip file; if you are on Vista or newer Windows and you got "Product installation error", make sure you have MM3 set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>; if you downloaded the installation package with IE and it changed its extension to a .zip, you should first change it back to a .mmip.</li>
+<li>For MediaMonkey 2.x - rename a .mmip extension to .zip, extract MagicNodes.vbs and MagicNodes.ini files to the MediaMonkey's "Scripts\Auto" folder and restart MM program.</li></ul></p>
+
+Note: The MagicNodes.ini file is used only after the installation. During its work, the Magic Nodes add-on stores masks into the MediaMonkey.ini file.<br /><br />
+
+If you are upgrading this add-on from an old version, it is strongly recommended that you follow these steps:<br />
+1. make a backup of your own created masks using the <i>Edit / Magic Nodes Export/Import</i> dialog box (pre-v4.3), or <i>Edit / Magic Nodes / Manage Masks</i> dialog box (v4.3 or higher);<br />
+2. uninstall the old version of the add-on and choose Yes when you are asked if you want to remove add-on settings;<br />
+3. install the new version of the add-on;<br />
+4. import your own created masks using the <i>Edit / Magic Nodes / Manage Masks</i> dialog box.
+<br /><br />
+
+This way, you will always have the latest and updated masks correctly sorted. If you don't remove the old settings (together with masks), this add-on will check the names of masks during the installation and, if they are same as the old ones, they will be skipped or relocated.<br /><br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+
+<b>Introduction</b><br />
+<table width="100%"><tr><td>
+Nodes are the elements of the navigation tree structure of the MediaMonkey interface. Magic Nodes add-on allows a simple way of creating new nodes to help you manage your music library. The nodes created by Magic Nodes add-on ("Magic nodes") are defined using masks which are loosely based on the way that MediaMonkey auto-organize works. The masks that represent the Magic nodes could be typed from scratch or they could be created using controls in the <i>Mask Settings</i> dialog box.<br /><br />
+
+If you want to type masks from the scratch or just to understand their structure, it is recommended that you read the <a href="http://west-penwith.org.uk/misc/MagicNodes.pdf">PDF manual</a> written by <i>Rick Parsons</i>. It is outdated since it covers only 1.7 version of the add-on which was one of the latest versions without the proper GUI, but it explains many things needed for understanding of this add-on. The things covered by that manual will not be mentioned in this section, but you could rather find here the explanation how to use the commands and options of this add-on that you could find in its GUI.<br /><br />
+
+Magic Nodes add-on could be used by the beginners as well as by very advanced users, there are at least 3 levels of difficulty:<br />
+1. The beginners could use add-on just by navigating through the Magic Nodes branch of the Media Tree panel. You could find there over 400+ different nodes that could be useful for you without any additional adjustment, e.g. you could get displayed "Files with the Artist name on the begin of the Filename", or "Files rated X stars or more from Album Artists that haven't played last Y days", or "X random files from each Genre which has Y or more files and played more than Z times".<br /><br />
+
+2. With many nodes and their corresponding masks there is a possibility for their adjustment using the new <i>Adjust Magic Node</i> command from the menu - just select the wanted node, choose the mentioned command and you will get one dialog box where you could tune some parameters of that node. For example, with the node "Artists with at least X (complete) Albums having at least Y files where all files are rated Z stars or more" there are 3 parameters: X (number of albums), Y (number of files per album) and Z (minimal rating of files). Actually, that node has one parameter more which could be toggled using one check box - "Complete Albums", but more about that you could find in the section dedicated to the <i>Adjust Magic Node</i> command and its related tags.<br /><br />
+
+3. Somewhat more experienced users could create their own masks to get nodes that are different than those that are included with the add-on. Mask could be very simple as it is <tt>Test\&lt;Genre&gt;</tt>, but also very complex like the mask "Artists with at least &lt;ID:1&gt; (complete) Albums having at least &lt;ID:3&gt; files, all files rated &lt;ID:4&gt; stars or more" that is located in the "Artist Ratings" branch of the Magic Nodes.<br /><br />
+
+</td><td valign="top" align="center" width="260px">
+<img src="https://live.staticflickr.com/65535/51047180026_dffff02a92_o.png" alt="MagicNodes-6.0 - Tree" border="0">
+</td></tr><table>
+
+There are three different ways to edit any existing mask and its corresponding node:<br />
+1. choose the <i>Mask Settings</i> item from the <i>Edit / Magic Nodes</i> menu, then choose the wanted mask from the <i>Caption</i> combo box, edit it and click on the <i>Update/Rename</i> button.<br />
+2. choose the <i>Manage Masks</i> item from the <i>Edit / Magic Nodes</i> menu, then click on the number of the needed mask from the "#" column, edit it and click on the <i>Update/Rename</i> button.<br />
+3. right-click on the corresponding node in the Media Tree panel, choose <i>Edit Magic Node</i> command, then edit the mask and click on the <i>Update/Rename</i> button.<br /><br />
+
+If you want to create a new mask based on an existing one, you should choose the <i>Add</i> button on the bottom of the dialog box instead of the <i>Update/Rename</i> in any of the previous 3 methods. However, if you want to create an entirely new mask, you could use the <i>Magic Nodes Settings</i> dialog: click on the <i>New</i> button, type some text in the <i>Caption</i> combo box, set some fields and its qualifiers and click on the <i>Add</i> button.<br /><br />
+
+There are also three different ways to delete an existing mask:<br />
+1. choose <i>Edit / Magic Nodes / Mask Settings</i>, then choose the mask from the <i>Caption</i> combo box and click on the <i>Delete</i> button on the bottom of the dialog box.<br />
+2. choose <i>Edit / Magic Nodes / Manage Masks</i>, then select the mask(s) in the table and click on the <i>Delete</i> button.<br />
+3. right-click on the corresponding node in the Media Tree panel and choose <i>Delete Magic Node</i> command.<br /><br />
+
+The Magic Nodes commands could be found in the <i>Edit</i> menu of the main menu or in the context menu of the Media Tree. The first group of commands from the Magic Nodes sub-menu, including <i>Edit Magic Node</i> and <i>Delete Magic Node</i>, is enabled only if you have selected a global Magic node, while the remaining commands could be executed even when none Magic node is selected, e.g. <i>Mask Settings</i>. However, in some particular cases, some commands from the first group are enabled even with the selected group or local Magic Nodes' sub-nodes.<br /><br />
+
+<b>Mask's syntax</b><br />
+The description about that what is the "global" Magic node could be found in the mentioned PDF manual. Here is just a quick reference about the syntax of the Magic Nodes' masks where "[]" indicates optional and "*" indicates repeat 0-n times:<br /><br />
+
+<tt>[&lt;Group|Name:string[|Group qualifier]*&gt;\]*Caption[|Global qualifier]*[\&lt;Field[|Local qualifier]*&gt;]*</tt><br /><br />
+
+Each additional "\" indicates the start of a new hierarchical level in the tree. The every level of nodes begins with "&lt;" and ends with "&gt;" except the global level.<br /><br />
+
+As you could see, there are 3 different types of sub-nodes in the Magic nodes: group, global and local nodes. Every Magic node contains just one global node which is mandatory, while group and local nodes are optional and there is no limit on their number of hierarchical levels.<br /><br />
+
+The global node is represented by its Caption that you want displayed on the node. The local nodes represents a hierarchical levels under the global node that could display values of the specified predefined fields. The group nodes could help in better organization of the related Magic nodes in a similar way to the MediaMonkey's Files to Edit group. One or more Magic nodes could be placed inside of one group, and groups could contain additional levels of sub-groups.<br /><br />
+
+For example, If I have mask <tt>&lt;Group|Name:Tests&gt;\Artists\&lt;Artist&gt;</tt>, the node with the name "Tests" is the group node, the node with the caption "Artists" is the global node, while its sub-nodes with the names of the artists are local nodes.<br /><br />
+
+Every node in the mask could contain additional optional qualifiers separated by the "|" character, while the group nodes have also one mandatory "Name" qualifier. With the qualifiers you could specify behaviour of some node, e.g. which part of the field should be displayed or how sub-nodes should be sorted.<br /><br />
+
+<center><img src="http://farm8.staticflickr.com/7387/12985348453_dc388be38c_o.png" alt="MagicNodes-5.0 - Menu" border="0"></center><br />
+
+<b>Menu</b><br />
+The Magic Nodes menu contains the next commands:
+<li><i>Edit Magic Node</i> - it is enabled for the global and local nodes, but not for group nodes. If you choose this command you will get opened dialog box that is very similar to the <i>Magic Nodes Settings</i> dialog box, but it contains just <i>Add</i>, <i>Update/Rename</i> and <i>Cancel</i> buttons on its bottom and it doesn't have a possibility to choose the mask for editing, i.e. this dialog box allows modifications of the mask only for the selected node.<br /><br />
+
+<li><i>Adjust Magic Node</i> - it is enabled for the global and local nodes, but not for group nodes. If you choose this command you will get opened dialog box which could contain one or more different controls depending of the tags used in the corresponding mask of the selected node. This dialog allows fine adjustment of some parameters of the mask which is described more in the <i>Additional Information</i> section.<br /><br />
+
+<li><i>Delete Magic Node</i> - it is enabled for the group and global nodes, but not for local nodes. This command allows deleting of the selected node(s) and its corresponding mask(s). If the selected node is group node, all contained Magic nodes and corresponding masks will be removed permanently. Be careful when using this command because there is no Undo command for it.<br /><br />
+
+<li><i>Refresh Magic Playlist</i> - it is enabled for any type of nodes: group, global and local, but such Magic node should be inside of the Playlists branch. Unlike regular Magic nodes outside of the Playlists branch whose filelists are updated whenever you select them, the playlists created using <i>Position:Child</i> qualifier of Magic Nodes have static filelists, so if you want to update their content you could use this command.<br /><br />
+
+<li><i>Mask Settings</i> - if you choose this command you will get opened the <i>Magic Nodes Settings</i> dialog box that is very similar to the <i>Edit Magic Node</i> dialog box, but it has a possibility to choose mask for editing and it contains several controls on its bottom beside of the <i>Close</i> button, which allow different manipulations of the selected mask: the <i>Move</i> spin control, as well as the <i>New, Update/Rename, Add</i> and <i>Delete</i> buttons. This dialog box allows arbitrary modifications of any mask.<br /><br />
+
+<li><i>Manage Masks</i> - this command opens the <i>Manage Magic Nodes</i> dialog box that contains a table with all available masks and it allows batch operations on several masks at the same time, e.g. <i>Delete, Export</i> or <i>Import</i>. It also has some another commands that are better used when the masks are displayed in the tabular form, e.g. <i>Find</i> for searching of some specific mask.<br /><br />
+
+<li><i>Options</i> - when you choose this command you will get opened the <i>Magic Nodes Options</i> dialog box that contains some less important options that affect behavior of the add-on and/or all Magic nodes in general.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51046453698_568906a30c_o.png" alt="MagicNodes-6.0 - Settings" border="0"></center><br />
+
+<b>Magic Nodes Settings</b><br />
+The <i>Magic Nodes Settings</i> dialog box allows arbitrary modifications of any mask, either by typing from the scratch in the <i>Mask</i> text box or by using other controls from this dialog box which will construct the appropriate mask for you automatically. This dialog box is resizable, so you could enlarge it, e.g. if you cannot see the content of some control.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51046453598_e1ba3412a2_o.png" alt="MagicNodes-6.0 - Settings_1" border="0"></center><br />
+
+<b>Caption</b><br />
+The topmost group of controls contains the controls that affect the whole mask. The first control is the <i>Caption</i> combo box which contains the list of all available MN masks and with it you could choose which mask you want to see or modify. The same combo box could be used to rename the caption of the global node of the selected mask, or to enter the new caption when creating the new mask. You could paste the whole mask in this combo box, e.g. after copying it from the Forum, but you cannot type masks from scratch in it - you should use the <i>Mask</i> text box on the bottom if you want to do that. The caption cannot contains the "|" and "\" characters.<br /><br />
+
+<b>Toolbar</b><br />
+The next two <i>Toolbar</i> controls allow displaying of the toolbar button for the currently displayed mask which could bring the focus to the corresponding node in the Media Tree (the corresponding qualifier is <i>Toolbar</i>). With the <i>Icon</i> and <i>Text</i> check boxes you could choose what you wan to get displayed on the toolbar button: the icon or the caption of the selected mask. The particular icon could be chosen using the <i>Icon</i> combo box when the global node is selected in the <i>Nodes</i> list, which will be explained latter.<br /><br />
+
+<b>Position</b><br />
+The <i>Position</i> group of controls consists of two combo boxes - with the first one you could choose the relative position of the selected mask and its corresponding node to the node that is selected in the second combo box (the corresponding qualifiers are <i>Position</i> and <i>Child of</i> respectively). The first list box is dynamically filled depending of the node that is selected in the second combo box. For example, if you choose "Magic Nodes" in the second combo box then the first combo box will contain the "First chid of" and "Last child of" items, but if you choose "Collection" then the first combo box will contain additionally "Before" and "After" items ("Before" and "After" means that the Magic node will be on the same level as the node selected in the second combo box).<br /><br />
+
+<b>Creating playlists</b><br />
+If you choose "Playlists" from the second <i>Position</i> combo box, beside of the "Before" and "After" items in the first combo box you will get also the "Child of" and "Auto-child of" items. These new items allow having of so-called the Magic playlists positioned inside of the Playlists branch, which are created when you add or modify their corresponding masks. All nodes in the Playlists branch are always sorted alphabetically and because of that there are not different the "First child of" and "Last child of" options for positioning of the nodes within that branch.<br /><br />
+
+Unlike regular Magic nodes outside of the Playlists branch whose filelists are updated whenever you select them, the filelists of the Magic playlists created by using the "Child of" item are static: if you select any playlist created using this option, then select some another node and finally select the same playlist again, it will contain the same files in the filelist even if the corresponding mask has some filter which should change the contained files, e.g. if it allows displaying of the random files. To be able to update such playlist you could modify the corresponding mask somehow or you could just choose the <i>Refresh Magic Playlist</i> command from the menu.<br /><br />
+
+However, if you choose the "Auto-child of" item from the first combo box, the playlists created using this option will be updated whenever you select such playlist, similarly to the regular Magic nodes or auto-playlists, which are updated every time when you select them. Such behavior could be preferable sometimes because you will get the playlists that are always up-to-date without worrying if you need to refresh them, but you should also keep in mind that some masks contain filters that take too much time whenever you select the corresponding node, which is not always desirable, and in that case the static playlists would be a better choice.<br /><br />
+
+Unlike regular Magic nodes where their whole sub-branches are updated whenever you expand them, the sub-nodes placed in the Playlists branch cannot be automatically updated when you expand their parent node, even if you choose "Auto-child of" option, because of the limited MM API. If you want to update the whole structure of sub-folders for some Magic playlist, you should choose <i>Refresh Magic Playlist</i> command even for nodes/masks with "Auto-child of".<br /><br />
+
+The Magic playlists have the hierarchical structure as the regular Magic nodes having the same nodes. For example, if I have the mask <tt>Test|Child of:Playlists|Position:Child\&lt;Arstist&gt;\&lt;Album&gt;</tt> I will get not only the "Test" playlist, but also its sub-playlists with names of the artists and sub-sub-playlists with the names of their albums. Be careful with the number of generated sub-playlists because too much playlists could slow down the program.<br /><br />
+
+If you want to move an existing regular Magic node to the Playlists branch, but you don't want to get its sub-nodes moved to sub-playlists, you have two possibilities: you could remove the corresponding levels of sub-nodes from the mask or you could turn off the <i>Show nodes</i> option, but that option could be used only for the latest (bottommost) level of nodes, so that possibility is mostly applicable for masks with only one sub-level of nodes.<br /><br />
+
+There are some limitations with the masks that create Magic playlists: you cannot set the <i>Show node if empty</i> option to the global node and you cannot set the <i>Icon</i> qualifier at all since the program has the fixed icon for all playlists. You could specify <i>Sort by</i> qualifier for a level of sub-nodes in the Magic playlists, but there is a chance that you will not get what you want, because the playlists are always sorted alphabetically (in such case consider a possibility to turn on the <i>Show ordinal numbers</i> option for that level).<br /><br />
+
+<b>Collection [MM4] (MM Filter [MM2-3])</b><br />
+If you choose the "Collection" item from the second <i>Position</i> combo box or any following item from its list which starts with "_", you will be able to choose a collection where you want to place the Magic node of the selected mask using the <i>Collection</i> combo box (the corresponding qualifier is <i>MM filter</i>). One Magic node cannot be placed in several collections at the same time. If you want something like that, you need to create copies of its mask with the specified different collection for each copy of that mask.<br /><br />
+
+<b>Hotkey</b><br />
+The <i>Hotkey</i> control allows the same thing as the <i>Toolbar</i> controls: you could bring the focus to the corresponding node in the Media Tree if you press the specified hotkey on the keyboard, e.g. Shift+Ctrl+A (the corresponding qualifier is <i>Shortcut</i>).<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51047266267_56d87c4eb6_o.png" alt="MagicNodes-6.0 - Settings_2" border="0"></center><br />
+
+<b>Node controls</b><br />
+The several next controls in the Settings dialog box allow creating of nested nodes for each level of a Magic node: group, global and local. When you select an existing mask/node from the <i>Caption</i> combo box, the <i>Nodes</i> list box will be automatically filled with all nested sub-nodes with the proper indentation for each new level. If you want to create a new mask by the click on the <i>New</i> button, the global node would be automatically added to the <i>Nodes</i> list box when you type its new caption in the <i>Caption</i> combo box.<br /><br />
+
+<b>Field</b><br />
+The local nodes could be added to the selected mask if you choose the <i>Field</i> radio button and select an item from the related list box. The items from that list represents the MN fields, i.e. the predefined fields available by Magic Nodes: the simple fields, which directly correspond to the existing database fields, like "Title" or "Rating", and the complex fields, which could display one or more database fields, like "Artist - Title" or "Weeks since added".<br /><br />
+
+<b>Group</b><br />
+If you want to assign a Magic node to an existing group, you should choose the <i>Group</i> radio button and select the wanted item from the related combo box, but if you want to create a new group, which is not listed in that combo box, then just type its name in it (the corresponding qualifier is <i>Name</i>). The name of the group cannot contains "|", "\", "&lt;" and "&gt;" characters.<br /><br />
+
+<b>Nodes</b><br />
+The new group and local nodes could be added to the <i>Nodes</i> list box using the <i>Add</i> button located between the <i>Filter</i> and <i>Nodes</i> list boxes, after you have selected the appropriate item from the <i>Field</i> or <i>Group</i> lists. If you want to remove an existing group or local node from the mask, you should select the corresponding item in the <i>Nodes</i> list box and click the <i>Del</i> button, which is under the mentioned <i>Add</i> button. The spin control with the up/down buttons located bellow the <i>Del</i> button allows moving of the selected item in the <i>Nodes</i> list box in the wanted direction, i.e. up or down. Higher nodes in the <i>Nodes</i> list are closer to the root in the node hierarchy.<br /><br />
+
+The remaining controls from the Settings dialog box, excluding the <i>Mask</i> text box, affect only particular node in the hierarchy of some Magic node that is selected in the <i>Nodes</i> list box. For example, if I have the mask <tt>Test\&lt;Artist&gt;\&lt;Album&gt;</tt> and if I want to add <i>Statistics</i> qualifier to the "Artist" node, I need to select the "Artist" item in the <i>Nodes</i> list box and then to set the <i>Statistics</i> controls appropriately.<br /><br />
+
+<b>Show ... controls</b><br />
+The first group of the remaining controls determines the display of nodes and files, but only the first check box is enabled for all nodes (group, global or local), while the other check boxes could be set only for the local nodes (unless it is stated otherwise); also many <i>Show</i> controls are disabled with some Split modes which will be mentioned latter in the <i>Split by</i> part of this section:<br />
+<li><i>Show files in filelist</i> - turn it on if you want to get displayed files in the filelist when you select the corresponding sub-node in the Media Tree (the corresponding qualifier is <i>Show tracks</i>).<br /><br />
+
+<li><i>Show [All] node</i> - turn it on if you want to get displayed "All" node for the corresponding sub-node, similarly to the "All" nodes in the Location and My Computer folders (the corresponding qualifier is <i>All</i>).<br /><br />
+
+<li><i>Show [Unknown] node</i> - turn it on if you want to get displayed "Unknown" node for the corresponding sub-node, similarly to the "Unknown" nodes in the "Title", "Artist" and many other built-in nodes (the corresponding qualifier is <i>Unknown</i>); turning off this option for the selected sub-nodes could speed up expanding of their parent nodes sometimes; this option is disabled if the <i>Top items</i> has some value greater than zero.<br /><br />
+
+<li>The next check box has two meanings depending of the selected sub-node:
+<li style="list-style-type:circle"><i>Show node if empty</i> is displayed if you select the global node or local node that is not the latest (bottommost) node in the hierarchy (the corresponding qualifier is <i>Show if empty</i>); you should turn on this option if you want to get displayed the selected node even if it doesn't have any child nodes, e.g. for the mask <tt>Test\&lt;Album&gt;\&lt;Disc number|Unknown:No&gt;</tt> you could turn this option on for the "Album" node to get displayed albums even if they contain files without disc numbers; this option is disabled if you have selected "Child of" or "Auto-child of" - "Playlist" in the <i>Position</i> combo boxes.<br /><br />
+
+<li style="list-style-type:circle"><i>Show nodes</i> is displayed only if you select the latest (bottommost) local node in the hierarchy; you should turn this option off if you don't want to get displayed nodes on the selected level for some reason, e.g. if the Magic node is positioned inside of the Playlists branch, while you still want that node added to the mask because it could contain some important qualifiers that affect its parent nodes even if it is not displayed like <i>Min. files</i> or <i>Top items</i> (the corresponding qualifier is <i>Show nodes</i>).<br /><br />
+
+<li><i>Show ordinal numbers</i> - you should turn on this option if you want to get ordinal numbers of nodes in the front of their captions (the corresponding qualifier is <i>Show rank</i>).<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51047180186_c3ed5ed349_o.png" alt="MagicNodes-6.0 - Settings_3" border="0"></center><br />
+
+<b>Filter controls</b><br />
+The next group of controls allows setting of the filter for the selected mask (the corresponding qualifier is <i>Filter</i>). With the old versions of the add-on it was possible to set only one filter per mask to the global node, while the new version allows setting of different filters to the each level of nodes in the mask. The <i>Filter</i> string for the group and global levels of nodes represents the WHERE part of the SQL query applied to the whole branch of the selected Magic node, while for the local nodes it represents the HAVING part of the SQL query which is applied to the corresponding level of the query. The <i>Filter</i> qualifier specified to the group node will be applied to all Magic nodes belonging to that group (the group filters are AND-ed with the global filters for the particular Magic node).<br /><br />
+
+Here is one example how the new <i>Filter</i> option could simplify masks when applied on the local level. The old mask has <i>Filter</i> assigned only to the global node:<br />
+<tt>Files rated &gt;= 4 stars from Artists with avg. file rating &gt;= 4 stars|Filter:<font color="green">Songs.Rating &gt;= 80 AND SongArtists.ID IN (SELECT ArtistsSongs.IDArtist FROM Songs INNER JOIN ArtistsSongs ON Songs.ID = ArtistsSongs.IDSong AND IfNull(ArtistsSongs.PersonType, 1) = 1 INNER JOIN Artists ON ArtistsSongs.IDArtist = Artists.ID WHERE Songs.Rating &gt;= 0 GROUP BY ArtistsSongs.IDArtist HAVING Avg(Songs.Rating) &gt;= 80)</font>\&lt;Artist&gt;</tt><br /><br />
+
+The new mask has <i>Filter</i> assigned also to the local "Artist" node, but such mask is shorter and simpler giving the same displayed filelist:<br />
+<tt>Files rated &gt;= 4 stars from Artists with avg. file rating &gt;= 4 stars|Filter:<font color="green">Songs.Rating &gt;= 0</font>\&lt;Artist|Filter:<font color="green">Avg(Songs.Rating) &gt;= 80</font>&gt;</tt><br /><br />
+
+Using this new ability of the Filter controls applied to the local nodes it is possible to easily set e.g. maximum or minimum length of song or files belonging to the selected local node. For example, if you have &lt;Artist&gt; node and if you set its filter to e.g. Sum(Songs.FileLength / 1048576) &gt;= 100, you will get only Artists that have more than 100 MB in files.<br />
+
+The first combo box in the <i>Filter</i> group contains the list with the "AND" and "OR" items that you could select if you want such operators on the begin of the adding string. The next combo box is enabled only if you have selected local node in the <i>Nodes</i> list box and it contains list with the aggregate functions that could be used within the HAVING part of query (Count, Avg, ...). The next combo box contains list with all available MN fields, similarly to the <i>Fields</i> list box, but it has also one new item: "Any". If you add that item to the <i>Filter</i> string, you will get filtered files by any field that is specified on the Search tab in the Options dialog box.<br /><br />
+
+The next combo box contains the list with operators that depends if the selected field from the previous combo box has a string, numeric or date/time value. If you have selected any string or date/time field, the last combo box in this group will be dynamically filled with all values of that field from all files (that could take significant time for complex fields); if you have selected any numeric field, the spin control would be displayed, which allows changing of that numeric value.<br /><br />
+
+When you have selected all wanted items in the previously mentioned <i>Filter</i> controls, you could click the <i>Add</i> button located on the right side of the <i>Filter</i> group to add that construction to the main <i>Filter</i> text box. You could type a new filter from the scratch or modify the existing one by editing that text box. If you have selected a part of the text in that text box, you could click on the <i>Del</i> button to remove it, or you could click on the "(.)" button to surround the selected text with the parenthesis.<br /><br />
+
+You could turn on the <i>SQL</i> check box that is located on the left of the <i>Filter</i> text box if you want to see how a MN field in the filter will be converted to the appropriate SQL field(s). For example, instead of the &lt;Rating&gt; MN field I would get <i>Songs.Ratings</i>, or instead of the &lt;Weeks since added&gt; I would get <i>Cast(JulianDay(Date('now', '-6 days', 'weekday 1', '6 days')) - JulianDay(Date(Songs.DateAdded + JulianDay('1899-12-30'))) As integer) / 7</i>. This option is not reversible, i.e. if you turn it off after a MN field is already converted to the corresponding SQL field(s), you cannot get the original MN field again.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51047180166_d25ded076f_o.png" alt="MagicNodes-6.0 - Settings_4" border="0"></center><br />
+
+<b>Icon</b><br />
+The next control after the <i>Filter</i> group is the <i>Icon</i> combo box (the corresponding qualifier is <i>Icon</i>). It is enabled only for the group and global nodes, while the icons for the local nodes are automatically set depending on the related field. The selected item from the combo box determines the icon that will be displayed for the corresponding node in the Media Tree and the toolbar button if the <i>Toolbar</i> option is enabled for the selected mask (in which case the toolbar button will have the same icon as the global node). You could choose some of the built-in icons represented by their numbers (the built-in icons for the Glided skin with their numbers could be downloaded from <a href="http://www.mediamonkey.com/contrib/artwork/icons.zip">here</a>).<br /><br />
+
+If you choose "Standard" from the <i>Icon</i> combo box, you will get displayed icon of the folder; if you choose "Top level", you will get displayed icon of the topmost local node and its related field; while if you choose "Bottom level", you will get displayed icon of the bottommost local node and its related field. Finally, you have a possibility to show your own 16x16 icon (e.g. if you find it somewhere on the Internet) if you choose "ICO file" item from the <i>Icon</i> combo box. In that case you should specify the location of the wanted ICO file.<br /><br />
+
+<b>Top items</b><br />
+The <i>Top items</i> control is enabled only for the local nodes. With that control you could set the number of displayed sub-nodes of the selected node (the corresponding qualifier is <i>Top</i>). For example, if I have "Album" node selected in the <i>Nodes</i> list box for the mask <tt>Test\&lt;Artist&gt;\&lt;Album&gt;</tt>, and if I set 10 with the <i>Top items</i> control, I could get displayed 10 albums per artist at most.<br /><br />
+
+<b>Min. files, Max. files</b><br />
+The <i>Min. files, Max. files</i> and other controls below them are enabled only for the local nodes. With the <i>Min. files</i> you could set the minimal number of files that are needed for display of the selected local node (the corresponding qualifier is <i>Min tracks</i>), and with the <i>Max. files</i> you could set the maximal number of files (the corresponding qualifier is <i>Max tracks</i>). For example, if I have the "Artist" node selected in the <i>Nodes</i> list box for the mask <tT>Test\&lt;Artist&gt;</tt>, and if I set 10 with the <i>Min. files</i> control, I could get displayed only nodes for artists that have at least 10 files.<br /><br />
+
+<b>Substr. start</b><br />
+With the <i>Substr. start, Trim</i> and other controls below them, you could set which part of the MN field corresponding to the selected local node you want to get displayed as its caption. The <i>Substr. start</i> control determines the starting position of the substring that should be returned (the corresponding qualifier is <i>Substring start</i>). For example, if a MN field contains "The Beatles" and if I specify 5 with that control, I will get displayed "Beatles" in the caption of the corresponding node. If the negative number is specified, the first character of the substring is found by counting from the right rather than the left, e.g. with -5 I will get "atles".<br /><br />
+
+<b>Substr. length / Trim</b><br />
+The next control has two captions, depending of the value set by <i>Substr. start</i> control. If <i>Substr. start</i> is zero, the next control has <i>Trim</i> caption; in other cases it is <i>Substr. lenght</i>, but in general their effect is the same (the corresponding qualifier is <i>Trim</i>): with that control you could set how many characters of the MN field corresponding to the selected local node you want to display from the left to the right (if the <i>Substr. lenght</i> value is positive) or from the right to the left (if it is negative), starting from the character specified by <i>Substr. start</i>. If <i>Substr. start</i> is zero, the result will be same as if it is 1. If <i>Substr. lenght</i> is zero, then the whole string is returned starting from the <i>Substr. start</i> in the proper direction.<br /><br />
+
+Examples with the same "The Beatles" text:<br />
+<li><i>Substr. start</i> = 5 and <i>Substr. lenght</i> = 4 shows "Beat";<br />
+<li><i>Substr. start</i> = -5 and <i>Substr. lenght</i> = 4 shows "atle";<br />
+<li><i>Substr. start</i> = 5 and <i>Substr. lenght</i> = -4 shows "The ";<br />
+<li><i>Substr. start</i> = -5 and <i>Substr. lenght</i> = -4 shows "e Be".<br /><br />
+
+<b>Split by</b><br />
+The <i>Split by</i> group of controls allows parsing of the MN field corresponding to the selected local node: within the text box you could specify with which string you want to split the original text (the corresponding qualifier is <i>Split by</i>), with the combo box you could determine the mode of parsing (the <i>Split Mode</i> qualifier) and with the spin control you could set the optional numerical value (the <i>Split part</i> qualifier) if it is applicable for the selected item that is set in the previous combo box.<br /><br />
+
+The <i>Split mode</i> combo box has the next items: <i>String part, String Before, String After, Single Part, Parts Before, Parts After, All Parts, Categories, Odd Parts</i> and <i>Even Parts</i>. The first three items that start with the "String *" don't affect the enabled state of other controls in the dialog box because they are based on the SQL code to do parsing of the MN field, but the complexity of the implemented code raises exponentially with the <i>Split part</i> value specified with the spin box, and for the large numbers you could even get the error message! The remaining items from the <i>Split mode</i> combo box don't have that problem since they are not using the SQL code, but VBScript instead. However, the drawback of the remaining items is that they cannot be used with the <i>Sort by/Statistics</i> qualifiers as well as almost none of the <i>Show *</i> qualifiers.<br /><br />
+
+One important note: the ";" and "; " are not the same strings and using them in the <i>Split by</i> qualifier will give you different results. The detailed explanation about the qualifiers related to this group of controls with many examples can be found in the <a href="http://solair.eunet.rs/~zvezdand/MagicNodes.htm#splitexamples">Split examples</a> section on the web page of the old version of this add-on.<br /><br />
+
+<b>Left of</b><br />
+The next control has two meanings, depending of the following <i>Right of</i> control: if the <i>Right of</i> text box is empty, the first control has the <i>Left of</i> caption, otherwise it is <i>Right until</i>. It is somewhat awkward order of the controls, it would be better and more intuitive if the <i>Right until</i> has separate control on the right side of the <i>Right of</i> control, but in that case the Settings dialog box would be even larger and more overcrowded than it is now. Anyway, one more reason why this strange decision was made is because the <i>Left of</i> and <i>Right of</i> controls cannot be used at the same time, so it was quite logical to use the same controls for the <i>Left of</i> and <i>Right until</i> (the similar reasons was used with the <i>Show node if empty</i> and <i>Show nodes</i>).<br /><br />
+
+With the <i>Left of</i> control you could get displayed the leftmost characters of the MN field corresponding to the selected local node until the specified string (the corresponding qualifier is <i>Left of</i>). For example, if the MN field contains "The Beatles", and if I specify "eat", I would get displayed "The B".<br /><br />
+
+The <i>Show if contain</i> check box located under the <i>Left of</i> text box determines what will happen if the MN field of the selected local node doesn't contain the string specified in the <i>Left of</i> text box: if it is turned off, the node with the whole text of the field will be displayed; if it is turned on, there would not be displayed node for that field value at all. For example, with the same "The Beatles" field, if I specify "abc" in the <i>Left of</i> text box and if I have <i>Show if contain</i> turned off I will get "The Beatles" node, but if it is turned on I will not get any node for that field value (in that case the files by The Beatles could be found in the "Unknown" node if that node is enabled with the corresponding option). There is not corresponding qualifier for the <i>Show if contain</i> check box, but if you turn it on, the <i>Left of</i> qualifier will become <i>Exclusive Left of</i>.<br /><br />
+
+<b>Right of, Right until</b><br />
+The <i>Right of</i> control has the similar effect as the <i>Left of</i>, but it works in another direction: with it you could get displayed the rightmost characters of the MN field after the specified string (the corresponding qualifier is <i>Right of</i>). For example, if the field has "The Beatles" node and if I specify "eat" I would get displayed "les".<br /><br />
+
+The <i>Show if contain</i> check box under the <i>Right of</i> text box has the same effect as it is the case with the check box under the <i>Left of</i> text box: if I specify "abc" in the <i>Right of</i> text box and if I have <i>Show if contain</i> turned off I will get "The Beatles" node, otherwise I will not get any node for that field value. Similarly to the previous <i>Show if contain</i> check box, if this one is turned on, the <i>Right of</i> qualifier will become <i>Exclusive Right of</i>.<br /><br />
+
+If the <i>Right of</i> text box has specified some string, you could also specify <i>Right until</i> string to delimit the right end of the result (the corresponding qualifier is <i>Right until</i>). For example, if the MN field contains "The Beatles", and if I specify "Be" for the <i>Right of</i> and "es" for the <i>Right until</i>, I will get the node "atl". Again, similarly to the previous cases with the <i>Show if contain</i> check box, if this one is turned on, the <i>Right until</i> qualifier will become <i>Exclusive Right until</i>.<br /><br />
+
+The strings for parsing could be specified more than once with all <i>Left/Right of</i> qualifiers, and they should be separated with the "|" character. Some more examples about the <i>(Exclusive) Left of</i> and <i>(Exclusive) Right of</i> qualifiers can be found in the <a href="http://solair.eunet.rs/~zvezdand/MagicNodes.htm#leftrightexam">Left of/Right of examples</a> section on the web page of the old version of this add-on and in the mentioned <a href="http://west-penwith.org.uk/misc/MagicNodes.pdf">PDF manual</a>.<br /><br />
+
+<b>Sort files / Sort nodes (prefixes)</b><br />
+The sorting and statistics controls on the right side of the Settings dialog box can be used only with the global and local nodes, but not with the group nodes. The sorting group of controls has two different meanings depending of the selected node in the Nodes list box: if you have selected global node, this group will have the <i>Sort files</i> caption, but if you have selected a local node, this group will have the <i>Sort nodes (prefixes)</i> caption. So, with the same controls you could set both sorting of the files and sorting of the nodes independently (the corresponding qualifier is <i>Sort by</i>).<br /><br />
+
+If you have selected global node, i.e. when this group of controls has the <i>Sort files</i> caption, then the first combo box in this group is disabled. When you have selected local node, i.e. when there is <i>Sort nodes (prefixes)</i> caption, then the first combo box is enabled and it contains the list of available aggregate functions that could be used for sorting of nodes and for creating of the multi-field captions displayed on the local nodes as prefixes to the main field selected in the <i>Nodes</i> list box. More about that will be described latter in the <i>Multi-field captions</i> section.<br /><br />
+
+Beside of the standard SQL aggregate functions as <i>Count, Avg, Max, Min</i> and <i>Sum</i>, the list of sorting functions include also <i>WAvg</i> and <i>Range</i> custom functions. The <i>Range(field)</i> is equal to <i>Max(field) - Min(field)</i>, while the <i>WAvg</i> is the weighted average that is most useful with the "Played", "Rating" and "Bitrate" fields, e.g. <i>WAvg(Played)</i> is same as <i>Sum(Played * Length) / Sum(Length)</i>.<br /><br />
+
+The second combo box in this group contains the list of available MN fields and that list is filled dynamically depending of some other settings. If you have selected global node in the <i>Nodes</i> list box (i.e. when you want to set sorting of files), this combo box contains only simple fields that have directly corresponding fields in the Songs table of the database, which are actually the same fields that you see on the column header of the main filelist.<br /><br />
+
+If you have selected local node in the <i>Nodes</i> list box (i.e. if you want to set sorting of nodes or to set prefixes for multi-field captions), the second combo box will contain MN fields depending of the selected aggregate function from the previous combo box. If you have selected "Count" function, the second combo box will contain all MN fields that could be found in the <i>Fields</i> list box as well, with the addition of the "All" and "Files" items. In most cases the <i>Count(All)</i> and <i>Count(Tracks)</i> has the same effect and will return the number of files for the particular node. If you select some of the remaining functions from the first combo box (Avg, Max, ...) , the second combo box will contain only fields that are numerical (e.g. Year, Bitrate, ...). The only exception to this rule are the Custom fields that are added to this list because some users use them to store numerical values.<br /><br />
+
+If you have selected blank item in the first combo box, the second combo box will contain the list with the same fields as with the "Count" function excluding the "All" and "Files" items. You could use blank item to sort nodes, e.g. if you want them sorted only by values of some field instead of some aggregate function applied to the same field, but this item is useful mainly for creating of the multi-field captions.<br /><br />
+
+When you have selected the wanted items in the previously two mentioned combo boxes, you could add that construction to the list box under them by click on the <i>Add</i> button that is located on the right of the sorting controls. If you want to remove an item from that list box, you should select it and after that click on the <i>Del</i> button. If you want to move an item vertically in the list, you should select it and click on the Up/Down spin control that is located on the left side of that list. With the selected local node, the resulting value of the topmost item in the list box will be displayed first in the caption of the nodes, the value of the second item will be displayed next separated by the ", ", and so on, i.e. the resulting value(s) will be displayed on the left side of the MN field corresponding to the selected local node. The order of items in the sorting list also affects the sorting order of files (for global node) and nodes (for local nodes).<br /><br />
+
+<b>Random</b><br />
+You could use the <i>Random</i> check box if you want random sorting. If you turn on this check box while some item is selected in the previous list box with sorting keys, that item would be randomly sorted which has sense only if the item in the list was set using the blank item from the first combo box, i.e. you have specified field without aggregate function. For example, the mask <tt>Test\&lt;Genre|Sort by: Count(All), Artist Random&gt;</tt> will have nodes with the genres that are sorted using <i>Count(All)</i> as the first sorting key and after that they would be randomly sorted by artists.<br /><br />
+
+Well, maybe this is not too much useful for the nodes, but you could apply the same thing to the global node to get randomly sorted files in the filelist. For example, if I have the mask <tt>Test|Sort by: Genre Random, Artist, Album Random</tt> I will get files grouped first by genres where their order will be random, then within each genre I will get files grouped by artists and their order will be alphabetical, and finally within each artist I will get files grouped by albums which will be ordered randomly.<br /><br />
+
+If you turn on the <i>Random</i> check box while none item is selected in the list box with the sorting keys located above it, the random order will be applied to the main field of the selected local node (the corresponding qualifier in that case is <i>Sort order:Random</i>). For example, if I select "Artist" node in the <i>Nodes</i> list box and turn on the <i>Random</i> check box, I could get this mask <tt>Test\&lt;Artist|Sort order: Random&gt;</tt>.<br /><br />
+
+<b>Desc. order</b><br />
+If you turn on the <i>Desc. order</i> check box while none item is added to the list box with the sorting keys, the descending order will be applied to the MN field of the selected local node, similarly to the <i>Random</i> check box (the corresponding qualifier in that case is <i>Sort order: Desc</i>).<br /><br />
+
+However, if that check box is turned on while you have any item added to the list of sorting keys, the selected item from that list will be used in descending order. For example, if I have added <i>Max(Year)</i> to the list box with the sorting keys, after I select that item and turn on the <i>Desc. order</i> check box, I could get this mask: <tt>Test\&lt;Album|Sort by: Max(Year) Desc&gt;</tt>, which means that the albums will be sorted by years from the newest to the oldest. In this example, the year information will be displayed on the begin of each node as a prefix to the album name separated with " - ".<br /><br />
+
+<b>Show sort key</b><br />
+The <i>Show sort key</i> check box allows toggling of the visibility for the selected item in the list of sorting keys on the captions of nodes, e.g. if you want to sort nodes using some field, but you don't want to display that field in the front of the main field (the corresponding qualifier is <i>Show sort key</i>). So, if I modify the previous example like this: <tt>Test\&lt;Album|Sort by: Max(Year) Desc|Show sort key:0&gt;</tt>, I will get albums sorted by year, but the year value will not be displayed in the front of the album name.<br /><br />
+
+<b>Statistics (suffixes)</b><br />
+The statistics group of controls (having the corresponding <i>Statistics</i> qualifier) has a very similar usage as the sorting group, but with some differences. First of all, its first combo box is enabled even with the global node, so you could choose some aggregate function applied on some field(s) to get adequate value(s) on the right side of the caption of the global node displayed inside of the parentheses. This list of functions contains one function more: "Concat", e.g. the mask <tt>Test\&lt;Title|Statistics: Concat(Playlist)&gt;</tt> will display the concatenated names of all static playlists in which specified title appears.<br /><br />
+
+The blank item in the first <i>Statistics</i> combo box is not available when you have selected global node. If you choose "Count" item from that list of aggregate functions, the next combo box will contain the same fields as the corresponding sorting list with one additional item: "Items". If you add <i>Count(Items)</i> to the selected node in the mask, you will get displayed number of its sub-nodes. For example, if I have <tt>Test\&lt;Artist|Statistics: Count(Items)&gt;\&lt;Album&gt;</tt>, I will get displayed number of albums for each artist. Actually, I could get the same result using <tt>Test\&lt;Artist|Statistics: Count(Album)&gt;\&lt;Album&gt;</tt>, but in that case if I replace "Album" node with some another I would need to modify the <i>Statistics</i> qualifier as well.<br /><br />
+
+<b>Multi-field captions</b><br />
+As it is stated earlier, the sorting and statistics controls could be used to set prefixes and suffixes in the multi-field captions of nodes if you select the blank item from the list of the aggregate functions when you add fields to their lists. The fields that are added without aggregate functions to the list of sorting keys will be displayed as prefixes to the main field of the selected node and, similarly, the fields that are added to the statistics list will be displayed as suffixes to the main field.<br /><br />
+
+For example, there is not the "Season#, Episode# - Title (Length)" predefined field, but I could get such caption on the nodes if I concatenate the existing fields with the help of the <i>Sort nodes</i> and <i>Statistics</i> controls. Firstly, I should add the "Title" field to the <i>Nodes</i> list box which would be the main field of the new local node that I should select. Then I need to select the blank item in the first sorting combo box and "Season #" field from the seconde combo box, and I should add that field to the list using the <i>Add</i> button. After that I need to do the same with the "Episode #" field. Then I should select blank item in the first statistics combo box and to choose "Length" from the second combo box. After I add that item to the statistics list box, I could get the next mask: <tt>Test\&lt;Title|Sort by:Season number, Episode number|Statistics:Length&gt;</tt> which will result with the wanted caption on the nodes.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51047180106_892d578d6b_o.png" alt="MagicNodes-6.0 - Settings_5" border="0"></center><br />
+
+<b>Mask</b><br />
+The <i>Mask</i> text box is located near the bottom of the Settings dialog box. It displays the whole mask and its content is automatically updated whenever you modify some of the previous controls above it. However, this works in other way as well, i.e. you could type some mask from the scratch or modify some existing one in the <i>Mask</i> text box and the corresponding controls above it will be automatically updated. Of course, you could copy/paste any masks to that text box, e.g. if you find it posted in the Forum.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51047180476_a87cda2026_o.png" alt="MagicNodes-6.0 - Choose Magic Node" border="0"></center><br />
+
+<b>... (Choose Magic Node)</b><br />
+Searching the <i>Caption</i> combo box for a particular mask that you want to load could be very tedious task which could be avoided using the "..." button that is located on the right side of the <i>Mask</i> text box. If you click on it, you will get opened the <i>Choose Magic Node</i> dialog box that is similar to the <i>Manage Magic Nodes</i> dialog box containing the table with all available masks. You could find a masks in that table that contain the wanted text if you type it in the <i>Find</i> text box. All masks that contain the wanted text will have ticked check boxes on the left side of the table. You could jump to the next or previous mask that contains the specified text using the <i>Next</i> and <i>Prev</i> buttons. With the <i>Match case</i> and <i>Regular expressions</i> check boxes you could further refine the searching results.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51047180091_674043398c_o.png" alt="MagicNodes-6.0 - Settings+Choose" border="0"></center><br />
+
+If you have turned on the <i>Modeless</i> option in the <i>Options</i> dialog box, when you click on the row in the table, the corresponding mask will be immediately displayed in the <i>Mask Settings</i> dialog box. And vice versa, if you select a mask in the <i>Caption</i> combo box in the <i>Mask Setttings</i> dialog box, the corresponding row will be selected in the <i>Choose</i> dialog box. However, if you have <i>Modeless</i> option turned off, after you select the wanted mask in the <i>Choose</i> dialog box, you need to confirm that using the <i>OK</i> button and that dialog will be closed.<br /><br />
+
+Opening the <i>Mask Settings</i> and <i>Choose Magic Node</i> dialog boxes in modeless mode next to each other allows much easier and faster navigation and editing of the masks.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51047266357_b4d0f74e65_o.png" alt="MagicNodes-6.0 - Settings AltMode" border="0"></center><br />
+
+<b>"^" / "_" (toggling dialog mode)</b><br />
+The first button on the bottom of the <i>Mask Settings</i> dialog box toggles the visibility of controls in that dialog and it has two possible captions: "^" and "_". If the <i>Settings</i> dialog box contains all previously mentioned controls, that button has the "^" caption. However, if you click on that button it will have the "_" caption, while almost all other controls from that dialog will be replaced by just one large multi-line text box in which you could type the whole mask. This mode is useful if you want to see some long mask in full or if you prefer typing of the masks from scratch. If you click on the "_" button, all other controls from the <i>Settings</i> dialog box will be displayed again.<br /><br />
+
+<b>Select, Move</b><br />
+There are several command buttons on the very bottom of the <i>Settings</i> dialog box that affects the currently displayed mask. The <i>Select</i> button could bring the focus to the node in the Media Tree related to the current mask. The <i>Move Up/Down</i> buttons allow moving of the current mask up or down in the list of masks. The movement is reflected in the text on the right side of these buttons, displaying the serial number of the current mask and the total numbers of masks. If the <i>Settings</i> dialog box is horizontally too narrow, instead of two <i>Up/Down</i> buttons will be displayed one spin control.<br /><br />
+
+<b>New, Update / Rename</b><br />
+The <i>New</i> button allows creating of the new mask and it sets all controls of the Settings dialog box to their initial (blank) state. The following button has two alternate captions depending of the modifications made in the dialog: <i>Update</i> and <i>Rename</i>. If you have modified just the <i>Caption</i> string, that button will have the <i>Rename</i> caption; if you use any other previously mentioned control and modify the related qualifier, that button will have the <i>Update</i> caption. Actually, the resulting effect is very similar and by clicking on that button you could confirm that you want to save modifications of the currently displayed mask.<br /><br />
+
+<b>Add, Delete, Close</b><br />
+The <i>Add</i> button allows adding of the currently displayed mask to the list of masks stored in the MediaMonkey.ini file. That button is enabled only if you have created a new mask (after the click on the <i>New</i> button) or if you have modified the <i>Caption</i>, grouping or positioning of an existing mask. That means that you cannot have two or more masks/nodes with the same caption under the same parent node.<br /><br />
+
+You could use the <i>Delete</i> button if you want to remove the currently displayed mask permanently, so be careful using it. With the <i>Close</i> button you could close the Settings dialog box, while the currently displayed mask will be stored in the INI file using the zero serial number (if the mask is modified, but not saved using the <i>Update</i> or <i>Add</i> buttons).<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51046453773_6fd9dd6931_o.png" alt="MagicNodes-6.0 - Manage Masks_1" border="0"></center><br />
+
+<b>Manage Magic Nodes</b><br />
+The <i>Manage Magic Nodes</i> dialog box is similar to the mentioned <i>Choose Magic Node</i> dialog box with the same <i>Find</i> options for searching masks, but it also contains several additional controls that allow some operations on the mask(s) selected/checked in the table. There are two radio buttons on the top of the dialog box: <i>MediaMonkey.ini</i> and <i>File</i>. If you select the <i>MediaMonkey.ini</i> option, you will get displayed all MN masks that are stored in the main MediaMonkey INI file, i.e. the masks that have displayed the corresponding nodes in the Media Tree. In this case, you will be able to export/import masks from/to the MediaMonkey.ini file, as well as to add/edit, delete or move them.<br /><br />
+
+If you choose the <i>File</i> option, you could get displayed masks from an external INI file, which could contain e.g. your previously exported MN masks. You could type its path in the following text box or you could click on the "..." button and find that .ini file in the new <i>Open File</i> dialog box. Using this option, you will be able to export/import masks from/to the specified .ini file, as well as to delete or move them (if the loaded .ini file is not marked on open as read-only).<br /><br />
+
+Selecting/checking of the mask(s) on which you want to implement an operation could be done in two ways: you could use the check boxes located on the left side of the table or you could select the wanted mask directly in the table. When using the second way, you could select only one mask at the time and that way has a precedence over the first one, i.e. even if you have some or all masks checked on in the table, if you choose an operation as <i>Delete</i>, it will be applied only on the selected mask, but not on the checked ones.<br /><br />
+
+If you want to deselect the currently selected mask, e.g. if you want to do an operation on the checked masks, then you should click again on the already selected mask to deselect it. The topmost check box could be used to toggle all individual check boxes on or off if none mask is selected. However, if any mask is selected, the topmost check box could be used to deselect that mask.<br /><br />
+
+If you want to select multiple consequent rows at once, firstly click on the check box of the first row in the range to tick it on or off, then press Shift key and without releasing it click on the check box of the last row in the range.<br /><br />
+
+You could sort all masks and/or groups to which they belong using the <i>Sort by</i> dropdown list, which has several options for sorting:
+<li><i>mask number</i> - the masks will be sorted by their serial number in the .ini file (default);
+<li><i>node position</i> - the masks will have the same positions as the corresponding nodes in the Media Tree, i.e. the order of masks in the list will be seamless inside their groups following the same order as it is in the tree, which could be handy to keep masks sequential, because when creating a new mask it will be placed on the end of the list, but not after the last mask from the same group;<br />
+<li><i>caption in group</i> - the mask groups will keep their existing order, but the contained masks will be sorted alphabetically by their captions inside each group;<br />
+<li><i>group and caption</i> - the mask groups will be sorted alphabetically and their contained masks will be sorted as well by their captions inside each group;<br />
+<li><i>caption only</i> - the masks will be sorted alphabetically by their captions, without regard on the name of groups to which they belong.<br /><br />
+
+Let say that I have the next order of masks in the .ini file (yes, the masks could be unsorted in .ini file):<br />
+Mask2=Group_A\Node_C<br />
+Mask1=Group_B\Node_B<br />
+Mask3=Group_B\Node_A<br />
+<br />
+
+- sorting by the <i>mask number</i> will produce:<br />
+Group_B\Node_B (Mask1)<br />
+Group_A\Node_C (Mask2)<br />
+Group_B\Node_A (Mask3)<br />
+<br />
+
+- the <i>node position</i> will produce:<br />
+Group_B\Node_B (Mask1)<br />
+Group_B\Node_A (Mask3)<br />
+Group_A\Node_C (Mask2)<br />
+<br />
+
+- the <i>caption in group</i> will produce:<br />
+Group_B\Node_A (Mask3)<br />
+Group_B\Node_B (Mask1)<br />
+Group_A\Node_C (Mask2)<br />
+<br />
+
+- the <i>group and caption</i> will produce:<br />
+Group_A\Node_C (Mask2)<br />
+Group_B\Node_A (Mask3)<br />
+Group_B\Node_B (Mask1)<br />
+<br />
+
+- the <i>caption only</i> will produce:<br />
+Group_B\Node_A (Mask3)<br />
+Group_B\Node_B (Mask1)<br />
+Group_A\Node_C (Mask2)<br />
+<br />
+
+After choosing the sorting method from the <i>Sort by</i> dropdown list, the masks will be sorted only in the table. If you click on the table header that contains displayed the information about loaded masks, the chosen order will be permanently applied to the .ini file. This operation is not reversible, so be careful using this option and make a backup of your masks first.<br /><br />
+
+On the right side of the table header is located the <i>Word wrap</i> check box that could be used to toggle the way how the masks will be displayed in the table.<br /><br />
+
+The <i>Find</i> text box and the <i>Next/Prev</i> buttons on the bottom of the <i>Manage Magic Nodes</i> dialog box have the same function as the same controls in the <i>Choose Magic Node</i> dialog box, i.e. to find the masks in the table that contain the specified text.<br /><br />
+
+The <i>Move</i> operation could be done only on a single selected mask at the time. Using the <i>Up</i> and <i>Down</i> buttons, you could move the selected mask in the appropriate direction in the list of masks. These two buttons have the auto-repeat possibility, i.e. it is enough to click on any of them and the selected mask will continue to move in the table until you release that button.<br /><br />
+
+The next button in the <i>Manage Magic Nodes</i> dialog box has two possible captions: <i>Add</i> and <i>Edit</i>. It will have the <i>Add</i> caption if you don't have any mask selected in the table; if you click on that button, you would get opened the <i>Add Magic Node</i> dialog box that is the same to the <i>Edit Magic Node</i> dialog box, but it contains all controls set to their initial (blank) state and it allows adding of a new mask to the list of masks.<br /><br />
+
+If you select any mask in the table, the mentioned button will have the <i>Edit</i> caption; if you click on that button, you would get opened the <i>Edit Magic Node</i> dialog box which is the same as if you choose such command from the context menu of a selected Magic node in the Media Tree; in this case all controls in that dialog box will be set accordingly to the selected mask, which means that you could modify the existing masks from the <i>Manage Magic Nodes</i> dialog box. You could also open the <i>Edit Magic Node</i> dialog box if you click the serial number of mask displayed in the "#" column of the table.<br /><br />
+
+You could use the <i>Delete</i> button if you want to remove the selected/checked mask(s) from the .ini file permanently, so be careful using it.<br /><br />
+
+The <i>Save</i> and <i>Load</i> buttons are similar in effect to the <i>Export</i> and <i>Import</i> buttons. The main difference is that when using the <i>Export</i> and <i>Import</i> you will be asked for the name of the target/source .ini file. On the other side, the <i>Save</i> and <i>Load</i> commands are as a kind of the Copy/Paste options, they use the intermediary file (MagicNodesMasks.ini) without asking for the name of a file.
+
+The <i>Export</i> command is the same, more or less, as in the previous versions of the add-on, i.e. it allows exporting of the selected/checked mask(s). However, it is now possible to use that same command to export masks not only from the MediaMonkey.ini file, but also from the .ini file specified in the <i>File</i> text box (if that option is selected), i.e. you could now export files from one external .ini file to another .ini file. The same apply to the <i>Save</i> command, which could be used to save masks from the MediaMonkey.ini file or from the external .ini file, depending on the two topmost radio buttons.<br /><br />
+
+Similarly, the <i>Import</i> command in the previous versions of the add-on allowed import of masks only from the external .ini file, specified in the <i>File</i> text box, to the MediaMonky.ini file, when the <i>File</i> radio button was selected. However, the new version of the add-on allows import of masks either to the MediaMonkey.ini file or to the external .ini file, depending on the two topmost radio buttons, which determines the target of import. The same apply to the <i>Load</i> command.<br /><br />
+
+If you have selected any mask in the table, the imported/loaded masks will be inserted before the selected mask in the table, i.e. at the same position. However, if you want to import/load masks to the end of the list, you should not have any mask selected in the table.<br /><br />
+
+If you choose the <i>Import</i> command, you will get imported all masks that are contained in the .ini file specified in the new Open dialog box. However, if you want to import only particular mask(s) from that .ini file, you cannot use the <i>Import</i> command, but you need to use the next two operations:<br />
+1. choose the source .ini file using the <i>MediaMonkey.ini</i> or <i>File</i> option, select/check the wanted masks and choose <i>Save</i> command;<br />
+2. choose the target .ini file using the <i>MediaMonkey.ini</i> or <i>File</i> option, select the position in the table where you want to import the masks and choose <i>Load</i> command.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51047180426_b702d61393_o.png" alt="MagicNodes-6.0 - Manage Masks_2" border="0"></center><br />
+
+If the <i>Manage Magic Nodes</i> dialog box is horizontally too narrow, one spin control will be displayed instead of two <i>Next/Prev</i> buttons, another spin control will be displayed instead of two <i>Up/Down</i> buttons and the <i>Export</i> and <i>Import</i> buttons will be displayed just as the "..." buttons next to the <i>Save</i> and <i>Load</i> buttons. In that case, be careful not to use the <i>Save</i> button instead of the following "..." button if you want to export masks to the external .ini file, because they will be saved only temporarily to the intermediary file.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/51046453703_97e8f2be75_o.png" alt="MagicNodes-6.0 - Options" border="0"></center><br />
+
+<b>Magic Nodes Options</b><br />
+The <i>Magic Nodes Options</i> dialog box could be opened from the <i>Edit / Magic Nodes</i> menu or from the <i>Tools / Extensions</i> menu with the selected Magic Nodes item in the list of the add-ons. It contains some less important options that affect behavior of this add-on and/or all Magic nodes. The same options could be found on the <i>General / Magic Nodes</i> page in the program's built-in <i>Options</i> dialog box that could be opened from the <i>Tools</i> menu.<br /><br />
+
+<li><i>Skip expanding of the Magic Nodes branch during start-up</i>: you could turn this option on if you want the collapsed Magic Nodes branch in the tree when starting the program.<br /><br />
+
+<li><i>Allow modifying of fields data by drag & drop or renaming tree nodes</i>: you could turn this option off if you don't want to rename the field value of the selected node directly in the Media Tree or you don't want drag&drop option to be enabled for the Magic nodes. By the way, drag&drop and renaming are not allowed at all for nodes which contain only a part of the field, i.e. nodes with the <i>Left of/Right of/Trim/SubStr/Split by</i> qualifiers. The drag&drop operation updates fields for all parent nodes of the target node, e.g. if you have the mask <tt>Test\&lt;Genre&gt;\&lt;Artist&gt;\&lt;Album&gt;</tt> and if you drop selected tracks to any album node, you will get updated the genre and artist as well beside of the album.<br /><br />
+
+<li><i>Display sorting/statistic results only if all values are defined</i>: you could turn this option off if you want to get sorting/statistical values on the caption of the Magic nodes even if some files don't have defined the affected field value. For example, if the mentioned option is turned on, the mask <tt>Test\&lt;Album|Sort by: Avg(Rating)&gt;</tt> only displays the average rating in the front of the album names for the albums where all tracks have been rated; for the other album nodes, just the album names are displayed. So, you should turn off the mentioned option if you want to display these rating values even for those albums which only have some tracks rated.<br /><br />
+
+<li><i>Display sorting/statistic results for Rating rounded to the nearest half star</i>: you could turn this option off if you don't want to get displayed ratings using sorting/statistics qualifiers rounded to the nearest 0.5 stars.<br /><br />
+
+<li><i>Move prefixes to the end if "Ignore prefixes" option on Appearance page is turned on</i>: if you turn this option on, the prefixes will be moved to the end of the node captions, e.g. "The Beatles" will be displayed as "Beatles, The"; if you turn it off, the fields will be displayed as they are stored in the database, e.g. "The Beatles", but the sorting of the nodes will be still correct as if the prefixes are moved to the end, with "The Beatles" node inside of the "B" branch; in both cases it is assumed that the <i>Ignore prefixes</i> option on the Appearance page is already turned on.<br /><br />
+
+<li><i>Ignore prefixes when sorting by</i>: within the following text box you could specify which MN fields should have ignored prefixes when displaying those field on the captions of the Magic nodes. The field names should be typed manually separated with the "," character.<br /><br />
+
+<li><i>Modeless MN Settings dialog box (allowed access to other parts of the program)</i>: you could turn this option on if you want to get modeless <i>Magic Nodes Settings</i> dialog box, which could allow access to the other parts of the program, e.g. you could navigate through the Media Tree with the already opened that dialog; when that option is turned off, the mentioned dialog box will be modal and you need to close it if you want to use the other parts of the program.<ul>
+
+<li style="list-style-type:circle"><i>Expand node after applying the <i>Update</i> option, even if it is collapsed</i>: you could turn this option on if you want to get expanded the corresponding node of the currently displayed and edited mask in the Settings dialog box after you click on the <i>Update</i> button.</ul>
+
+<li><i>Trim caption of toolbar buttons (maximal number of characters)</i>: you could set the maximal number of characters that can be displayed in the toolbar buttons of Magic nodes (if the related option is used in the masks).<br /><br />
+
+<li><i>Show elapsed time in the progress bar after SQL queries</i>: you could turn this option on if you want to get displayed the progress bar on the bottom of the main window of the program with the information about the time that is elapsed after a Magic node is expanded or selected.<ul>
+
+<li style="list-style-type:circle"><i>Remove progress bar after</i>: you could set after how many seconds you want to get removed the progress bar that is displayed using the previous option.</ul>
+
+<li><i>Allow editing of SQL queries</i>: you could turn this option on if you want to see or edit the SQL queries when you expand and/or select Magic nodes:<ul>
+
+<li style="list-style-type:circle"><i>when expand field nodes</i>: e.g. if you have the mask <tt>Test\&lt;Artist&gt;</tt> and you expand the "Test" node, you will get opened the <i>Magic Nodes SQL Editor</i> dialog box displaying the SQL query that is used to generate all artist nodes.<br /><br />
+
+<li style="list-style-type:circle"><i>for the Unknown node</i>: if you expand the "Test" node of the mentioned mask, you will get the same dialog box displaying the SQL query that is used to generate the "Unknown" artist node, i.e. the node that contains files with the unspecified Artist tag.<br /><br />
+
+<li style="list-style-type:circle"><i>when select a field node</i>: if you select any sub-node of the mentioned mask, e.g. "The Beatles", you will get the same dialog box displaying the SQL query that is used to generate the filelist for that field value, i.e. the files of the Beatles.</ul>
+
+<li><i>Min/Max/Top SQL queries mode</i>: option that determines how to construct SQL queries for masks with the <i>Min/Max</i> and <i>Top</i> qualifiers:<ul>
+
+<li style="list-style-type:circle"><i>Limited (old)</i>: this mode has similar algorithm to the freely available version with some bug-fixes and improvements and it works even in MM2, but it is still limited to the masks that have the <i>Top</i> qualifier only on the first (leftmost/topmost) sub-level of global node, which means that e.g. you could get correct results (displayed files/nodes and their stats) only for &lt;Artist|Top:5&gt;\&lt;Album&gt;, but not with &lt;Artist&gt;\&lt;Album|Top:5&gt; nor &lt;Artist|Top:5&gt;\&lt;Album|Top:3&gt;;<br /><br />
+
+<li style="list-style-type:circle"><i>Basic</i>: - this mode has similar algorithm to the previous enhanced MN5 versions of the add-on with some bug-fixes and improvements; it doesn't have limitation on the <i>Top</i> qualifier, but it requires MM v3.1+ and it could be terribly slow with some masks; for example, the mask &lt;Sample rate&gt;\&lt;Title|Top:5&gt; lasts about 65 seconds when selecting/expanding it with my test database, while the next mode lasts only one second;<br /><br />
+
+<li style="list-style-type:circle"><i>Enhanced</i>: - this mode is recommended for use since it is highly optimized for speed; it doesn't have limitations on the <i>Top</i> qualifier, but it requires MM v3.1+.</ul>
+
+The first two modes are included only for testing purposes if you find the third one buggy, and maybe they will be removed in the future versions of the add-on.<br /><br />
+
+<b>Auto-DJ using Magic Nodes</b><br />
+There is one option related to the Magic Nodes that is not available in any mentioned dialog boxes, not even in the <i>Magic Nodes Options</i> dialog box. It is located on the <i>Player / Auto-DJ</i> page in the <i>Options</i> dialog box that could be opened from the <i>Tools</i> menu and it could be used to set a Magic node as the source for Auto-DJ. You could choose the "Magic Nodes" item from the <i>Add files from</i> combo box and after that you could select a MN mask from the combo box that is located under the previous one, or you could click on the "..." button from the right side of that combo box and you will get opened <i>Choose Magic Node</i> dialog box where you could find the mask that you want to use for Auto-DJ.<br /><br />
+
+<p><font size="+1"><b><a id="adjustment">Adjust Magic Node</a></b></font></p>
+If you select a Magic node in the Media Tree and choose the <i>Adjust Magic Node</i> option from the menu you could get something like this (the dialog could be resized):<br /><br />
+
+<center><img src="https://c2.staticflickr.com/6/5558/30843323200_ff807fb029_o.png" alt="Magic Nodes 5.0 - Adjust node 01" border="0"></center><br />
+
+Using this option it is much easier to adjust some parameters of the existing masks than modifying them in the <i>Filter</i> area of the <i>Settings</i> dialog box - just move the corresponding slider or use the spin control. To allow this the add-on uses the new tags with the syntax similar to those that are already implemented in the <a href="https://zvezdan-d.github.io/RegExpReplace.html">RegExp Find & Replace</a> add-on. Here is what you need to add to the existing mask to get the <i>Adjust</i> dialog box on the screenshot:<br /><br />
+
+<tt>&lt;Group|Name:Album Ratings|Show tracks:No&gt;\<b>(Complete) Albums with (weighted) avg. file rating &gt;= &lt;ID:3&gt; stars</b>|Icon:Top level|Filter:Songs.IDAlbum IN (SELECT IDAlbum FROM Songs WHERE Rating &gt;= 0 <font color="green">&lt;If|Caption:Only complete albums having number of files equal to maximal track #|Value=</font><font color="red">1</font><font color="green">|ID:1&gt;</font>AND Songs.IDAlbum IN (SELECT IDAlbum FROM Songs GROUP BY IDAlbum HAVING Count(*) = Max(Cast(TrackNumber As integer)) AND Count(*) &gt;= <font color="blue">&lt;Number|Caption:Min. number of files per album|Value:</font><font color="red">5</font><font color="blue">|MinValue:1|MaxValue:20|ID:2&gt;</font>) <font color="green">&lt;End If&gt;</font>GROUP BY IDAlbum HAVING <font color="green">&lt;If|Caption:Average file rating weighted by track length|Value:</font><font color="red">1</font><font color="green">&gt;</font>Sum(SongLength * Rating) / Sum(SongLength)<font color="green">&lt;Else&gt;</font>Avg(Rating)<font color="green">&lt;End If&gt;</font> &gt;= <font color="blue">&lt;Number|Caption:Min. rating (stars)|Value:</font><font color="red">4</font><font color="blue">|MinValue:0|MaxValue:5|ID:3&gt;</font> * 20)\&lt;Album with Album Artist|Statistic:Count(All), Avg(Rating)&gt;</tt><br /><br />
+
+The parameters that could be used for adjustment are:<br />
+<li> <i>Min tracks, Max tracks</i> and <i>Top</i> qualifiers;
+<li> <i>String, Number, If, Else, End If</i> and <i>ID</i> tags inside of the <i>Filter</i> qualifier.<br /><br />
+
+As you could see from the screenshot, the &lt;Number&gt; tag is displayed using spin/slider controls. The &lt;If&gt; / &lt;End If&gt; construction is represented using check box that is checked if the <i>Value</i> argument of &lt;If&gt; tag is 1. The &lt;String&gt; tag (that is not included in the previous mask) would be displayed as a text box.<br /><br />
+
+The syntax of tags is:<br />
+<tt>&lt;tag_name|Value:"text"|Caption:"text"|ID:number|MinValue:number|MaxValue:number&gt;</tt><br /><br />
+
+The <i>Value</i> argument is mandatory for &lt;String&gt; and &lt;Number&gt; tags, the other arguments are optional.<br />
+The <i>Caption</i> argument is also optional, but it could display some descriptive text next to the control.<br />
+The <i>MinValue</i> and <i>MaxValue</i> could be used only with the &lt;Number&gt; tag to specify a range of the spin control.<br /><br />
+
+The &lt;ID&gt; tag allows variables to be used several times in the <i>Filter</i> and should have only one argument, e.g. &lt;ID=1&gt;.<br />
+That tag will be replaced in query during run-time with the <i>Value</i> argument of some another &lt;String&gt;/&lt;Number&gt;/&lt;If&gt; tag with the same ID argument.<br />
+The <i>ID</i> argument could be also used to specify order of controls in the dialog box.<br /><br />
+
+The &lt;If&gt; tag has three different forms:<br />
+1) The standard one is when you specify the <i>Caption</i> and <i>Value</i> arguments. It could have have 0 and 1 as a <i>Value</i> argument, or "False" and "True".<br />
+If the <i>Value</i> is 1, the text between &lt;If&gt; and &lt;End If&gt; tags will be included in the <i>Filter</i> query; otherwise, if the <i>Value</i> is 0, the text will be omitted.<br />
+If the <i>Value</i> is 1 and if &lt;Else&gt; tag is specified between &lt;If&gt; and &lt;End If&gt; tags, then only the text between &lt;If&gt; and &lt;Else&gt; tags will be included in the <i>Filter</i> query, but the text between &lt;Else&gt; and &lt;End If&gt; tags will be omitted; if the <i>Value</i> is 0, the text between &lt;If&gt; and &lt;Else&gt; tags will be omitted and the text between &lt;Else&gt; and &lt;End If&gt; tags will be included.<br />
+If you use the &lt;Else&gt; tag without the <i>Caption</i> argument, the whole &lt;If&gt; &lt;Else&gt; &lt;End If&gt; construction will be displayed as a check box in the <i>Adjust</i> dialog box. However, if you specify the <i>Caption</i> argument in the &lt;Else&gt; tag, the same construction will be displayed as a group containing two radio buttons; the first button will display the <i>Caption</i> specified in the &lt;If&gt; tag, and the second one will display the <i>Caption</i> specified in the &lt;Else&gt; tag.<br />
+The &lt;If&gt; tag in the first form could have specified <i>ID</i> argument as well.<br /><br />
+2) The second form of the &lt;If&gt; tag is when you specify only <i>ID</i> argument. In this case it could be treated as if it has the <i>Value</i> as another &lt;If&gt; tag with the same <i>ID</i> argument that has specified the <i>Value</i> argument. The second form (with only <i>ID</i> argument) is not displayed in the <i>Adjust</i> dialog box as any control, but its nested controls/tags will be displayed next to the controls/tags contained in the corresponding &lt;If&gt; tag that has specified the <i>Value</i> argument.<br /><br />
+3) The third form is when you specify the <i>Value</i> argument without the <i>Caption</i> argument. This form will not be displayed in the <i>Adjust</i> dialog box either. It is mostly useful if you want to specify some VBscript expression in the <i>Value</i> argument, e.g. &lt;If Value="Len(""&lt;ID:2&gt;"") > 0"&gt; ... &lt;End If&gt;, which will have included/excluded text in the <i>Filter</i> query depending of the result of that expression.<br /><br />
+
+The &lt;End If&gt; tags should not have any specified argument.<br />
+The text between &lt;If&gt; and &lt;End If&gt; tags could contain another tags which would have corresponding controls enabled if the <i>Value</i> of &lt;If&gt; tag is 1. The text between &lt;If&gt; and &lt;End If&gt; tags could contain even another &lt;If&gt; / &lt;End If&gt; blocks, which means that they could be nested without any limit on depth.<br /><br />
+
+There is no limit for the number of tags and corresponding controls per mask. Adding those new tags is optional. If you don't add them, your masks will be as before, but without possibility to adjust them using the new <i>Adjust Magic Node</i> menu item. The masks with new tags are longer and somewhat harder to write, but you could do that just once and after that their adjustment will be child's play. Of course, many predefined masks are already written with such new tags so you could use them out of the box.<br /><br />
+
+Here is one more example:<br /><br />
+<center><img src="https://c2.staticflickr.com/6/5477/30843323140_165ca61113_o.png" alt="Magic Nodes 5.0 - Adjust node 02" border="0"></center><br />
+
+<tt>&lt;Group|Name:Random|Show tracks:No&gt;\<b>&lt;ID:1&gt; Random files (rated &lt;ID:3&gt; stars or more) from each Artist (having at least &lt;ID:5&gt; files)</b>|Icon:Top level|Filter:Songs.ID IN (SELECT Songs.ID FROM Songs, (SELECT IDArtist FROM ArtistsSongs WHERE IfNull(ArtistsSongs.PersonType, 1) = 1 GROUP BY IDArtist<font color="green">&lt;If|Caption:Show only artists that have at least the specified number of files|Value:</font><font color="red">1</font><font color="green">|ID:4&gt;</font> HAVING Count(*) &gt;= <font color="blue">&lt;Number|Caption:Minimum of files|Value:</font><font color="red">5</font><font color="blue">|MinValue:0|ID:5&gt;</font><font color="green">&lt;End If&gt;</font>) AS T1 WHERE Songs.ID IN (SELECT Songs.ID FROM Songs, ArtistsSongs WHERE Songs.ID = ArtistsSongs.IDSong AND ArtistsSongs.IDArtist = T1.IDArtist <font color="green">&lt;If|Caption:Show only if files are rated more or equal than the specified number|Value:</font><font color="red">1</font><font color="green">|ID:2&gt;</font>AND Rating &gt;= <font color="blue">&lt;Number|Caption:Rating (stars)|Value:</font><font color="red">3</font><font color="blue">|MinValue:0|MaxValue:5|ID:3&gt;</font> * 20 <font color="green">&lt;End If&gt;</font>ORDER BY Random() LIMIT <font color="blue">&lt;Number|Caption:Files per artist|Value:</font><font color="red">2</font><font color="blue">|MinValue:0|ID:1&gt;</font>))|Sort by:Multi artist Random\&lt;Artist&gt;</tt><br /><br />
+
+The color highlighting of tags is not implemented in the add-on. I used it here just to show what is added.<br /><br />
+
+<p><font size="+1"><b>Important info about upgrade from v4</b></font></p>
+With the previous versions of the add-on, the Filter text box contained WHERE part of the SQL expression for the whole mask, i.e. it was always displayed no matter which node is selected in the Nodes list box, although it was assigned only to the global node. However, with this version the Filter qualifier could be assigned also to any local field/node selected in the Nodes list box containing the corresponding HAVING part of the SQL expression. So, with this version you need to select the global node in the Nodes list box if you want to see the WHERE part of the Filter expression which would be applied to the whole mask.<br /><br />
+
+The <i>Show tracks</i> qualifier has <i>No</i> as default value (when it is unspecified) for nodes on the Group levels, which is different from the previous versions where <i>Yes</i> was default. If you have some old masks without specified that qualifier on the group levels, then you should update them appropriately. Fortunately, with the enhanced version of this add-on it is enough to update the mentioned qualifier only to one mask and all other masks within the same group will be updated automatically.
+<br /><br />
+
+In the enhanced version, the backslash ("\") character doesn't need to be escaped inside of the <i>Left of, Right of</i> and <i>Split by</i> qualifiers with one additional "\" character. For example, instead of "c:\\My Music\\" now it should be "c:\My Music\". If you have your own created masks with escaped backslash characters, you should update them with removed escapes.<br /><br />
+
+The <i>Show sort key</i> qualifier is changed to support multiple fields of <i>Sort by</i> qualifier as prefixes. All old masks with <i>Show sort key</i> qualifier with value greater than 2 will not show the wanted results, so you should update them appropriately. The first three values has the same behavior as before:<br />
+<li> 0 = don't display any field as prefix;<br />
+<li> 1 = show only first specified field;<br />
+<li> 2 = show only second specified field.<br /><br />
+
+The old behavior:<br />
+<li> 3 = show only third specified field;<br />
+<li> 4 = short only fourth specified field;<br />
+<li> 5 = show only fifth specified field, and so on.<br /><br />
+
+The new behavior:<br />
+<li> 3 = show only first and second specified fields;<br />
+<li> 4 = show only third specified field;<br />
+<li> 5 = show only first and third specified fields, and so on.<br /><br />
+
+As you could guess, the new value is using the bitwise representation of fields, which means that the lowest bit represents the first field, the next bit represents the second field, and so on. However, you don't need to do any bitwise operation by yourself - you could just turn on the <i>Show sort key</i> check box in the <i>Settings</i> dialog box for those fields that you want to get displayed and the corresponding value will be added to the mask by the add-on automatically.<br /><br />
+
+The <i>Show sort key</i> qualifier now supports -1 as the valid value which means that all specified fields of <i>Sort by</i> qualifier will be displayed. That value is default when the mentioned qualifier is omitted from the mask, which is one more thing regarding to that qualifier that is changed in the new version - its default value was 1 in older versions, i.e. only the first specified field was displayed with the omitted <i>Show sort key</i> qualifier.
+<br /><br />
+
+The <i>Sort order: Random</i> qualifier specified on a node at the local level was used for sorting of both sub-nodes of that node and the files in the filelist. In the new version only sub-nodes are randomly sorted in that case. If you want to apply random sorting order to the filelist you could specify <i>Sort order: Random</i> to the global node, or you could use <i>Sort by</i> qualifier applied to the global node with <i>Random</i> quasi-sorting order specified to any supported field, e.g. <i>Sort by: Genre Random</i>.<br /><br />
+
+<p><font size="+1"><b><a id="inikeys">Additional INI keys</a></b></font></p>
+There are some new keys in the [MagicNodes] section of the MediaMonkey.ini file for some less used options that are not represented in GUI:<br />
+<li>BitrateNodeRange - nodes displaying Bitrate are grouped by their range of bitrates, default value is 16 which means that there would be displayed nodes: 16 kbps, 32 kbps, 48 kbps, and so on;<br /><br />
+
+<li>FormatSeasonEpisodeNumbers - if this key is = 0 the Season# and Episode# nodes will be  displayed as they are stored in the database, if it is = 1 then these nodes will be displayed as "Season #xx" and "Episode #xx", default value is 1.<br /><br />
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+This add-on is a false positive reported as a worm by F-Secure. The author of F-Secure promised me that will update its database and put the add-on on the white-list, but still didn't. If you go to the <a href="https://www.virustotal.com/en/file/373aca58584d2f9f9a25f286ccefde03cf65d74ec9feddca063a821bd476a2b9/analysis/1475443034/">www.virustotal.com/en/</a> site, you will see that it is safe tested by 54 popular anti-virus engines; the only one reporting a worm in it is F-Secure. By the way, the F-Secure was constantly having the largest number of false positives in last few years according to the <a href="https://www.av-comparatives.org/real-world-protection-tests/">Real-World Protection Test</a> by AV-Comparatives.<br /><br />
+
+If you are interested about my other add-ons for MediaMonkey, you could visit the <a href="https://zvezdan-d.github.io/MediaMonkeyAddons.html">following page</a>.<br /><br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,907 @@
+<html>
+<head>
+    <title>Magic Nodes (MediaMonkey Add-on)</title>
+    <meta name="KeyWords" content="MediaMonkey, add-on, script, multimedia, music, audio, Windows, software, management, organization, cataloger, Magic, Nodes">
+    <link rel='stylesheet' type='text/css' href='BackgroundColorAnimation.css'>
+    <link rel="stylesheet" type="text/css" href="DownloadButton.css">
+    <link rel='stylesheet' type='text/css' href='Frames.css'>
+</head>
+
+<body>
+<div class="tbl" style="position: fixed; top: 0; width: 100%; padding-bottom: 5px" align="Center">
+<b><font size=+2>Magic Nodes</font><br />
+Version 4.3.3<br />
+- MediaMonkey Add-on -</b><br />
+<i>by Zvezdan Dimitrijevi&cacute;</b></i>
+</div>
+
+<div id="external">
+    <iframe src="MagicNodes_Ext.htm" title="Donation" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<div id="content" style="padding: 10px;">
+
+This add-on works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v2.x-4.x. It lets you create new tree nodes using masks which are loosely based on the way that Auto-organize works. There are 370 already predefined masks, for example: artist grouped by first letter [A]-[Z], albums sorted by year, playing statistics, album ratings, random tracks, ... Magic Nodes add-on is based on the 1.3b version of the script by Pablo Shmerkin, but it is almost completely rewritten and drastically improved. Here is an excerpt about this script from <a href="http://magicnodes.110mb.com/">his site</a>:<br /><br />
+
+"MediaMonkey is the best jukebox/music organizer around. Magic Nodes, a script designed to work with Media Monkey 2.3 and up (some features work only in MediaMonkey 2.4 and up), extends its capabilities even further. In short, Magic Nodes lets you create new tree nodes in an intuitive and highly configurable way. For advanced users, Magic Nodes includes SQL filters, which provides ultimate flexibility for the creation of nodes with Playlist functionality."
+<br /><br />
+
+<table bgcolor="WhiteSmoke"><tr><td width="100%">
+If you want to discus about this add-on, you could visit its related MediaMonkey <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=2&t=19168">forum thread</a>. If you are using some skin which is not supported by default, you could take a look of skin styles for this add-on made by <i>nynaevelan</i> at the next <a href="http://www.mediamonkey.com/forum/viewtopic.php?f=9&t=39768">forum thread</a>.<br /><br />
+
+You could also take a look on <a href="https://zvezdan-d.github.io/MediaMonkeyAddons.html">my other add-ons</a> for MediaMonkey.
+
+</td><td valign="middle" align="center" width="250px">
+<div class="download-box" style="float:left;"><a id="download" title="Download" class="download-link" href="http://solair.eunet.rs/~zvezdand/MagicNodes-4.3.3.mmip"><span><strong><font size="+1">Download</font></strong> <em>The latest freely available<br />version of the add-on</em></span></a></div>
+</td></tr></table>
+
+<p><font size="+1"><b><a id="issues">Windows Defender Issue</a></b></font></p>
+There are reports that MediaMonkey with the freely available version of this add-on has very slow startup on Windows 10 after its April 2018 Update when Windows Defender has Real-Time Protection enabled. This is not caused by a bug in this add-on, but in Windows Defender, which I already reported on <a href="https://answers.microsoft.com/en-us/protect/forum/protect_defender-protect_scanning-windows_10/last-update-of-windows-defender-causes-terribly/c71cc133-5c5f-447e-95fb-e2641085836d?tm=1527000700529&lc=1033">Microsoft site</a>, but MS don't care about it. You could do any of the next things:<ul>
+<li>leave your complain to Microsoft, because every new report will increase the chance that the folks at Microsoft will do something about the problem; or</li>
+<li>turn off Real-Time Protection of Windows Defender (Control Panel / Windows Defender / Tools / Options / Real-time protection) and use some another anti-malware instead; or</li>
+<li>keep installed as few Magic Nodes masks as possible since this slow down is related to the number of installed masks:</li><ul>
+    <li>during installation of the add-on, skip installation of all predefined masks; or</li></li>
+    <li>after installation, remove masks that you don't need using Manage Magic Nodes dialog box.</li></ul>
+</ul>
+
+The <a href="https://zvezdan-d.github.io/MagicNodesNew.html">enhanced version</a> of this add-on do not have this problem.<br />
+
+<hr width="100%">
+
+<p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
+<dl>
+<dt>v4.3.3 - 2018-10-03</dt><ul>
+<li>Added: info about slow startup;
+<li>Fixed: some Date/Time fields.</ul><br />
+
+<dt>v4.3.2 - 2016-04-24</dt><ul>
+<li>Fixed: typing numerical values on keyboard in SpinEdit controls on the <i>Mask Settings</i> dialog box (functional only in MM v3.1.0.1220 or higher);
+<li>Fixed: unnecessary display of dialog box on start-up asking if you want to install new presets after automatic adjustment of clock caused by switch in daylight saving time.</ul><br />
+
+<dt>v4.3 - 2015-06-22</dt><ul>
+<li>Renamed/Improved: menu items;
+<li>Fixed: many things.
+</ul><br />
+
+<dt>v4.2 - 2011-07-01</dt><ul>
+<li>Added: possibility to place nodes into the Collections, <i>MM filter</i> option in GUI changed to <i>Collection</i>, nodes outside Collections cannot have applied MM filters, but only MN filters [MM4];
+<li>Added: drag&drop with Ctrl key for nodes with multi-item fields;
+<li>Fixed: renaming of nodes (modifying their caption) for multi-item fields.</ul><br />
+
+<dt>v4.1.5 - 2011-06-22</dt><ul>
+<li>Fixed: filters with &lt;Track Number&gt; = '' and &lt;Disc Number&gt; = '';
+<li>Fixed: collapsing of Magic nodes when collection is changed [MM4].</ul><br />
+
+<dt>v4.1.4 - 2011-05-29</dt><ul>
+<li>Fixed: <i>Show if empty</i> qualifier of the global node set by GUI when a mask doesn't contain any local node.</ul><br />
+
+<dt>v4.1.3 - 2011-05-09</dt><ul>
+<li>Added: 6 new masks, some old improved (mainly in the Artist Ratings group);
+<li>Fixed: missing nodes which don't contain specified string of the <i>Split by</i> qualifier (broken since v4.0);
+<li>Fixed: clearing the field by setting the empty caption of a node.</ul><br />
+
+<dt>v4.1.2 - 2011-03-07</dt><ul>
+<li>Fixed: long execution time when opening nodes with Album field on some sub-level and Min/Max Tracks qualifier (broken since v3.0).</ul><br />
+
+<dt>v4.1.1 - 2011-02-18</dt><ul>
+<li>Fixed: hangup of program with some large masks;
+<li>Fixed: error on uninstall of add-on;
+<li>Fixed: random error on start-up with the last selected node on exit from Magic Nodes branch [MM4].</ul><br />
+
+<dt>v4.1 - 2011-02-07</dt><ul>
+<li>Added: <i>Odd Parts</i> and <i>Even Parts</i> arguments for <i>Split Mode</i> qualifier which allow usage of Involved People field in ID3 format (please read the Information section about their usage);
+<li>Added: <i>First Artist with Title, First Album Artist with Album, Poly Artist, Poly Album Artist, Poly Artist with Title</i> and <i>Poly Album Artist with Album</i> fields;
+<li>Added: 50 new masks, some old improved;
+<li>Improved: import/export of masks with the same caption, but different contents;
+<li>Fixed: error with Parts * splitting modes and fields containing single apostrophe (');
+<li>Fixed: wrong masks copied from MM Forum using Select All command;
+<li>Fixed: skin styles path [MM4];
+<li>Fixed: error on start-up with the last selected node on exit from Magic Nodes branch [MM4].</ul><br />
+
+<dt>v4.0.4 - 2010-06-24</dt><ul>
+<li>Added: 7 new masks;
+<li>Fixed: error with <i>Multi Composer</i> field.</ul><br />
+
+<dt>v4.0.3 - 2010-05-21</dt><ul>
+<li>Fixed: error with <i>String Before/String After</i> arguments used with <i>Left of/Right of</i> qualifiers;
+<li>Fixed: moving of nodes withing some group to the Playlists branch;
+<li>Fixed: plus sign for expanding global node when none sub-node exists.</ul><br />
+
+<dt>v4.0.2 - 2010-04-21</dt><ul>
+<li>Added: 12 new masks (mainly in Random folder);
+<li>Fixed: drag & drop and renaming of nodes (broken in v4.0);
+<li>Fixed: incorrect time unit for Song Length with Filter spinedit control in Settings dialog box.</ul><br />
+
+<dt>v4.0.1 - 2010-04-04</dt><ul>
+<li>Fixed: error with <i>Range</i> function when "Display sorting/statistic results only if all values are defined" is turned on.</ul><br />
+
+<dt>v4.0 - 2010-04-01</dt><ul>
+<li>Added: possibility to get nested playlists with local level nodes using <i>Child of:Playlists</i> and <i>Position:Child</i> (until now only global level of nodes inside of the Playlists branch was possible);
+<li>Added: <i>Split mode</i> qualifier with several possibile arguments: <i>String Part</i> (old <i>Split Part</i> values &gt;= 0), <i>String Before, String After, Single Part, Parts Before, Parts After, All Parts</i> (old <i>Split Part</i> = -1) and <i>Categories</i>; for their usage please take a look at the Information section;
+<li>Added: possibility to specify negative values for <i>Split part</i> qualifier, in which case parts are counting from the right to the left;
+<li>Added: possibility to use <i>Substring/Trim/Left/Right of</i> qualifiers with the multi-item split using the new <i>* Parts</i> arguments;
+<li>Added: <i>Artist with Title, Title with Artist</i> and <i>Title with Artist plus Album</i> fields displayed as Artist - Title, Title (Artist) and Title (Artist - Album) respectively;
+<li>Added: <i>First Artist, Other Artist, First Album Artist, Other Album Artist, First Genre</i> and <i>Other Genre</i> fields, e.g. for displaying main genre and subgenres;
+<li>Added: <i>Lyrics, Date</i> and <i>Original Date</i> fields as nodes (until now only as a part of the Filter expression) [MM3];
+<li>Added: <i>Month, Day, Original Month</i> and <i>Original Day</i> fields (month displayed as text in locale language) [MM3];
+<li>Added: <i>Year Played, Month Played</i> and <i>Day Played</i> fields (month displayed as text in locale language);
+<li>Added: <i>Range</i> custom aggregate function (could be used with same fields as other aggregate functions within <i>Sort by</i> and <i>Statistic</i> qualifiers, e.g. <i>Range(Year)</i> is same as <i>Max(Year) - Min(Year)</i>);
+<li>Changed: <i>Split</i> options are changed and your masks containing them need to be updated; please take a look at the Information section;
+<li>Changed: controls from the Filter group are now always enabled (until now they are enabled only when the global level node is selected in the Nodes listbox, however this behavior could be reversed in the future if I decide to add a possibility for Filter to be specified with the local level nodes);
+<li>Fixed: multi-item split and <i>Split by, Left of</i> and <i>Right of</i> qualifiers with lower case characters;
+<li>Fixed: multi-item split and renaming of MN playlists with MM2.</ul><br />
+
+<dt>v3.0.3 - 2009-09-08</dt><ul>
+<li>Fixed: groups not created inside of the Library branch until restart (bug introduced in v2.2.2).</ul><br />
+
+<dt>v3.0.2 - 2009-09-08</dt><ul>
+<li>Fixed: error with the <i>Statistic</i> and <i>Show if empty</i> qualifiers used on the global level;
+<li>Fixed: error with the filter: &lt;Any&gt; = '' (although comparing &lt;Any&gt; field with empty string has not too much sense);
+<li>Fixed: space character on the begin/end of the sub-string when using Split by:-1.</ul><br />
+
+<dt>v3.0.1 - 2009-09-07</dt><ul>
+<li>Fixed: error during the first install.</ul><br />
+
+<dt>v3.0 - 2009-09-06</dt><ul>
+<li>Added: possibility to create playlists using <i>Child of:Playlists</i> and <i>Position:Child</i> (a full description at the first post of the <a href="http://www.mediamonkey.com/forum/viewtopic.php?t=19168">MM forum thread</a>);
+<li>Added: <i>Refresh Magic Node</i> option to the tree context menu when you right-click on some Magic node in the Playlists branch;
+<li>Added: <i>Modeless MN Settings dialog box (allowed access to other parts of the program)</i> option;
+<li>Added: <i>Expand node after applying the save option, even if it is collapsed</i> option;
+<li>Added: &lt;Any&gt; pseudo-field for the <i>Filter</i> qualifier (using fields specified on the Search tab in the Options dialog box);
+<li>Added: <i>Cover Description, DateTime Played, DateTime Last Played, DateTime Added</i> and <i>DateTime Modified</i> fields;
+<li>Added: <i>Show ordinal numbers</i> option and corresponding <i>Show rank</i> qualifier;
+<li>Added: possibility to use <i>Show if empty</i> option/qualifier for all local nodes except the last (deepest) one, with the hidden plus sign for nodes without sub-nodes; especially useful when <i>Unknown</i> qualifier for the next level is set to <i>No</i>, e.g. <i>&lt;Album|Show if empty:Yes&gt;\&lt;Disc Number|Unknown:No&gt;</i> (mask examples - <i>Genres and sub-genres</i> and <i>Drives & Folders</i> in the <i>Split examples</i> branch);
+<li>Added: possibility to use <i>Split by/Split part</i> qualifiers in combination with <i>Left of/Right of</i> qualifiers (mask example - <i>Sub-folders of Music folder</i> in the <i>Split examples</i> branch);
+<li>Added: support for multiple values with fields that are not multi-items, e.g. Involved people or CustomX, using <i>Split by</i> qualifier and <i>Split part:-1</i> (mask example - <i>Multi-item Custom 1 field</i> in the <i>Split examples</i> branch);
+<li>Added: support for multiple values with several levels of categorization, e.g. each person in the Involved people field could belong to some involvement group and could have one or more roles (mask examples - <i>Involved People by...</i> in the <i>Split examples</i> branch);
+<li>Added: many new masks, some old improved and better organized;
+<li>Added/Changed: drive letter to the <i>Path</i> field;
+<li>Changed: <i>Save</i> button now have 3 possible states depending of modifications in the Settings dialog - <i>Rename, Update</i> and <i>Add</i> (it is now much easier to create a new mask based on some existing one);
+<li>Improved: speed of <i>Count(Items)</i> function, it is now as fast as </i>Count(some_field)</i> [MM3];
+<li>Fixed: <i>Statistic</i> qualifier used on the global (caption) level with the <i>Filter</i> qualifier.</ul><br />
+
+<dt>v2.7 - 2009-06-29</dt><ul>
+<li>Added: <i>Multi Artist, Multi Album Artist, Multi Composer, Multi Conductor, Multi Lyricist, Multi Genre, Multi Tempo, Multi Mood, Multi Occasion</i> and <i>Multi Quality</i> fields (e.g., the &lt;Artist&gt; node could have two sub-nodes "David Bowie" and "Queen" for the song "Under Preasure" , but the &lt;Multi Artist&gt; node would have only one sub-node "David Bowie; Queen" for the same song; this is especially useful if you have multi-item genres and want to get the nested display of nodes with genres and sub-genres using Split by/Split part qualifiers, for example: <i>Genres and Sub-Genres\&lt;Multi Genre|Split by:;&gt;\&lt;Multi Genre|Split by:;|Split part:1&gt;\&lt;Multi Genre|Split by:;|Split part:2&gt;</i>) [MM3].</ul><br />
+
+<dt>v2.6 - 2009-06-16</dt><ul>
+<li>Added: <i>Date</i> and <i>Original Date</i> fields for the <i>Sort by/Statistic</i> qualifiers (e.g. if you want correct sorting order when you have several albums released same year) [MM3];
+<li>Added: possibility to use <i>Substring start/Trim</i> qualifiers in combination with <i>Left of/Right of/Split by</i> qualifiers (e.g. if you have Custom 1 field like "some_fields added.2007-08-31 some_other_fields" you could write Right of:added.|Substr:6|Trim:2 to get the month part);
+<li>Added/Changed: drive letter to the <i>Folder</i> field;
+<li>Fixed: <i>Statistic</i> qualifier used on the global (caption) level together with the <i>Filter</i> qualifier;
+<li>Fixed: disappeared program during startup in some rare situations with MM v 3.0.x (upgrade to MM v3.1.x is recommended anyway);
+<li>Fixed: editing of node captions on a local level (e.g. the Composer name).</ul><br />
+
+<dt>v2.5 - 2009-05-14</dt><ul>
+<li>Improved: skin styles;
+<li>Fixed: error when "(" and ")" are used with <i>Left Of/Right Of/Right Until</i> qualifiers.</ul><br />
+
+<dt>v2.4.1 - 2009-05-11</dt><ul>
+<li>Fixed: error with Sort by/Statistic:Count(some_field) when used with some specific filters;
+<li>Fixed: sufixes like tracks, files, kbps, kHz, ... not displayed with localized versions of Windows;
+<li>Fixed: error when renaming captions of Group nodes using tree view (bug introduced in 2.0);
+<li>Fixed: option "Move prefixes to the end when sorting by Artist" (bug introduced in 2.0.5).</ul><br />
+
+<dt>v2.4 - 2009-02-20</dt><ul>
+<li>Added: <i>Date Played</i> field (whenever some track is played, not only for the last played time);
+<li>Added: <i>Play Length</i> field (total playing time of tracks, same as <i>Played * Length</i>);
+<li>Added: <i>WAvg</i> custom aggregate function (weighted average, could be used with same fields as other aggregate functions, but most useful with <i>Played, Rating</i> and <i>Bitrate</i>, e.g. <i>WAvg(Played)</i> is same as <i>Sum(Played * Length) / Sum(Length)</i>).</ul><br />
+
+<dt>v2.3 - 2009-02-02</dt><ul>
+<li>Added: auto-repeat for Up/Down buttons in the Export/Import dialog box with MM 3.1.1220 or up;
+<li>Added: word-wrap option for display of masks in the Export/Import dialog box;
+<li>Added: alphabetical sort of masks in the Export/Import dialog box by click on the table header;
+<li>Added: <i>Original Decade</i> field.</ul><br />
+
+<dt>v2.2.3 - 2009-01-24</dt><ul>
+<li>Fixed: removal of the first node (the topmost one before the Now Playing branch).</ul><br />
+
+<dt>v2.2.2 - 2009-01-23</dt><ul>
+<li>Fixed: duplicated display of nodes in some situations.</ul><br />
+
+<dt>v2.2.1 - 2009-01-21</dt><ul>
+<li>Fixed: duplicated display of groups in some situations.</ul><br />
+
+<dt>v2.2 - 2009-01-20</dt><ul>
+<li>Improved: look of dialog boxes with some skins (custom configurable with CSS files);
+<li>Added: some new masks.</ul><br />
+
+<dt>v2.1 - 2009-01-13</dt><ul>
+<li>Added: option <i>Show node if empty</i> and corresponding qualifier <i>Show if empty</i> which could be used only on the global (caption) level when it is a child of the Magic Nodes or belongs to some group.</ul><br />
+
+<dt>v2.0.8 - 2009-01-11</dt><ul>
+<li>Fixed: installation procedure.</ul><br />
+
+<dt>v2.0.7 - 2009-01-09</dt><ul>
+<li>Fixed: incorect display when the Ignore prefixes settings has "(" character, and probably some of SQL queries which have it as a part of the string.</ul><br />
+
+<dt>v2.0.6 - 2009-01-07</dt><ul>
+<li>Fixed: disapearing of nodes when SQL editor is allowed with MM versions older than 3.1 (bug introduced in 2.0.4).</ul><br />
+
+<dt>v2.0.5 - 2009-01-07</dt><ul>
+<li>Fixed: error with the Ignore prefixes option with some characters (' ( ) [ ]).</ul><br />
+
+<dt>v2.0.4 - 2009-01-01</dt><ul>
+<li>Fixed: memory leaks with dialog boxes in MM versions older than 3.1, excluding the Options dialog (anyway, upgrade to MM 3.1.0.1207 or higher is recommended).</ul><br />
+
+<dt>v2.0.3 - 2008-12-21</dt><ul>
+<li>Fixed: <i>Show tracks</i> qualifier;
+<li>Fixed: the "$" sign used in the <i>Filter</i> expression.</ul><br />
+
+<dt>v2.0.2 - 2008-12-16</dt><ul>
+<li>Fixed: error with <i>Unknown</i> node and some fields when displaying part of field (<i>Trim/Left of/Substr/...</i>);
+<li>Regression: speed of generating nodes was drastically slowed down with introduced progress bar, especially for large number of sub-nodes.</ul><br />
+
+<dt>v2.0.1 - 2008-12-14</dt><ul>
+<li>Fixed: error during installation and when adding/deleting masks if they are more than 100;
+<li>Fixed: truncated bottom buttons with some skins.</ul><br />
+
+<dt>v2.0 - 2008-12-13</dt><ul>
+<li>Added: real GUI! (more information about it in the Information section of the first post in <a href="http://www.mediamonkey.com/forum/viewtopic.php?t=19168">MediaMonkey forum</a>);
+<li>Added: export/import/move up/down of masks;
+<li>Added: SQL editor when expanding/selecting nodes;
+<li>Added: <i>Show nodes</i> qualifier which could be used with the last (bottom) node's level;
+<li>Improved and fixed: to many to mention.</ul><br />
+
+<dt>v1.8 - 2008-11-08</dt><ul>
+<li>Added: <i>Split by</i> and <i>Split part</i> qualifiers, argument for <i>Split part</i> is an integer >= 0 (e.g. Split by:\\|Split part:1);
+<li>Added: possibility to specify a backslash with <i>Left/Right of/until/Split by</i> qualifiers (should be typed as double backslashes, e.g. <i>Right of:\\My Music\\Rock</i>);
+<li>Added: <i>Sort Order:Random</i> (or <i>Sort Order:Rnd</i>), most useful in combination with the <i>Top</i> qualifier;
+<li>Added: possibility to use <i>Count</i> aggregate function with any field (please read information about that in MM forum) [MM3];
+<li>Fixed: <i>Top</i> qualifier;
+<li>Fixed: drag & drop for some fields;
+<li>Fixed: renaming of nodes with <i>Album Artist with Album, Album with Album Artist</i> (only the album part of a field is renaming) and <i>Disc Number</i> qualifiers.</ul><br />
+
+<dt>v1.7.8.4 - 2008-10-30</dt><ul>
+<li>Fixed: Drag & drop and renaming of nodes for artists with prefixes (The, ...) when the option "Move prefixes to the end ..." are turned on [MM3];
+<li>Fixed: Drag & drop and renaming of nodes (broken since 1.7.5.2) [MM2].</ul><br />
+
+<dt>v1.7.8.3 - 2008-10-26</dt><ul>
+<li>Added: detection when the active MM filter is changed with auto-folding of nodes (similar as MM built-in nodes).</ul><br />
+
+<dt>v1.7.8.2 - 2008-10-23</dt><ul>
+<li>Fixed: combination of <i>Filter, SQL Filter</i> and <i>MM filter</i> qualifiers containing expressions with OR operator.</ul><br />
+
+<dt>v1.7.8.1 - 2008-10-12</dt><ul>
+<li>Regression: <i>(Exclusive) Left/Right of</i> qualifiers which are broken in the last update.</ul><br />
+
+<dt>v1.7.8 - 2008-10-08</dt><ul>
+<li>Added: <i>Decade, Time since added</i> and <i>Time since modified</i> fields;
+<li>Added: <i>SubString Start</i> qualifier for taking a part of a field from specified position (could be shortened to <i>SubStr Start</i> or even <i>SubStr</i>, e.g. <i>SubStr:4</i>; if negative number is specified, the first character of the substring is found by counting from the right rather than the left; the lenght of the substring could be specified with the <i>Trim</i> qualifier);
+<li>Added: <i>MM filter</i> global qualifier for specifying the MediaMonkey filter (could be combined with the Magic Nodes' filters; if not specified, the current MM filter is used) [MM3];
+<li>Added: option "Move prefixes to the end when sorting by Artist" to the Options dialog;
+<li>Fixed: usage of the current MM filter when the last node in some branch is selected [MM3];
+<li>Fixed: display when "Ignore prefixes when sorting by Artist" is unchecked.</ul><br />
+
+<dt>v1.7.7 - 2008-06-29</dt><ul>
+<li>Added: option sheet in the Options dialog box with several options:
+<li>Added: option "Skip expanding of the Magic Nodes branch during start-up";
+<li>Added: option "Allow modifying of fields data by drag & drop or renaming tree nodes";
+<li>Added: option "Display sorting/statistic results only if all values are defined";
+<li>Added: option "Display sorting/statistic results for Rating rounded to the nearest half star";
+<li>Improved: installation proccess with merging of predefined masks;
+<li>Improved: FirstDayOfWeek determined from the system locale;
+<li>Fixed: expanding/not expanding of Magic nodes during start-up (nasty MM3);
+<li>Fixed: error "This key is already associated..." when Custom field has improper name;
+<li>Fixed: error with the <i>Delete All Magic Nodes</i> command.</ul><br />
+
+<dt>v1.7.6.2 - 2008-06-19</dt><ul>
+<li>Fixed: <i>Right of</i> in combination with <i>(Exclusive) Right until</i> qualifier;
+<li>Fixed: merging new masks with old ones after installation for multi-user accounts.</ul><br />
+
+<dt>v1.7.6.1 - 2008-06-09</dt><ul>
+<li>Fixed: <i>Days since added/last played/modified</i>.</ul><br />
+
+<dt>v1.7.6 - 2008-05-27</dt><ul>
+<li>Added: installation package with 50 predefined masks in INI file;
+<li>Added: support for the <i>Time since last played</i> field with <i>Sort by/Statistic</i> qualifiers (calculation based on seconds);
+<li>Fixed: adding/removing nodes from groups which are children of built-in MM nodes, e.g. Files To Edit;
+<li>Fixed: corrupting masks when renaming nodes on the global level (i.e. Caption nodes).</ul><br />
+
+<dt>v1.7.5.4 - 2008-05-19</dt><ul>
+<li>Fixed: again a "fix" for incorrect display of <I>Avg(Rating)</I> with the <I>Sort by/Statistic</I> qualifier for some locales.</ul><br />
+
+<dt>v1.7.5.3 - 2008-05-16</dt><ul>
+<li>Fixed: incorrect display of <I>Avg(Rating)</I> with the <I>Sort by/Statistic</I> qualifier for some locales.</ul><br />
+
+<dt>v1.7.5.2 - 2008-05-07</dt><ul>
+<li>Fixed: updating tags into files after drag & drop or renaming nodes.</ul><br />
+
+<dt>v1.7.5.1 - 2008-04-07</dt><ul>
+<li>Fixed: multiple display of same tracks in the tracklist from multi-item artists;
+<li>Fixed: character "&gt;" on the end of the <I>Filter</I> expression;
+<li>Fixed: <I>Name, Icon</I> and probably some another grouping qualifiers;
+<li>Fixed: error "wrong number of arguments to function substr" for older MM 3.0.1.x versions.</ul><br />
+
+<dt>v1.7.5 - 2008-03-23</dt><ul>
+<li>Added: <I>File Name</I> and <I>Folder</I> fields [MM3];<br />
+Example:<br />
+Path = ':\My Music\Rock\Pink Floyd\Dark Side of the Moon\03 - Time.mp3'<br />
+Folder = ':\My Music\Rock\Pink Floyd\Dark Side of the Moon\'<br />
+File Name = '03 - Time'<br />
+Format = 'mp3'
+<li>Improved: <I>Format</I> and <I>Disc number</I> fields [MM3];
+<li>Fixed: <I>Filter</I> expressions with OR operator;
+<li>Fixed: <I>Count(Items)</I> when used on the first node level.</ul><br />
+
+<dt>v1.7.4.2 - 2008-03-05</dt><ul>
+<li>Fixed: bug which sometimes displays an error message during start-up;
+<li>Fixed: descending order with the last sorting key.</ul><br />
+
+<dt>v1.7.4.1 - 2008-02-09</dt><ul>
+<li>Fixed: weird VB Script's bug, which is manifesting with the <I>Group</I> pseudo-field.</ul><br />
+
+<dt>v1.7.4 - 2008-02-04</dt><ul>
+<li>Added: 10 new fields - <I>Grouping</I> (built-in MM field which has nothing in common with existing pseudo-field <I>Group</I>), <I>Weeks since last played/added/modified, Months since last played/added/modified</I> and <I>Years since last played/added/modified</I> (when used with <I>Filter</I> qualifier 0 is current week/month/year, 1 is previous week/month/year, and so on; default value for the first day of week is Sunday, but if you want to use some another day, please edit the iFirstDayOfWeek constant on the begin of the script file);
+<li>Fixed: renaming of group/root caption, now possible editing of existing text.</ul><br />
+
+<dt>v1.7.3 - 2008-02-01</dt><ul>
+<li>Added: possibility to rename/drag&drop to the node on any level (until now, renaming was possible only to root/group levels, but not fields, and drag&drop was possible only to the first level field), drag&drop updates all nested fields, e.g. if you drop selected tracks to the node on 3rd level, it will be updated 1st and 2nd level fields as well;
+<li>Added: several new fields for drag&drop (allowed fields: <I>Album, Album Artist, Album Artist with Album, Album with Album Artist, Artist, BPM, Comment, Composer, Conductor, Copyright, Custom 1-5, Disc Number, Encoder, Genre, InvolvedPeople, ISRC, Lyricist, Mood, Occasion, Original Artist, Original Lyricist, Original Year, Publisher, Quality, Rating, Tempo, Year</I>), trimmed nodes are not allowed (those which contain <I>Trim/Left of/Right of</I> qualifiers).<br />
+Warning: drag&drop and renaming operations modify the content of the database. You are strongly encouraged to backup your database.</ul><br />
+
+<dt>v1.7.2 - 2008-01-28</dt><ul>
+<li>Added: using of MM built-in filters in the combination with Magic Nodes' filters [MM3];
+<li>Added: the warning text to the Create/Edit dialog when the entered mask is not correct;
+<li>Added: possibility to display sorting/statistical result, even when some value of the field is negative, i.e unknown (bSortStatOnlyIfPositive = False);
+<li>Fixed: sorting/statistic display when Avg function is used with some fields.</ul><br />
+
+<dt>v1.7.1 - 2008-01-26</dt><ul>
+<li>Added: <I>Exclusive Right until</I> qualifier (for full description please read the PDF manual or visit the <a href="http://www.mediamonkey.com/forum/viewtopic.php?t=19168">MM forum</a>);
+<li>Added: possibility for multiple arguments with all <I>Left/Right</I> qualifiers (separated by "|", for full description please visit the <a href="http://www.mediamonkey.com/forum/viewtopic.php?t=19168">MM forum</a>);
+<li>Added: <I>Path</I> field as a node (until now it is used only for statistics/filters, be extremely careful with this because it could return too many sub-nodes and hang the program, this field could be useful only with <I>Left/Right</I> qualifiers);
+<li>Fixed: errors with <I>Left/Right</I> qualifiers in some cases;
+<li>Fixed: error during loading in some cases (with some specific masks);
+<li>Fixed: <I>Icon</I> with numerical values (0 - 57) as global qualifier for the root level.</ul><br />
+
+<dt>v1.7 - 2008-01-23</dt><ul>
+<li>Added: grouping with the unlimited number of hierarchy level, using the <I>Group</I> pseudo-fields in the front of the existing mask, i.e. before the mask caption and global qualifiers, e.g. &lt;Group|Name:Problematic tracks&gt;\Missing lyrics|Filter:&lt;Lyrics&gt; = ''\&lt;Title&gt; (for full description, please wait for the updated manual or visit the <a href="http://www.mediamonkey.com/forum/viewtopic.php?t=19168">MM forum</a>);
+<li>Added: the <I>Position</I> qualifier for specifying the location of the node relative to its parent: <I>Before, After</I> (default for all nodes, except Magic Nodes), <I>First Child, Last Child</I> (default for Magic Nodes), e.g. Missing tracks|Child of:FilesToEdit|Position:Last child|Filter: ... \&lt;Album&gt;;
+<li>Added: <I>Exclusive Left of, Exclusive Right of</I> and <I>Right until</I> qualifiers (<I>Right until</I> qualifier helps in parsing of fields and should be used in combination with <I>Right of</I> or <I>Exclusive Right of</I> qualifiers, for full description, please visit the <a href="http://www.mediamonkey.com/forum/viewtopic.php?t=19168">MM forum</a>);
+<li>Added: display of statistics for the root node, i.e. <I>Statistic</I> qualifier could be global (please be careful with this, it could drastically slow down expanding of nodes);
+<li>Added: display of <I>Unknown</I> node with <I>Trim, (Exclusive) Left of</I> and <I>(Exclusive) Right of</I> qualifiers;
+<li>Added: display of any MM supported tree icon (0 - 57), every <I>Group</I> could have its own <I>Icon</I> qualifier;
+<li>Added: on-line checking of the correct syntax while you are typing the mask;
+<li>Fixed: editing/removing nodes which are not inside of the Magic Nodes branch, also removed annoying message about a need for MM restart;
+<li>Fixed: display with truncated all specified characters of the <I>Right of</I> qualifier;
+<li>Changed: <I>Left of</I> qualifier now returns all field values, even those which don't contain specified string, to be consistent with <I>Right of</I> qualifier (if you want old behavior of <I>Left of</I> qualifier you should use new <I>Exclusive Left of</I> qualifier).</ul><br />
+
+<dt>v1.6.2.4 - 2008-01-15</dt><ul>
+<li>Fixed: <I>Left of</I> and <I>Right of</I> qualifiers used with small case letters [MM3];
+<li>Changed: display of <I>Bitrate</I> nodes rounded to multiply of 16 kbps (instead of 32 kbps).</ul><br />
+
+<dt>v1.6.2.3 - 2008-01-14</dt><ul>
+<li>Added: possibility to put one space character after the name of qualifier for better readability (e.g. <I>Statistic: Count(All)</I>);
+<li>Fixed: incorrect display of <I>Avg(Rating)</I> with <I>Sort by/Statistic</I> qualifiers.</ul><br />
+
+<dt>v1.6.2.2 - 2008-01-12</dt><ul>
+<li>Added: check for TweakMonkey settings (Enable startup node) [MM3];
+<li>Fixed: expand of the node which was last selected on exit (only the first level) [MM3].</ul><br />
+
+<dt>v1.6.2.1 - 2008-01-11</dt><ul>
+<li>Fixed: <I>Show tracks:no</I> when it is on the global level (root node).</ul><br />
+
+<dt>v1.6.2 - 2008-01-08</dt><ul>
+<li>Added: item names for <I>Statistic:Count(Items)</I>;
+<li>Fixed: statistics and display of nodes/tracks for tracks with entered multiple values in multi-item fields [MM3];
+<li>Fixed: error with <I>Album with Album Artist</I> and <I>Album Artist with Album</I> fields [MM2];
+<li>Fixed: error with <I>Sort By</I> qualifier;
+<li>Fixed: display of <I>Unknown</I> node for several fields (<I>Artist, Album, Genre,</I>...);
+<li>Fixed: formated display for several fields;
+<li>Fixed: display of the Custom 4 and 5 fields [MM3].</ul><br />
+
+<dt>v1.6.1 - 2008-01-03</dt><ul>
+<li>Added: <I>Send To, Edit</I> and <I>Delete Magic Node</I> options to the Tree window context menu;
+<li>Fixed: <I>Trim</I> and <I>Left of</I> qualifiers;
+<li>Fixed: some incorrect <I>Rating</I> values.</ul><br />
+
+<dt>v1.6 - 2007-12-31</dt><ul>
+<li>Added: <I>Show Sort Key</I> qualifier to determine which sorting key should be displayed if <I>Sort By</I> is used with multiple keys (e.g. <I>Show Sort Key:n</I>, where <I>n</I> is from 1 to the number of sorting keys or 0 if sorting value shouldn't be displayed at all, 1 is default value);
+<li>Added: automatic use of the character '/' for separation of statistic items for same or similar fields (e.g. result for <I>Statistic:Min(Length), Sum(Length)</I> will be displayed as <I>xx/yy MB</I> instead of <I>xx MB, yy MB</I>), but statistics for different fields are separated with the comma - this only has an effect on displayed result, arguments in the user masks still should be separated as before;
+<li>Fixed: statistics and display of nodes/tracks when using <I>Unknown, Min Tracks</I> and/or <I>Max Tracks</I> qualifiers (<I>Top</I> qualifier still unresolved);
+<li>Fixed: statistics for <I>Unknown</I> node;
+<li>Fixed: display of statistics/sorting information with some fields (<I>Rating, Length</I>,...);
+<li>Fixed: date/time functions [MM3];
+<li>Fixed & changed: fields inside of the <I>Filter</I> qualifier need to be surrounded by &lt and &gt, but this qualifier now works correctly (e.g. <I>Filter:Album Artist = 'Various Artists'</I> didn't worked, instead it should be written as <I>Filter:&ltAlbum Artist&gt = 'Various Artists'</I>);
+<li>Changed: name of the <I>Album and Artist</I> field to the <I>Album with Album Artist</I>, name of the <I>Album and Year</I> field to the <I>Album Artist with Album</I> (a reason for this is because names could be misinterpreted during parsing);
+<li>Changed: the <I>Album Artist with Album</I> field (former <I>Album and Year</I>) initially will not display <I>year</I> information (if you need such behavior, please use the same field with <I>Statistic:Max(Year)</I>);
+<li>Changed: the <I>Tracks</I> argument for statistics/sorting (similar as <I>All</I>, but instead of the text 'files' it show 'tracks').</ul><br />
+
+<dt>v1.5.0.2 - 2007-12-20</dt><ul>
+<li>Fixed: sorting with <I>Custom</I> fields;
+<li>Fixed: displaying of the genre with ID = 0 [MM3].</ul><br />
+
+<dt>v1.5.0.1 - 2007-12-17</dt><ul>
+<li>Added: <I>Track Number</I> and <I>Disc Number</I> fields for statistic/sorting (e.g. <I>&lt;Album|Statistic:Max(Track Number)&gt;</I> to display a number of the last track from each album) - there could be a problem if someone use alphanumeric characters for disc/track numbers, as it is possible with MM3;
+<li>Fixed: bug which is manifesting with some nodes.</ul><br />
+
+<dt>v1w5 - 2007-12-17</dt><ul>
+<li>Added: multiple arguments for <I>Statistic</I> qualifier separated with the comma characters (e.g. <I>Statistic:Count(All), Sum(File Size), Sum(Length)</I>);
+<li>Added: multiple sorting keys with <I>Sort by</I> qualifier (similar usage as <I>Statistic</I>, with a possibility to specify sorting order for each sort key, e.g. <I>Sort by:Count(All) Asc, Max(Length) Desc</I>, only first sorting key is displayed);
+<li>Added: keyword <I>Items</I> for <I>Statistic</I> qualifier to get the number of node sub-items (e.g. <I>&lt;Artist|Statistic:Count(Items)&gt\&lt;Album&gt;</I> for the number of albums for each artist) - a little bit slow, so be a careful and don't use it on the top level nodes with too many sub-items;
+<li>Added: several new fields for displaying (Disc Number,...) and sorting (Custom,...);
+<li>Added: support for all multi-item fields (Artist, Genre, Mood,...) [MM3];
+<li>Fixed: <I>Unknown</I> node;
+<li>Fixed: sorted display of items in the Tree list by the number of tracks with <I>Sort by:Count(All)</I>;
+<li>Fixed: sorting items with underscore ('_') and maybe some another characters [MM3];
+<li>Fixed: problem with a backslash ('\') inside of the <I>SQL Filter / Filter</I> qualifiers (it can be used now between quotes, e.g. <I>SongPath Like '%\My music\%'</I>);
+<li>Fixed: problem with a vertical line ('|') inside of the <I>SQL Filter / Filter</I> qualifiers (it can be used now for string concatenation in MM3);
+<li>Fixed: <I>Artist</I> node wrongly displayed composers, conductors...[MM3];
+<li>Fixed: problem with Artist and Album Artist fields within same node (e.g. <I>Compilations|Filter:Album Artist = 'Various'\&lt;Artist&gt;\&lt;Album&gt;</I>);
+<li>Fixed: problem with several fields which couldn't worked together in the same node (e.g. Mood/Tempo..., Artist/Composer/...);
+<li>...</ul><br />
+
+<dt>v1.4.3.1 - 2007-07-27</dt><ul>
+<li>Fixed: error after click on the parent node with filtered display [MM2].</ul><br />
+
+<dt>v1.4.3 - 2007-07-26</dt><ul>
+<li>Fixed: duplicated albums in the tree list with <I>&lt;Album and Year&gt;</I> when some albums have songs with different year;
+<li>Fixed: not filtered display of tracks in the tracks window after selecting parent node when <I>Top</I>, <I>Min Tracks</I> and <I>Max Tracks</I> qualifiers are used;
+<li>Fixed: <I>All</I> node;
+<li>Fixed: <I>Left of</I> and <I>Right of</I> qualifiers [MM3];
+<li>Fixed: <I>&lt;Leveling&gt;</I> [MM3].</ul><br />
+
+<dt>v1.4.2 - 2007-07-17</dt><ul>
+<li>Added: <I>Statistic</I> qualifier for displaying some statistical information about items in the Tree list; e.g. <I>&lt;Album|Statistic:Count(All)&gt;</I> to display number of tracks for each album;
+<li>Added: some new fields for sorting (Length, File Size and Leveling) as well as for <I>Statistic</I> qualifier.</ul><br />
+
+<dt>v1.4.1 - 2007-07-14</dt><ul>
+<li>Fixed: some small bugs.</ul><br />
+
+<dt>v1.4.0 - 2007-07-11</dt><ul>
+<li>Added: support for MediaMonkey 3.0.</ul><br />
+
+<dt>v1.3c - 2006-08-18</dt><ul>
+<li>Fixed: incorrect sorting of Artists with prefixes ("The", "A",...) in some cases (e.g. when <I>Trim</I> qualifier is used).</ul><br />
+</dl>
+
+<p><font size="+1"><b><a id="installation">Installation</a></b></font></p>
+<ul><li>For MediaMonkey 3.0 or higher - just double-click on the MediaMonkey.xx.mmip file; if you are on Vista or newer Windows and you got "Product installation error", make sure you have MM3 set to <a href="http://www.mediamonkey.com/support/index.php?/Knowledgebase/Article/View/58/0/extensions-cannot-be-installed">"Run as Administrator"</a>; if you downloaded the installation package with IE7 and it changed its extension to a .zip, you should first change it back to a .mmip.</li>
+<li>For MediaMonkey 2.x - rename a .mmip extension to .zip, extract MagicNodes.vbs and MagicNodes.ini files to the MediaMonkey's "Scripts\Auto" folder and restart MM program.</li></ul>
+
+Note: The MagicNodes.ini file is used only after the installation. During its work, the Magic Nodes add-on stores masks into the MediaMonkey.ini file.<br /><br />
+
+<p><font size="+1"><b><a id="usage">Usage</a></b></font></p>
+
+<b>Introduction</b><br />
+Nodes are the elements of the navigation tree structure of the MediaMonkey interface. Magic Nodes add-on allows a simple way of creating new nodes to help you manage your music library. The Magic Nodes' nodes are defined using masks which are loosely based on the way that MediaMonkey auto-organize works. The masks that represent the Magic Nodes' nodes could be typed from scratch or they could be created using controls in the Settings dialog box.<br /><br />
+
+If you want to type masks from the scratch or just to understand their structure, it is recommended that you read the <a href="http://west-penwith.org.uk/misc/MagicNodes.pdf">PDF manual</a> written by <i>Rick Parsons</i>. It is outdated since it covers only 1.7 version of the add-on, which was one of the latest versions without the proper GUI, but it explains many things needed for understanding of this add-on. The things covered by that manual will not be mentioned in this section, but you could rather find here the explanation how to use the commands and options of this add-on that you could find in its GUI.<br /><br />
+
+Magic Nodes add-on could be used by the beginners as well as by very advanced users, there are at least 2 levels of difficulty:<br />
+1. The beginners could use add-on just by navigating through the Magic Nodes branch of the Media Tree panel. You could find there nearly 300 different nodes that could be useful for you without any additional adjustment, e.g. you could get displayed "Tracks with the Artist name on the begin of the Filename", or "All tracks rated &gt;= 2.5 stars from Album Artists that haven't played last 30 days", or "20 Random Tracks from each Genre which has 100 or more tracks and played more than 50 times".<br /><br />
+
+2. Somewhat more experienced users could create their own masks to get nodes that are different than those that are included with the add-on. Mask could be very simple as it is <tt>Test\&lt;Genre&gt;</tt>, but also very complex like the mask "Artists with at least one album having at least 3 songs with track rating &gt;= 4 stars" that is located in the "Artist Ratings" branch of the Magic Nodes.<br /><br />
+
+There are three different ways to edit an existing mask and its corresponding node:<br />
+1. choose <i>Edit / Magic Nodes / Mask Settings</i>, then choose the wanted mask from the <i>Caption</i> combo box, edit it and click on the <i>Update/Rename</i> button.<br />
+2. choose <i>Edit / Magic Nodes / Manage Masks</i>, then click on the number of the needed mask from the "#" column, edit it and click on the <i>OK</i> button.<br />
+3. right-click on the corresponding node in the Media Tree panel, choose <i>Edit Magic Node</i> command, then edit the mask and click on the <i>OK</i> button.<br /><br />
+
+If you want to create a new mask, you should use <i>Magic Nodes Settings</i> dialog - just click on the <i>New</i> button, type some text in the <i>Caption</i> combo box and set some fields and its qualifiers, then click on the <i>Add</i> button on the bottom of the dialog box.<br /><br />
+
+There are also three different ways to delete an existing mask:<br />
+1. choose <i>Edit / Magic Nodes / Mask Settings</i>, then choose the mask from the <i>Caption</i> combo box and click on the <i>Delete</i> button on the bottom of the dialog box.<br />
+2. choose <i>Edit / Magic Nodes / Manage Masks</i>, then select the mask(s) in the table and click on the <i>Delete</i> button.<br />
+3. right-click on the corresponding node in the Media Tree panel and choose <i>Delete Magic Node</i> command.<br /><br />
+
+The Magic Nodes commands could be found in the <i>Edit</i> menu of the main menu or in the context menu of the Media Tree. The first group of commands from the Magic Nodes sub-menu, including <i>Edit Magic Node</i> and <i>Delete Magic Node</i>, is enabled only if you have selected a global Magic Nodes' node, while the remaining commands could be executed even when none Magic node is selected, e.g. <i>Mask Settings</i>.<br /><br />
+
+<b>Mask's syntax</b><br />
+The description about that what is the "global" Magic node could be found in the mentioned PDF manual. Here is just a quick reference about the syntax of the Magic Nodes' masks where "[]" indicates optional and "*" indicates repeat 0-n times:<br /><br />
+
+<tt>[&lt;Group|Name:string[|Group qualifier]*&gt;\]*Caption[|Global qualifier]*[\&lt;Field[|Local qualifier]*&gt;]*</tt><br /><br />
+
+Each additional "\" indicates the start of a new hierarchical level in the tree. The every level of nodes begins with "&lt;" and ends with "&gt;" except the global level.<br /><br />
+
+As you could see, there are 3 different types of sub-nodes in the Magic nodes: group, global and local nodes. Every Magic node contains just one global node which is mandatory, while group and local nodes are optional and there is no limit on their number of hierarchical levels.<br /><br />
+
+The global node is represented by its Caption that you want displayed on the node. The local nodes represents a hierarchical levels under the global node that could display values of the specified predefined fields. The group nodes could help in better organization of the related Magic nodes in a similar way to the MediaMonkey's Files to Edit group. One or more Magic nodes could be placed inside of one group, and groups could contain additional levels of sub-groups.<br /><br />
+
+For example, If I have mask <tt>&lt;Group|Name:Tests&gt;\Artists\&lt;Artist&gt;</tt>, the node with the name "Tests" is the group node, the node with the caption "Artists" is the global node, while its sub-nodes with the names of the artists are local nodes.<br /><br />
+
+Every node in the mask could contain additional optional qualifiers separated by the "|" character, while the group nodes have also one mandatory "Name" qualifier. With the qualifiers you could specify behaviour of some node, e.g. which part of the field should be displayed or how sub-nodes should be sorted.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/49814266438_9eac6ab87a_o.png" alt="MagicNodes-4.3.3 - Menu" border="0"></center><br />
+
+<b>Menu</b><br />
+The Magic Nodes menu contains the next commands:
+<li><i>Edit Magic Node</i> - it is enabled only for the global nodes. If you choose this command you will get opened dialog box that is very similar to the <i>Magic Nodes Settings</i> dialog box, but it contains just <i>OK</i> and <i>Cancel</i> buttons on its bottom and it doesn't have a possibility to choose the mask for editing, i.e. this dialog box allows modifications of the mask only for the selected node.<br /><br />
+
+<li><i>Delete Magic Node</i> - it is enabled only for the group nodes. This command allows deleting of the selected node and its corresponding mask. Be careful when using this command because there is no Undo command for it.<br /><br />
+
+<li><i>Refresh Magic Playlist</i> - it is enabled only for global Magic nodes inside of the Playlists branch. Unlike regular Magic nodes outside of the Playlists branch whose filelists are updated whenever you select them, the playlists created using <i>Position:Child</i> qualifier of Magic Nodes have static filelists, so if you want to update their content you could use this command.<br /><br />
+
+<li><i>Mask Settings</i> - if you choose this command you will get opened the <i>Magic Nodes Settings</i> dialog box that is very similar to the <i>Edit Magic Node</i> dialog box, but it has a possibility to choose mask for editing and it contains several additional buttons on its bottom, beside of the <i>Close</i> button, which allow different manipulations of the selected mask: <i>New, Update/Rename/Add</i> and <i>Delete</i>. This dialog box allows arbitrary modifications of any mask.<br /><br />
+
+<li><i>Manage Masks</i> - this command opens the <i>Manage Magic Nodes</i> dialog box that contains the table with all available MN masks and it allows batch operations on several masks at the same time, e.g. <i>Del(ete), Export</i> or <i>Import</i>. Also, a search for a specific mask could be much simpler when the masks are displayed in the tabular form.<br /><br />
+
+<li><i>Options</i> - when you choose this command you will get opened the <i>Magic Nodes Options</i> dialog box that contains some less important options that affect behavior of the add-on and/or all Magic nodes in general.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/49815115457_16a197ee82_o.png" alt="MagicNodes-4.3.3 - Settings" border="0"></center><br />
+
+<b>Magic Nodes Settings</b><br />
+The <i>Magic Nodes Settings</i> dialog box allows arbitrary modifications of any mask, either by typing from the scratch in the <i>Mask</i> text box or by using other controls from this dialog box which will construct the appropriate mask for you automatically. This dialog box is resizable, so you could enlarge it, e.g. if you cannot see the content of some control.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/49814806186_c554290926_o.png" alt="MagicNodes-4.3.3 - Settings_1" border="0"></center><br />
+
+<b>Caption</b><br />
+The topmost group of controls contains the controls that affect the whole mask. The first control is the <i>Caption</i> combo box which contains the list of all available MN masks and with it you could choose which mask you want to see or modify. The same combo box could be used to rename the caption of the global node of the selected mask, or to enter the new caption when creating the new mask. You could paste the whole mask in this combo box, e.g. after copying it from the Forum, but you cannot type masks from scratch in it - you should use the <i>Mask</i> text box on the bottom if you want to do that. The caption cannot contains the "|" and "\" characters.<br /><br />
+
+<b>Move mask</b><br />
+The <i>Move mask</i> spin control allows moving of the current mask up or down in the list of masks, which would be reflected in the text of that control that displays the serial number of the current mask and the total numbers of masks.<br /><br />
+
+<b>Position</b><br />
+The <i>Position</i> group of controls consists of two combo boxes - with the first one you could choose the relative position of the selected mask and its corresponding node to the node that is selected in the second combo box (the corresponding qualifiers are <i>Position</i> and <i>Child of</i> respectively). The first list box is dynamically filled depending of the node that is selected in the second combo box. For example, if you choose "Magic Nodes" in the second combo box then the first combo box will contain the "First chid of" and "Last child of" items, but if you choose "Library" then the first combo box will contain additionally "Before" and "After" items ("Before" and "After" means that the Magic node will be on the same level as the node selected in the second combo box).<br /><br />
+
+<b>Creating playlists</b><br />
+If you choose "Playlists" from the second <i>Position</i> combo box, beside of the "Before" and "After" items in the first combo box, you will get also the "Child of" item. This new item allows having of so-called the Magic playlists positioned inside of the Playlists branch, which are created when you add or modify their corresponding masks. All nodes in the Playlists branch are always sorted alphabetically and because of that there are not different the "First child of" and "Last child of" options for positioning of the nodes within that branch.<br /><br />
+
+Unlike regular Magic nodes outside of the Playlists branch whose filelists are updated whenever you select them, the filelists of Magic playlists are static: if you select a Magic playlist, then select some another node and finally select the same playlist again, it will contain the same files in the filelist even if the corresponding mask has some filter which should change the contained files, e.g. if it allows displaying of the random files. To be able to update such playlist you could modify the corresponding mask somehow or you could just choose the <i>Refresh Magic Playlist</i> command from the menu.<br /><br />
+
+Also, unlike regular Magic nodes where their whole sub-branches are updated whenever you expand them, the sub-nodes placed in the Playlists branch cannot be automatically updated when you expand their parent node because of the limited MM API. If you want to update the whole structure of sub-folders for some Magic playlist, you should choose <i>Refresh Magic Playlist</i> command.<br /><br />
+
+The Magic playlists have the hierarchical structure as the regular Magic nodes having the same nodes. For example, if I have the mask <tt>Test|Child of:Playlists|Position:Child\&lt;Arstist&gt;\&lt;Album&gt;</tt> I will get not only the "Test" playlist, but also its sub-playlists with names of the artists and sub-sub-playlists with the names of their albums. Be careful with the number of generated sub-playlists because too much playlists could slow down the program.<br /><br />
+
+If you want to move an existing regular Magic node to the Playlists branch, but you don't want to get its sub-nodes moved to sub-playlists, you have two possibilities: you could remove the corresponding levels of sub-nodes from the mask or you could turn off the <i>Show nodes</i> option, but that option could be used only for the latest (bottommost) level of nodes, so that possibility is mostly applicable for masks with only one sub-level of nodes.<br /><br />
+
+There are some limitations with the masks that create Magic playlists: you cannot set the <i>Show node if empty</i> option to the global node and you cannot set the <i>Icon</i> qualifier at all since the program has the fixed icon for all playlists. You could specify <i>Sort by</i> qualifier for a level of sub-nodes in the Magic playlists, but there is a chance that you will not get what you want, because the playlists are always sorted alphabetically (in such case consider a possibility to turn on the <i>Show ordinal numbers</i> option for that level).<br /><br />
+
+<b>Collection [MM4] (MM Filter [MM2-3])</b><br />
+If you choose the "Library" item from the second <i>Position</i> combo box or any following item from its list from "Artist" to "Previews", you will be able to choose a collection where you want to place the Magic node of the selected mask using the <i>Collection</i> combo box (the corresponding qualifier is <i>MM filter</i>). One Magic node cannot be placed in several collections at the same time. If you want something like that, you need to create copies of its mask with the specified different collection for each copy of that mask.<br /><br />
+
+<b>Shortcut</b><br />
+The <i>Shortcut</i> control allows bringing of the focus to the corresponding node in the Media Tree if you press the specified hotkey on the keyboard, e.g. Shift+Ctrl+A (the corresponding qualifier is <i>Shortcut</i>).<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/49814266333_72c1ca66b7_o.png" alt="MagicNodes-4.3.3 - Settings_2" border="0"></center><br />
+
+<b>Node controls</b><br />
+The several next controls in the Settings dialog box allow creating of nested nodes for each level of a Magic node: group, global and local. When you select an existing mask/node from the <i>Caption</i> combo box, the <i>Nodes</i> list box will be automatically filled with all nested sub-nodes with the proper indentation for each new level. If you want to create a new mask by the click on the <i>New</i> button, the global node would be automatically added to the <i>Nodes</i> list box when you type its new caption in the <i>Caption</i> combo box.<br /><br />
+
+<b>Field</b><br />
+The local nodes could be added to the selected mask if you choose the <i>Field</i> radio button and select an item from the related list box. The items from that list represents the MN fields, i.e. the predefined fields available by Magic Nodes: the simple fields, which directly correspond to the existing database fields, like "Title" or "Rating", and the complex fields, which could display one or more database fields, like "Artist - Title" or "Weeks since added".<br /><br />
+
+<b>Group</b><br />
+If you want to assign a Magic node to an existing group, you should choose the <i>Group</i> radio button and select the wanted item from the related combo box, but if you want to create a new group, which is not listed in that combo box, then just type its name in it (the corresponding qualifier is <i>Name</i>). The name of the group cannot contains "|", "\", "&lt;" and "&gt;" characters.<br /><br />
+
+<b>Nodes</b><br />
+The new group and local nodes could be added to the <i>Nodes</i> list box using the <i>Add</i> button located between the <i>Filter</i> and <i>Nodes</i> list boxes, after you have selected the appropriate item from the <i>Field</i> or <i>Group</i> lists. If you want to remove an existing group or local node from the mask, you should select the corresponding item in the <i>Nodes</i> list box and click the <i>Del</i> button, which is under the mentioned <i>Add</i> button. The spin control with the up/down buttons located bellow the <i>Del</i> button allows moving of the selected item in the <i>Nodes</i> list box in the wanted direction, i.e. up or down. Higher nodes in the <i>Nodes</i> list are closer to the root in the node hierarchy.<br /><br />
+
+The remaining controls from the Settings dialog box, excluding the <i>Filter</i> group and the <i>Mask</i> text box, affect only particular node in the hierarchy of some Magic node that is selected in the <i>Nodes</i> list box. For example, if I have the mask <tt>Test\&lt;Artist&gt;\&lt;Album&gt;</tt> and if I want to add <i>Statistics</i> qualifier to the "Artist" node, I need to select the "Artist" item in the <i>Nodes</i> list box and then to set the <i>Statistics</i> controls appropriately.<br /><br />
+
+<b>Show ... controls</b><br />
+The first group of the remaining controls determines the display of nodes and files, but only the first check box is enabled for all nodes (group, global or local), while the other check boxes could be set only for the local nodes (unless it is stated otherwise); also many <i>Show</i> controls are disabled with some Split modes which will be mentioned latter in the <i>Split by</i> part of this section:<br />
+<li><i>Show tracks in tracklist</i> - turn it on if you want to get displayed files in the filelist when you select the corresponding sub-node in the Media Tree (the corresponding qualifier is <i>Show tracks</i>).<br /><br />
+
+<li><i>Show [All] node</i> - turn it on if you want to get displayed "All" node for the corresponding sub-node, similarly to the "All" nodes in the Location and My Computer folders (the corresponding qualifier is <i>All</i>).<br /><br />
+
+<li><i>Show [Unknown] node</i> - turn it on if you want to get displayed "Unknown" node for the corresponding sub-node, similarly to the "Unknown" nodes in the "Title", "Artist" and many other built-in nodes (the corresponding qualifier is <i>Unknown</i>); turning off this option for the selected sub-nodes could speed up expanding of their parent nodes sometimes; this option is disabled if the <i>Top items</i> has some value greater than zero.<br /><br />
+
+<li>The next check box has two meanings depending of the selected sub-node:
+<li style="list-style-type:circle"><i>Show node if empty</i> is displayed if you select the global node or local node that is not the latest (bottommost) node in the hierarchy (the corresponding qualifier is <i>Show if empty</i>); you should turn on this option if you want to get displayed the selected node even if it doesn't have any child nodes, e.g. for the mask <tt>Test\&lt;Album&gt;\&lt;Disc number|Unknown:No&gt;</tt> you could turn this option on for the "Album" node to get displayed albums even if they contain files without disc numbers; this option is disabled if you have selected "Child of" - "Playlist" in the <i>Position</i> combo boxes.<br /><br />
+
+<li style="list-style-type:circle"><i>Show nodes</i> is displayed only if you select the latest (bottommost) local node in the hierarchy; you should turn this option off if you don't want to get displayed nodes on the selected level for some reason, e.g. if the Magic node is positioned inside of the Playlists branch, while you still want that node added to the mask because it could contain some important qualifiers that affect its parent nodes even if it is not displayed like <i>Min. files</i> or <i>Top items</i> (the corresponding qualifier is <i>Show nodes</i>).<br /><br />
+
+<li><i>Show ordinal numbers</i> - you should turn on this option if you want to get ordinal numbers of nodes in the front of their captions (the corresponding qualifier is <i>Show rank</i>).<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/49814806121_7d9f9dd4a8_o.png" alt="MagicNodes-4.3.3 - Settings_3" border="0"></center><br />
+
+<b>Filter controls</b><br />
+The next group of controls allows setting of the filter for the selected mask (the corresponding qualifier is <i>Filter</i>). It is possible to set only one filter per mask and it will be assigned to the global node, even if you have selected a group or local node in the <i>Nodes</i> list box. The <i>Filter</i> string represents the WHERE part of the SQL query applied to the whole branch of the selected Magic node.<br /><br />
+
+The first combo box in the <i>Filter</i> group contains the list with the "AND" and "OR" items that you could select if you want such operators on the begin of the adding string. The next combo box contains list with all available MN fields, similarly to the <i>Fields</i> list box, but it has also one new item: "Any". If you add that item to the <i>Filter</i> string, you will get filtered files by any field that is specified on the Search tab in the Options dialog box.<br /><br />
+
+The next combo box contains the list with operators that depends if the selected field from the previous combo box has a string, numeric or date/time value. If you have selected any string or date/time field, the last combo box in this group will be dynamically filled with all values of that field from all files (that could take significant time for complex fields); if you have selected any numeric field, the spin control would be displayed, which allows changing of that numeric value.<br /><br />
+
+When you have selected all wanted items in the previously mentioned <i>Filter</i> controls, you could click the <i>Add</i> button located on the right side of the <i>Filter</i> group to add that construction to the main <i>Filter</i> text box. You could type a new filter from the scratch or modify the existing one by editing that text box. If you have selected a part of the text in that text box, you could click on the <i>Del</i> button to remove it, or you could click on the "(.)" button to surround the selected text with the parenthesis.<br /><br />
+
+You could turn on the <i>SQL</i> check box that is located on the left of the <i>Filter</i> text box if you want to see how a MN field in the filter will be converted to the appropriate SQL field(s). For example, instead of the &lt;Rating&gt; MN field I would get <i>Songs.Ratings</i>, or instead of the &lt;Weeks since added&gt; I would get <i>Cast(JulianDay(Date('now', '-6 days', 'weekday 1', '6 days')) - JulianDay(Date(Songs.DateAdded + JulianDay('1899-12-30'))) As integer) / 7</i>. This option is not reversible, i.e. if you turn it off after a MN field is already converted to the corresponding SQL field(s), you cannot get the original MN field again.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/49814266233_4915d07236_o.png" alt="MagicNodes-4.3.3 - Settings_4" border="0"></center><br />
+
+<b>Icon</b><br />
+The next control after the <i>Filter</i> group is the <i>Icon</i> combo box (the corresponding qualifier is <i>Icon</i>). It is enabled only for the group and global nodes, while the icons for the local nodes are automatically set depending on the related field. The selected item from the combo box determines the icon that will be displayed for the node in the Media Tree corresponding to the selected mask. You could choose some of the built-in icons represented by their numbers (the built-in icons for the Glided skin with their numbers could be downloaded from <a href="http://www.mediamonkey.com/contrib/artwork/icons.zip">here</a>).<br /><br />
+
+If you choose "Standard" from the <i>Icon</i> combo box, you will get displayed icon of the folder; if you choose "Top level", you will get displayed icon of the topmost local node and its related field; while if you choose "Bottom level", you will get displayed icon of the bottommost local node and its related field.<br /><br />
+
+<b>Top items</b><br />
+The <i>Top items</i> control is enabled only for the local nodes. With that control you could set the number of displayed sub-nodes of the selected node (the corresponding qualifier is <i>Top</i>). For example, if I have "Album" node selected in the <i>Nodes</i> list box for the mask <tt>Test\&lt;Artist&gt;\&lt;Album&gt;</tt>, and if I set 10 with the <i>Top items</i> control, I could get displayed 10 albums per artist at most.<br /><br />
+
+<b>Min. tracks, Max. tracks</b><br />
+The <i>Min. tracks, Max. tracks</i> and other controls below them are enabled only for the local nodes. With the <i>Min. tracks</i> you could set the minimal number of files that are needed for display of the selected local node (the corresponding qualifier is <i>Min tracks</i>), and with the <i>Max. tracks</i> you could set the maximal number of files (the corresponding qualifier is <i>Max tracks</i>). For example, if I have the "Artist" node selected in the <i>Nodes</i> list box for the mask <tT>Test\&lt;Artist&gt;</tt>, and if I set 10 with the <i>Min. tracks</i> control, I could get displayed only nodes for artists that have at least 10 files.<br /><br />
+
+<b>Substr. start</b><br />
+With the <i>Substr. start, Trim</i> and other controls below them, you could set which part of the MN field corresponding to the selected local node you want to get displayed as its caption. The <i>Substr. start</i> control determines the starting position of the substring that should be returned (the corresponding qualifier is <i>Substring start</i>). For example, if a MN field contains "The Beatles" and if I specify 5 with that control, I will get displayed "Beatles" in the caption of the corresponding node. If the negative number is specified, the first character of the substring is found by counting from the right rather than the left, e.g. with -5 I will get "atles".<br /><br />
+
+<b>Substr. length / Trim</b><br />
+The next control has two captions, depending of the value set by <i>Substr. start</i> control. If <i>Substr. start</i> is zero, the next control has <i>Trim</i> caption; in other cases it is <i>Substr. lenght</i>, but in general their effect is the same (the corresponding qualifier is <i>Trim</i>): with that control you could set how many characters of the MN field corresponding to the selected local node you want to display from the left to the right, starting from the character specified by <i>Substr. start</i>. If <i>Substr. start</i> is zero, the result will be same as if it is 1. If <i>Substr. lenght</i> is zero, then the whole string is returned starting from the <i>Substr. start</i>.<br /><br />
+
+Examples with the same "The Beatles" text:<br />
+<li><i>Substr. start</i> = 5 and <i>Substr. lenght</i> = 4 shows "Beat";<br />
+<li><i>Substr. start</i> = -5 and <i>Substr. lenght</i> = 4 shows "atle".<br />
+<br />
+
+<b>Split by</b><br />
+The <i>Split by</i> group of controls allows parsing of the MN field corresponding to the selected local node: within the text box you could specify with which string you want to split the original text (the corresponding qualifier is <i>Split by</i>), with the combo box you could determine the mode of parsing (the <i>Split Mode</i> qualifier) and with the spin control you could set the optional numerical value (the <i>Split part</i> qualifier) if it is applicable for the selected item that is set in the previous combo box.<br /><br />
+
+The <i>Split mode</i> combo box has the next items: <i>String part, String Before, String After, Single Part, Parts Before, Parts After, All Parts, Categories, Odd Parts</i> and <i>Even Parts</i>. The first three items that start with the "String *" don't affect the enabled state of other controls in the dialog box because they are based on the SQL code to do parsing of the MN field, but the complexity of the implemented code raises exponentially with the <i>Split part</i> value specified with the spin box, and for the large numbers you could even get the error message! The remaining items from the <i>Split mode</i> combo box don't have that problem since they are not using the SQL code, but VBScript instead. However, the drawback of the remaining items is that they cannot be used with the <i>Sort by/Statistics</i> qualifiers as well as almost none of the <i>Show *</i> qualifiers.<br /><br />
+
+One important note: the ";" and "; " are not the same strings and using them in the <i>Split by</i> qualifier will give you different results. The detailed explanation about the qualifiers related to this group of controls with many examples can be found in the <a href="#splitexamples">Split examples</a> section.<br /><br />
+
+<b>Left of</b><br />
+The next control has two meanings, depending of the following <i>Right of</i> control: if the <i>Right of</i> text box is empty, the first control has the <i>Left of</i> caption, otherwise it is <i>Right until</i>. It is somewhat awkward order of the controls, it would be better and more intuitive if the <i>Right until</i> has separate control on the right side of the <i>Right of</i> control, but in that case the Settings dialog box would be even larger and more overcrowded than it is now. Anyway, one more reason why this strange decision was made is because the <i>Left of</i> and <i>Right of</i> controls cannot be used at the same time, so it was quite logical to use the same controls for the <i>Left of</i> and <i>Right until</i> (the similar reasons was used with the <i>Show node if empty</i> and <i>Show nodes</i>).<br /><br />
+
+With the <i>Left of</i> control you could get displayed the leftmost characters of the MN field corresponding to the selected local node until the specified string (the corresponding qualifier is <i>Left of</i>). For example, if the MN field contains "The Beatles", and if I specify "eat", I would get displayed "The B".<br /><br />
+
+The <i>Show if contain</i> check box located under the <i>Left of</i> text box determines what will happen if the MN field of the selected local node doesn't contain the string specified in the <i>Left of</i> text box: if it is turned off, the node with the whole text of the field will be displayed; if it is turned on, there would not be displayed node for that field value at all. For example, with the same "The Beatles" field, if I specify "abc" in the <i>Left of</i> text box and if I have <i>Show if contain</i> turned off I will get "The Beatles" node, but if it is turned on I will not get any node for that field value (in that case the files by The Beatles could be found in the "Unknown" node if that node is enabled with the corresponding option). There is not corresponding qualifier for the <i>Show if contain</i> check box, but if you turn it on, the <i>Left of</i> qualifier will become <i>Exclusive Left of</i>.<br /><br />
+
+<b>Right of, Right until</b><br />
+The <i>Right of</i> control has the similar effect as the <i>Left of</i>, but it works in another direction: with it you could get displayed the rightmost characters of the MN field after the specified string (the corresponding qualifier is <i>Right of</i>). For example, if the field has "The Beatles" node and if I specify "eat" I would get displayed "les".<br /><br />
+
+The <i>Show if contain</i> check box under the <i>Right of</i> text box has the same effect as it is the case with the check box under the <i>Left of</i> text box: if I specify "abc" in the <i>Right of</i> text box and if I have <i>Show if contain</i> turned off I will get "The Beatles" node, otherwise I will not get any node for that field value. Similarly to the previous <i>Show if contain</i> check box, if this one is turned on, the <i>Right of</i> qualifier will become <i>Exclusive Right of</i>.<br /><br />
+
+If the <i>Right of</i> text box has specified some string, you could also specify <i>Right until</i> string to delimit the right end of the result (the corresponding qualifier is <i>Right until</i>). For example, if the MN field contains "The Beatles", and if I specify "Be" for the <i>Right of</i> and "es" for the <i>Right until</i>, I will get the node "atl". Again, similarly to the previous cases with the <i>Show if contain</i> check box, if this one is turned on, the <i>Right until</i> qualifier will become <i>Exclusive Right until</i>.<br /><br />
+
+The strings for parsing could be specified more than once with all <i>Left/Right of</i> qualifiers, and they should be separated with the "|" character. Some more examples about the <i>(Exclusive) Left of</i> and <i>(Exclusive) Right of</i> qualifiers can be found in the <a href="#leftrightexam">Left of/Right of examples</a> section and in the mentioned <a href="http://west-penwith.org.uk/misc/MagicNodes.pdf">PDF manual</a>.<br /><br />
+
+<b>Sort keys</b><br />
+The sorting group of controls on the right side of the Settings dialog box can be used only with the local nodes, but not with the global and group nodes. With these controls you could set sorting of the nodes on the selected level (the corresponding qualifier is <i>Sort by</i>).<br /><br />
+
+The first combo box in this group contains the list of available aggregate functions that could be used for sorting. Beside of the standard SQL aggregate functions as <i>Count, Avg, Max, Min</i> and <i>Sum</i>, the list of sorting functions include also <i>WAvg</i> and <i>Range</i> custom functions. The <i>Range(field)</i> is equal to <i>Max(field) - Min(field)</i>, while the <i>WAvg</i> is the weighted average that is most useful with the "Played", "Rating" and "Bitrate" fields, e.g. <i>WAvg(Played)</i> is same as <i>Sum(Played * Length) / Sum(Length)</i>.<br /><br />
+
+The second combo box in this group contains the list of available MN fields, which is filled dynamically depending on the selected aggregate function from the previous combo box. If you have selected "Count" function, the second combo box will contain all MN fields that could be found in the <i>Fields</i> list box as well, with the addition of the "All" and "Tracks" items. In most cases the <i>Count(All)</i> and <i>Count(Tracks)</i> has the same effect and will return the number of files for the particular node. If you select some of the remaining functions from the first combo box (Avg, Max, ...) , the second combo box will contain only MN fields that are numerical (e.g. Year, Bitrate, ...). The only exception to this rule are the Custom fields that are added to this list because some users use them to store numerical values.<br /><br />
+
+When you have selected the wanted items in the previously two mentioned combo boxes, you could add that construction to the list box under them by click on the <i>Add</i> button that is located on the right of the sorting controls. If you want to remove an item from that list box, you should select it and after that click on the <i>Del</i> button. If you want to move an item vertically in the list, you should select it and click on the Up/Down spin control that is located on the left side of that list. The resulting value of the topmost item in the list box will be displayed first in the caption of the nodes, the value of the second item will be displayed next separated by the ", ", and so on, i.e. the resulting value(s) will be displayed on the left side of the MN field corresponding to the selected local node. The order of items in that list also affects the sorting order of nodes.<br /><br />
+
+<b>Random</b><br />
+You could use the <i>Random</i> check box if you want random sorting. When you turn this check box on, all sorting keys added to the list box above it will be ignored, and the random order will be applied to the MN field of the selected local node (the corresponding qualifier in that case is <i>Sort order:Random</i>). For example, if I select the "Artist" node in the <i>Nodes</i> list box and turn on the <i>Random</i> check box, I could get this mask <tt>Test\&lt;Artist|Sort order: Random&gt;</tt>.<br /><br />
+
+<b>Desc. order</b><br />
+If you turn on the <i>Desc. order</i> check box while none item is added to the list box with the sorting keys, the descending order will be applied to the MN field of the selected local node, similarly to the <i>Random</i> check box (the corresponding qualifier in that case is <i>Sort order: Desc</i>).<br /><br />
+
+However, if that check box is turned on while you have any item added to the list of sorting keys, the selected item from that list will be used in descending order. For example, if I have added <i>Max(Year)</i> to the list box with the sorting keys, after I select that item and turn on the <i>Desc. order</i> check box, I could get this mask: <tt>Test\&lt;Album|Sort by: Max(Year) Desc&gt;</tt>, which means that the albums will be sorted by years from the newest to the oldest. In this example, the year information will be displayed on the begin of each node as a prefix to the album name separated with " - ".<br /><br />
+
+<b>Show sort key</b><br />
+The <i>Show sort key</i> check box allows toggling of the visibility for the selected item in the list of sorting keys on the captions of nodes, e.g. if you want to sort nodes using some field, but you don't want to display that field in the front of the MN field (the corresponding qualifier is <i>Show sort key</i>). So, if I modify the previous example like this: <tt>Test\&lt;Album|Sort by: Max(Year) Desc|Show sort key:0&gt;</tt>, I will get albums sorted by year, but the year value will not be displayed in the front of the album name.<br /><br />
+
+<b>Statistics</b><br />
+The statistics group of controls (having the corresponding <i>Statistics</i> qualifier) can be used only with the global and local nodes, but not with the group nodes. It has a very similar usage as the sorting group, but with some differences. First of all, the resulting values of the aggregate function applied on the MN field(s) are displayed on the right side of the caption inside of the parentheses. Also, the list of aggregate functions in its first combo box contains one function more: "Concat", e.g. the mask <tt>Test\&lt;Title|Statistics: Concat(Playlist)&gt;</tt> will display the concatenated names of all static playlists in which specified title appears.<br /><br />
+
+If you choose "Count" item from the list of aggregate functions in the first combo box, the next combo box will contain the same fields as the corresponding sorting list with one additional item: "Items". If you add <i>Count(Items)</i> to the selected node in the mask, you will get displayed number of its sub-nodes. For example, if I have <tt>Test\&lt;Artist|Statistics: Count(Items)&gt;\&lt;Album&gt;</tt>, I will get displayed number of albums for each artist. Actually, I could get the same result using <tt>Test\&lt;Artist|Statistics: Count(Album)&gt;\&lt;Album&gt;</tt>, but in that case if I replace "Album" node with some another I would need to modify the <i>Statistics</i> qualifier as well.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/49815115257_3de3518055_o.png" alt="MagicNodes-4.3.3 - Settings_5" border="0"></center><br />
+
+<b>Mask</b><br />
+The <i>Mask</i> text box is located near the bottom of the Settings dialog box. It displays the whole mask and its content is automatically updated whenever you modify some of the previous controls above it. However, this works in other way as well, i.e. you could type some mask from the scratch or modify some existing one in the <i>Mask</i> text box and the corresponding controls above it will be automatically updated. Of course, you could copy/paste any mask to that text box, e.g. if you find it posted in the Forum.<br /><br />
+
+<b>New, Update / Rename / Add</b><br />
+There are several command buttons on the very bottom of the Settings dialog box that affects the currently displayed mask. The <i>New</i> button allows creating of the new mask and it sets all controls of the Settings dialog box to their initial (blank) state.<br /><br />
+
+The following button has three alternate captions depending of the modifications made in the dialog: <i>Update</i>, <i>Rename</i> and <i>Add</i>. If you have modified just the <i>Caption</i> string, that button will have the <i>Rename</i> caption; if you use any other previously mentioned control and modify the related qualifier, that button will have the <i>Update</i> caption. Actually, the resulting effect is very similar in both cases and by clicking on that button you could confirm that you want to save modifications of the currently displayed mask.<br /><br />
+
+However, if you modify both the <i>Caption</i> string and any other control, that button will have the <i>Add</i> caption, which allows adding of the currently displayed mask to the list of masks stored in the MediaMonkey.ini file. This also means that you cannot have two or more masks/nodes with the same caption, i.e. all masks should have unique captions.<br /><br />
+
+<b>Delete, Close</b><br />
+You could use the <i>Delete</i> button if you want to remove the currently displayed mask permanently, so be careful using it. With the <i>Close</i> button you could close the Settings dialog box, while the currently displayed mask will be stored in the INI file using the zero serial number (if the mask is modified, but not saved using the <i>Update</i> or <i>Add</i> buttons).<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/49814266458_0335524358_o.png" alt="MagicNodes-4.3.3 - Manage Masks" border="0"></center><br />
+
+<b>Manage Magic Nodes</b><br />
+The <i>Manage Magic Nodes</i> dialog box contains the table with all available MN masks and it allows batch operations on several masks at the same time. There are two radio buttons on the top of the dialog box: <i>MediaMonkey.ini</i> and <i>File</i>. If you select the <i>MediaMonkey.ini</i> option, you will get displayed all MN masks that are stored in the main MediaMonkey INI file, i.e. the masks that have displayed the corresponding nodes in the Media Tree. You will be able to export such masks, as well as to edit, delete or move them.<br /><br />
+
+If you choose the <i>File</i> option, you could get displayed masks from an external INI file which could contain e.g. your previously exported MN masks. You could type its path in the following text box or you could click on the "..." button and find that INI file in the new Open File dialog box. You will be able to import such masks, as well as to delete or move them (if the loaded INI file is not marked to open as read-only).<br /><br />
+
+The masks and their groups could be alphabetically sorted if you click on the table header that contains displayed the information about loaded masks. This operation is not reversible, so be careful using this option and make a backup of your masks first.<br /><br />
+
+Selecting/checking of the mask(s) on which you want to implement an operation could be done in two ways: you could use the check boxes located on the left side of the table or you could select the wanted mask directly in the table. When using the second way, you could select only one mask at the time and that way has the precedence over those two ways of selecting, i.e. even if you have some or all masks checked in the table, if you choose an operation as <i>Del</i> it will be applied only on the selected mask, but not on the checked masks. If you want to deselect the currently selected mask, e.g. if you want to do an operation against the checked masks, then you should click on the already selected mask again.<br /><br />
+
+You could edit any mask from the table if you click its serial number displayed in the "#" column, in which case you would get opened the <i>Edit Magic Node</i> dialog box that is the same as if you choose such command from the pop-up menu over some selected Magic node; in this case all controls from that dialog box will be set accordingly to the selected mask which means that you could use that dialog box to modify the existing mask.<br /><br />
+
+Using the <i>Up</i> and <i>Down</i> buttons you could move the selected mask in the appropriate direction in the list of masks. The moving operation could be done only on a single mask that is selected in the table at the time. Those two buttons have the auto-repeat possibility, i.e. it is enough to click on some of them and the selected mask will continue to move in the table until you release that button.<br /><br />
+
+You could use the <i>Del</i> button if you want to remove the selected/checked mask(s) permanently, so be careful using it. The <i>Word wrap</i> check box could be used to toggle the type of display of masks in the table.<br /><br />
+
+The enabled state of the next two buttons, <i>Export</i> and <i>Import</i>, depends of the selected option on the top of the dialog box: as it is already explained, you could export the selected/checked masks from the MediaMonkey.ini file or you could import the selected/checked masks from the specified external INI file.<br /><br />
+
+<center><img src="https://live.staticflickr.com/65535/49815115492_b30126ccc9_o.png" alt="MagicNodes-4.3.3 - Options" border="0"></center><br />
+
+<b>Magic Nodes Options</b><br />
+The <i>Magic Nodes Options</i> dialog box could be opened from the <i>Edit / Magic Nodes</i> menu or from the <i>Tools / Extensions</i> menu with the selected Magic Nodes item in the list of the add-ons. It contains some less important options that affect behavior of this add-on and/or all Magic nodes. The same options could be found on the <i>General / Magic Nodes</i> page in the program's built-in <i>Options</i> dialog box that could be opened from the <i>Tools</i> menu.<br /><br />
+
+<li><i>Skip expanding of the Magic Nodes branch during start-up</i>: you could turn this option on if you want the collapsed Magic Nodes branch in the tree when starting the program.<br /><br />
+
+<li><i>Allow modifying of fields data by drag & drop or renaming tree nodes</i>: you could turn this option off if you don't want to rename the field value of the selected node directly in the Media Tree or you don't want drag&drop option to be enabled for the Magic nodes. By the way, drag&drop and renaming are not allowed at all for nodes which contain only a part of the field, i.e. nodes with the <i>Left of/Right of/Trim/SubStr/Split by</i> qualifiers. The drag&drop operation updates fields for all parent nodes of the target node, e.g. if you have the mask <tt>Test\&lt;Genre&gt;\&lt;Artist&gt;\&lt;Album&gt;</tt> and if you drop selected tracks to any album node, you will get updated the genre and artist as well beside of the album.<br /><br />
+
+<li><i>Display sorting/statistic results only if all values are defined</i>: you could turn this option off if you want to get sorting/statistical values on the caption of the Magic nodes even if some files don't have defined the affected field value. For example, if the mentioned option is turned on, the mask <tt>Test\&lt;Album|Sort by: Avg(Rating)&gt;</tt> only displays the average rating in the front of the album names for the albums where all tracks have been rated; for the other album nodes, just the album names are displayed. So, you should turn off the mentioned option if you want to display these rating values even for those albums which only have some tracks rated.<br /><br />
+
+<li><i>Display sorting/statistic results for Rating rounded to the nearest half star</i>: you could turn this option off if you don't want to get displayed ratings using sorting/statistics qualifiers rounded to the nearest 0.5 stars.<br /><br />
+
+<li><i>Move prefixes to the end when sorting by Artist, Album Artist or Original Artist</i>: if you turn this option on, the prefixes will be moved to the end of the node captions, e.g. "The Beatles" will be displayed as "Beatles, The"; if you turn it off, the fields will be displayed as they are stored in the database, e.g. "The Beatles", but the sorting of the nodes will be still correct as if the prefixes are moved to the end, with "The Beatles" node inside of the "B" branch; in both cases it is assumed that the <i>Ignore prefixes</i> option on the Appearance page is already turned on.<br /><br />
+
+<li><i>Allow editing of SQL queries</i>: you could turn this option on if you want to see or edit the SQL queries when you expand and/or select Magic nodes:<ul>
+
+<li style="list-style-type:circle"><i>when expand field nodes</i>: e.g. if you have the mask <tt>Test\&lt;Artist&gt;</tt> and you expand the "Test" node, you will get opened the <i>Magic Nodes SQL Editor</i> dialog box displaying the SQL query that is used to generate all artist nodes.<br /><br />
+
+<li style="list-style-type:circle"><i>for the Unknown node</i>: if you expand the "Test" node of the mentioned mask, you will get the same dialog box displaying the SQL query that is used to generate the "Unknown" artist node, i.e. the node that contains files with the unspecified Artist tag.<br /><br />
+
+<li style="list-style-type:circle"><i>when select a field node</i>: if you select any sub-node of the mentioned mask, e.g. "The Beatles", you will get the same dialog box displaying the SQL query that is used to generate the filelist for that field value, i.e. the files of the Beatles.</ul>
+
+<li><i>Show elapsed time in the progress bar after SQL queries</i>: you could turn this option on if you want to get displayed the progress bar on the bottom of the main window of the program with the information about the time that is elapsed after some Magic node is expanded or selected.<ul>
+
+<li style="list-style-type:circle"><i>Remove progress bar after</i>: you could set after how many seconds you want to get removed the progress bar that is displayed using the previous option.</ul>
+
+<li><i>Modeless MN Settings dialog box (allowed access to other parts of the program)</i>: you could turn this option on if you want to get modeless <i>Magic Nodes Settings</i> dialog box, which could allow access to the other parts of the program, e.g. you could navigate through the Media Tree with the already opened that dialog; when that option is turned off, the mentioned dialog box will be modal and you need to close it if you want to use the other parts of the program.<ul>
+
+<li style="list-style-type:circle"><i>Expand node after applying the Update option, even if it is collapsed</i>: you could turn this option on if you want to get expanded the corresponding node of the currently displayed and edited mask in the Settings dialog box.</ul><br />
+
+<p><font size="+1"><b><a id="leftrightexam">Left of/Right of examples</a></b></font></p>
+Here are some examples with the <i>(Exclusive) Left of</i> and <i>(Exclusive) Right of</i> qualifiers applied to the "Path" field with the following files:<br />
+<li>c:\Angie Stone - I Wasn't Kidding [Freemasons Vocal Club].mp3
+<li>c:\Faith Evans - Mesmerized [Freemasons Full Vocal Mix].mp3
+<li>c:\Freemasons feat. Amanda Wilson - I Feel Like.mp3
+<li>c:\Freemasons feat. Amanda Wilson - Love on My Mind [Club Mix].mp3
+<li>c:\Freemasons feat. Siedah Garrett - Rain Down Love [Vocal Club Mix].mp3<br /><br />
+
+<i>Left of: feat. </i> (" feat. " is specified as a separator) returns the next nodes:<br />
+<li>c:\Angie Stone - I Wasn't Kidding [Freemasons Vocal Club].mp3
+<li>c:\Faith Evans - Mesmerized [Freemasons Full Vocal Mix].mp3
+<li>c:\Freemasons<br /><br />
+
+<i>Exclusive Left of: feat. </i> returns:<br />
+<li>"Unknown" (node with all files which don't contain " feat. " in the path)
+<li>c:\Freemasons<br /><br />
+
+<i>Right of: feat. </i> returns:<br />
+<li>c:\Angie Stone - I Wasn't Kidding [Freemasons Vocal Club].mp3
+<li>c:\Faith Evans - Mesmerized [Freemasons Full Vocal Mix].mp3
+<li>Amanda Wilson - I Feel Like.mp3
+<li>Amanda Wilson - Love on My Mind [Club Mix].mp3
+<li>Siedah Garrett - Rain Down Love [Vocal Club Mix].mp3<br /><br />
+
+<i>Exclusive Right of: feat. </i> returns:<br />
+<li>"Unknown" (node with all files which don't contain " feat. " in the path)
+<li>Amanda Wilson - I Feel Like.mp3
+<li>Amanda Wilson - Love on My Mind [Club Mix].mp3
+<li>Siedah Garrett - Rain Down Love [Vocal Club Mix].mp3<br /><br />
+
+<i>Right of:[|Right until: Mix]</i> ("[" is the starting and "Mix]" is the terminating string) returns:<br />
+<li>Freemasons Vocal Club].mp3
+<li>Freemasons Full Vocal
+<li>c:\Freemasons feat. Amanda Wilson - I Feel Like.mp3
+<li>Club
+<li>Vocal Club<br /><br />
+
+<i>Exclusive Right of:[|Right until: Mix]</i> returns:<br />
+<li>"Unknown" (node with all files which don't contain "[" in the path)
+<li>Freemasons Vocal Club].mp3
+<li>Freemasons Full Vocal
+<li>Club
+<li>Vocal Club<br /><br />
+
+<i>Exclusive Right of:[|Exclusive Right until: Mix]</i> returns:<br />
+<li>"Unknown" (node with all files which don't contain "[" and " Mix]" in the path)
+<li>Freemasons Full Vocal
+<li>Club
+<li>Vocal Club<br /><br />
+
+Here is one example of using the "|" character as a separator between multiple strings specified for <i>Right until</i> qualifier:<br />
+<i>Exclusive Right of:[|Exclusive Right until: Mix]| Club]</i> returns:<br />
+<li>"Unknown" (node with all files which don't contain "[" and " Mix]" or " Club]" in the path)
+<li>Freemasons Vocal
+<li>Freemasons Full Vocal
+<li>Club
+<li>Vocal Club<br /><br />
+
+<p><font size="+1"><b><a id="splitexamples">Split examples</a></b></font></p>
+Let say that I have the Path = "c:\My Music\Pink Floyd\Us and Them.mp3" and using the <i>Split by:\\|Split mode:String part</i> with:<br /><br />
+<li><i>Split part:1</i> or <i>Split part:-4</i> returns "c:";
+<li><i>Split part:2</i> or <i>Split part:-3</i> returns "My Music";
+<li><i>Split part:3</i> or <i>Split part:-2</i> returns "Pink Floyd";
+<li><i>Split part:4</i> or <i>Split part:-1</i> returns "Us and Them.mp3".
+<br /><br />
+
+Here are examples using the same Path value as previous, but now with the <i>Split mode:String Before</i> with:<br /><br />
+<li><i>Split part:2</i> or <i>Split part:-3</i> returns "c:";
+<li><i>Split part:3</i> or <i>Split part:-2</i> returns "c:\My Music";
+<li><i>Split part:4</i> or <i>Split part:-1</i> returns "c:\My Music\Pink Floyd";
+<li><i>Split part:5</i> returns "c:\My Music\Pink Floyd\Us and Them.mp3".
+<br /><br />
+
+As you could see from those examples, when using <i>String Before</i> you will get the left part of the field's string before the specified part. Here are examples with the <i>Split mode:String After</i>, which could be used to get the right part of the field's string after the specified part, with:<br /><br />
+<li><i>Split part:0</i> or <i>Split part:-5</i> returns "c:\My Music\Pink Floyd\Us and Them.mp3";
+<li><i>Split part:1</i> or <i>Split part:-4</i> returns "My Music\Pink Floyd\Us and Them.mp3";
+<li><i>Split part:2</i> or <i>Split part:-3</i> returns "Pink Floyd\Us and Them.mp3";
+<li><i>Split part:4</i> or <i>Split part:-2</i> returns "Us and Them.mp3".
+<br /><br />
+
+Negative values for <i>Split part</i> used with <i>String *</i> arguments (<i>String part, String before, String after</i>) of the <i>Split mode</i> qualifier are not possible with MediaMonkey 2.x, but only with v3-4. Be careful when you use the <i>String *</i> arguments, if you specify the large value for <i>Split part</i>, you could get the error message! This is because the complexity of the generated SQL code raises exponentially with each value increment.<br /><br />
+
+The next argument of the <i>Split mode</i> qualifier is <i>Single part</i>. It has almost the same effect as <i>String part</i>, with some pros and cons. Its advantage is that it does not generate the error message with the large values for <i>Split part</i>, since it is not using the SQL code, but VBScript instead. However, its drawback is that it cannot be used with <i>Sort by/Statistic</i> qualifiers as well as almost none <i>Show *</i> qualifiers. Same advantage and drawback have all remained <i>Split mode</i> arguments.<br /><br />
+
+The <i>Parts before</i> and <i>Parts after</i> arguments are similar to the <i>String before</i> and <i>String after</i> arguments respectively, but instead of the one resulting node with concatenated multiple parts of the string, they could generate multiple nodes with the single parts of the string each. Let's see again what we got with <i>Split mode:String After|Split part:1</i> - "My Music\Pink Floyd\Us and Them.mp3". This is just one node. Now, if we replace <i>String after</i> with <i>Parts after</i>, we would get three nodes on the same level: "My Music", "Pink Floyd" and "Us and Them.mp3". Well, maybe this example with the Path field is not too much useful, since those arguments are better with the multi-item fields or those fields that could contain multi-item values like the Involved people. Let's try again with some another field, e.g. &lt;Multi Genre&gt; = "Dance;House;Club". Using <i>Split mode:String After|Split part:1</i> we would get one "House;Club" node, but using <i>Split mode:Parts After|Split part:1</i> we would get two nodes on the same level - "House" and "Club".<br /><br />
+
+The <i>All parts</i> argument is the special case of the previous argument, i.e. it has the same effect as <i>Split mode:Parts After|Split part:0</i> where all parts are displayed as nodes on the same level within their parent node. This argument is default for the <i>Split mode</i> qualifier, i.e. if you omit this qualifier it would be same as if you specify <i>Split mode:All parts</i>. If you are using this argument you don't need to specify the <i>Split part</i> qualifier (it would be ignored). Also state for the next, <i>Categories</i> argument. These two arguments have similar effect, but the main difference between them is in the order how parsing of the initial MN field's string is done, and such explanation requires some digression about existing qualifiers which could be used for parsing.<br /><br />
+
+As you already know, there are several ways to parse the initial string of a Magic node obtained from the values of the specified MN field. There are <i>Substring start</i> and <i>Trim</i> qualifiers, then there is the <i>Split by</i> qualifier and finally there are <i>(Ex) Left of</i> and <i>(Ex) Right of</i> qualifiers. You could freely combine all those qualifiers, but you should keep in mind the internal order of the execution, because it affects the result. The parsing of the initial string is executed in 3 steps: in the first step the initial string is parsed using the <i>Left/Right of</i> qualifiers, then the newly string is parsed with the <i>Split by</i> qualifier and finally the resulting string is parsed using <i>Substring start/Trim</i> qualifiers.<br /><br />
+
+Here are some examples using the same Path value as before. If I write <i>Right of:My Music\\|Split by:\\|Split mode:String part|Split part:2</i>, in the first step the initial string will be trimmed from the left using the <i>Right of</i> qualifier (resulting with "Pink Floyd\Us and Them.mp3"), then in the second step the resulting string will be parsed using <i>Split</i> qualifiers, so finally I would get "Us and Them.mp3". This is the nice trick to know if you need to use <i>Split part</i> qualifier with large values and some of <i>String *</i> arguments, since if you use <i>Right of</i> you could decrease the <i>Split part</i> value and avoid generating of the error message.<br /><br />
+
+The presented order for parsing of the string is almost always the same, the only exception are the <i>Categories, Odd Parts</i> and <i>Even Parts</i> arguments. The order of parsing is the only difference between <i>All parts</i> and <i>Categories</i> arguments. With the <i>All parts</i> argument the initial string is parsed first using <i>Left/Right of</i> qualifiers (if they are specified), then it is parsed using the <i>Split by</i> qualifier, as it is already explained. However, with the <i>Categories</i> argument the initial string is first parsed using the <i>Split by</i> qualifier, then the each resulting part of the string is parsed using <i>Left/Right of</i> qualifiers (if they are specified).<br /><br />
+
+Here is one example of the <i>Categories</i> argument using the Involved people MN field: "Vocals: Bono; Guitars: The Edge; Bass: Adam Clayton; Drums: Larry Mullen, Jr.". If we write <i>Split by:; |Split mode:Categories|Ex Left of:: </i>, the initial string is parsed first using <i>Split by</i> qualifier and we get 4 parts "Vocals: Bono", "Guitars: The Edge", "Bass: Adam Clayton" and "Drums: Larry Mullen, Jr." In the next step the each part is parsed using the <i>Ex Left of</i> qualifier, so we finally get four nodes on the same level: "Vocals", "Guitars", "Bass" and "Drums".<br /><br />
+
+Here is another example with the Comment MN field that describes the difference between the <i>Categories</i> and <i>All parts</i> arguments: "Country: France/USA". If we use <i>Ex Right of:: |Split by:/|Split mode:Categories</i> we are still parsing the string using <i>Split by</i> first and so we will get two parts: "Country: France" and "USA". In the next step, after parsing with <i>Ex Right of</i> we will get only one node "France", because "USA" part doesn't contain ": " separator. Well, such field layout could be modified for use with the previous qualifiers, i.e. the Comment field could be modified to "Country: France/Country: USA", but it will be unwanted and really annoying to modify tags in all tracks. Luckily, the <i>All parts</i> argument could be used with the unmodified layout as: <i>Ex Right of:: |Split by:/|Split mode:All parts</i>. With this argument we first get trimmed the initial string from the left using <i>Ex Right of</i>, so we get "France/USA"; then we parse resulting string using <i>Split by</i>, so finally we get two nodes, "France" and "USA".<br /><br />
+
+There are 4 basic modes for parsing the string using the <i>Categories</i> argument, depending of used <i>(Ex) Left/Right of</i> qualifiers:<ol>
+<li>using the <i>Exclusive left of</i> qualifier to get the leftmost part;
+<li>using the <i>Exclusive right of</i> qualifier to get the rightmost part;
+<li>using the <i>Exclusive right of</i> and <i>Exclusive right until</i> qualifiers to get the middle part;
+<li>using the <i>Exclusive right of</i> and <i>Right until</i> qualifiers to get splitted right part(s).</ol>
+
+The first 3 modes are pretty self-explanatory. Here is one example: "Band member-Vocals: Bono; Band member-Guitars: The Edge; Band member-Bass: Adam Clayton; Band member-Drums: Larry Mullen, Jr.; Guest musician-Guitars: B.B. King; Guest musician-Vocals: B.B. King". Here we have involvement groups on the leftmost side: "Band member" and "Guest musician", then we have roles in the middle: "Vocals", "Guitars", "Bass" and "Drums", and finally we have musicians on the rightmost side: "Bono", "The Edge", "Adam Clayton", "Larry Mullen, Jr." and "B.B. King".<br /><br />
+
+Those 3 modes are sufficient if we write category for each artist, but it could lead to the duplicated text. For example, if some track have two vocalists, we need to enter e.g. "Vocals: Bono; Vocals: The Edge; Guitar: The Edge". Now, it would be nice if we could write: "Vocals: Bono/The Edge; Guitar: The Edge". This is exactly where could be used the forth mentioned mode of the <i>Categories</i> argument: with the <i>Split by:; |Split mode:Categories|Exclusive left of::</i> we could get the leftmost part as usual: "Vocals" and "Guitar", and using <i>Split by:; |Split mode:Categories|Exclusive right of::|Right until:/</i> we could get "Bono" and "The Edge" (of course, in this example "The Edge" would be under two nodes, Vocals and Guitar).<br /><br />
+
+Here is the last example which demonstrates usage of the <i>Categories</i> argument with the mentioned forth mode. Let say that we have Custom1 field = "Country :France/USA; Tones: Reflective/Ethereal; Style: Prog-Rock/Art Rock". We could create just one mask for all included categories: <i>Example\&lt;Custom 1|Split by:; |Split mode:Categories|Ex Left of:: &gt;\&lt;Custom 1|Split by:; |Split mode:Categories|Ex Right of:: |Right until:/&gt;</i>. With this mask we would get two level of nodes: on the first level we would get "Country", "Tones" and "Style" nodes, where the "Country" node would contain two sub-nodes, "France" and "USA", the "Tones" node would contain "Reflective" and "Ethereal" sub-nodes, and finally the "Style" node would contain "Prog-Rock" and "Art Rock" sub-nodes.<br /><br />
+
+The last two arguments of the <i>Split Mode</i> qualifier, <i>Odd Parts</i> and <i>Even Parts</i>, are similar to the <i>Categories</i> argument since they have the same execution order of parsing command, i.e. the <i>Split by</i> qualifier is applied first, then the each resulting part of the string is parsed using <i>Left/Right of</i> qualifiers (if they are specified). The main difference is that the <i>Categories</i> argument returns all parts from the string, but <i>Odd Parts</i> and <i>Even Parts</i> returns only every other part of string alternatively.<br /><br />
+
+Usage of these arguments is most practical with the Involved People field if it is stored in the ID3 format. For example, the earlier illustration with "Vocals: Bono; Guitars: The Edge; Bass: Adam Clayton; Drums: Larry Mullen, Jr." is not compatible with the ID3 standard, and it should be written as "Vocals;Bono;Guitars;The Edge;Bass;Adam Clayton;Drums;Larry Mullen, Jr.", i.e. the same separator ";" is used between roles and persons and between persons themselves. So, if you have such format and want to display all roles, you could write &lt;Involved people|Split by:;|Split Mode:Odd Parts&gt;. Also, if you want to display persons, you could write &lt;Involved people|Split by:;|Split Mode:Even Parts&gt;.<br /><br />
+
+With these two arguments you have a possibility to specify roles and sub-roles using <i>Exclusive Left of</i> and <i>Exclusive Right of</i> qualifiers as well. Here is the same Involved People example as before, but adjusted for ID3 tag: "Band member-Vocals;Bono;Band member-Guitars;The Edge;Band member-Bass;Adam Clayton;Band member-Drums;Larry Mullen, Jr.;Guest musician-Guitars;B.B. King;Guest musician-Vocals;B.B. King". To get main roles you should write &lt;Involved people|Split by:;|Split Mode:Odd Parts|Exclusive left of:-&gt;, to get sub-roles you should write &lt;Involved people|Split by:;|Split Mode:Odd Parts|Exclusive right of:-&gt; and to get persons you should write &lt;Involved people|Split by:;|Split Mode:Even Parts&gt;.<br /><br />
+
+<p><font size="+1"><b><a id="information">Information about some MN fields</a></b></font></p>
+With v4 of the add-on there are 4 new &lt;Poly *&gt; fields. They are similar to &lt;Multi *&gt; fields, but their display is more friendly. For example, with Multi Artist = "David Bowie; Queen" we would get displayed Poly Artist = "David Bowie & Queen". If there are 3 or more artists in a multi-item Artist field, only the last one will be separated with the "&" character, other ones will be separated with the ", ". Some users prefer to store the type of the featuring artists as a new item in the multi-item Artist field, for example: Multi Artist = "Freemasons; feat.; Siedah Garrett". In such case, with the &lt;Poly Artist&gt field you will get "Freemasons feat. Siedah Garrett". Here are several more examples:<br />
+- "Dave Armstrong; Redroche; feat.; H-Boogie" -> "Dave Armstrong & Redroche feat. H-Boogie",<br />
+- "Jerry Ropero; Denis The Menace; pres.; Sabor; feat.; Jaqueline" -> "Jerry Ropero & Denis The Menace pres. Sabor feat. Jaqueline",<br />
+- "Robbie Rivera; Axwell; JJ; feat.; Suzan Brittan" -> "Robbie Rivera, Axwell & JJ feat. Suzan Brittan".<br /><br />
+
+The 4.0 version has also added <i>First/Other Artist/Album Artist/Genre</i> fields. For example with the <i>First Genre</i> field I could get the leftmost (main) genre from the multi-item genre, and with the <i>Other Genre</i> I could get the remaining genres (sub-genres) from the multi-item genre. For example, with "Dance;House;Club" if I use <i>First Genre</i> I will get "Dance" node, and if I use <i>Other Genre</i> I will get two nodes on the same level: "House" and "Club". Well, I could get almost the same results using <i>&lt;Multi genre|Left of:;&gt;</i> for the first genre, and using <i>&lt;Multi genre|Split by:;|Split mode:Parts After|Split part:1&gt;</i> for the remaining genres, but the nodes with the <i>Split mode:Parts After</i> cannot have <i>Statistic</i> qualifier and have some another drawbacks which the <i>First/Other</i> fields don't have.<br /><br />
+
+<p><font size="+1"><b><a id="important">Important info about upgrade from previous versions</a></b></font></p>
+The split options are changed in v4.0, and your masks created with the previous versions of the add-on containing these options will not work as you want, so they should be updated accordingly. The first important thing that you should know is that all non-negative values for <i>Split part</i> are now shifted for +1. For example, instead of <i>Split part:0</i> you should now specify <i>Split part:1</i> and so on. Beside of the added functionality, I think this is also more natural/logical, because the specified value now represents the actual part of the field which you would get, instead of the previous version where you was forced to specify <i>Split part:0</i> for the first part, <i>Split part:1</i> for the second...<br /><br />
+
+However, beside of the better logical representation, the main reason for such change is the added possibility for use of the reverse parsing, i.e. the parsing from the right to the left, using negative values for the <i>Split part</i> qualifier in a similar way as you could specify negative values for the <i>Substring start</i> and <i>Trim</i> qualifiers. So, if you specify <i>Split part:1</i> you would get the leftmost part and if you specify <i>Split part:-1</i> you would get the rightmost part of the field. Of course, if you specify <i>Split part:-2</i> you would get the second part of the field from the right, and so on.<br /><br />
+
+The another important thing that you should know, is that with v4 you need to specify <i>Split mode:String part</i> if you want the same behavior as with the previous versions, of course with already explained difference for <i>Split part</i> values. For example, if you had <i>Split by:;|Split part:1</i>, you should now write <i>Split by:;|Split part:2|Split mode:String part</i>. This addition is necessary because the split options have added several new modes of parsing. Also, if you had a mask with <i>Split part:-1</i>, you should now write <i>Split mode:Categories</i> instead.<br /><br />
+
+Since 2.0 version of this add-on, it has added the advanced graphical user interface which uses dynamically populated dropdown lists. Skinned versions of MediaMonkey from 3.0 till 3.1 have very serious bug with the dropdown lists, which sometimes results with the unresponsive program and 100% CPU usage. All MM versions prior of 3.1 also have very serious bug when reading keys from the .ini files which are longer than 2048 characters (some Magic Nodes masks could be longer) and this bug sometimes results with disappeared program during execution. So, it is highly recommended that you use the latest version of MediaMonkey, or at least the newer one than v3.1.<br /><br />
+
+Since v1.7.6 of this add-on, there is the installation package. If you have already "installed" any older version (with the version number in the script file name), you should manually remove its script from the Script/Auto folder before the installation.<br /><br />
+
+<p><b>Possible reasons why your very, very old mask (MM2 and/or MN &lt;= v1.3) doesn't work:</b></p>
+<ul><li><i>Album and Artist</i> qualifier is renamed to <i>Album with Album Artist</i>.</li>
+<li><i>Album and Year</i> qualifier is removed (you could use <i>Album Artist with Album|Statistic:Max(Year)</i> instead).</li>
+<li>Field names should be surrounded with &lt; and &gt; when used inside of the <i>Filter</i> qualifier.</li>
+<li><i>Count</i> aggregate function of <i>Sort by</i> and <i>Statistic</i> qualifiers only supports <i>All, Tracks</i> and <i>Items</i> arguments.</li>
+<li>Masks with <i>Percent</i> argument of <i>Top</i> qualifier don't work in MM3 (you could omit the word <i>Percent</i> and you would get specified number of items, e.g. <i>Top 10</i>).</li>
+<li>Masks with <i>First</i> and <i>Last</i> aggregate function of <i>Sort by</i> qualifier don't work in MM3 (you could try <i>Min</i> and <i>Max</i> functions instead).</li>
+<li>Masks with <i>Filter</i> and <i>SQL Filter</i> qualifiers which use MS Jet specific functions (e.g. <i>IIf, Left, Right, Mid, Val, DateDiff, Now, Asc,</i>...) don't work in MM3.</li>
+<li>Masks with <i>Filter</i> and <i>SQL Filter</i> qualifiers which use some table/field names changed in MM3 (e.g. <i>SongOrder</i> renamed to <i>TrackNumber</i>) don't work in MM3.</li></ul>
+
+<p><font size="+1"><b><a id="notice">Notice</a></b></font></p>
+This add-on is a false positive reported as a worm by F-Secure. The author of F-Secure promised me that will update its database and put the add-on on the white-list, but still didn't. If you go to the <a href="https://www.virustotal.com/en/file/373aca58584d2f9f9a25f286ccefde03cf65d74ec9feddca063a821bd476a2b9/analysis/1475443034/">www.virustotal.com/en/</a> site, you will see that it is safe tested by 54 popular anti-virus engines; the only one reporting a worm in it is F-Secure.<br />
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_download_type="7z|aac|avi|csv|doc|exe|flv|gif|gz|jpg|jpeg|js|mmip|mp3|mp4|mpg|mpeg|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";
+var sc_project=9499114;
+var sc_invisible=1;
+var sc_security="629c143c";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9499114/0/629c143c/1/"
+alt="web counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+<center><img src="http://flagcounter.com/count/fcBZ6/bg=FFFFFF/txt=000000/border=CCCCCC/columns=1/maxflags=5/viewers=3/labels=1/pageviews=1/" border="0"></center>
+</div>
+
+</body>
+</html>
