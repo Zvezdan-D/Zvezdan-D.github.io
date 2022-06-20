@@ -21,7 +21,7 @@ Version 2.0<br />
 
 <div id="content" style="padding: 10px;">
 
-This is information about the enhanced version of the Find Currently Playing Track add-on, which works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v5.x (there is also its <a href="https://zvezdan-d.github.io/FindCurrentPlayingTrack.html">version</a> for older releases of the program). It allows finding and selecting of the currently playing track in the Media Tree and main tracklist, i.e. it works similarly as the built-in "Find More from Same" and "Focus tracklist on currently playing item" MM options combined.<br /><br />
+This is information about the new version of the Find Currently Playing Track add-on, which works with <a href="http://www.mediamonkey.com/">MediaMonkey</a> v5.x (there is also its <a href="https://zvezdan-d.github.io/FindCurrentPlayingTrack.html">version</a> for older releases of the program). It allows finding and selecting of the currently playing track in the Media Tree and main tracklist, i.e. it works similarly as the built-in <i>Find More from Same</i> and <i>Focus tracklist on currently playing item</i> MM options combined.<br /><br />
 
 However, when the <i>Automatically find on play</i> option is turned on, the main tracklist will locate and set the keyboard focus on the currently playing track whenever any of them starts playing. Or, you could turn that option off and use a hotkey or the toolbar button to locate the playing file instead. You could use its toolbar menu to determine where in the Media Tree you want to locate the playing files.<br /><br />
 
@@ -29,7 +29,7 @@ However, when the <i>Automatically find on play</i> option is turned on, the mai
 
 <p><font size="+1"><b><a id="whatisnew">What is new</a></b></font></p>
 <dl>
-<dt>v2.0 - 2022-06-17</dt><ul>
+<dt>v2.0 - 2022-06-20</dt><ul>
 <li>Added: version of the add-on for MediaMonkey v5.
 </ul><br />
 </dl>
@@ -45,7 +45,7 @@ You need to accept the license agreement if you want to use this add-on.<br /><b
 The add-on will add two toolbar buttons after its installation. The first one allows manual finding of the currently playing track (<i>Find currently playing track</i>). It is enabled only when track is playing. The second button will display a dropdown menu with the additional options.<br /><br />
 
 The main operation of this add-on is performed automatically whenever the playing track is changed. To turn that behavior on or off, you could toggle the <i>Automatically find on play</i> option from the menu. The other options in the menu determine where in the Media Tree you want to locate the playing files:<ul>
-<li><i>Selected branch</i>: the add-on will try to find the playing track within the selected branch of the Media Tree; for example, if you have selected any node in the Albums branch of Music collection, the add-on will try to find the album that contains the playing track in that collection.<br />
+<li><i>Selected branch</i>: the add-on will try to find the playing track within the selected branch of the Media Tree; for example, if you have selected any node in the Albums branch of Music collection, the add-on will try to find album that contains the playing track in that collection.<br />
 The supported branches are: Albums, Artists, Album Artists, Producers, Conductors, Composers, Actors, Publishers, Directors, Genres, Years, Location and Folder. If you have selected any node from another branch, e.g. Files to Edit or Classification, the add-on will try to find the track within the Location branch of the selected collection instead; if you have selected node that is not within any collection, e.g. Playlists, Web or Pinned, the add-on will find the track within the Folders branch;</li>
 <li><i>Current tracklist</i>: the node will not be changed and the add-on will try to find the playing track in the currently displayed tracklist; if it doesn't contain the playing track, none track will be selected;</li>
 <li><i>Entire Library / All tracks</i>: the add-on will try to find the playing track in the <i>All tracks</i> node of the <i>Entire Library</i> collection; if the playing track is not already added to the Library, none track will be selected;</li>
@@ -57,7 +57,7 @@ If you prefer keyboard, you could use a hotkey for the <i>Find currently playing
 
 <p><font size="+1"><b><a id="jsonproperties">Additional JSON properties</a></b></font></p>
 There are some properties in the "FindCurrentPlayingTrack" {} section of the persistent.json file for some less needed options:<br />
-<li>TracklistAllways - determines what happens when the located node doesn't have set the List view: 0 - do nothing (track may not be displayed and selected with some views, like Grid or Browser), 1 - change view to List temporarily (default);<br /><br />
+<li>TracklistAllways - determines what happens when the located node is not set to show the List view: 0 - do nothing (track may not be displayed and selected with some views, like Grid or Browser), 1 - change view to List temporarily (default);<br /><br />
 
 <li>FindWhenAutoSetOn - determines what happens when you turn on the <i>Automatically find on play</i> option while the track is already playing: 0 - do nothing (default), 1 - find the track.<br /><br />
 
